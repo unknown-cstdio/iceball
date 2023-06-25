@@ -145,7 +145,6 @@ func clientOffers(i *IPC, w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	log.Printf("Received client SDP: %s", string(body))
 
 	// Handle the legacy version
 	//
