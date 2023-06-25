@@ -695,7 +695,7 @@ func (sf *SnowflakeProxy) Start() error {
 		defer NatRetestTask.Close()
 	}
 
-	addr := flag.String("addr", ":443", "address of the server")
+	addr := flag.String("addr", ":8000", "address of the server")
 
 	http.Handle("/add", ProxyHandler{AddClient})
 	http.Handle("/transfer", ProxyHandler{TransferClient})
