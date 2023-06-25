@@ -29,6 +29,7 @@ import (
 	"bytes"
 	"crypto/rand"
 	"encoding/base64"
+	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -693,6 +694,14 @@ func (sf *SnowflakeProxy) Start() error {
 		NatRetestTask.WaitThenStart()
 		defer NatRetestTask.Close()
 	}
+
+	addr := flag.String("addr", ":443", "address of the server")
+
+	http.Handle("/add", ProxyHandler{AddClient})
+	http.Handle("/transfer", ProxyHandler{TransferClient})
+	http.Handle("/connect", ProxyHandler{ConnectClient})
+
+	go func() { log.Fatal(http.ListenAndServe(*addr, nil)) }()
 
 	ticker := time.NewTicker(pollInterval)
 	defer ticker.Stop()
