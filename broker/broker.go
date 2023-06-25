@@ -6,14 +6,15 @@ SessionDescriptions in order to negotiate a WebRTC connection.
 package main
 
 import (
+	"bytes"
 	"container/heap"
 	"crypto/tls"
 	"flag"
-	"fmt"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/bridgefingerprint"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/ipsetsink"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/ipsetsink/sinkcluster"
 	"io"
-	"io/ioutil"
 	"log"
-	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -22,21 +23,11 @@ import (
 	"syscall"
 	"time"
 
-	"git.torproject.org/pluggable-transports/snowflake.git/common/messages"
-	"git.torproject.org/pluggable-transports/snowflake.git/common/safelog"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/namematcher"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/safelog"
 	"golang.org/x/crypto/acme/autocert"
-)
-
-const (
-	ClientTimeout = 10
-	ProxyTimeout  = 10
-	readLimit     = 100000 //Maximum number of bytes to be read from an HTTP request
-
-	NATUnknown      = "unknown"
-	NATRestricted   = "restricted"
-	NATUnrestricted = "unrestricted"
 )
 
 type BrokerContext struct {
@@ -50,6 +41,14 @@ type BrokerContext struct {
 	snowflakeLock sync.Mutex
 	proxyPolls    chan *ProxyPoll
 	metrics       *Metrics
+
+	bridgeList                     BridgeListHolderFileBased
+	allowedRelayPattern            string
+	presumedPatternForLegacyClient string
+}
+
+func (ctx *BrokerContext) GetBridgeInfo(fingerprint bridgefingerprint.Fingerprint) (BridgeInfo, error) {
+	return ctx.bridgeList.GetBridgeInfo(fingerprint)
 }
 
 func NewBrokerContext(metricsLogger *log.Logger) *BrokerContext {
@@ -67,45 +66,20 @@ func NewBrokerContext(metricsLogger *log.Logger) *BrokerContext {
 		panic("Failed to create metrics")
 	}
 
+	bridgeListHolder := NewBridgeListHolder()
+
+	const DefaultBridges = `{"displayName":"default", "webSocketAddress":"wss://snowflake.torproject.net/", "fingerprint":"2B280B23E1107BB62ABFC40DDCC8824814F80A72"}
+`
+	bridgeListHolder.LoadBridgeInfo(bytes.NewReader([]byte(DefaultBridges)))
+
 	return &BrokerContext{
 		snowflakes:           snowflakes,
 		restrictedSnowflakes: rSnowflakes,
 		idToSnowflake:        make(map[string]*Snowflake),
 		proxyPolls:           make(chan *ProxyPoll),
 		metrics:              metrics,
+		bridgeList:           bridgeListHolder,
 	}
-}
-
-// Implements the http.Handler interface
-type SnowflakeHandler struct {
-	*BrokerContext
-	handle func(*BrokerContext, http.ResponseWriter, *http.Request)
-}
-
-// Implements the http.Handler interface
-type MetricsHandler struct {
-	logFilename string
-	handle      func(string, http.ResponseWriter, *http.Request)
-}
-
-func (sh SnowflakeHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Session-ID, Snowflake-NAT-Type")
-	// Return early if it's CORS preflight.
-	if "OPTIONS" == r.Method {
-		return
-	}
-	sh.handle(sh.BrokerContext, w, r)
-}
-
-func (mh MetricsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Session-ID")
-	// Return early if it's CORS preflight.
-	if "OPTIONS" == r.Method {
-		return
-	}
-	mh.handle(mh.logFilename, w, r)
 }
 
 // Proxies may poll for client offers concurrently.
@@ -113,16 +87,18 @@ type ProxyPoll struct {
 	id           string
 	proxyType    string
 	natType      string
+	clients      int
 	offerChannel chan *ClientOffer
 }
 
 // Registers a Snowflake and waits for some Client to send an offer,
 // as part of the polling logic of the proxy handler.
-func (ctx *BrokerContext) RequestOffer(id string, proxyType string, natType string) *ClientOffer {
+func (ctx *BrokerContext) RequestOffer(id string, proxyType string, natType string, clients int) *ClientOffer {
 	request := new(ProxyPoll)
 	request.id = id
 	request.proxyType = proxyType
 	request.natType = natType
+	request.clients = clients
 	request.offerChannel = make(chan *ClientOffer)
 	ctx.proxyPolls <- request
 	// Block until an offer is available, or timeout which sends a nil offer.
@@ -135,7 +111,7 @@ func (ctx *BrokerContext) RequestOffer(id string, proxyType string, natType stri
 // client offer or nil on timeout / none are available.
 func (ctx *BrokerContext) Broker() {
 	for request := range ctx.proxyPolls {
-		snowflake := ctx.AddSnowflake(request.id, request.proxyType, request.natType)
+		snowflake := ctx.AddSnowflake(request.id, request.proxyType, request.natType, request.clients)
 		// Wait for a client to avail an offer to the snowflake.
 		go func(request *ProxyPoll) {
 			select {
@@ -151,7 +127,7 @@ func (ctx *BrokerContext) Broker() {
 					} else {
 						heap.Remove(ctx.restrictedSnowflakes, snowflake.index)
 					}
-					promMetrics.AvailableProxies.With(prometheus.Labels{"nat": request.natType, "type": request.proxyType}).Dec()
+					ctx.metrics.promMetrics.AvailableProxies.With(prometheus.Labels{"nat": request.natType, "type": request.proxyType}).Dec()
 					delete(ctx.idToSnowflake, snowflake.id)
 					close(request.offerChannel)
 				}
@@ -163,278 +139,49 @@ func (ctx *BrokerContext) Broker() {
 // Create and add a Snowflake to the heap.
 // Required to keep track of proxies between providing them
 // with an offer and awaiting their second POST with an answer.
-func (ctx *BrokerContext) AddSnowflake(id string, proxyType string, natType string) *Snowflake {
+func (ctx *BrokerContext) AddSnowflake(id string, proxyType string, natType string, clients int) *Snowflake {
 	snowflake := new(Snowflake)
 	snowflake.id = id
-	snowflake.clients = 0
+	snowflake.clients = clients
 	snowflake.proxyType = proxyType
 	snowflake.natType = natType
 	snowflake.offerChannel = make(chan *ClientOffer)
-	snowflake.answerChannel = make(chan []byte)
+	snowflake.answerChannel = make(chan string)
 	ctx.snowflakeLock.Lock()
 	if natType == NATUnrestricted {
 		heap.Push(ctx.snowflakes, snowflake)
 	} else {
 		heap.Push(ctx.restrictedSnowflakes, snowflake)
 	}
-	promMetrics.AvailableProxies.With(prometheus.Labels{"nat": natType, "type": proxyType}).Inc()
-	ctx.snowflakeLock.Unlock()
+	ctx.metrics.promMetrics.AvailableProxies.With(prometheus.Labels{"nat": natType, "type": proxyType}).Inc()
 	ctx.idToSnowflake[id] = snowflake
+	ctx.snowflakeLock.Unlock()
 	return snowflake
 }
 
-/*
-For snowflake proxies to request a client from the Broker.
-*/
-func proxyPolls(ctx *BrokerContext, w http.ResponseWriter, r *http.Request) {
-	body, err := ioutil.ReadAll(http.MaxBytesReader(w, r.Body, readLimit))
-	if err != nil {
-		log.Println("Invalid data.")
-		w.WriteHeader(http.StatusBadRequest)
-		return
+func (ctx *BrokerContext) InstallBridgeListProfile(reader io.Reader, relayPattern, presumedPatternForLegacyClient string) error {
+	if err := ctx.bridgeList.LoadBridgeInfo(reader); err != nil {
+		return err
 	}
-
-	sid, proxyType, natType, err := messages.DecodePollRequest(body)
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	// Log geoip stats
-	remoteIP, _, err := net.SplitHostPort(r.RemoteAddr)
-	if err != nil {
-		log.Println("Error processing proxy IP: ", err.Error())
-	} else {
-		ctx.metrics.lock.Lock()
-		ctx.metrics.UpdateCountryStats(remoteIP, proxyType, natType)
-		ctx.metrics.lock.Unlock()
-	}
-
-	// Wait for a client to avail an offer to the snowflake, or timeout if nil.
-	offer := ctx.RequestOffer(sid, proxyType, natType)
-	var b []byte
-	if nil == offer {
-		ctx.metrics.lock.Lock()
-		ctx.metrics.proxyIdleCount++
-		promMetrics.ProxyPollTotal.With(prometheus.Labels{"nat": natType, "status": "idle"}).Inc()
-		ctx.metrics.lock.Unlock()
-
-		b, err = messages.EncodePollResponse("", false, "")
-		if err != nil {
-			w.WriteHeader(http.StatusInternalServerError)
-			return
-		}
-
-		w.Write(b)
-		return
-	}
-	promMetrics.ProxyPollTotal.With(prometheus.Labels{"nat": natType, "status": "matched"}).Inc()
-	b, err = messages.EncodePollResponse(string(offer.sdp), true, offer.natType)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-	if _, err := w.Write(b); err != nil {
-		log.Printf("proxyPolls unable to write offer with error: %v", err)
-	}
+	ctx.allowedRelayPattern = relayPattern
+	ctx.presumedPatternForLegacyClient = presumedPatternForLegacyClient
+	return nil
 }
 
-// Client offer contains an SDP and the NAT type of the client
+func (ctx *BrokerContext) CheckProxyRelayPattern(pattern string, nonSupported bool) bool {
+	if nonSupported {
+		pattern = ctx.presumedPatternForLegacyClient
+	}
+	proxyPattern := namematcher.NewNameMatcher(pattern)
+	brokerPattern := namematcher.NewNameMatcher(ctx.allowedRelayPattern)
+	return proxyPattern.IsSupersetOf(brokerPattern)
+}
+
+// Client offer contains an SDP, bridge fingerprint and the NAT type of the client
 type ClientOffer struct {
-	natType string
-	sdp     []byte
-}
-
-/*
-Expects a WebRTC SDP offer in the Request to give to an assigned
-snowflake proxy, which responds with the SDP answer to be sent in
-the HTTP response back to the client.
-*/
-func clientOffers(ctx *BrokerContext, w http.ResponseWriter, r *http.Request) {
-	var err error
-
-	startTime := time.Now()
-	offer := &ClientOffer{}
-	offer.sdp, err = ioutil.ReadAll(http.MaxBytesReader(w, r.Body, readLimit))
-	if nil != err {
-		log.Println("Invalid data.")
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	offer.natType = r.Header.Get("Snowflake-NAT-Type")
-	if offer.natType == "" {
-		offer.natType = NATUnknown
-	}
-
-	// Only hand out known restricted snowflakes to unrestricted clients
-	var snowflakeHeap *SnowflakeHeap
-	if offer.natType == NATUnrestricted {
-		snowflakeHeap = ctx.restrictedSnowflakes
-	} else {
-		snowflakeHeap = ctx.snowflakes
-	}
-
-	// Immediately fail if there are no snowflakes available.
-	ctx.snowflakeLock.Lock()
-	numSnowflakes := snowflakeHeap.Len()
-	ctx.snowflakeLock.Unlock()
-	if numSnowflakes <= 0 {
-		ctx.metrics.lock.Lock()
-		ctx.metrics.clientDeniedCount++
-		promMetrics.ClientPollTotal.With(prometheus.Labels{"nat": offer.natType, "status": "denied"}).Inc()
-		if offer.natType == NATUnrestricted {
-			ctx.metrics.clientUnrestrictedDeniedCount++
-		} else {
-			ctx.metrics.clientRestrictedDeniedCount++
-		}
-		ctx.metrics.lock.Unlock()
-		w.WriteHeader(http.StatusServiceUnavailable)
-		return
-	}
-	// Otherwise, find the most available snowflake proxy, and pass the offer to it.
-	// Delete must be deferred in order to correctly process answer request later.
-	ctx.snowflakeLock.Lock()
-	snowflake := heap.Pop(snowflakeHeap).(*Snowflake)
-	ctx.snowflakeLock.Unlock()
-	snowflake.offerChannel <- offer
-
-	// Wait for the answer to be returned on the channel or timeout.
-	select {
-	case answer := <-snowflake.answerChannel:
-		ctx.metrics.lock.Lock()
-		ctx.metrics.clientProxyMatchCount++
-		promMetrics.ClientPollTotal.With(prometheus.Labels{"nat": offer.natType, "status": "matched"}).Inc()
-		ctx.metrics.lock.Unlock()
-		if _, err := w.Write(answer); err != nil {
-			log.Printf("unable to write answer with error: %v", err)
-		}
-		// Initial tracking of elapsed time.
-		ctx.metrics.clientRoundtripEstimate = time.Since(startTime) /
-			time.Millisecond
-	case <-time.After(time.Second * ClientTimeout):
-		log.Println("Client: Timed out.")
-		w.WriteHeader(http.StatusGatewayTimeout)
-		if _, err := w.Write([]byte("timed out waiting for answer!")); err != nil {
-			log.Printf("unable to write timeout error, failed with error: %v", err)
-		}
-	}
-
-	ctx.snowflakeLock.Lock()
-	promMetrics.AvailableProxies.With(prometheus.Labels{"nat": snowflake.natType, "type": snowflake.proxyType}).Dec()
-	delete(ctx.idToSnowflake, snowflake.id)
-	ctx.snowflakeLock.Unlock()
-}
-
-/*
-Expects snowflake proxes which have previously successfully received
-an offer from proxyHandler to respond with an answer in an HTTP POST,
-which the broker will pass back to the original client.
-*/
-func proxyAnswers(ctx *BrokerContext, w http.ResponseWriter, r *http.Request) {
-
-	body, err := ioutil.ReadAll(http.MaxBytesReader(w, r.Body, readLimit))
-	if nil != err || nil == body || len(body) <= 0 {
-		log.Println("Invalid data.")
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	answer, id, err := messages.DecodeAnswerRequest(body)
-	if err != nil || answer == "" {
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
-	var success = true
-	ctx.snowflakeLock.Lock()
-	snowflake, ok := ctx.idToSnowflake[id]
-	ctx.snowflakeLock.Unlock()
-	if !ok || nil == snowflake {
-		// The snowflake took too long to respond with an answer, so its client
-		// disappeared / the snowflake is no longer recognized by the Broker.
-		success = false
-	}
-	b, err := messages.EncodeAnswerResponse(success)
-	if err != nil {
-		log.Printf("Error encoding answer: %s", err.Error())
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-	w.Write(b)
-
-	if success {
-		snowflake.answerChannel <- []byte(answer)
-	}
-
-}
-
-func debugHandler(ctx *BrokerContext, w http.ResponseWriter, r *http.Request) {
-
-	var webexts, browsers, standalones, unknowns int
-	var natRestricted, natUnrestricted, natUnknown int
-	ctx.snowflakeLock.Lock()
-	s := fmt.Sprintf("current snowflakes available: %d\n", len(ctx.idToSnowflake))
-	for _, snowflake := range ctx.idToSnowflake {
-		if snowflake.proxyType == "badge" {
-			browsers++
-		} else if snowflake.proxyType == "webext" {
-			webexts++
-		} else if snowflake.proxyType == "standalone" {
-			standalones++
-		} else {
-			unknowns++
-		}
-
-		switch snowflake.natType {
-		case NATRestricted:
-			natRestricted++
-		case NATUnrestricted:
-			natUnrestricted++
-		default:
-			natUnknown++
-		}
-
-	}
-	ctx.snowflakeLock.Unlock()
-	s += fmt.Sprintf("\tstandalone proxies: %d", standalones)
-	s += fmt.Sprintf("\n\tbrowser proxies: %d", browsers)
-	s += fmt.Sprintf("\n\twebext proxies: %d", webexts)
-	s += fmt.Sprintf("\n\tunknown proxies: %d", unknowns)
-
-	s += fmt.Sprintf("\nNAT Types available:")
-	s += fmt.Sprintf("\n\trestricted: %d", natRestricted)
-	s += fmt.Sprintf("\n\tunrestricted: %d", natUnrestricted)
-	s += fmt.Sprintf("\n\tunknown: %d", natUnknown)
-	if _, err := w.Write([]byte(s)); err != nil {
-		log.Printf("writing proxy information returned error: %v ", err)
-	}
-}
-
-func robotsTxtHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-	if _, err := w.Write([]byte("User-agent: *\nDisallow: /\n")); err != nil {
-		log.Printf("robotsTxtHandler unable to write, with this error: %v", err)
-	}
-}
-
-func metricsHandler(metricsFilename string, w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-
-	if metricsFilename == "" {
-		http.NotFound(w, r)
-		return
-	}
-	metricsFile, err := os.OpenFile(metricsFilename, os.O_RDONLY, 0644)
-	if err != nil {
-		log.Println("Error opening metrics file for reading")
-		http.NotFound(w, r)
-		return
-	}
-
-	if _, err := io.Copy(w, metricsFile); err != nil {
-		log.Printf("copying metricsFile returned error: %v", err)
-	}
+	natType     string
+	sdp         []byte
+	fingerprint []byte
 }
 
 func main() {
@@ -444,10 +191,13 @@ func main() {
 	var addr string
 	var geoipDatabase string
 	var geoip6Database string
+	var bridgeListFilePath, allowedRelayPattern, presumedPatternForLegacyClient string
 	var disableTLS bool
 	var certFilename, keyFilename string
 	var disableGeoip bool
 	var metricsFilename string
+	var ipCountFilename, ipCountMaskingKey string
+	var ipCountInterval time.Duration
 	var unsafeLogging bool
 
 	flag.StringVar(&acmeEmail, "acme-email", "", "optional contact email for Let's Encrypt notifications")
@@ -458,9 +208,15 @@ func main() {
 	flag.StringVar(&addr, "addr", ":443", "address to listen on")
 	flag.StringVar(&geoipDatabase, "geoipdb", "/usr/share/tor/geoip", "path to correctly formatted geoip database mapping IPv4 address ranges to country codes")
 	flag.StringVar(&geoip6Database, "geoip6db", "/usr/share/tor/geoip6", "path to correctly formatted geoip database mapping IPv6 address ranges to country codes")
+	flag.StringVar(&bridgeListFilePath, "bridge-list-path", "", "file path for bridgeListFile")
+	flag.StringVar(&allowedRelayPattern, "allowed-relay-pattern", "", "allowed pattern for relay host name")
+	flag.StringVar(&presumedPatternForLegacyClient, "default-relay-pattern", "", "presumed pattern for legacy client")
 	flag.BoolVar(&disableTLS, "disable-tls", false, "don't use HTTPS")
 	flag.BoolVar(&disableGeoip, "disable-geoip", false, "don't use geoip for stats collection")
 	flag.StringVar(&metricsFilename, "metrics-log", "", "path to metrics logging output")
+	flag.StringVar(&ipCountFilename, "ip-count-log", "", "path to ip count logging output")
+	flag.StringVar(&ipCountMaskingKey, "ip-count-mask", "", "masking key for ip count logging")
+	flag.DurationVar(&ipCountInterval, "ip-count-interval", time.Hour, "time interval between each chunk")
 	flag.BoolVar(&unsafeLogging, "unsafe-logging", false, "prevent logs from being scrubbed")
 	flag.Parse()
 
@@ -490,6 +246,17 @@ func main() {
 
 	ctx := NewBrokerContext(metricsLogger)
 
+	if bridgeListFilePath != "" {
+		bridgeListFile, err := os.Open(bridgeListFilePath)
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+		err = ctx.InstallBridgeListProfile(bridgeListFile, allowedRelayPattern, presumedPatternForLegacyClient)
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+	}
+
 	if !disableGeoip {
 		err = ctx.metrics.LoadGeoipDatabases(geoipDatabase, geoip6Database)
 		if err != nil {
@@ -497,16 +264,30 @@ func main() {
 		}
 	}
 
+	if ipCountFilename != "" {
+		ipCountFile, err := os.OpenFile(ipCountFilename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+		ipSetSink := ipsetsink.NewIPSetSink(ipCountMaskingKey)
+		ctx.metrics.distinctIPWriter = sinkcluster.NewClusterWriter(ipCountFile, ipCountInterval, ipSetSink)
+	}
+
 	go ctx.Broker()
+
+	i := &IPC{ctx}
 
 	http.HandleFunc("/robots.txt", robotsTxtHandler)
 
-	http.Handle("/proxy", SnowflakeHandler{ctx, proxyPolls})
-	http.Handle("/client", SnowflakeHandler{ctx, clientOffers})
-	http.Handle("/answer", SnowflakeHandler{ctx, proxyAnswers})
-	http.Handle("/debug", SnowflakeHandler{ctx, debugHandler})
+	http.Handle("/proxy", SnowflakeHandler{i, proxyPolls})
+	http.Handle("/client", SnowflakeHandler{i, clientOffers})
+	http.Handle("/answer", SnowflakeHandler{i, proxyAnswers})
+	http.Handle("/debug", SnowflakeHandler{i, debugHandler})
 	http.Handle("/metrics", MetricsHandler{metricsFilename, metricsHandler})
-	http.Handle("/prometheus", promhttp.HandlerFor(promMetrics.registry, promhttp.HandlerOpts{}))
+	http.Handle("/prometheus", promhttp.HandlerFor(ctx.metrics.promMetrics.registry, promhttp.HandlerOpts{}))
+
+	http.Handle("/amp/client/", SnowflakeHandler{i, ampClientOffers})
 
 	server := http.Server{
 		Addr: addr,

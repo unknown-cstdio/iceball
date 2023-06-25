@@ -1,4 +1,4 @@
-package lib
+package snowflake_client
 
 import (
 	"log"
@@ -9,36 +9,37 @@ const (
 	LogTimeInterval = 5 * time.Second
 )
 
-type BytesLogger interface {
-	AddOutbound(int)
-	AddInbound(int)
+type bytesLogger interface {
+	addOutbound(int64)
+	addInbound(int64)
 }
 
-// Default BytesLogger does nothing.
-type BytesNullLogger struct{}
+// Default bytesLogger does nothing.
+type bytesNullLogger struct{}
 
-func (b BytesNullLogger) AddOutbound(amount int) {}
-func (b BytesNullLogger) AddInbound(amount int)  {}
+func (b bytesNullLogger) addOutbound(amount int64) {}
+func (b bytesNullLogger) addInbound(amount int64)  {}
 
-// BytesSyncLogger uses channels to safely log from multiple sources with output
+// bytesSyncLogger uses channels to safely log from multiple sources with output
 // occuring at reasonable intervals.
-type BytesSyncLogger struct {
-	outboundChan chan int
-	inboundChan  chan int
+type bytesSyncLogger struct {
+	outboundChan chan int64
+	inboundChan  chan int64
 }
 
-// NewBytesSyncLogger returns a new BytesSyncLogger and starts it loggin.
-func NewBytesSyncLogger() *BytesSyncLogger {
-	b := &BytesSyncLogger{
-		outboundChan: make(chan int, 5),
-		inboundChan:  make(chan int, 5),
+// newBytesSyncLogger returns a new bytesSyncLogger and starts it loggin.
+func newBytesSyncLogger() *bytesSyncLogger {
+	b := &bytesSyncLogger{
+		outboundChan: make(chan int64, 5),
+		inboundChan:  make(chan int64, 5),
 	}
 	go b.log()
 	return b
 }
 
-func (b *BytesSyncLogger) log() {
-	var outbound, inbound, outEvents, inEvents int
+func (b *bytesSyncLogger) log() {
+	var outbound, inbound int64
+	var outEvents, inEvents int
 	ticker := time.NewTicker(LogTimeInterval)
 	for {
 		select {
@@ -61,10 +62,10 @@ func (b *BytesSyncLogger) log() {
 	}
 }
 
-func (b *BytesSyncLogger) AddOutbound(amount int) {
+func (b *bytesSyncLogger) addOutbound(amount int64) {
 	b.outboundChan <- amount
 }
 
-func (b *BytesSyncLogger) AddInbound(amount int) {
+func (b *bytesSyncLogger) addInbound(amount int64) {
 	b.inboundChan <- amount
 }

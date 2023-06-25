@@ -1,4 +1,4 @@
-package main
+package snowflake_proxy
 
 import (
 	"bytes"
@@ -7,15 +7,14 @@ import (
 	"io/ioutil"
 	"net"
 	"net/http"
-	"net/url"
 	"strconv"
 	"strings"
 	"testing"
 
-	"git.torproject.org/pluggable-transports/snowflake.git/common/messages"
-	"git.torproject.org/pluggable-transports/snowflake.git/common/util"
 	"github.com/pion/webrtc/v3"
 	. "github.com/smartystreets/goconvey/convey"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/messages"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/util"
 )
 
 // Set up a mock broker to communicate with
@@ -337,8 +336,10 @@ func TestBrokerInteractions(t *testing.T) {
 	const sampleAnswer = `{"type":"answer","sdp":` + sampleSDP + `}`
 
 	Convey("Proxy connections to broker", t, func() {
-		broker := new(SignalingServer)
-		broker.url, _ = url.Parse("localhost")
+		var err error
+		broker, err = newSignalingServer("localhost", false)
+		So(err, ShouldEqual, nil)
+		tokens = newTokens(0)
 
 		//Mock peerConnection
 		config = webrtc.Configuration{
@@ -364,7 +365,7 @@ func TestBrokerInteractions(t *testing.T) {
 				b,
 			}
 
-			sdp := broker.pollOffer(sampleOffer)
+			sdp, _ := broker.pollOffer(sampleOffer, DefaultProxyType, "", nil)
 			expectedSDP, _ := strconv.Unquote(sampleSDP)
 			So(sdp.SDP, ShouldResemble, expectedSDP)
 		})
@@ -378,7 +379,7 @@ func TestBrokerInteractions(t *testing.T) {
 				b,
 			}
 
-			sdp := broker.pollOffer(sampleOffer)
+			sdp, _ := broker.pollOffer(sampleOffer, DefaultProxyType, "", nil)
 			So(sdp, ShouldBeNil)
 		})
 		Convey("sends answer to broker", func() {
@@ -469,17 +470,6 @@ func TestUtilityFuncs(t *testing.T) {
 			So(err, ShouldEqual, io.ErrClosedPipe)
 		})
 	})
-	Convey("Tokens", t, func() {
-		tokens = make(chan bool, 2)
-		for i := uint(0); i < 2; i++ {
-			tokens <- true
-		}
-		So(len(tokens), ShouldEqual, 2)
-		getToken()
-		So(len(tokens), ShouldEqual, 1)
-		retToken()
-		So(len(tokens), ShouldEqual, 2)
-	})
 	Convey("SessionID Generation", t, func() {
 		sid1 := genSessionID()
 		sid2 := genSessionID()
@@ -488,7 +478,7 @@ func TestUtilityFuncs(t *testing.T) {
 	Convey("CopyLoop", t, func() {
 		c1, s1 := net.Pipe()
 		c2, s2 := net.Pipe()
-		go CopyLoop(s1, s2)
+		go copyLoop(s1, s2, nil)
 		go func() {
 			bytes := []byte("Hello!")
 			c1.Write(bytes)

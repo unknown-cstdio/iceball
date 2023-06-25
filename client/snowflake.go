@@ -3,32 +3,63 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
-	"math/rand"
 	"net"
 	"os"
 	"os/signal"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"sync"
 	"syscall"
-	"time"
 
-	pt "git.torproject.org/pluggable-transports/goptlib.git"
-	sf "git.torproject.org/pluggable-transports/snowflake.git/client/lib"
-	"git.torproject.org/pluggable-transports/snowflake.git/common/nat"
-	"git.torproject.org/pluggable-transports/snowflake.git/common/safelog"
-	"github.com/pion/webrtc/v3"
+	pt "gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/goptlib"
+	sf "gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/client/lib"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/event"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/safelog"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/version"
 )
 
 const (
 	DefaultSnowflakeCapacity = 1
 )
 
-// Accept local SOCKS connections and pass them to the handler.
-func socksAcceptLoop(ln *pt.SocksListener, tongue sf.Tongue, shutdown chan struct{}, wg *sync.WaitGroup) {
+type ptEventLogger struct {
+}
+
+func NewPTEventLogger() event.SnowflakeEventReceiver {
+	return &ptEventLogger{}
+}
+
+func (p ptEventLogger) OnNewSnowflakeEvent(e event.SnowflakeEvent) {
+	pt.Log(pt.LogSeverityNotice, e.String())
+}
+
+// Exchanges bytes between two ReadWriters.
+// (In this case, between a SOCKS connection and a snowflake transport conn)
+func copyLoop(socks, sfconn io.ReadWriter) {
+	done := make(chan struct{}, 2)
+	go func() {
+		if _, err := io.Copy(socks, sfconn); err != nil {
+			log.Printf("copying Snowflake to SOCKS resulted in error: %v", err)
+		}
+		done <- struct{}{}
+	}()
+	go func() {
+		if _, err := io.Copy(sfconn, socks); err != nil {
+			log.Printf("copying SOCKS to Snowflake resulted in error: %v", err)
+		}
+		done <- struct{}{}
+	}()
+	<-done
+	log.Println("copy loop ended")
+}
+
+// Accept local SOCKS connections and connect to a Snowflake connection
+func socksAcceptLoop(ln *pt.SocksListener, config sf.ClientConfig, shutdown chan struct{}, wg *sync.WaitGroup) {
 	defer ln.Close()
 	for {
 		conn, err := ln.AcceptSocks()
@@ -40,12 +71,55 @@ func socksAcceptLoop(ln *pt.SocksListener, tongue sf.Tongue, shutdown chan struc
 			break
 		}
 		log.Printf("SOCKS accepted: %v", conn.Req)
+		wg.Add(1)
 		go func() {
-			wg.Add(1)
 			defer wg.Done()
 			defer conn.Close()
 
-			err := conn.Grant(&net.TCPAddr{IP: net.IPv4zero, Port: 0})
+			// Check to see if our command line options are overriden by SOCKS options
+			if arg, ok := conn.Req.Args.Get("ampcache"); ok {
+				config.AmpCacheURL = arg
+			}
+			if arg, ok := conn.Req.Args.Get("front"); ok {
+				config.FrontDomain = arg
+			}
+			if arg, ok := conn.Req.Args.Get("ice"); ok {
+				config.ICEAddresses = strings.Split(strings.TrimSpace(arg), ",")
+			}
+			if arg, ok := conn.Req.Args.Get("max"); ok {
+				max, err := strconv.Atoi(arg)
+				if err != nil {
+					conn.Reject()
+					log.Println("Invalid SOCKS arg: max=", arg)
+					return
+				}
+				config.Max = max
+			}
+			if arg, ok := conn.Req.Args.Get("url"); ok {
+				config.BrokerURL = arg
+			}
+			if arg, ok := conn.Req.Args.Get("utls-nosni"); ok {
+				switch strings.ToLower(arg) {
+				case "true":
+					fallthrough
+				case "yes":
+					config.UTLSRemoveSNI = true
+				}
+			}
+			if arg, ok := conn.Req.Args.Get("utls-imitate"); ok {
+				config.UTLSClientID = arg
+			}
+			if arg, ok := conn.Req.Args.Get("fingerprint"); ok {
+				config.BridgeFingerprint = arg
+			}
+			transport, err := sf.NewSnowflakeClient(config)
+			if err != nil {
+				conn.Reject()
+				log.Println("Failed to start snowflake transport: ", err)
+				return
+			}
+			transport.AddSnowflakeEventListener(NewPTEventLogger())
+			err = conn.Grant(&net.TCPAddr{IP: net.IPv4zero, Port: 0})
 			if err != nil {
 				log.Printf("conn.Grant error: %s", err)
 				return
@@ -53,13 +127,15 @@ func socksAcceptLoop(ln *pt.SocksListener, tongue sf.Tongue, shutdown chan struc
 
 			handler := make(chan struct{})
 			go func() {
-				err = sf.Handler(conn, tongue)
+				defer close(handler)
+				sconn, err := transport.Dial()
 				if err != nil {
-					log.Printf("handler error: %s", err)
+					log.Printf("dial error: %s", err)
+					return
 				}
-				close(handler)
-				return
-
+				defer sconn.Close()
+				// copy between the created Snowflake conn and the SOCKS conn
+				copyLoop(conn, sconn)
 			}()
 			select {
 			case <-shutdown:
@@ -72,39 +148,29 @@ func socksAcceptLoop(ln *pt.SocksListener, tongue sf.Tongue, shutdown chan struc
 	}
 }
 
-// s is a comma-separated list of ICE server URLs.
-func parseIceServers(s string) []webrtc.ICEServer {
-	var servers []webrtc.ICEServer
-	s = strings.TrimSpace(s)
-	if len(s) == 0 {
-		return nil
-	}
-	urls := strings.Split(s, ",")
-	for _, url := range urls {
-		url = strings.TrimSpace(url)
-		servers = append(servers, webrtc.ICEServer{
-			URLs: []string{url},
-		})
-	}
-	return servers
-}
-
 func main() {
 	iceServersCommas := flag.String("ice", "", "comma-separated list of ICE servers")
 	brokerURL := flag.String("url", "", "URL of signaling broker")
 	frontDomain := flag.String("front", "", "front domain")
+	ampCacheURL := flag.String("ampcache", "", "URL of AMP cache to use as a proxy for signaling")
 	logFilename := flag.String("log", "", "name of log file")
 	logToStateDir := flag.Bool("log-to-state-dir", false, "resolve the log file relative to tor's pt state dir")
 	keepLocalAddresses := flag.Bool("keep-local-addresses", false, "keep local LAN address ICE candidates")
 	unsafeLogging := flag.Bool("unsafe-logging", false, "prevent logs from being scrubbed")
 	max := flag.Int("max", DefaultSnowflakeCapacity,
 		"capacity for number of multiplexed WebRTC peers")
+	versionFlag := flag.Bool("version", false, "display version info to stderr and quit")
 
 	// Deprecated
 	oldLogToStateDir := flag.Bool("logToStateDir", false, "use -log-to-state-dir instead")
 	oldKeepLocalAddresses := flag.Bool("keepLocalAddresses", false, "use -keep-local-addresses instead")
 
 	flag.Parse()
+
+	if *versionFlag {
+		fmt.Fprintf(os.Stderr, "snowflake-client %s", version.ConstructResult())
+		os.Exit(0)
+	}
 
 	log.SetFlags(log.LstdFlags | log.LUTC)
 
@@ -137,33 +203,18 @@ func main() {
 		log.SetOutput(&safelog.LogScrubber{Output: logOutput})
 	}
 
-	log.Println("\n\n\n --- Starting Snowflake Client ---")
+	log.Printf("snowflake-client %s\n", version.GetVersion())
 
-	iceServers := parseIceServers(*iceServersCommas)
-	// chooses a random subset of servers from inputs
-	rand.Seed(time.Now().UnixNano())
-	rand.Shuffle(len(iceServers), func(i, j int) {
-		iceServers[i], iceServers[j] = iceServers[j], iceServers[i]
-	})
-	if len(iceServers) > 2 {
-		iceServers = iceServers[:(len(iceServers)+1)/2]
-	}
-	log.Printf("Using ICE servers:")
-	for _, server := range iceServers {
-		log.Printf("url: %v", strings.Join(server.URLs, " "))
-	}
+	iceAddresses := strings.Split(strings.TrimSpace(*iceServersCommas), ",")
 
-	// Use potentially domain-fronting broker to rendezvous.
-	broker, err := sf.NewBrokerChannel(
-		*brokerURL, *frontDomain, sf.CreateBrokerTransport(),
-		*keepLocalAddresses || *oldKeepLocalAddresses)
-	if err != nil {
-		log.Fatalf("parsing broker URL: %v", err)
+	config := sf.ClientConfig{
+		BrokerURL:          *brokerURL,
+		AmpCacheURL:        *ampCacheURL,
+		FrontDomain:        *frontDomain,
+		ICEAddresses:       iceAddresses,
+		KeepLocalAddresses: *keepLocalAddresses || *oldKeepLocalAddresses,
+		Max:                *max,
 	}
-	go updateNATType(iceServers, broker)
-
-	// Create a new WebRTCDialer to use as the |Tongue| to catch snowflakes
-	dialer := sf.NewWebRTCDialer(broker, iceServers, *max)
 
 	// Begin goptlib client process.
 	ptInfo, err := pt.ClientSetup(nil)
@@ -187,7 +238,7 @@ func main() {
 				break
 			}
 			log.Printf("Started SOCKS listener at %v.", ln.Addr())
-			go socksAcceptLoop(ln, dialer, shutdown, &wg)
+			go socksAcceptLoop(ln, config, shutdown, &wg)
 			pt.Cmethod(methodName, ln.Version(), ln.Addr())
 			listeners = append(listeners, ln)
 		default:
@@ -222,27 +273,4 @@ func main() {
 	close(shutdown)
 	wg.Wait()
 	log.Println("snowflake is done.")
-}
-
-// loop through all provided STUN servers until we exhaust the list or find
-// one that is compatable with RFC 5780
-func updateNATType(servers []webrtc.ICEServer, broker *sf.BrokerChannel) {
-
-	var restrictedNAT bool
-	var err error
-	for _, server := range servers {
-		addr := strings.TrimPrefix(server.URLs[0], "stun:")
-		restrictedNAT, err = nat.CheckIfRestrictedNAT(addr)
-		if err == nil {
-			if restrictedNAT {
-				broker.SetNATType(nat.NATRestricted)
-			} else {
-				broker.SetNATType(nat.NATUnrestricted)
-			}
-			break
-		}
-	}
-	if err != nil {
-		broker.SetNATType(nat.NATUnknown)
-	}
 }

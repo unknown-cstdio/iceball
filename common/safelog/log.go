@@ -1,6 +1,6 @@
 //Package for a safer logging wrapper around the standard logging package
 
-//import "git.torproject.org/pluggable-transports/snowflake.git/common/safelog"
+// import "gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/safelog"
 package safelog
 
 import (
@@ -11,8 +11,11 @@ import (
 )
 
 const ipv4Address = `\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}`
-const ipv6Address = `([0-9a-fA-F]{0,4}:){5,7}([0-9a-fA-F]{0,4})?`
-const ipv6Compressed = `([0-9a-fA-F]{0,4}:){0,5}([0-9a-fA-F]{0,4})?(::)([0-9a-fA-F]{0,4}:){0,5}([0-9a-fA-F]{0,4})?`
+
+// %3A and %3a are for matching : in URL-encoded IPv6 addresses
+const colon = `(:|%3a|%3A)`
+const ipv6Address = `([0-9a-fA-F]{0,4}` + colon + `){5,7}([0-9a-fA-F]{0,4})?`
+const ipv6Compressed = `([0-9a-fA-F]{0,4}` + colon + `){0,5}([0-9a-fA-F]{0,4})?(` + colon + `){2}([0-9a-fA-F]{0,4}` + colon + `){0,5}([0-9a-fA-F]{0,4})?`
 const ipv6Full = `(` + ipv6Address + `(` + ipv4Address + `))` +
 	`|(` + ipv6Compressed + `(` + ipv4Address + `))` +
 	`|(` + ipv6Address + `)` + `|(` + ipv6Compressed + `)`
@@ -38,7 +41,7 @@ type LogScrubber struct {
 func (ls *LogScrubber) Lock()   { (*ls).lock.Lock() }
 func (ls *LogScrubber) Unlock() { (*ls).lock.Unlock() }
 
-func scrub(b []byte) []byte {
+func Scrub(b []byte) []byte {
 	scrubbedBytes := b
 	for _, pattern := range scrubberPatterns {
 		// this is a workaround since go does not yet support look ahead or look
@@ -62,7 +65,7 @@ func (ls *LogScrubber) Write(b []byte) (n int, err error) {
 			return
 		}
 		fullLines := ls.buffer[:i+1]
-		_, err = ls.Output.Write(scrub(fullLines))
+		_, err = ls.Output.Write(Scrub(fullLines))
 		if err != nil {
 			return
 		}

@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-//Check to make sure that addresses split across calls to write are still scrubbed
+// Check to make sure that addresses split across calls to write are still scrubbed
 func TestLogScrubberSplit(t *testing.T) {
 	input := []byte("test\nhttp2: panic serving [2620:101:f000:780:9097:75b1:519f:dbb8]:58344: interface conversion: *http2.responseWriter is not http.Hijacker: missing method Hijack\n")
 
@@ -49,7 +49,7 @@ func TestLogScrubberSplit(t *testing.T) {
 
 }
 
-//Test the log scrubber on known problematic log messages
+// Test the log scrubber on known problematic log messages
 func TestLogScrubberMessages(t *testing.T) {
 	for _, test := range []struct {
 		input, expected string
@@ -76,6 +76,36 @@ func TestLogScrubberMessages(t *testing.T) {
 			//Make sure it doesn't scrub timestamps
 			"2019/05/08 15:37:31 starting",
 			"2019/05/08 15:37:31 starting\n",
+		},
+		{
+			//Make sure ipv6 addresses where : are encoded as %3A or %3a are scrubbed
+			"error dialing relay: wss://snowflake.torproject.net/?client_ip=6201%3ac8%3A3004%3A%3A1234",
+			"error dialing relay: wss://snowflake.torproject.net/?client_ip=[scrubbed]\n",
+		},
+		{
+			// make sure url encoded IPv6 IPs get scrubbed (%3a)
+			"http2: panic serving [fd00%3a111%3af000%3a777%3a9999%3abbbb%3affff%3adddd]:58344: xxx",
+			"http2: panic serving [scrubbed]: xxx\n",
+		},
+		{
+			// make sure url encoded IPv6 IPs get scrubbed (%3A)
+			"http2: panic serving [fd00%3a111%3af000%3a777%3a9999%3abbbb%3affff%3adddd]:58344: xxx",
+			"http2: panic serving [scrubbed]: xxx\n",
+		},
+		{
+			// make sure url encoded IPv6 IPs get scrubbed, different URL (%3A)
+			"error dialing relay: wss://snowflake.torproject.net/?client_ip=fd00%3A8888%3Abbbb%3Acccc%3Adddd%3Aeeee%3A2222%3A123 = dial tcp xxx",
+			"error dialing relay: wss://snowflake.torproject.net/?client_ip=[scrubbed] = dial tcp xxx\n",
+		},
+		{
+			// make sure url encoded IPv6 IPs get scrubbed (%3A), compressed
+			"http2: panic serving [1%3A2%3A3%3A%3Ad%3Ae%3Af]:55: xxx",
+			"http2: panic serving [scrubbed]: xxx\n",
+		},
+		{
+			// make sure url encoded IPv6 IPs get scrubbed (%3A), compressed
+			"error dialing relay: wss://snowflake.torproject.net/?client_ip=1%3A2%3A3%3A%3Ad%3Ae%3Af = dial tcp xxx",
+			"error dialing relay: wss://snowflake.torproject.net/?client_ip=[scrubbed] = dial tcp xxx\n",
 		},
 	} {
 		var buff bytes.Buffer

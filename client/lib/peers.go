@@ -1,4 +1,4 @@
-package lib
+package snowflake_client
 
 import (
 	"container/list"
@@ -8,7 +8,7 @@ import (
 	"sync"
 )
 
-// Container which keeps track of multiple WebRTC remote peers.
+// Peers is a container that keeps track of multiple WebRTC remote peers.
 // Implements |SnowflakeCollector|.
 //
 // Maintaining a set of pre-connected Peers with fresh but inactive datachannels
@@ -21,18 +21,17 @@ import (
 // version of Snowflake)
 type Peers struct {
 	Tongue
-	BytesLogger BytesLogger
+	bytesLogger bytesLogger
 
 	snowflakeChan chan *WebRTCPeer
 	activePeers   *list.List
 
-	melt   chan struct{}
-	melted bool
+	melt chan struct{}
 
-	collection sync.WaitGroup
+	collectLock sync.Mutex
 }
 
-// Construct a fresh container of remote peers.
+// NewPeers constructs a fresh container of remote peers.
 func NewPeers(tongue Tongue) (*Peers, error) {
 	p := &Peers{}
 	// Use buffered go channel to pass snowflakes onwards to the SOCKS handler.
@@ -46,13 +45,15 @@ func NewPeers(tongue Tongue) (*Peers, error) {
 	return p, nil
 }
 
-// As part of |SnowflakeCollector| interface.
+// Collect connects to and adds a new remote peer as part of |SnowflakeCollector| interface.
 func (p *Peers) Collect() (*WebRTCPeer, error) {
 	// Engage the Snowflake Catching interface, which must be available.
-	p.collection.Add(1)
-	defer p.collection.Done()
-	if p.melted {
+	p.collectLock.Lock()
+	defer p.collectLock.Unlock()
+	select {
+	case <-p.melt:
 		return nil, fmt.Errorf("Snowflakes have melted")
+	default:
 	}
 	if nil == p.Tongue {
 		return nil, errors.New("missing Tongue to catch Snowflakes with")
@@ -75,29 +76,30 @@ func (p *Peers) Collect() (*WebRTCPeer, error) {
 	return connection, nil
 }
 
-// Pop blocks until an available, valid snowflake appears. Returns nil after End
-// has been called.
+// Pop blocks until an available, valid snowflake appears.
+// Pop will return nil after End has been called.
 func (p *Peers) Pop() *WebRTCPeer {
 	for {
 		snowflake, ok := <-p.snowflakeChan
 		if !ok {
 			return nil
 		}
-		if snowflake.closed {
+		if snowflake.Closed() {
 			continue
 		}
 		// Set to use the same rate-limited traffic logger to keep consistency.
-		snowflake.BytesLogger = p.BytesLogger
+		snowflake.bytesLogger = p.bytesLogger
 		return snowflake
 	}
 }
 
-// As part of |SnowflakeCollector| interface.
+// Melted returns a channel that will close when peers stop being collected.
+// Melted is a necessary part of |SnowflakeCollector| interface.
 func (p *Peers) Melted() <-chan struct{} {
 	return p.melt
 }
 
-// Returns total available Snowflakes (including the active one)
+// Count returns the total available Snowflakes (including the active ones)
 // The count only reduces when connections themselves close, rather than when
 // they are popped.
 func (p *Peers) Count() int {
@@ -110,18 +112,19 @@ func (p *Peers) purgeClosedPeers() {
 		next := e.Next()
 		conn := e.Value.(*WebRTCPeer)
 		// Purge those marked for deletion.
-		if conn.closed {
+		if conn.Closed() {
 			p.activePeers.Remove(e)
 		}
 		e = next
 	}
 }
 
-// Close all Peers contained here.
+// End closes all active connections to Peers contained here, and stops the
+// collection of future Peers.
 func (p *Peers) End() {
 	close(p.melt)
-	p.melted = true
-	p.collection.Wait()
+	p.collectLock.Lock()
+	defer p.collectLock.Unlock()
 	close(p.snowflakeChan)
 	cnt := p.Count()
 	for e := p.activePeers.Front(); e != nil; {
