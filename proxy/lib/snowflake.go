@@ -753,89 +753,92 @@ func (sf *SnowflakeProxy) Stop() {
 // attempting to connect with a known symmetric NAT. If success,
 // it is considered "unrestricted". If timeout it is considered "restricted"
 func (sf *SnowflakeProxy) checkNATType(config webrtc.Configuration, probeURL string) {
-	probe, err := newSignalingServer(probeURL, false)
-	if err != nil {
-		log.Printf("Error parsing url: %s", err.Error())
-	}
+	/*
+		probe, err := newSignalingServer(probeURL, false)
+		if err != nil {
+			log.Printf("Error parsing url: %s", err.Error())
+		}
 
-	dataChan := make(chan struct{})
-	pc, err := sf.makeNewPeerConnection(config, dataChan)
-	if err != nil {
-		log.Printf("error making WebRTC connection: %s", err)
-		return
-	}
+		dataChan := make(chan struct{})
+		pc, err := sf.makeNewPeerConnection(config, dataChan)
+		if err != nil {
+			log.Printf("error making WebRTC connection: %s", err)
+			return
+		}
 
-	offer := pc.LocalDescription()
-	log.Printf("Probetest offer: \n\t%s", strings.ReplaceAll(offer.SDP, "\n", "\n\t"))
-	sdp, err := util.SerializeSessionDescription(offer)
-	if err != nil {
-		log.Printf("Error encoding probe message: %s", err.Error())
-		return
-	}
+		offer := pc.LocalDescription()
+		log.Printf("Probetest offer: \n\t%s", strings.ReplaceAll(offer.SDP, "\n", "\n\t"))
+		sdp, err := util.SerializeSessionDescription(offer)
+		if err != nil {
+			log.Printf("Error encoding probe message: %s", err.Error())
+			return
+		}
 
-	// send offer
-	body, err := messages.EncodePollResponse(sdp, true, "")
-	if err != nil {
-		log.Printf("Error encoding probe message: %s", err.Error())
-		return
-	}
+		// send offer
+		body, err := messages.EncodePollResponse(sdp, true, "")
+		if err != nil {
+			log.Printf("Error encoding probe message: %s", err.Error())
+			return
+		}
 
-	resp, err := probe.Post(probe.url.String(), bytes.NewBuffer(body))
-	if err != nil {
-		log.Printf("error polling probe: %s", err.Error())
-		return
-	}
+		resp, err := probe.Post(probe.url.String(), bytes.NewBuffer(body))
+		if err != nil {
+			log.Printf("error polling probe: %s", err.Error())
+			return
+		}
 
-	sdp, _, err = messages.DecodeAnswerRequest(resp)
-	if err != nil {
-		log.Printf("Error reading probe response: %s", err.Error())
-		return
-	}
+		sdp, _, err = messages.DecodeAnswerRequest(resp)
+		if err != nil {
+			log.Printf("Error reading probe response: %s", err.Error())
+			return
+		}
 
-	answer, err := util.DeserializeSessionDescription(sdp)
-	if err != nil {
-		log.Printf("Error setting answer: %s", err.Error())
-		return
-	}
+		answer, err := util.DeserializeSessionDescription(sdp)
+		if err != nil {
+			log.Printf("Error setting answer: %s", err.Error())
+			return
+		}
 
-	err = pc.SetRemoteDescription(*answer)
-	if err != nil {
-		log.Printf("Error setting answer: %s", err.Error())
-		return
-	}
+		err = pc.SetRemoteDescription(*answer)
+		if err != nil {
+			log.Printf("Error setting answer: %s", err.Error())
+			return
+		}
 
-	currentNATTypeLoaded := getCurrentNATType()
+		currentNATTypeLoaded := getCurrentNATType()
 
-	currentNATTypeTestResult := NATUnknown
-	select {
-	case <-dataChan:
-		currentNATTypeTestResult = NATUnrestricted
-	case <-time.After(dataChannelTimeout):
-		currentNATTypeTestResult = NATRestricted
-	}
+		currentNATTypeTestResult := NATUnknown
+		select {
+		case <-dataChan:
+			currentNATTypeTestResult = NATUnrestricted
+		case <-time.After(dataChannelTimeout):
+			currentNATTypeTestResult = NATRestricted
+		}
 
-	currentNATTypeToStore := NATUnknown
-	switch currentNATTypeLoaded + "->" + currentNATTypeTestResult {
-	case NATUnrestricted + "->" + NATUnknown:
-		currentNATTypeToStore = NATUnrestricted
+		currentNATTypeToStore := NATUnknown
+		switch currentNATTypeLoaded + "->" + currentNATTypeTestResult {
+		case NATUnrestricted + "->" + NATUnknown:
+			currentNATTypeToStore = NATUnrestricted
 
-	case NATRestricted + "->" + NATUnknown:
-		currentNATTypeToStore = NATRestricted
+		case NATRestricted + "->" + NATUnknown:
+			currentNATTypeToStore = NATRestricted
 
-	default:
-		currentNATTypeToStore = currentNATTypeTestResult
-	}
+		default:
+			currentNATTypeToStore = currentNATTypeTestResult
+		}
 
-	log.Printf("NAT Type measurement: %v -> %v = %v\n", currentNATTypeLoaded, currentNATTypeTestResult, currentNATTypeToStore)
-	log.Printf("NAT Type measurement: %v\n", currentNATTypeToStore)
 
-	currentNATTypeAccess.Lock()
-	currentNATType = currentNATTypeToStore
-	currentNATTypeAccess.Unlock()
+		log.Printf("NAT Type measurement: %v -> %v = %v\n", currentNATTypeLoaded, currentNATTypeTestResult, currentNATTypeToStore)
+		log.Printf("NAT Type measurement: %v\n", currentNATTypeToStore)
 
-	if err := pc.Close(); err != nil {
-		log.Printf("error calling pc.Close: %v", err)
-	}
+		currentNATTypeAccess.Lock()
+		currentNATType = currentNATTypeToStore
+		currentNATTypeAccess.Unlock()
+
+		if err := pc.Close(); err != nil {
+			log.Printf("error calling pc.Close: %v", err)
+		}*/
+	currentNATType = NATRestricted
 }
 
 func (sf *SnowflakeProxy) addHandler(w http.ResponseWriter, r *http.Request) {
