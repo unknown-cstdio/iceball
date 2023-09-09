@@ -73,3 +73,35 @@
 2023/09/09 20:53:18 WebRTC: closing PeerConnection
 2023/09/09 20:53:18 WebRTC: Closing
 2023/09/09 20:53:18 WebRTC: parse "[scrubbed]": first path segment in URL cannot contain colon  Retrying...
+2023/09/09 20:58:05 snowflake-client 2.6.0
+2023/09/09 20:58:05 Started SOCKS listener at [scrubbed].
+2023/09/09 20:58:06 SOCKS accepted: {[scrubbed]   map[]}
+2023/09/09 20:58:06 
+
+
+ --- Starting Snowflake Client ---
+2023/09/09 20:58:06 Using ICE servers:
+2023/09/09 20:58:06 url: stun:stun.dus.net:3478
+2023/09/09 20:58:06 url: stun:stun.sonetel.com:3478
+2023/09/09 20:58:06 url: stun:stun.uls.co.za:3478
+2023/09/09 20:58:06 url: stun:stun.antisip.com:3478
+2023/09/09 20:58:06 url: stun:stun.bluesip.net:3478
+2023/09/09 20:58:06 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/09 20:58:06 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/09 20:58:06 ---- SnowflakeConn: starting a new session ---
+2023/09/09 20:58:06 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/09 20:58:06 snowflake-bb70b9458ba6fb76  connecting...
+2023/09/09 20:58:06 redialing on same connection
+2023/09/09 20:58:06 ---- SnowflakeConn: begin stream 3 ---
+2023/09/09 20:58:06 WebRTC: DataChannel created
+2023/09/09 20:58:06 WebRTC: Created offer
+2023/09/09 20:58:06 WebRTC: Set local description
+2023/09/09 20:58:06 Warning: NAT checking failed for server at stun.dus.net:3478: NAT discovery feature not supported: attribute not found
+2023/09/09 20:58:06 NAT Type: restricted
+2023/09/09 20:58:06 Negotiating via HTTP rendezvous...
+2023/09/09 20:58:06 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/09 20:58:06 Front URL:   
+2023/09/09 20:58:06 WebRTC: closing DataChannel
+2023/09/09 20:58:06 WebRTC: closing PeerConnection
+2023/09/09 20:58:06 WebRTC: Closing
+2023/09/09 20:58:06 WebRTC: EOF  Retrying...
