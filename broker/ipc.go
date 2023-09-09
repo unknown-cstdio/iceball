@@ -131,10 +131,10 @@ func (i *IPC) ProxyPolls(arg messages.Arg, response *[]byte) error {
 	i.ctx.idToSnowflake[sid] = Snowflake
 	if natType == NATUnrestricted {
 		log.Printf("Proxy: Added unrestricted snowflake %s", sid)
-		heap.Push(i.ctx.snowflakes, Snowflake)
+		heap.Push(i.ctx.restrictedSnowflakes, Snowflake)
 	} else {
 		log.Printf("Proxy: Added restricted snowflake %s", sid)
-		heap.Push(i.ctx.restrictedSnowflakes, Snowflake)
+		heap.Push(i.ctx.snowflakes, Snowflake)
 	}
 	i.ctx.snowflakeLock.Unlock()
 
