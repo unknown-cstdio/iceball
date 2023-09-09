@@ -145,11 +145,13 @@ func (bc *BrokerChannel) Negotiate(offer *webrtc.SessionDescription) (
 	// Decode the client poll response.
 	resp, err := messages.DecodeClientPollResponse(encResp)
 	if err != nil {
+		log.Printf("Error decoding client poll response: %s", err.Error())
 		return nil, err
 	}
 	if resp.Error != "" {
 		return nil, errors.New(resp.Error)
 	}
+	log.Printf("decoded answer: %s", resp.Answer)
 	return util.DeserializeSessionDescription(resp.Answer)
 }
 

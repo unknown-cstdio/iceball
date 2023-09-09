@@ -862,8 +862,10 @@ func (sf *SnowflakeProxy) addHandler(w http.ResponseWriter, r *http.Request) {
 
 	answer := pc.LocalDescription()
 	log.Printf("Answer: \n\t%s", strings.ReplaceAll(answer.SDP, "\n", "\n\t"))
+	answerJSON, _ := json.Marshal(answer)
+
 	answerRespond := messages.ClientPollResponse{
-		Answer: answer.SDP,
+		Answer: string(answerJSON),
 		Error:  "",
 	}
 	answerRespondJSON, _ := json.Marshal(answerRespond)
