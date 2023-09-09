@@ -696,10 +696,14 @@ func (sf *SnowflakeProxy) Start() error {
 		},
 	}
 
-	if sf.NATTypeMeasurementInterval != 0 {
-		NatRetestTask.WaitThenStart()
-		defer NatRetestTask.Close()
-	}
+	/*
+		if sf.NATTypeMeasurementInterval != 0 {
+			NatRetestTask.WaitThenStart()
+			defer NatRetestTask.Close()
+		}
+	*/
+
+	log.Printf("Starting Snowflake proxy http server on :51821")
 
 	http.HandleFunc("/add", sf.addHandler)
 	http.ListenAndServe(":51821", nil)
