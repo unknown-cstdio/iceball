@@ -229,17 +229,19 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		ip := snowflake.ip
 		log.Printf("Client: Matched with %s", ip)
 		offerJSON, err := json.Marshal(offer)
-		log.Print(string(offerJSON))
 		if err != nil {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
+		log.Printf("Sending offer to %s", ip)
 		resp, err := http.Post(ip, "/add", bytes.NewBuffer(offerJSON))
+		log.Printf("response status code: %d", resp.StatusCode)
 		if err != nil {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
 		if resp.StatusCode != http.StatusOK {
 			return sendClientResponse(&messages.ClientPollResponse{Error: messages.StrNoProxies}, response)
 		}
+
 		answer := messages.ClientPollResponse{}
 		err = json.NewDecoder(resp.Body).Decode(&answer)
 		log.Print(answer)
