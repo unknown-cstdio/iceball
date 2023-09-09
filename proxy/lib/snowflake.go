@@ -710,7 +710,8 @@ func (sf *SnowflakeProxy) Start() error {
 	}
 
 	log.Printf("Polling broker: %s", sf.BrokerURL)
-	resp, err := broker.Post(sf.BrokerURL, bytes.NewBuffer(body))
+	brokerPath := broker.url.ResolveReference(&url.URL{Path: "proxy"})
+	resp, err := broker.Post(brokerPath.String(), bytes.NewBuffer(body))
 	if err != nil {
 		log.Printf("error polling broker: %s", err.Error())
 	}
