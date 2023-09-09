@@ -870,7 +870,8 @@ func (sf *SnowflakeProxy) addHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	answerRespondJSON, _ := json.Marshal(answerRespond)
 	w.Write(answerRespondJSON)
-	/*
+
+	go func() {
 		select {
 		case <-dataChan:
 			log.Println("Connection successful")
@@ -881,5 +882,6 @@ func (sf *SnowflakeProxy) addHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			tokens.ret()
 		}
-	*/
+	}()
+
 }
