@@ -226,14 +226,15 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 
 	snowflake := i.matchSnowflake(offer.NatType)
 	if snowflake != nil {
-		ip := snowflake.ip
+		url := snowflake.ip
+		ip, port, _ := net.SplitHostPort(url)
 		log.Printf("Client: Matched with %s", ip)
 		offerJSON, err := json.Marshal(offer)
 		if err != nil {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
 		log.Printf("Sending offer to %s", ip)
-		port := "51821"
+		//strip the port from the ip
 		proxyPath := fmt.Sprintf("http://%s:%s/proxy", ip, port)
 		resp, err := http.Post(proxyPath, "application/json", bytes.NewBuffer(offerJSON))
 		if err != nil {
