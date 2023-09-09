@@ -177,6 +177,7 @@ func (c *WebRTCPeer) connect(config *webrtc.Configuration, broker *BrokerChannel
 	// Wait for the datachannel to open or time out
 	select {
 	case <-c.open:
+
 	case <-time.After(DataChannelTimeout):
 		c.transport.Close()
 		err = errors.New("timeout waiting for DataChannel.OnOpen")
