@@ -704,6 +704,21 @@ func (sf *SnowflakeProxy) Start() error {
 	http.HandleFunc("/add", sf.addHandler)
 	http.ListenAndServe(":51821", nil)
 
+	numClients := int((tokens.count() / 8) * 8) // Round down to 8
+	sid := genSessionID()
+	body, err := messages.EncodeProxyPollRequestWithRelayPrefix(sid, sf.ProxyType, currentNATTypeLoaded, numClients, sf.RelayDomainNamePattern)
+	if err != nil {
+		log.Printf("Error encoding poll message: %s", err.Error())
+		return nil
+	}
+
+	resp, err := broker.Post(sf.BrokerURL, bytes.NewBuffer(body))
+	if err != nil {
+		log.Printf("error polling broker: %s", err.Error())
+	}
+	log.Print("Response from broker:")
+	log.Print(resp)
+
 	return nil
 
 	/*
