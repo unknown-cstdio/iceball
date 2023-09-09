@@ -22,7 +22,7 @@ func main() {
 	stunURL := flag.String("stun", sf.DefaultSTUNURL, "STUN URL")
 	logFilename := flag.String("log", "", "log filename")
 	rawBrokerURL := flag.String("broker", sf.DefaultBrokerURL, "broker URL")
-	unsafeLogging := flag.Bool("unsafe-logging", false, "prevent logs from being scrubbed")
+	unsafeLogging := flag.Bool("unsafe-logging", true, "prevent logs from being scrubbed")
 	keepLocalAddresses := flag.Bool("keep-local-addresses", false, "keep local LAN address ICE candidates")
 	relayURL := flag.String("relay", sf.DefaultRelayURL, "websocket relay URL")
 	outboundAddress := flag.String("outbound-address", "", "prefer the given address as outbound address")

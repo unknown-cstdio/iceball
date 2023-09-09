@@ -138,3 +138,75 @@
 2023/09/09 21:01:20 WebRTC: Closing
 2023/09/09 21:01:20 WebRTC: parse "[scrubbed]": first path segment in URL cannot contain colon  Retrying...
 2023/09/09 21:01:20 NAT Type: restricted
+2023/09/09 21:04:23 snowflake-client 2.6.0
+2023/09/09 21:04:23 Started SOCKS listener at [scrubbed].
+2023/09/09 21:04:24 SOCKS accepted: {[scrubbed]   map[]}
+2023/09/09 21:04:24 
+
+
+ --- Starting Snowflake Client ---
+2023/09/09 21:04:24 Using ICE servers:
+2023/09/09 21:04:24 url: stun:stun.sonetel.net:3478
+2023/09/09 21:04:24 url: stun:stun.uls.co.za:3478
+2023/09/09 21:04:24 url: stun:stun.sonetel.com:3478
+2023/09/09 21:04:24 url: stun:stun.bluesip.net:3478
+2023/09/09 21:04:24 url: stun:stun.voip.blackberry.com:3478
+2023/09/09 21:04:24 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/09 21:04:24 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/09 21:04:24 ---- SnowflakeConn: starting a new session ---
+2023/09/09 21:04:24 redialing on same connection
+2023/09/09 21:04:24 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/09 21:04:24 snowflake-27b6dcca3d9e2fa7  connecting...
+2023/09/09 21:04:24 ---- SnowflakeConn: begin stream 3 ---
+2023/09/09 21:04:24 WebRTC: DataChannel created
+2023/09/09 21:04:24 WebRTC: Created offer
+2023/09/09 21:04:24 WebRTC: Set local description
+2023/09/09 21:04:24 NAT Type: restricted
+2023/09/09 21:04:24 Negotiating via HTTP rendezvous...
+2023/09/09 21:04:24 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/09 21:04:24 Front URL:   
+2023/09/09 21:05:15 snowflake-client 2.6.0
+2023/09/09 21:05:15 Started SOCKS listener at [scrubbed].
+2023/09/09 21:05:16 SOCKS accepted: {[scrubbed]   map[]}
+2023/09/09 21:05:16 
+
+
+ --- Starting Snowflake Client ---
+2023/09/09 21:05:16 Using ICE servers:
+2023/09/09 21:05:16 url: stun:stun.epygi.com:3478
+2023/09/09 21:05:16 url: stun:stun.antisip.com:3478
+2023/09/09 21:05:16 url: stun:stun.uls.co.za:3478
+2023/09/09 21:05:16 url: stun:stun.sonetel.com:3478
+2023/09/09 21:05:16 url: stun:stun.sonetel.net:3478
+2023/09/09 21:05:16 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/09 21:05:16 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/09 21:05:16 ---- SnowflakeConn: starting a new session ---
+2023/09/09 21:05:16 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/09 21:05:16 ---- SnowflakeConn: begin stream 3 ---
+2023/09/09 21:05:16 redialing on same connection
+2023/09/09 21:05:16 snowflake-5f2a9f908d702884  connecting...
+2023/09/09 21:05:16 WebRTC: DataChannel created
+2023/09/09 21:05:16 WebRTC: Created offer
+2023/09/09 21:05:16 WebRTC: Set local description
+2023/09/09 21:05:16 NAT Type: restricted
+2023/09/09 21:05:16 Negotiating via HTTP rendezvous...
+2023/09/09 21:05:16 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/09 21:05:16 Front URL:   
+2023/09/09 21:05:32 WebRTC: closing DataChannel
+2023/09/09 21:05:32 WebRTC: closing PeerConnection
+2023/09/09 21:05:32 WebRTC: Closing
+2023/09/09 21:05:32 WebRTC: net/http: timeout awaiting response headers  Retrying...
+2023/09/09 21:05:32 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/09 21:05:32 snowflake-686f9fab095f1513  connecting...
+2023/09/09 21:05:32 WebRTC: DataChannel created
+2023/09/09 21:05:32 WebRTC: Created offer
+2023/09/09 21:05:32 WebRTC: Set local description
+2023/09/09 21:05:32 Negotiating via HTTP rendezvous...
+2023/09/09 21:05:32 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/09 21:05:32 Front URL:   
+2023/09/09 21:05:32 HTTP rendezvous response: 200 OK
+2023/09/09 21:05:32 Received answer: {"error":"no snowflake proxies currently available"}
+2023/09/09 21:05:32 WebRTC: closing DataChannel
+2023/09/09 21:05:32 WebRTC: closing PeerConnection
+2023/09/09 21:05:32 WebRTC: Closing
+2023/09/09 21:05:32 WebRTC: no snowflake proxies currently available  Retrying...

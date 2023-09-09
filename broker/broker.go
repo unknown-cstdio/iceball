@@ -218,7 +218,7 @@ func main() {
 	flag.StringVar(&ipCountFilename, "ip-count-log", "", "path to ip count logging output")
 	flag.StringVar(&ipCountMaskingKey, "ip-count-mask", "", "masking key for ip count logging")
 	flag.DurationVar(&ipCountInterval, "ip-count-interval", time.Hour, "time interval between each chunk")
-	flag.BoolVar(&unsafeLogging, "unsafe-logging", false, "prevent logs from being scrubbed")
+	flag.BoolVar(&unsafeLogging, "unsafe-logging", true, "prevent logs from being scrubbed")
 	flag.Parse()
 
 	var err error

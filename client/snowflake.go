@@ -156,7 +156,7 @@ func main() {
 	logFilename := flag.String("log", "client_log.log", "name of log file")
 	logToStateDir := flag.Bool("log-to-state-dir", false, "resolve the log file relative to tor's pt state dir")
 	keepLocalAddresses := flag.Bool("keep-local-addresses", false, "keep local LAN address ICE candidates")
-	unsafeLogging := flag.Bool("unsafe-logging", false, "prevent logs from being scrubbed")
+	unsafeLogging := flag.Bool("unsafe-logging", true, "prevent logs from being scrubbed")
 	max := flag.Int("max", DefaultSnowflakeCapacity,
 		"capacity for number of multiplexed WebRTC peers")
 	versionFlag := flag.Bool("version", false, "display version info to stderr and quit")
