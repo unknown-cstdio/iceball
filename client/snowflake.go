@@ -153,7 +153,7 @@ func main() {
 	brokerURL := flag.String("url", "", "URL of signaling broker")
 	frontDomain := flag.String("front", "", "front domain")
 	ampCacheURL := flag.String("ampcache", "", "URL of AMP cache to use as a proxy for signaling")
-	logFilename := flag.String("log", "", "name of log file")
+	logFilename := flag.String("log", "client_log.log", "name of log file")
 	logToStateDir := flag.Bool("log-to-state-dir", false, "resolve the log file relative to tor's pt state dir")
 	keepLocalAddresses := flag.Bool("keep-local-addresses", false, "keep local LAN address ICE candidates")
 	unsafeLogging := flag.Bool("unsafe-logging", false, "prevent logs from being scrubbed")

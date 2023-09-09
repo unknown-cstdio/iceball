@@ -205,6 +205,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		NatType: req.NAT,
 		Sdp:     []byte(req.Offer),
 	}
+	log.Printf("Client: Received offer: %s", offer)
 
 	fingerprint, err := hex.DecodeString(req.Fingerprint)
 	if err != nil {
@@ -288,6 +289,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 
 func (i *IPC) matchSnowflake(natType string) *Snowflake {
 	// Only hand out known restricted snowflakes to unrestricted clients
+	log.Printf("Matching snowflake with nat type %s", natType)
 	var snowflakeHeap *SnowflakeHeap
 	if natType == NATUnrestricted {
 		snowflakeHeap = i.ctx.restrictedSnowflakes
