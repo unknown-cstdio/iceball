@@ -867,15 +867,16 @@ func (sf *SnowflakeProxy) addHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	answerRespondJSON, _ := json.Marshal(answerRespond)
 	w.Write(answerRespondJSON)
-
-	select {
-	case <-dataChan:
-		log.Println("Connection successful")
-	case <-time.After(dataChannelTimeout):
-		log.Println("Timed out waiting for client to open data channel.")
-		if err := pc.Close(); err != nil {
-			log.Printf("error calling pc.Close: %v", err)
+	/*
+		select {
+		case <-dataChan:
+			log.Println("Connection successful")
+		case <-time.After(dataChannelTimeout):
+			log.Println("Timed out waiting for client to open data channel.")
+			if err := pc.Close(); err != nil {
+				log.Printf("error calling pc.Close: %v", err)
+			}
+			tokens.ret()
 		}
-		tokens.ret()
-	}
+	*/
 }
