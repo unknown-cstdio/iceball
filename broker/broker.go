@@ -279,6 +279,8 @@ func main() {
 
 	i := &IPC{ctx}
 
+	log.Printf("snowflake-broker add handler")
+
 	http.HandleFunc("/robots.txt", robotsTxtHandler)
 
 	http.Handle("/proxy", SnowflakeHandler{i, proxyPolls})

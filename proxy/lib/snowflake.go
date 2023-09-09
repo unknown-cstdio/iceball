@@ -716,7 +716,7 @@ func (sf *SnowflakeProxy) Start() error {
 		log.Printf("error polling broker: %s", err.Error())
 	}
 	log.Print("Response from broker:")
-	log.Print(resp)
+	log.Print(string(resp))
 
 	log.Printf("Starting Snowflake proxy http server on :51821")
 

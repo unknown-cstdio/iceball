@@ -70,7 +70,7 @@ func (i *IPC) Debug(_ interface{}, response *string) error {
 }
 
 func (i *IPC) ProxyPolls(arg messages.Arg, response *[]byte) error {
-	sid, proxyType, natType, clients, relayPattern, relayPatternSupported, err := messages.DecodeProxyPollRequestWithRelayPrefix(arg.Body)
+	sid, proxyType, natType, clients, _, relayPatternSupported, err := messages.DecodeProxyPollRequestWithRelayPrefix(arg.Body)
 	addr := arg.RemoteAddr
 	log.Printf("proxy poll request from %s", addr)
 	if err != nil {
@@ -89,20 +89,22 @@ func (i *IPC) ProxyPolls(arg messages.Arg, response *[]byte) error {
 		i.ctx.metrics.lock.Unlock()
 	}
 
-	if !i.ctx.CheckProxyRelayPattern(relayPattern, !relayPatternSupported) {
-		i.ctx.metrics.lock.Lock()
-		i.ctx.metrics.proxyPollRejectedWithRelayURLExtension++
-		i.ctx.metrics.promMetrics.ProxyPollRejectedForRelayURLExtensionTotal.With(prometheus.Labels{"nat": natType, "type": proxyType}).Inc()
-		i.ctx.metrics.lock.Unlock()
+	/*
+		if !i.ctx.CheckProxyRelayPattern(relayPattern, !relayPatternSupported) {
+			i.ctx.metrics.lock.Lock()
+			i.ctx.metrics.proxyPollRejectedWithRelayURLExtension++
+			i.ctx.metrics.promMetrics.ProxyPollRejectedForRelayURLExtensionTotal.With(prometheus.Labels{"nat": natType, "type": proxyType}).Inc()
+			i.ctx.metrics.lock.Unlock()
 
-		log.Printf("bad request: rejected relay pattern from proxy = %v", messages.ErrBadRequest)
-		b, err := messages.EncodePollResponseWithRelayURL("", false, "", "", "incorrect relay pattern")
-		*response = b
-		if err != nil {
-			return messages.ErrInternal
+			log.Printf("bad request: rejected relay pattern from proxy = %v", messages.ErrBadRequest)
+			b, err := messages.EncodePollResponseWithRelayURL("", false, "", "", "incorrect relay pattern")
+			*response = b
+			if err != nil {
+				return messages.ErrInternal
+			}
+			return nil
 		}
-		return nil
-	}
+	*/
 
 	// Log geoip stats
 	remoteIP, _, err := net.SplitHostPort(arg.RemoteAddr)
