@@ -201,7 +201,7 @@ func clientOffers(i *IPC, w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	log.Printf("http write back answer")
+	log.Printf("http write back answer %s", response)
 	if _, err := w.Write(response); err != nil {
 		log.Printf("clientOffers unable to write answer with error: %v", err)
 	}
