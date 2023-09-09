@@ -16,7 +16,9 @@ func (ph ProxyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	ph.handle(w, r)
 }
 
+/*
 func AddClient(w http.ResponseWriter, r *http.Request) {
+
 }
 
 func TransferClient(w http.ResponseWriter, r *http.Request) {
@@ -24,3 +26,4 @@ func TransferClient(w http.ResponseWriter, r *http.Request) {
 
 func ConnectClient(w http.ResponseWriter, r *http.Request) {
 }
+*/

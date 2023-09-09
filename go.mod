@@ -1,4 +1,4 @@
-module gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2
+module main
 
 go 1.17
 
@@ -18,6 +18,7 @@ require (
 	github.com/xtaci/smux v1.5.15
 	gitlab.torproject.org/tpo/anti-censorship/geoip v0.0.0-20210928150955-7ce4b3d98d01
 	gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/goptlib v1.4.0
+	gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2 v2.0.0
 	golang.org/x/crypto v0.6.0
 	golang.org/x/net v0.7.0
 	golang.org/x/sys v0.5.0
@@ -62,3 +63,5 @@ require (
 	golang.org/x/tools v0.1.12 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2 v2.0.0 => /home/cstdio/Desktop/Rice/Research/iceball/iceball

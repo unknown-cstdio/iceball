@@ -29,7 +29,7 @@ import (
 	"bytes"
 	"crypto/rand"
 	"encoding/base64"
-	"flag"
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -140,6 +140,12 @@ type SnowflakeProxy struct {
 	ProxyType       string
 	EventDispatcher event.SnowflakeEventDispatcher
 	shutdown        chan struct{}
+}
+
+type ClientOffer struct {
+	NatType     string `json:"natType"`
+	Sdp         []byte `json:"sdp"`
+	Fingerprint []byte `json:"fingerprint"`
 }
 
 // Checks whether an IP address is a remote address for the client
@@ -695,28 +701,27 @@ func (sf *SnowflakeProxy) Start() error {
 		defer NatRetestTask.Close()
 	}
 
-	addr := flag.String("addr", ":8000", "address of the server")
+	http.HandleFunc("/add", sf.addHandler)
+	http.ListenAndServe(":51821", nil)
 
-	http.Handle("/add", ProxyHandler{AddClient})
-	http.Handle("/transfer", ProxyHandler{TransferClient})
-	http.Handle("/connect", ProxyHandler{ConnectClient})
-
-	go func() { log.Fatal(http.ListenAndServe(*addr, nil)) }()
-
-	ticker := time.NewTicker(pollInterval)
-	defer ticker.Stop()
-
-	for ; true; <-ticker.C {
-		select {
-		case <-sf.shutdown:
-			return nil
-		default:
-			tokens.get()
-			sessionID := genSessionID()
-			sf.runSession(sessionID)
-		}
-	}
 	return nil
+
+	/*
+		ticker := time.NewTicker(pollInterval)
+		defer ticker.Stop()
+
+		for ; true; <-ticker.C {
+			select {
+			case <-sf.shutdown:
+				return nil
+			default:
+				tokens.get()
+				sessionID := genSessionID()
+				sf.runSession(sessionID)
+			}
+		}
+		return nil
+	*/
 }
 
 // Stop closes all existing connections and shuts down the Snowflake.
@@ -802,6 +807,7 @@ func (sf *SnowflakeProxy) checkNATType(config webrtc.Configuration, probeURL str
 	}
 
 	log.Printf("NAT Type measurement: %v -> %v = %v\n", currentNATTypeLoaded, currentNATTypeTestResult, currentNATTypeToStore)
+	log.Printf("NAT Type measurement: %v\n", currentNATTypeToStore)
 
 	currentNATTypeAccess.Lock()
 	currentNATType = currentNATTypeToStore
@@ -809,5 +815,48 @@ func (sf *SnowflakeProxy) checkNATType(config webrtc.Configuration, probeURL str
 
 	if err := pc.Close(); err != nil {
 		log.Printf("error calling pc.Close: %v", err)
+	}
+}
+
+func (sf *SnowflakeProxy) addHandler(w http.ResponseWriter, r *http.Request) {
+
+	offer := ClientOffer{}
+	if sdpErr := json.NewDecoder(r.Body).Decode(&offer); sdpErr != nil {
+		panic(sdpErr)
+	}
+
+	offerSDP := webrtc.SessionDescription{}
+	json.Unmarshal(offer.Sdp, &offerSDP)
+	log.Printf("Received Offer From Client: \n\t%s", strings.ReplaceAll(offerSDP.SDP, "\n", "\n\t"))
+
+	dataChan := make(chan struct{})
+	relayURL := sf.RelayURL
+	dataChannelAdaptor := dataChannelHandlerWithRelayURL{RelayURL: relayURL, sf: sf}
+
+	pc, err := sf.makePeerConnectionFromOffer(&offerSDP, config, dataChan, dataChannelAdaptor.datachannelHandler)
+	if err != nil {
+		log.Printf("error making WebRTC connection: %s", err)
+		tokens.ret()
+		pc.Close()
+		return
+	}
+
+	answer := pc.LocalDescription()
+	log.Printf("Answer: \n\t%s", strings.ReplaceAll(answer.SDP, "\n", "\n\t"))
+	answerRespond := messages.ClientPollResponse{
+		Answer: answer.SDP,
+	}
+	answerRespondJSON, _ := json.Marshal(answerRespond)
+	w.Write(answerRespondJSON)
+
+	select {
+	case <-dataChan:
+		log.Println("Connection successful")
+	case <-time.After(dataChannelTimeout):
+		log.Println("Timed out waiting for client to open data channel.")
+		if err := pc.Close(); err != nil {
+			log.Printf("error calling pc.Close: %v", err)
+		}
+		tokens.ret()
 	}
 }

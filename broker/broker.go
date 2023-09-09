@@ -10,9 +10,6 @@ import (
 	"container/heap"
 	"crypto/tls"
 	"flag"
-	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/bridgefingerprint"
-	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/ipsetsink"
-	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/ipsetsink/sinkcluster"
 	"io"
 	"log"
 	"net/http"
@@ -22,6 +19,10 @@ import (
 	"sync"
 	"syscall"
 	"time"
+
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/bridgefingerprint"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/ipsetsink"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/ipsetsink/sinkcluster"
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -179,9 +180,9 @@ func (ctx *BrokerContext) CheckProxyRelayPattern(pattern string, nonSupported bo
 
 // Client offer contains an SDP, bridge fingerprint and the NAT type of the client
 type ClientOffer struct {
-	natType     string
-	sdp         []byte
-	fingerprint []byte
+	NatType     string `json:"natType"`
+	Sdp         []byte `json:"sdp"`
+	Fingerprint []byte `json:"fingerprint"`
 }
 
 func main() {

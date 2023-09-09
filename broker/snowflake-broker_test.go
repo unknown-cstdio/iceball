@@ -112,10 +112,10 @@ func TestBroker(t *testing.T) {
 			ctx.Broker()
 			So(ctx.snowflakes.Len(), ShouldEqual, 1)
 			snowflake := heap.Pop(ctx.snowflakes).(*Snowflake)
-			snowflake.offerChannel <- &ClientOffer{sdp: []byte("test offer")}
+			snowflake.offerChannel <- &ClientOffer{Sdp: []byte("test offer")}
 			offer := <-p.offerChannel
 			So(ctx.idToSnowflake["test"], ShouldNotBeNil)
-			So(offer.sdp, ShouldResemble, []byte("test offer"))
+			So(offer.Sdp, ShouldResemble, []byte("test offer"))
 			So(ctx.snowflakes.Len(), ShouldEqual, 0)
 		})
 
@@ -126,9 +126,9 @@ func TestBroker(t *testing.T) {
 				done <- offer
 			}()
 			request := <-ctx.proxyPolls
-			request.offerChannel <- &ClientOffer{sdp: []byte("test offer")}
+			request.offerChannel <- &ClientOffer{Sdp: []byte("test offer")}
 			offer := <-done
-			So(offer.sdp, ShouldResemble, []byte("test offer"))
+			So(offer.Sdp, ShouldResemble, []byte("test offer"))
 		})
 
 		Convey("Responds to HTTP client offers...", func() {
@@ -160,7 +160,7 @@ func TestBroker(t *testing.T) {
 					done <- true
 				}()
 				offer := <-snowflake.offerChannel
-				So(offer.sdp, ShouldResemble, []byte(sdp))
+				So(offer.Sdp, ShouldResemble, []byte(sdp))
 				snowflake.answerChannel <- "test answer"
 				<-done
 				So(w.Body.String(), ShouldEqual, `{"answer":"test answer"}`)
@@ -179,7 +179,7 @@ func TestBroker(t *testing.T) {
 					done <- true
 				}()
 				offer := <-snowflake.offerChannel
-				So(offer.sdp, ShouldResemble, []byte(sdp))
+				So(offer.Sdp, ShouldResemble, []byte(sdp))
 				<-done
 				So(w.Code, ShouldEqual, http.StatusOK)
 				So(w.Body.String(), ShouldEqual, `{"error":"timed out waiting for answer!"}`)
@@ -217,7 +217,7 @@ func TestBroker(t *testing.T) {
 					done <- true
 				}()
 				offer := <-snowflake.offerChannel
-				So(offer.sdp, ShouldResemble, []byte(fmt.Sprintf(`{%v}`, sdp)))
+				So(offer.Sdp, ShouldResemble, []byte(fmt.Sprintf(`{%v}`, sdp)))
 				snowflake.answerChannel <- "fake answer"
 				<-done
 				So(w.Body.String(), ShouldEqual, "fake answer")
@@ -236,7 +236,7 @@ func TestBroker(t *testing.T) {
 					done <- true
 				}()
 				offer := <-snowflake.offerChannel
-				So(offer.sdp, ShouldResemble, []byte(fmt.Sprintf(`{%v}`, sdp)))
+				So(offer.Sdp, ShouldResemble, []byte(fmt.Sprintf(`{%v}`, sdp)))
 				<-done
 				So(w.Code, ShouldEqual, http.StatusGatewayTimeout)
 			})
@@ -275,7 +275,7 @@ func TestBroker(t *testing.T) {
 					done <- true
 				}()
 				offer := <-snowflake.offerChannel
-				So(offer.sdp, ShouldResemble, []byte("fake"))
+				So(offer.Sdp, ShouldResemble, []byte("fake"))
 				snowflake.answerChannel <- "fake answer"
 				<-done
 				body, err := decodeAMPArmorToString(w.Body)
@@ -296,7 +296,7 @@ func TestBroker(t *testing.T) {
 					done <- true
 				}()
 				offer := <-snowflake.offerChannel
-				So(offer.sdp, ShouldResemble, []byte("fake"))
+				So(offer.Sdp, ShouldResemble, []byte("fake"))
 				<-done
 				So(w.Code, ShouldEqual, http.StatusOK)
 				body, err := decodeAMPArmorToString(w.Body)
@@ -321,7 +321,7 @@ func TestBroker(t *testing.T) {
 				// Pass a fake client offer to this proxy
 				p := <-ctx.proxyPolls
 				So(p.id, ShouldEqual, "ymbcCMto7KHNGYlp")
-				p.offerChannel <- &ClientOffer{sdp: []byte("fake offer"), fingerprint: defaultBridge[:]}
+				p.offerChannel <- &ClientOffer{Sdp: []byte("fake offer"), Fingerprint: defaultBridge[:]}
 				<-done
 				So(w.Code, ShouldEqual, http.StatusOK)
 				So(w.Body.String(), ShouldEqual, `{"Status":"client match","Offer":"fake offer","NAT":"","RelayURL":"wss://snowflake.torproject.net/"}`)
@@ -669,7 +669,7 @@ func TestMetrics(t *testing.T) {
 				done <- true
 			}()
 			offer := <-snowflake.offerChannel
-			So(offer.sdp, ShouldResemble, []byte(sdp))
+			So(offer.Sdp, ShouldResemble, []byte(sdp))
 			snowflake.answerChannel <- "fake answer"
 			<-done
 

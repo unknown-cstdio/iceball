@@ -11,6 +11,7 @@ over the offer and answer channels.
 type Snowflake struct {
 	id            string
 	proxyType     string
+	ip            string
 	natType       string
 	offerChannel  chan *ClientOffer
 	answerChannel chan string

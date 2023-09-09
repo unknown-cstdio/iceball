@@ -1,12 +1,14 @@
 package main
 
 import (
+	"bytes"
 	"container/heap"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net"
-	"time"
+	"net/http"
 
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/bridgefingerprint"
 
@@ -113,44 +115,69 @@ func (i *IPC) ProxyPolls(arg messages.Arg, response *[]byte) error {
 		i.ctx.metrics.lock.Unlock()
 	}
 
-	var b []byte
+	i.ctx.snowflakeLock.Lock()
+	Snowflake := &Snowflake{
+		id:            sid,
+		proxyType:     proxyType,
+		ip:            addr,
+		natType:       natType,
+		offerChannel:  make(chan *ClientOffer),
+		answerChannel: make(chan string),
+		clients:       clients,
+		index:         -1,
+	}
+	i.ctx.idToSnowflake[sid] = Snowflake
+	if natType == NATUnrestricted {
+		log.Printf("Proxy: Added unrestricted snowflake %s", sid)
+		heap.Push(i.ctx.snowflakes, Snowflake)
+	} else {
+		log.Printf("Proxy: Added restricted snowflake %s", sid)
+		heap.Push(i.ctx.restrictedSnowflakes, Snowflake)
+	}
+	i.ctx.snowflakeLock.Unlock()
 
-	// Wait for a client to avail an offer to the snowflake, or timeout if nil.
-	offer := i.ctx.RequestOffer(sid, proxyType, natType, clients)
+	return nil
 
-	if offer == nil {
-		i.ctx.metrics.lock.Lock()
-		i.ctx.metrics.proxyIdleCount++
-		i.ctx.metrics.promMetrics.ProxyPollTotal.With(prometheus.Labels{"nat": natType, "status": "idle"}).Inc()
-		i.ctx.metrics.lock.Unlock()
+	/*
+		var b []byte
 
-		b, err = messages.EncodePollResponse("", false, "")
+		// Wait for a client to avail an offer to the snowflake, or timeout if nil.
+
+		offer := i.ctx.RequestOffer(sid, proxyType, natType, clients)
+
+		if offer == nil {
+			i.ctx.metrics.lock.Lock()
+			i.ctx.metrics.proxyIdleCount++
+			i.ctx.metrics.promMetrics.ProxyPollTotal.With(prometheus.Labels{"nat": natType, "status": "idle"}).Inc()
+			i.ctx.metrics.lock.Unlock()
+
+			b, err = messages.EncodePollResponse("", false, "")
+			if err != nil {
+				return messages.ErrInternal
+			}
+
+			*response = b
+			return nil
+		}
+
+		i.ctx.metrics.promMetrics.ProxyPollTotal.With(prometheus.Labels{"nat": natType, "status": "matched"}).Inc()
+		var relayURL string
+		bridgeFingerprint, err := bridgefingerprint.FingerprintFromBytes(offer.fingerprint)
+		if err != nil {
+			return messages.ErrBadRequest
+		}
+		if info, err := i.ctx.bridgeList.GetBridgeInfo(bridgeFingerprint); err != nil {
+			return err
+		} else {
+			relayURL = info.WebSocketAddress
+		}
+		b, err = messages.EncodePollResponseWithRelayURL(string(offer.sdp), true, offer.natType, relayURL, "")
 		if err != nil {
 			return messages.ErrInternal
 		}
-
 		*response = b
-		return nil
-	}
 
-	i.ctx.metrics.promMetrics.ProxyPollTotal.With(prometheus.Labels{"nat": natType, "status": "matched"}).Inc()
-	var relayURL string
-	bridgeFingerprint, err := bridgefingerprint.FingerprintFromBytes(offer.fingerprint)
-	if err != nil {
-		return messages.ErrBadRequest
-	}
-	if info, err := i.ctx.bridgeList.GetBridgeInfo(bridgeFingerprint); err != nil {
-		return err
-	} else {
-		relayURL = info.WebSocketAddress
-	}
-	b, err = messages.EncodePollResponseWithRelayURL(string(offer.sdp), true, offer.natType, relayURL, "")
-	if err != nil {
-		return messages.ErrInternal
-	}
-	*response = b
-
-	return nil
+		return nil*/
 }
 
 func sendClientResponse(resp *messages.ClientPollResponse, response *[]byte) error {
@@ -165,7 +192,7 @@ func sendClientResponse(resp *messages.ClientPollResponse, response *[]byte) err
 }
 
 func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
-	startTime := time.Now()
+	//startTime := time.Now()
 
 	req, err := messages.DecodeClientPollRequest(arg.Body)
 	if err != nil {
@@ -173,8 +200,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 	}
 
 	offer := &ClientOffer{
-		natType: req.NAT,
-		sdp:     []byte(req.Offer),
+		NatType: req.NAT,
+		Sdp:     []byte(req.Offer),
 	}
 
 	fingerprint, err := hex.DecodeString(req.Fingerprint)
@@ -191,16 +218,37 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		return err
 	}
 
-	offer.fingerprint = BridgeFingerprint.ToBytes()
+	offer.Fingerprint = BridgeFingerprint.ToBytes()
 
-	snowflake := i.matchSnowflake(offer.natType)
+	snowflake := i.matchSnowflake(offer.NatType)
 	if snowflake != nil {
-		snowflake.offerChannel <- offer
+		ip := snowflake.ip
+		log.Printf("Client: Matched with %s", ip)
+		offerJSON, err := json.Marshal(offer)
+		log.Print(string(offerJSON))
+		if err != nil {
+			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
+		}
+		resp, err := http.Post(ip, "/add", bytes.NewBuffer(offerJSON))
+		if err != nil {
+			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
+		}
+		if resp.StatusCode != http.StatusOK {
+			return sendClientResponse(&messages.ClientPollResponse{Error: messages.StrNoProxies}, response)
+		}
+		answer := messages.ClientPollResponse{}
+		err = json.NewDecoder(resp.Body).Decode(&answer)
+		log.Print(answer)
+		if err != nil {
+			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
+		}
+		sendClientResponse(&answer, response)
+		//snowflake.offerChannel <- offer
 	} else {
 		i.ctx.metrics.lock.Lock()
 		i.ctx.metrics.clientDeniedCount++
-		i.ctx.metrics.promMetrics.ClientPollTotal.With(prometheus.Labels{"nat": offer.natType, "status": "denied"}).Inc()
-		if offer.natType == NATUnrestricted {
+		i.ctx.metrics.promMetrics.ClientPollTotal.With(prometheus.Labels{"nat": offer.NatType, "status": "denied"}).Inc()
+		if offer.NatType == NATUnrestricted {
 			i.ctx.metrics.clientUnrestrictedDeniedCount++
 		} else {
 			i.ctx.metrics.clientRestrictedDeniedCount++
@@ -211,21 +259,22 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 	}
 
 	// Wait for the answer to be returned on the channel or timeout.
-	select {
-	case answer := <-snowflake.answerChannel:
-		i.ctx.metrics.lock.Lock()
-		i.ctx.metrics.clientProxyMatchCount++
-		i.ctx.metrics.promMetrics.ClientPollTotal.With(prometheus.Labels{"nat": offer.natType, "status": "matched"}).Inc()
-		i.ctx.metrics.lock.Unlock()
-		resp := &messages.ClientPollResponse{Answer: answer}
-		err = sendClientResponse(resp, response)
-		// Initial tracking of elapsed time.
-		i.ctx.metrics.clientRoundtripEstimate = time.Since(startTime) / time.Millisecond
-	case <-time.After(time.Second * ClientTimeout):
-		log.Println("Client: Timed out.")
-		resp := &messages.ClientPollResponse{Error: messages.StrTimedOut}
-		err = sendClientResponse(resp, response)
-	}
+	/*
+		select {
+		case answer := <-snowflake.answerChannel:
+			i.ctx.metrics.lock.Lock()
+			i.ctx.metrics.clientProxyMatchCount++
+			i.ctx.metrics.promMetrics.ClientPollTotal.With(prometheus.Labels{"nat": offer.natType, "status": "matched"}).Inc()
+			i.ctx.metrics.lock.Unlock()
+			resp := &messages.ClientPollResponse{Answer: answer}
+			err = sendClientResponse(resp, response)
+			// Initial tracking of elapsed time.
+			i.ctx.metrics.clientRoundtripEstimate = time.Since(startTime) / time.Millisecond
+		case <-time.After(time.Second * ClientTimeout):
+			log.Println("Client: Timed out.")
+			resp := &messages.ClientPollResponse{Error: messages.StrTimedOut}
+			err = sendClientResponse(resp, response)
+		}*/
 
 	i.ctx.snowflakeLock.Lock()
 	i.ctx.metrics.promMetrics.AvailableProxies.With(prometheus.Labels{"nat": snowflake.natType, "type": snowflake.proxyType}).Dec()
