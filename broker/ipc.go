@@ -233,7 +233,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
 		log.Printf("Sending offer to %s", ip)
-		proxyPath := fmt.Sprintf("http://%s/add", ip)
+		port := "51821"
+		proxyPath := fmt.Sprintf("http://%s:%s/proxy", ip, port)
 		resp, err := http.Post(proxyPath, "application/json", bytes.NewBuffer(offerJSON))
 		if err != nil {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
