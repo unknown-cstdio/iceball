@@ -527,18 +527,19 @@ func (sf *SnowflakeProxy) makeNewPeerConnection(config webrtc.Configuration,
 
 	// Must create a data channel before creating an offer
 	// https://github.com/pion/webrtc/wiki/Release-WebRTC@v3.0.0
-	pc.OnDataChannel(func(dc *webrtc.DataChannel) {
-		log.Printf("Created data channel: %v", dc)
-		dc.OnOpen(func() {
-			log.Println("WebRTC: DataChannel.OnOpen")
-			close(dataChan)
-		})
-		dc.OnClose(func() {
-			log.Println("WebRTC: DataChannel.OnClose")
-			dc.Close()
-		})
-
-		log.Println("Probetest: Created Offer")
+	dc, err := pc.CreateDataChannel("test", &webrtc.DataChannelInit{})
+	log.Printf("Created data channel: %v", dc)
+	if err != nil {
+		log.Printf("CreateDataChannel ERROR: %s", err)
+		return nil, err
+	}
+	dc.OnOpen(func() {
+		log.Println("WebRTC: DataChannel.OnOpen")
+		close(dataChan)
+	})
+	dc.OnClose(func() {
+		log.Println("WebRTC: DataChannel.OnClose")
+		dc.Close()
 	})
 
 	offer, err := pc.CreateOffer(nil)
@@ -548,6 +549,7 @@ func (sf *SnowflakeProxy) makeNewPeerConnection(config webrtc.Configuration,
 		pc.Close()
 		return nil, err
 	}
+	log.Println("Probetest: Created Offer")
 
 	// As of v3.0.0, pion-webrtc uses trickle ICE by default.
 	// We have to wait for candidate gathering to complete
