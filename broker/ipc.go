@@ -246,10 +246,10 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		log.Printf("response status code: %d", resp.StatusCode)
 		answer := messages.ClientPollResponse{}
 		err = json.NewDecoder(resp.Body).Decode(&answer)
-		log.Print(answer)
 		if err != nil {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
+		log.Printf("answer: %s", answer)
 		sendClientResponse(&answer, response)
 		//snowflake.offerChannel <- offer
 	} else {
