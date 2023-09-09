@@ -132,6 +132,7 @@ snowflake proxy, which responds with the SDP answer to be sent in
 the HTTP response back to the client.
 */
 func clientOffers(i *IPC, w http.ResponseWriter, r *http.Request) {
+	log.Printf("http handle receivedclientOffers: %s", r.RemoteAddr)
 	body, err := ioutil.ReadAll(http.MaxBytesReader(w, r.Body, readLimit))
 	if err != nil {
 		log.Printf("Error reading client request: %s", err.Error())

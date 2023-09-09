@@ -196,6 +196,7 @@ func sendClientResponse(resp *messages.ClientPollResponse, response *[]byte) err
 func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 	//startTime := time.Now()
 
+	log.Printf("IPC decoding client poll request")
 	req, err := messages.DecodeClientPollRequest(arg.Body)
 	if err != nil {
 		return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
