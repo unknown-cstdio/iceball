@@ -270,3 +270,30 @@
 2023/09/09 21:11:20 WebRTC: Closing
 2023/09/09 21:11:20 WebRTC: Post "http://44.211.146.249:49320:51821/proxy": dial tcp: lookup 44.211.146.249:49320: no such host  Retrying...
 2023/09/09 21:11:20 NAT Type: restricted
+2023/09/09 21:15:24 snowflake-client 2.6.0
+2023/09/09 21:15:24 Started SOCKS listener at 127.0.0.1:33009.
+2023/09/09 21:15:24 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/09 21:15:24 
+
+
+ --- Starting Snowflake Client ---
+2023/09/09 21:15:24 Using ICE servers:
+2023/09/09 21:15:24 url: stun:stun.voipgate.com:3478
+2023/09/09 21:15:24 url: stun:stun.epygi.com:3478
+2023/09/09 21:15:24 url: stun:stun.antisip.com:3478
+2023/09/09 21:15:24 url: stun:stun.sonetel.com:3478
+2023/09/09 21:15:24 url: stun:stun.uls.co.za:3478
+2023/09/09 21:15:24 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/09 21:15:24 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/09 21:15:24 ---- SnowflakeConn: starting a new session ---
+2023/09/09 21:15:24 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/09 21:15:24 ---- SnowflakeConn: begin stream 3 ---
+2023/09/09 21:15:24 snowflake-cbfa079d51bf5f8c  connecting...
+2023/09/09 21:15:24 redialing on same connection
+2023/09/09 21:15:24 WebRTC: DataChannel created
+2023/09/09 21:15:24 WebRTC: Created offer
+2023/09/09 21:15:24 WebRTC: Set local description
+2023/09/09 21:15:25 NAT Type: restricted
+2023/09/09 21:15:25 Negotiating via HTTP rendezvous...
+2023/09/09 21:15:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/09 21:15:25 Front URL:   
