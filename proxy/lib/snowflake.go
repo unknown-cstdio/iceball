@@ -701,11 +701,6 @@ func (sf *SnowflakeProxy) Start() error {
 		defer NatRetestTask.Close()
 	}
 
-	log.Printf("Starting Snowflake proxy http server on :51821")
-
-	http.HandleFunc("/add", sf.addHandler)
-	http.ListenAndServe(":51821", nil)
-
 	numClients := int((tokens.count() / 8) * 8) // Round down to 8
 	sid := genSessionID()
 	body, err := messages.EncodeProxyPollRequestWithRelayPrefix(sid, sf.ProxyType, currentNATTypeLoaded, numClients, sf.RelayDomainNamePattern)
@@ -721,6 +716,11 @@ func (sf *SnowflakeProxy) Start() error {
 	}
 	log.Print("Response from broker:")
 	log.Print(resp)
+
+	log.Printf("Starting Snowflake proxy http server on :51821")
+
+	http.HandleFunc("/add", sf.addHandler)
+	http.ListenAndServe(":51821", nil)
 
 	return nil
 
