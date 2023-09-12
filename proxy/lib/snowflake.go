@@ -735,7 +735,7 @@ func (sf *SnowflakeProxy) Start() error {
 
 	http.HandleFunc("/add", sf.addHandler)
 	http.HandleFunc("/transfer", sf.transferHandler)
-	http.HandleFunc("data", sf.dataHandler)
+	http.HandleFunc("/data", sf.dataHandler)
 	http.ListenAndServe(":51821", nil)
 
 	return nil
