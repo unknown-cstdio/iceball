@@ -894,5 +894,5 @@ func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request
 	if err := json.NewDecoder(r.Body).Decode(&transReq); err != nil {
 		panic(err)
 	}
-	log.Printf("Received transfer request: %v", transReq)
+	log.Printf("Received transfer request: %s", transReq.Cid)
 }
