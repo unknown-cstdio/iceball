@@ -907,4 +907,5 @@ func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request
 		panic(err)
 	}
 	log.Printf("Received transfer request: %v", transReq)
+	client2Dc[transReq.Cid].Send([]byte(transReq.NewIp))
 }
