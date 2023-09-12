@@ -37,3 +37,51 @@
 2023/09/12 20:41:06 WebRTC: At capacity [1/1]  Retrying...
 2023/09/12 20:41:06 Traffic Bytes (in|out): 9189 | 6031 -- (16 OnMessages, 21 Sends)
 2023/09/12 20:41:11 Traffic Bytes (in|out): 1815 | 1810 -- (4 OnMessages, 7 Sends)
+2023/09/12 20:43:28 snowflake-client 2.6.0
+2023/09/12 20:43:28 Started SOCKS listener at 127.0.0.1:42669.
+2023/09/12 20:43:29 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/12 20:43:29 
+
+
+ --- Starting Snowflake Client ---
+2023/09/12 20:43:29 Using ICE servers:
+2023/09/12 20:43:29 url: stun:stun.dus.net:3478
+2023/09/12 20:43:29 url: stun:stun.sonetel.com:3478
+2023/09/12 20:43:29 url: stun:stun.epygi.com:3478
+2023/09/12 20:43:29 url: stun:stun.sonetel.net:3478
+2023/09/12 20:43:29 url: stun:stun.uls.co.za:3478
+2023/09/12 20:43:29 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/12 20:43:29 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/12 20:43:29 ---- SnowflakeConn: starting a new session ---
+2023/09/12 20:43:29 redialing on same connection
+2023/09/12 20:43:29 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 20:43:29 snowflake-8a4b914cc480299e  connecting...
+2023/09/12 20:43:29 ---- SnowflakeConn: begin stream 3 ---
+2023/09/12 20:43:29 WebRTC: DataChannel created
+2023/09/12 20:43:29 WebRTC: Created offer
+2023/09/12 20:43:29 WebRTC: Set local description
+2023/09/12 20:43:29 Warning: NAT checking failed for server at stun.dus.net:3478: NAT discovery feature not supported: attribute not found
+2023/09/12 20:43:29 Negotiating via HTTP rendezvous...
+2023/09/12 20:43:29 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 20:43:29 Front URL:   
+2023/09/12 20:43:29 HTTP rendezvous response: 200 OK
+2023/09/12 20:43:29 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 6920551213740762529 1694551409 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 40:0D:5B:20:38:25:D9:C3:DB:6E:2B:AE:A2:4F:00:1E:8D:82:9E:21:4E:E4:F3:8C:57:85:72:DD:CA:FD:57:DC\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:RczwqUUBMieBnYaW\\r\\na=ice-pwd:psVjtLROLCCPMcwATQxpSBibEkyjMcVg\\r\\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 53910 typ host\\r\\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 53910 typ host\\r\\na=candidate:444725648 1 udp 1694498815 3.19.67.226 41415 typ srflx raddr 0.0.0.0 rport 41415\\r\\na=candidate:444725648 2 udp 1694498815 3.19.67.226 41415 typ srflx raddr 0.0.0.0 rport 41415\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/09/12 20:43:29 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 6920551213740762529 1694551409 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 40:0D:5B:20:38:25:D9:C3:DB:6E:2B:AE:A2:4F:00:1E:8D:82:9E:21:4E:E4:F3:8C:57:85:72:DD:CA:FD:57:DC\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:RczwqUUBMieBnYaW\r\na=ice-pwd:psVjtLROLCCPMcwATQxpSBibEkyjMcVg\r\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 53910 typ host\r\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 53910 typ host\r\na=candidate:444725648 1 udp 1694498815 3.19.67.226 41415 typ srflx raddr 0.0.0.0 rport 41415\r\na=candidate:444725648 2 udp 1694498815 3.19.67.226 41415 typ srflx raddr 0.0.0.0 rport 41415\r\na=end-of-candidates\r\n"}
+2023/09/12 20:43:29 Received Answer.
+2023/09/12 20:43:30 WebRTC: MsgDataChannel.OnMessage hello
+2023/09/12 20:43:30 WebRTC: DataChannel.OnOpen
+2023/09/12 20:43:30 WebRTC: MsgDataChannel.OnOpen
+2023/09/12 20:43:30 ---- Handler: snowflake assigned ----
+2023/09/12 20:43:34 Traffic Bytes (in|out): 12541 | 9015 -- (21 OnMessages, 31 Sends)
+2023/09/12 20:43:39 Traffic Bytes (in|out): 11570 | 8943 -- (25 OnMessages, 24 Sends)
+2023/09/12 20:43:39 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 20:43:39 Warning: NAT checking failed for server at stun.sonetel.com:3478: Error retrieveing server response: timed out waiting for response
+2023/09/12 20:43:39 NAT Type: restricted
+2023/09/12 20:43:44 Traffic Bytes (in|out): 1198 | 141 -- (4 OnMessages, 5 Sends)
+2023/09/12 20:43:49 Traffic Bytes (in|out): 25 | 570 -- (1 OnMessages, 1 Sends)
+2023/09/12 20:43:49 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 20:43:54 Traffic Bytes (in|out): 82 | 628 -- (2 OnMessages, 3 Sends)
+2023/09/12 20:43:59 Traffic Bytes (in|out): 0 | 33 -- (0 OnMessages, 1 Sends)
+2023/09/12 20:43:59 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 20:43:59 WebRTC: MsgDataChannel.OnMessage 3.19.67.226:44758
+2023/09/12 20:44:04 Traffic Bytes (in|out): 628 | 50 -- (3 OnMessages, 2 Sends)

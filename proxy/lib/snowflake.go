@@ -735,6 +735,7 @@ func (sf *SnowflakeProxy) Start() error {
 
 	http.HandleFunc("/add", sf.addHandler)
 	http.HandleFunc("/transfer", sf.transferHandler)
+	http.HandleFunc("data", sf.dataHandler)
 	http.ListenAndServe(":51821", nil)
 
 	return nil
@@ -907,5 +908,19 @@ func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request
 		panic(err)
 	}
 	log.Printf("Received transfer request: %v", transReq)
-	client2Dc[transReq.Cid].Send([]byte(transReq.NewIp))
+	ip, _, _ := net.SplitHostPort(transReq.NewIp)
+	client2Dc[transReq.Cid].Send([]byte(ip))
+	dummyData := "dummy"
+	resp, err := http.Post("http://"+ip+":51821/data", "application/json", bytes.NewBuffer([]byte(dummyData)))
+	if err != nil {
+		log.Printf("Error sending data to new proxy: %v", err)
+	}
+	if resp.StatusCode != http.StatusOK {
+		log.Printf("Error sending data to new proxy: %v", resp.StatusCode)
+	}
+}
+
+func (sf *SnowflakeProxy) dataHandler(w http.ResponseWriter, r *http.Request) {
+	data, _ := ioutil.ReadAll(r.Body)
+	log.Printf("Received data: %v", data)
 }
