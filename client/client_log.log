@@ -1098,3 +1098,49 @@ a=end-of-candidates
 2023/09/12 15:25:41 Received Answer.
 2023/09/12 15:25:41 WebRTC: DataChannel.OnOpen
 2023/09/12 15:25:41 ---- Handler: snowflake assigned ----
+2023/09/12 19:52:22 snowflake-client 2.6.0
+2023/09/12 19:52:22 Started SOCKS listener at 127.0.0.1:40475.
+2023/09/12 19:52:23 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/12 19:52:23 
+
+
+ --- Starting Snowflake Client ---
+2023/09/12 19:52:23 Using ICE servers:
+2023/09/12 19:52:23 url: stun:stun.voys.nl:3478
+2023/09/12 19:52:23 url: stun:stun.sonetel.net:3478
+2023/09/12 19:52:23 url: stun:stun.bluesip.net:3478
+2023/09/12 19:52:23 url: stun:stun.dus.net:3478
+2023/09/12 19:52:23 url: stun:stun.sonetel.com:3478
+2023/09/12 19:52:23 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/12 19:52:23 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/12 19:52:23 ---- SnowflakeConn: starting a new session ---
+2023/09/12 19:52:23 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 19:52:23 snowflake-1584347031fb02a9  connecting...
+2023/09/12 19:52:23 ---- SnowflakeConn: begin stream 3 ---
+2023/09/12 19:52:23 redialing on same connection
+2023/09/12 19:52:23 WebRTC: DataChannel created
+2023/09/12 19:52:23 WebRTC: Created offer
+2023/09/12 19:52:23 WebRTC: Set local description
+2023/09/12 19:52:23 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2023/09/12 19:52:23 Negotiating via HTTP rendezvous...
+2023/09/12 19:52:23 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 19:52:23 Front URL:   
+2023/09/12 19:52:23 HTTP rendezvous response: 200 OK
+2023/09/12 19:52:23 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 4681522534065420949 1694548343 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 48:4B:20:C2:F4:E5:16:11:1F:20:8C:3C:1C:D6:24:EA:6F:B4:7E:D9:9A:B4:B0:18:88:78:52:67:3E:28:01:FB\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:NeHUQTsjWNbloaZK\\r\\na=ice-pwd:yNXFdONKdVbLZnWXgBtOYZdpMNNsYQrz\\r\\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 40052 typ host\\r\\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 40052 typ host\\r\\na=candidate:444725648 1 udp 1694498815 3.19.67.226 43756 typ srflx raddr 0.0.0.0 rport 43756\\r\\na=candidate:444725648 2 udp 1694498815 3.19.67.226 43756 typ srflx raddr 0.0.0.0 rport 43756\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/09/12 19:52:23 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 4681522534065420949 1694548343 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 48:4B:20:C2:F4:E5:16:11:1F:20:8C:3C:1C:D6:24:EA:6F:B4:7E:D9:9A:B4:B0:18:88:78:52:67:3E:28:01:FB\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:NeHUQTsjWNbloaZK\r\na=ice-pwd:yNXFdONKdVbLZnWXgBtOYZdpMNNsYQrz\r\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 40052 typ host\r\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 40052 typ host\r\na=candidate:444725648 1 udp 1694498815 3.19.67.226 43756 typ srflx raddr 0.0.0.0 rport 43756\r\na=candidate:444725648 2 udp 1694498815 3.19.67.226 43756 typ srflx raddr 0.0.0.0 rport 43756\r\na=end-of-candidates\r\n"}
+2023/09/12 19:52:23 Received Answer.
+2023/09/12 19:52:24 WebRTC: DataChannel.OnOpen
+2023/09/12 19:52:24 ---- Handler: snowflake assigned ----
+2023/09/12 19:52:28 Traffic Bytes (in|out): 51234 | 9139 -- (52 OnMessages, 36 Sends)
+2023/09/12 19:52:33 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 19:52:33 Traffic Bytes (in|out): 15211 | 10511 -- (28 OnMessages, 26 Sends)
+2023/09/12 19:52:33 Warning: NAT checking failed for server at stun.sonetel.net:3478: Error retrieveing server response: timed out waiting for response
+2023/09/12 19:52:33 NAT Type: restricted
+2023/09/12 19:52:38 Traffic Bytes (in|out): 628 | 83 -- (3 OnMessages, 3 Sends)
+2023/09/12 19:52:43 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 19:52:48 Traffic Bytes (in|out): 628 | 83 -- (3 OnMessages, 3 Sends)
+2023/09/12 19:52:53 Traffic Bytes (in|out): 25 | 603 -- (1 OnMessages, 2 Sends)
+2023/09/12 19:52:53 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 19:52:58 Traffic Bytes (in|out): 628 | 50 -- (3 OnMessages, 2 Sends)
+2023/09/12 19:53:03 Traffic Bytes (in|out): 570 | 25 -- (1 OnMessages, 1 Sends)
+2023/09/12 19:53:03 WebRTC: At capacity [1/1]  Retrying...

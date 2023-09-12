@@ -276,7 +276,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 						log.Printf("error marshalling transfer request")
 						continue
 					}
-					transferPath := fmt.Sprintf("http://%s:%s/transfer", oldProxy.ip, newPort)
+					oldIp, _, _ := net.SplitHostPort(oldProxy.ip)
+					transferPath := fmt.Sprintf("http://%s:%s/transfer", oldIp, newPort)
 					log.Printf("sending transfer request to %s", transferPath)
 					resp, err := http.Post(transferPath, "application/json", bytes.NewBuffer(transferReqJSON))
 					if err != nil {
