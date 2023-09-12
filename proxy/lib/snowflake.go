@@ -146,7 +146,10 @@ type ClientOffer struct {
 	NatType     string `json:"natType"`
 	Sdp         []byte `json:"sdp"`
 	Fingerprint []byte `json:"fingerprint"`
+	Cid         string `json:"cid"`
 }
+
+var client2Dc = make(map[string]*webrtc.DataChannel)
 
 // Checks whether an IP address is a remote address for the client
 func isRemoteAddress(ip net.IP) bool {
@@ -402,7 +405,8 @@ func (sf *SnowflakeProxy) makeWebRTCAPI() *webrtc.API {
 func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescription,
 	config webrtc.Configuration,
 	dataChan chan struct{},
-	handler func(conn *webRTCConn, remoteAddr net.Addr)) (*webrtc.PeerConnection, error) {
+	handler func(conn *webRTCConn, remoteAddr net.Addr),
+	clientId string) (*webrtc.PeerConnection, error) {
 
 	api := sf.makeWebRTCAPI()
 	pc, err := api.NewPeerConnection(config)
@@ -472,10 +476,11 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 
 			go handler(conn, conn.RemoteAddr())
 		} else {
+			client2Dc[clientId] = dc
+			log.Printf("update map: %v", client2Dc)
 			dc.OnOpen(func() {
 				dc.Send([]byte("hello"))
 			})
-			log.Printf("control channel")
 		}
 	})
 	// As of v3.0.0, pion-webrtc uses trickle ICE by default.
@@ -606,7 +611,7 @@ func (sf *SnowflakeProxy) runSession(sid string) {
 
 	dataChan := make(chan struct{})
 	dataChannelAdaptor := dataChannelHandlerWithRelayURL{RelayURL: relayURL, sf: sf}
-	pc, err := sf.makePeerConnectionFromOffer(offer, config, dataChan, dataChannelAdaptor.datachannelHandler)
+	pc, err := sf.makePeerConnectionFromOffer(offer, config, dataChan, dataChannelAdaptor.datachannelHandler, "dummy")
 	if err != nil {
 		log.Printf("error making WebRTC connection: %s", err)
 		tokens.ret()
@@ -856,13 +861,13 @@ func (sf *SnowflakeProxy) addHandler(w http.ResponseWriter, r *http.Request) {
 
 	offerSDP := webrtc.SessionDescription{}
 	json.Unmarshal(offer.Sdp, &offerSDP)
-	log.Printf("Received Offer From Client: \n\t%s", strings.ReplaceAll(offerSDP.SDP, "\n", "\n\t"))
+	log.Printf("Received Offer From Client: %s\n", offer.Cid)
 
 	dataChan := make(chan struct{})
 	relayURL := sf.RelayURL
 	dataChannelAdaptor := dataChannelHandlerWithRelayURL{RelayURL: relayURL, sf: sf}
 
-	pc, err := sf.makePeerConnectionFromOffer(&offerSDP, config, dataChan, dataChannelAdaptor.datachannelHandler)
+	pc, err := sf.makePeerConnectionFromOffer(&offerSDP, config, dataChan, dataChannelAdaptor.datachannelHandler, offer.Cid)
 	if err != nil {
 		log.Printf("error making WebRTC connection: %s", err)
 		tokens.ret()

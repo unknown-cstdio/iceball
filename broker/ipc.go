@@ -206,6 +206,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 	offer := &ClientOffer{
 		NatType: req.NAT,
 		Sdp:     []byte(req.Offer),
+		Cid:     req.Id,
 	}
 	log.Printf("Client: Received offer: %s", offer)
 
