@@ -722,7 +722,7 @@ func (sf *SnowflakeProxy) Start() error {
 	log.Printf("Starting Snowflake proxy http server on :51821")
 
 	http.HandleFunc("/add", sf.addHandler)
-	http.HandleFunc("transfer", sf.transferHandler)
+	http.HandleFunc("/transfer", sf.transferHandler)
 	http.ListenAndServe(":51821", nil)
 
 	return nil

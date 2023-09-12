@@ -286,6 +286,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 					}
 					if resp.StatusCode != http.StatusOK {
 						log.Printf("error sending transfer request")
+						log.Printf("response status code: %d", resp.StatusCode)
 						continue
 					}
 				default:
