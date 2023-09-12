@@ -472,8 +472,10 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 
 			go handler(conn, conn.RemoteAddr())
 		} else {
+			dc.OnOpen(func() {
+				dc.Send([]byte("hello"))
+			})
 			log.Printf("control channel")
-			dc.Send([]byte("hello"))
 		}
 	})
 	// As of v3.0.0, pion-webrtc uses trickle ICE by default.
