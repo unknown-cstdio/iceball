@@ -253,9 +253,9 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		sendClientResponse(&answer, response)
 		var snowflakeHeap *SnowflakeHeap
 		if snowflake.natType == NATUnrestricted {
-			snowflakeHeap = i.ctx.restrictedSnowflakes
-		} else {
 			snowflakeHeap = i.ctx.snowflakes
+		} else {
+			snowflakeHeap = i.ctx.restrictedSnowflakes
 		}
 		i.ctx.snowflakeLock.Lock()
 		heap.Push(snowflakeHeap, snowflake)
