@@ -709,3 +709,52 @@ a=end-of-candidates
 2023/09/12 09:58:17 WebRTC: closing PeerConnection
 2023/09/12 09:58:17 WebRTC: Closing
 2023/09/12 09:58:17 WebRTC: no snowflake proxies currently available  Retrying...
+2023/09/12 11:12:11 snowflake-client 2.6.0
+2023/09/12 11:12:11 Started SOCKS listener at 127.0.0.1:36649.
+2023/09/12 11:12:12 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/12 11:12:12 
+
+
+ --- Starting Snowflake Client ---
+2023/09/12 11:12:12 Using ICE servers:
+2023/09/12 11:12:12 url: stun:stun.voys.nl:3478
+2023/09/12 11:12:12 url: stun:stun.sonetel.com:3478
+2023/09/12 11:12:12 url: stun:stun.voipgate.com:3478
+2023/09/12 11:12:12 url: stun:stun.uls.co.za:3478
+2023/09/12 11:12:12 url: stun:stun.voip.blackberry.com:3478
+2023/09/12 11:12:12 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/12 11:12:12 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/12 11:12:12 ---- SnowflakeConn: starting a new session ---
+2023/09/12 11:12:12 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 11:12:12 redialing on same connection
+2023/09/12 11:12:12 snowflake-aef2ab0ceca06973  connecting...
+2023/09/12 11:12:12 ---- SnowflakeConn: begin stream 3 ---
+2023/09/12 11:12:12 WebRTC: DataChannel created
+2023/09/12 11:12:12 WebRTC: Created offer
+2023/09/12 11:12:12 WebRTC: Set local description
+2023/09/12 11:12:12 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2023/09/12 11:12:13 Negotiating via HTTP rendezvous...
+2023/09/12 11:12:13 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 11:12:13 Front URL:   
+2023/09/12 11:12:13 HTTP rendezvous response: 200 OK
+2023/09/12 11:12:13 Received answer: {"error":"no snowflake proxies currently available"}
+2023/09/12 11:12:13 WebRTC: closing DataChannel
+2023/09/12 11:12:13 WebRTC: closing PeerConnection
+2023/09/12 11:12:13 WebRTC: Closing
+2023/09/12 11:12:13 WebRTC: no snowflake proxies currently available  Retrying...
+2023/09/12 11:12:22 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 11:12:22 snowflake-be67c712dac4aab6  connecting...
+2023/09/12 11:12:22 WebRTC: DataChannel created
+2023/09/12 11:12:22 WebRTC: Created offer
+2023/09/12 11:12:22 WebRTC: Set local description
+2023/09/12 11:12:22 Warning: NAT checking failed for server at stun.sonetel.com:3478: Error retrieveing server response: timed out waiting for response
+2023/09/12 11:12:22 Negotiating via HTTP rendezvous...
+2023/09/12 11:12:22 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 11:12:22 Front URL:   
+2023/09/12 11:12:22 HTTP rendezvous response: 200 OK
+2023/09/12 11:12:22 Received answer: {"error":"no snowflake proxies currently available"}
+2023/09/12 11:12:22 WebRTC: closing DataChannel
+2023/09/12 11:12:22 WebRTC: closing PeerConnection
+2023/09/12 11:12:22 WebRTC: Closing
+2023/09/12 11:12:22 WebRTC: no snowflake proxies currently available  Retrying...
+2023/09/12 11:12:22 NAT Type: restricted
