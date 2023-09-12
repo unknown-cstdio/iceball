@@ -100,6 +100,11 @@ type ProxyPollRequest struct {
 	AcceptedRelayPattern *string
 }
 
+type TransferRequest struct {
+	Cid   string `json:"cid"`
+	NewIp string `json:"new_ip"`
+}
+
 func EncodeProxyPollRequest(sid string, proxyType string, natType string, clients int) ([]byte, error) {
 	return EncodeProxyPollRequestWithRelayPrefix(sid, proxyType, natType, clients, "")
 }

@@ -9,6 +9,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"time"
 
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/bridgefingerprint"
 
@@ -259,6 +260,38 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
 		log.Printf("answer: %s", answer)
+		newTicker := time.NewTicker(time.Second * 30)
+		client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
+		go func() {
+			for {
+				select {
+				case <-newTicker.C:
+					log.Printf(client.proxy.ip)
+					log.Printf("client switching proxies")
+					oldProxy := client.proxy
+					client.proxy = i.matchSnowflake(offer.NatType)
+					transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip}
+					transferReqJSON, err := json.Marshal(transferReq)
+					if err != nil {
+						log.Printf("error marshalling transfer request")
+						continue
+					}
+					transferPath := fmt.Sprintf("http://%s:%s/transfer", oldProxy.ip, newPort)
+					log.Printf("sending transfer request to %s", transferPath)
+					resp, err := http.Post(transferPath, "application/json", bytes.NewBuffer(transferReqJSON))
+					if err != nil {
+						log.Printf("error sending transfer request")
+						continue
+					}
+					if resp.StatusCode != http.StatusOK {
+						log.Printf("error sending transfer request")
+						continue
+					}
+				default:
+					continue
+				}
+			}
+		}()
 		sendClientResponse(&answer, response)
 		//snowflake.offerChannel <- offer
 	} else {

@@ -13,6 +13,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/pion/webrtc/v3"
 	utls "github.com/refraction-networking/utls"
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/certs"
@@ -124,10 +125,12 @@ func (bc *BrokerChannel) Negotiate(offer *webrtc.SessionDescription) (
 
 	// Encode the client poll request.
 	bc.lock.Lock()
+	id := uuid.New()
 	req := &messages.ClientPollRequest{
 		Offer:       offerSDP,
 		NAT:         bc.natType,
 		Fingerprint: bc.BridgeFingerprint,
+		Id:          id.String(),
 	}
 	encReq, err := req.EncodeClientPollRequest()
 	bc.lock.Unlock()

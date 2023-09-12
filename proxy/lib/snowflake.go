@@ -722,6 +722,7 @@ func (sf *SnowflakeProxy) Start() error {
 	log.Printf("Starting Snowflake proxy http server on :51821")
 
 	http.HandleFunc("/add", sf.addHandler)
+	http.HandleFunc("transfer", sf.transferHandler)
 	http.ListenAndServe(":51821", nil)
 
 	return nil
@@ -886,4 +887,12 @@ func (sf *SnowflakeProxy) addHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}()
 
+}
+
+func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request) {
+	transReq := messages.TransferRequest{}
+	if err := json.NewDecoder(r.Body).Decode(&transReq); err != nil {
+		panic(err)
+	}
+	log.Printf("Received transfer request: %v", transReq)
 }

@@ -7,6 +7,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/bridgefingerprint"
 
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/nat"
@@ -65,6 +66,7 @@ type ClientPollRequest struct {
 	Offer       string `json:"offer"`
 	NAT         string `json:"nat"`
 	Fingerprint string `json:"fingerprint"`
+	Id          string `json:"id"`
 }
 
 // Encodes a poll message from a snowflake client
