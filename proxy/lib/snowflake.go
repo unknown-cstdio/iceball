@@ -412,64 +412,68 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 
 	pc.OnDataChannel(func(dc *webrtc.DataChannel) {
 		log.Printf("New Data Channel %s-%d\n", dc.Label(), dc.ID())
-		close(dataChan)
+		if dc.Label() != "control" {
+			close(dataChan)
 
-		pr, pw := io.Pipe()
-		conn := newWebRTCConn(pc, dc, pr, sf.EventDispatcher)
+			pr, pw := io.Pipe()
+			conn := newWebRTCConn(pc, dc, pr, sf.EventDispatcher)
 
-		dc.SetBufferedAmountLowThreshold(bufferedAmountLowThreshold)
+			dc.SetBufferedAmountLowThreshold(bufferedAmountLowThreshold)
 
-		dc.OnBufferedAmountLow(func() {
-			select {
-			case conn.sendMoreCh <- struct{}{}:
-			default:
-			}
-		})
-
-		dc.OnOpen(func() {
-			log.Printf("Data Channel %s-%d open\n", dc.Label(), dc.ID())
-
-			if sf.OutboundAddress != "" {
-				selectedCandidatePair, err := pc.SCTP().Transport().ICETransport().GetSelectedCandidatePair()
-				if err != nil {
-					log.Printf("Warning: couldn't get the selected candidate pair")
+			dc.OnBufferedAmountLow(func() {
+				select {
+				case conn.sendMoreCh <- struct{}{}:
+				default:
 				}
-
-				log.Printf("Selected Local Candidate: %s:%d", selectedCandidatePair.Local.Address, selectedCandidatePair.Local.Port)
-				if sf.OutboundAddress != selectedCandidatePair.Local.Address {
-					log.Printf("Warning: the IP address provided by --outbound-address is not used for establishing peerconnection")
-				}
-			}
-		})
-		dc.OnClose(func() {
-			conn.lock.Lock()
-			defer conn.lock.Unlock()
-			log.Printf("Data Channel %s-%d close\n", dc.Label(), dc.ID())
-			log.Println(conn.bytesLogger.ThroughputSummary())
-			in, out := conn.bytesLogger.GetStat()
-			conn.eventLogger.OnNewSnowflakeEvent(event.EventOnProxyConnectionOver{
-				InboundTraffic:  in,
-				OutboundTraffic: out,
 			})
-			conn.dc = nil
-			dc.Close()
-			pw.Close()
-		})
-		dc.OnMessage(func(msg webrtc.DataChannelMessage) {
-			var n int
-			n, err = pw.Write(msg.Data)
-			if err != nil {
-				if inerr := pw.CloseWithError(err); inerr != nil {
-					log.Printf("close with error generated an error: %v", inerr)
-				}
-			}
-			conn.bytesLogger.AddOutbound(int64(n))
-			if n != len(msg.Data) {
-				panic("short write")
-			}
-		})
 
-		go handler(conn, conn.RemoteAddr())
+			dc.OnOpen(func() {
+				log.Printf("Data Channel %s-%d open\n", dc.Label(), dc.ID())
+
+				if sf.OutboundAddress != "" {
+					selectedCandidatePair, err := pc.SCTP().Transport().ICETransport().GetSelectedCandidatePair()
+					if err != nil {
+						log.Printf("Warning: couldn't get the selected candidate pair")
+					}
+
+					log.Printf("Selected Local Candidate: %s:%d", selectedCandidatePair.Local.Address, selectedCandidatePair.Local.Port)
+					if sf.OutboundAddress != selectedCandidatePair.Local.Address {
+						log.Printf("Warning: the IP address provided by --outbound-address is not used for establishing peerconnection")
+					}
+				}
+			})
+			dc.OnClose(func() {
+				conn.lock.Lock()
+				defer conn.lock.Unlock()
+				log.Printf("Data Channel %s-%d close\n", dc.Label(), dc.ID())
+				log.Println(conn.bytesLogger.ThroughputSummary())
+				in, out := conn.bytesLogger.GetStat()
+				conn.eventLogger.OnNewSnowflakeEvent(event.EventOnProxyConnectionOver{
+					InboundTraffic:  in,
+					OutboundTraffic: out,
+				})
+				conn.dc = nil
+				dc.Close()
+				pw.Close()
+			})
+			dc.OnMessage(func(msg webrtc.DataChannelMessage) {
+				var n int
+				n, err = pw.Write(msg.Data)
+				if err != nil {
+					if inerr := pw.CloseWithError(err); inerr != nil {
+						log.Printf("close with error generated an error: %v", inerr)
+					}
+				}
+				conn.bytesLogger.AddOutbound(int64(n))
+				if n != len(msg.Data) {
+					panic("short write")
+				}
+			})
+
+			go handler(conn, conn.RemoteAddr())
+		} else {
+			log.Printf("control channel")
+		}
 	})
 	// As of v3.0.0, pion-webrtc uses trickle ICE by default.
 	// We have to wait for candidate gathering to complete
@@ -894,5 +898,5 @@ func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request
 	if err := json.NewDecoder(r.Body).Decode(&transReq); err != nil {
 		panic(err)
 	}
-	log.Printf("Received transfer request: %s", transReq.Cid)
+	log.Printf("Received transfer request: %v", transReq)
 }

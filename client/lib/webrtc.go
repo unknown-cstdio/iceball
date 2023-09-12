@@ -212,6 +212,11 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 		log.Printf("CreateDataChannel ERROR: %s", err)
 		return err
 	}
+	dc2, err := c.pc.CreateDataChannel("control", dataChannelOptions)
+	if err != nil {
+		log.Printf("CreateMsgDataChannel ERROR: %s", err)
+		return err
+	}
 	dc.OnOpen(func() {
 		c.eventsLogger.OnNewSnowflakeEvent(event.EventOnSnowflakeConnected{})
 		log.Println("WebRTC: DataChannel.OnOpen")
@@ -240,6 +245,18 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 		c.mu.Lock()
 		c.lastReceive = time.Now()
 		c.mu.Unlock()
+	})
+	dc2.OnOpen(func() {
+		log.Println("WebRTC: MsgDataChannel.OnOpen")
+	})
+	dc2.OnClose(func() {
+		log.Println("WebRTC: MsgDataChannel.OnClose")
+	})
+	dc2.OnError(func(err error) {
+		log.Printf("WebRTC: MsgDataChannel.OnError %s", err)
+	})
+	dc2.OnMessage(func(msg webrtc.DataChannelMessage) {
+		log.Printf("WebRTC: MsgDataChannel.OnMessage %s", string(msg.Data))
 	})
 	c.transport = dc
 	c.open = make(chan struct{})
