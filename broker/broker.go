@@ -98,6 +98,13 @@ type ProxyPoll struct {
 	offerChannel chan *ClientOffer
 }
 
+type ClientOffer struct {
+	NatType     string `json:"natType"`
+	Sdp         []byte `json:"sdp"`
+	Fingerprint []byte `json:"fingerprint"`
+	Cid         string `json:"cid"`
+}
+
 // Registers a Snowflake and waits for some Client to send an offer,
 // as part of the polling logic of the proxy handler.
 func (ctx *BrokerContext) RequestOffer(id string, proxyType string, natType string, clients int) *ClientOffer {
@@ -182,14 +189,6 @@ func (ctx *BrokerContext) CheckProxyRelayPattern(pattern string, nonSupported bo
 	proxyPattern := namematcher.NewNameMatcher(pattern)
 	brokerPattern := namematcher.NewNameMatcher(ctx.allowedRelayPattern)
 	return proxyPattern.IsSupersetOf(brokerPattern)
-}
-
-// Client offer contains an SDP, bridge fingerprint and the NAT type of the client
-type ClientOffer struct {
-	NatType     string `json:"natType"`
-	Sdp         []byte `json:"sdp"`
-	Fingerprint []byte `json:"fingerprint"`
-	Cid         string `json:"cid"`
 }
 
 func main() {

@@ -93,6 +93,12 @@ func (p *Peers) Pop() *WebRTCPeer {
 	}
 }
 
+// Directly add a snowflake to the collection.
+func (p *Peers) Push(snowflake *WebRTCPeer) {
+	p.snowflakeChan <- snowflake
+	p.activePeers.PushBack(snowflake)
+}
+
 // Melted returns a channel that will close when peers stop being collected.
 // Melted is a necessary part of |SnowflakeCollector| interface.
 func (p *Peers) Melted() <-chan struct{} {

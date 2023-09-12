@@ -131,6 +131,13 @@ type ClientPollResponse struct {
 	Error  string `json:"error,omitempty"`
 }
 
+type ClientOffer struct {
+	NatType     string `json:"natType"`
+	Sdp         []byte `json:"sdp"`
+	Fingerprint []byte `json:"fingerprint"`
+	Cid         string `json:"cid"`
+}
+
 // Encodes a poll response for a snowflake client
 func (resp *ClientPollResponse) EncodePollResponse() ([]byte, error) {
 	return json.Marshal(resp)

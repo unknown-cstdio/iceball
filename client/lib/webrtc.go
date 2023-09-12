@@ -1,19 +1,26 @@
 package snowflake_client
 
 import (
+	"bytes"
 	"crypto/rand"
 	"encoding/hex"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
+	"net/http"
 	"strings"
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/pion/ice/v2"
 	"github.com/pion/webrtc/v3"
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/event"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/messages"
+	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/util"
 )
 
 // WebRTCPeer represents a WebRTC connection to a remote snowflake proxy.
@@ -37,6 +44,13 @@ type WebRTCPeer struct {
 
 	bytesLogger  bytesLogger
 	eventsLogger event.SnowflakeEventReceiver
+}
+
+type ClientOffer struct {
+	NatType     string `json:"natType"`
+	Sdp         []byte `json:"sdp"`
+	Fingerprint []byte `json:"fingerprint"`
+	Cid         string `json:"cid"`
 }
 
 func NewWebRTCPeer(config *webrtc.Configuration,
@@ -110,11 +124,9 @@ func (c *WebRTCPeer) Closed() bool {
 
 // Close closes the connection the snowflake proxy.
 func (c *WebRTCPeer) Close() error {
-	c.once.Do(func() {
-		close(c.closed)
-		c.cleanup()
-		log.Printf("WebRTC: Closing")
-	})
+	close(c.closed)
+	c.cleanup()
+	log.Printf("WebRTC: Closing")
 	return nil
 }
 
@@ -256,7 +268,22 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 		log.Printf("WebRTC: MsgDataChannel.OnError %s", err)
 	})
 	dc2.OnMessage(func(msg webrtc.DataChannelMessage) {
-		log.Printf("WebRTC: MsgDataChannel.OnMessage %s", string(msg.Data))
+		newIp := string(msg.Data)
+		log.Printf("WebRTC: MsgDataChannel.OnMessage %s", newIp)
+		peer, err := DirectConnect(config, newIp)
+		if err != nil {
+			log.Printf("WebRTC: Error connecting to new IP: %s", err)
+			return
+		}
+		c.Close()
+		c.recvPipe = peer.recvPipe
+		c.writePipe = peer.writePipe
+		c.transport = peer.transport
+		c.open = peer.open
+		c.closed = peer.closed
+		c.bytesLogger = peer.bytesLogger
+		c.eventsLogger = peer.eventsLogger
+
 	})
 	c.transport = dc
 	c.open = make(chan struct{})
@@ -307,4 +334,78 @@ func (c *WebRTCPeer) cleanup() {
 			log.Printf("Error closing peerconnection...")
 		}
 	}
+}
+
+// Directly connect to a snowflake proxy without using a broker.
+func DirectConnect(config *webrtc.Configuration, ip string) (*WebRTCPeer, error) {
+	log.Printf("WebRTC: Directly connecting to %s", ip)
+	eventsLogger := event.NewSnowflakeEventDispatcher()
+	connection := new(WebRTCPeer)
+	{
+		var buf [8]byte
+		if _, err := rand.Read(buf[:]); err != nil {
+			panic(err)
+		}
+		connection.id = "snowflake-" + hex.EncodeToString(buf[:])
+	}
+	connection.closed = make(chan struct{})
+
+	// Override with something that's not NullLogger to have real logging.
+	connection.bytesLogger = &bytesNullLogger{}
+
+	// Pipes remain the same even when DataChannel gets switched.
+	connection.recvPipe, connection.writePipe = io.Pipe()
+
+	connection.eventsLogger = eventsLogger
+	err := connection.preparePeerConnection(config)
+	if err != nil {
+		log.Printf("WebRTC: Error preparing peer connection: %s", err)
+		connection.Close()
+		return nil, err
+	}
+	sdp := connection.pc.LocalDescription()
+	offerSDP, err := util.SerializeSessionDescription(sdp)
+	if err != nil {
+		return nil, err
+	}
+	id := uuid.New()
+	req := &ClientOffer{
+		NatType:     "unknown",
+		Sdp:         []byte(offerSDP),
+		Fingerprint: []byte(""),
+		Cid:         id.String(),
+	}
+	encReq, _ := json.Marshal(req)
+	resp, err := http.Post("http://"+ip+":51821/add", "application/json", bytes.NewReader(encReq))
+	if err != nil {
+		log.Printf("WebRTC: Error sending POST request: %s", err)
+		return nil, err
+	}
+	if resp.StatusCode != 200 {
+		log.Printf("WebRTC: Error response from proxy: %s", resp.Status)
+		return nil, err
+	}
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Printf("WebRTC: Error reading response body: %s", err)
+		return nil, err
+	}
+	decResp, err := messages.DecodeClientPollResponse(body)
+	if err != nil {
+		log.Printf("WebRTC: Error decoding response: %s", err)
+		return nil, err
+	}
+	answerSDP, err := util.DeserializeSessionDescription(decResp.Answer)
+	if err != nil {
+		log.Printf("WebRTC: Error deserializing answer: %s", err)
+		return nil, err
+	}
+	log.Printf("WebRTC: Received answer")
+	err = connection.pc.SetRemoteDescription(*answerSDP)
+	if err != nil {
+		log.Printf("WebRTC: Error setting remote description: %s", err)
+		return nil, err
+	}
+	log.Printf("WebRTC: Set remote description")
+	return connection, nil
 }

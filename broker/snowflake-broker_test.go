@@ -26,6 +26,13 @@ func NullLogger() *log.Logger {
 	return logger
 }
 
+type ClientOffer struct {
+	NatType     string `json:"natType"`
+	Sdp         []byte `json:"sdp"`
+	Fingerprint []byte `json:"fingerprint"`
+	Cid         string `json:"cid"`
+}
+
 var promOnce sync.Once
 
 var (
