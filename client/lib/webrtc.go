@@ -275,7 +275,6 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 			log.Printf("WebRTC: Error connecting to new IP: %s", err)
 			return
 		}
-		c.Close()
 		c.recvPipe = peer.recvPipe
 		c.writePipe = peer.writePipe
 		c.transport = peer.transport

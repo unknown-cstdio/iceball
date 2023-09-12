@@ -1,0 +1,143 @@
+2023/09/12 22:13:34 snowflake-client 2.6.0
+2023/09/12 22:13:34 Started SOCKS listener at 127.0.0.1:42279.
+2023/09/12 22:13:35 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/12 22:13:35 
+
+
+ --- Starting Snowflake Client ---
+2023/09/12 22:13:35 Using ICE servers:
+2023/09/12 22:13:35 url: stun:stun.antisip.com:3478
+2023/09/12 22:13:35 url: stun:stun.dus.net:3478
+2023/09/12 22:13:35 url: stun:stun.voys.nl:3478
+2023/09/12 22:13:35 url: stun:stun.sonetel.com:3478
+2023/09/12 22:13:35 url: stun:stun.uls.co.za:3478
+2023/09/12 22:13:35 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/12 22:13:35 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/12 22:13:35 ---- SnowflakeConn: starting a new session ---
+2023/09/12 22:13:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 22:13:35 snowflake-bcfbc6b702cca050  connecting...
+2023/09/12 22:13:35 redialing on same connection
+2023/09/12 22:13:35 ---- SnowflakeConn: begin stream 3 ---
+2023/09/12 22:13:35 WebRTC: DataChannel created
+2023/09/12 22:13:35 WebRTC: Created offer
+2023/09/12 22:13:35 WebRTC: Set local description
+2023/09/12 22:13:35 Negotiating via HTTP rendezvous...
+2023/09/12 22:13:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 22:13:35 Front URL:   
+2023/09/12 22:13:36 HTTP rendezvous response: 200 OK
+2023/09/12 22:13:36 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 2860304314162934790 1694556816 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 A8:D4:07:7C:14:10:6D:BD:D8:98:FF:1B:33:1E:19:5F:D5:14:B2:77:72:6B:9D:D9:B3:52:12:02:84:5C:E2:5A\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:zQNTxkZImnhEBBCp\\r\\na=ice-pwd:jArpaaWnKyZoDdaTexxLCcmeJNIUEFdL\\r\\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 58305 typ host\\r\\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 58305 typ host\\r\\na=candidate:444725648 1 udp 1694498815 3.19.67.226 57461 typ srflx raddr 0.0.0.0 rport 57461\\r\\na=candidate:444725648 2 udp 1694498815 3.19.67.226 57461 typ srflx raddr 0.0.0.0 rport 57461\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/09/12 22:13:36 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 2860304314162934790 1694556816 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 A8:D4:07:7C:14:10:6D:BD:D8:98:FF:1B:33:1E:19:5F:D5:14:B2:77:72:6B:9D:D9:B3:52:12:02:84:5C:E2:5A\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:zQNTxkZImnhEBBCp\r\na=ice-pwd:jArpaaWnKyZoDdaTexxLCcmeJNIUEFdL\r\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 58305 typ host\r\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 58305 typ host\r\na=candidate:444725648 1 udp 1694498815 3.19.67.226 57461 typ srflx raddr 0.0.0.0 rport 57461\r\na=candidate:444725648 2 udp 1694498815 3.19.67.226 57461 typ srflx raddr 0.0.0.0 rport 57461\r\na=end-of-candidates\r\n"}
+2023/09/12 22:13:36 Received Answer.
+2023/09/12 22:13:36 WebRTC: MsgDataChannel.OnMessage hello
+2023/09/12 22:13:36 WebRTC: Directly connecting to hello
+2023/09/12 22:13:36 WebRTC: MsgDataChannel.OnOpen
+2023/09/12 22:13:36 WebRTC: DataChannel.OnOpen
+2023/09/12 22:13:36 ---- Handler: snowflake assigned ----
+2023/09/12 22:13:36 WebRTC: DataChannel created
+2023/09/12 22:13:36 WebRTC: Created offer
+2023/09/12 22:13:36 WebRTC: Set local description
+2023/09/12 22:13:37 WebRTC: Error sending POST request: Post "http://hello:51821/add": dial tcp: lookup hello on 127.0.0.53:53: server misbehaving
+2023/09/12 22:13:37 WebRTC: Error connecting to new IP: Post "http://hello:51821/add": dial tcp: lookup hello on 127.0.0.53:53: server misbehaving
+2023/09/12 22:13:40 Traffic Bytes (in|out): 17530 | 11420 -- (27 OnMessages, 34 Sends)
+2023/09/12 22:13:45 Traffic Bytes (in|out): 5945 | 5377 -- (15 OnMessages, 16 Sends)
+2023/09/12 22:13:45 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 22:13:45 Warning: NAT checking failed for server at stun.antisip.com:3478: Error retrieveing server response: timed out waiting for response
+2023/09/12 22:13:45 Warning: NAT checking failed for server at stun.dus.net:3478: NAT discovery feature not supported: attribute not found
+2023/09/12 22:13:45 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2023/09/12 22:13:45 NAT Type: restricted
+2023/09/12 22:13:50 Traffic Bytes (in|out): 628 | 83 -- (3 OnMessages, 3 Sends)
+2023/09/12 22:13:55 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 22:14:00 Traffic Bytes (in|out): 628 | 653 -- (3 OnMessages, 4 Sends)
+2023/09/12 22:14:05 Traffic Bytes (in|out): 25 | 603 -- (1 OnMessages, 2 Sends)
+2023/09/12 22:14:05 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 22:14:06 WebRTC: MsgDataChannel.OnMessage 3.19.67.226
+2023/09/12 22:14:06 WebRTC: Directly connecting to 3.19.67.226
+2023/09/12 22:14:06 WebRTC: DataChannel created
+2023/09/12 22:14:06 WebRTC: Created offer
+2023/09/12 22:14:06 WebRTC: Set local description
+2023/09/12 22:14:06 WebRTC: Received answer
+2023/09/12 22:14:06 WebRTC: Set remote description
+2023/09/12 22:14:06 WebRTC: closing DataChannel
+2023/09/12 22:14:06 WebRTC: closing PeerConnection
+2023/09/12 22:18:10 snowflake-client 2.6.0
+2023/09/12 22:18:10 Started SOCKS listener at 127.0.0.1:36039.
+2023/09/12 22:18:11 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/12 22:18:11 
+
+
+ --- Starting Snowflake Client ---
+2023/09/12 22:18:11 Using ICE servers:
+2023/09/12 22:18:11 url: stun:stun.antisip.com:3478
+2023/09/12 22:18:11 url: stun:stun.voip.blackberry.com:3478
+2023/09/12 22:18:11 url: stun:stun.voys.nl:3478
+2023/09/12 22:18:11 url: stun:stun.epygi.com:3478
+2023/09/12 22:18:11 url: stun:stun.uls.co.za:3478
+2023/09/12 22:18:11 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/12 22:18:11 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/12 22:18:11 ---- SnowflakeConn: starting a new session ---
+2023/09/12 22:18:11 redialing on same connection
+2023/09/12 22:18:11 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 22:18:11 ---- SnowflakeConn: begin stream 3 ---
+2023/09/12 22:18:11 snowflake-dbca959b02369108  connecting...
+2023/09/12 22:18:11 WebRTC: DataChannel created
+2023/09/12 22:18:11 WebRTC: Created offer
+2023/09/12 22:18:11 WebRTC: Set local description
+2023/09/12 22:18:11 Negotiating via HTTP rendezvous...
+2023/09/12 22:18:11 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 22:18:11 Front URL:   
+2023/09/12 22:18:11 HTTP rendezvous response: 200 OK
+2023/09/12 22:18:11 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 8665119364541376461 1694557091 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 16:1E:0B:F6:55:8A:A9:3D:A7:5D:0A:25:88:C6:AB:32:16:BA:67:58:E2:8F:32:DE:DD:69:10:20:20:29:27:9B\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:dLhMHziCurDYrJlU\\r\\na=ice-pwd:UZIpeWoTHnrhnoCtTfzKzInjlNFawplk\\r\\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 52592 typ host\\r\\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 52592 typ host\\r\\na=candidate:444725648 1 udp 1694498815 3.19.67.226 47138 typ srflx raddr 0.0.0.0 rport 47138\\r\\na=candidate:444725648 2 udp 1694498815 3.19.67.226 47138 typ srflx raddr 0.0.0.0 rport 47138\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/09/12 22:18:11 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 8665119364541376461 1694557091 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 16:1E:0B:F6:55:8A:A9:3D:A7:5D:0A:25:88:C6:AB:32:16:BA:67:58:E2:8F:32:DE:DD:69:10:20:20:29:27:9B\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:dLhMHziCurDYrJlU\r\na=ice-pwd:UZIpeWoTHnrhnoCtTfzKzInjlNFawplk\r\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 52592 typ host\r\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 52592 typ host\r\na=candidate:444725648 1 udp 1694498815 3.19.67.226 47138 typ srflx raddr 0.0.0.0 rport 47138\r\na=candidate:444725648 2 udp 1694498815 3.19.67.226 47138 typ srflx raddr 0.0.0.0 rport 47138\r\na=end-of-candidates\r\n"}
+2023/09/12 22:18:11 Received Answer.
+2023/09/12 22:18:12 WebRTC: MsgDataChannel.OnMessage hello
+2023/09/12 22:18:12 WebRTC: Directly connecting to hello
+2023/09/12 22:18:12 WebRTC: DataChannel.OnOpen
+2023/09/12 22:18:12 WebRTC: MsgDataChannel.OnOpen
+2023/09/12 22:18:12 ---- Handler: snowflake assigned ----
+2023/09/12 22:18:12 WebRTC: DataChannel created
+2023/09/12 22:18:12 WebRTC: Created offer
+2023/09/12 22:18:12 WebRTC: Set local description
+2023/09/12 22:18:13 WebRTC: Error sending POST request: Post "http://hello:51821/add": dial tcp: lookup hello on 127.0.0.53:53: server misbehaving
+2023/09/12 22:18:13 WebRTC: Error connecting to new IP: Post "http://hello:51821/add": dial tcp: lookup hello on 127.0.0.53:53: server misbehaving
+2023/09/12 22:18:16 Traffic Bytes (in|out): 17940 | 11002 -- (27 OnMessages, 33 Sends)
+2023/09/12 22:18:21 Traffic Bytes (in|out): 5348 | 4817 -- (11 OnMessages, 17 Sends)
+2023/09/12 22:18:21 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 22:18:21 Warning: NAT checking failed for server at stun.antisip.com:3478: Error retrieveing server response: timed out waiting for response
+2023/09/12 22:18:21 Warning: NAT checking failed for server at stun.voip.blackberry.com:3478: NAT discovery feature not supported: attribute not found
+2023/09/12 22:18:21 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2023/09/12 22:18:21 NAT Type: restricted
+2023/09/12 22:18:26 Traffic Bytes (in|out): 628 | 50 -- (3 OnMessages, 2 Sends)
+2023/09/12 22:18:31 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 22:18:36 Traffic Bytes (in|out): 628 | 83 -- (3 OnMessages, 3 Sends)
+2023/09/12 22:18:41 Traffic Bytes (in|out): 570 | 25 -- (1 OnMessages, 1 Sends)
+2023/09/12 22:18:41 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 22:18:41 WebRTC: MsgDataChannel.OnMessage 3.19.67.226
+2023/09/12 22:18:41 WebRTC: Directly connecting to 3.19.67.226
+2023/09/12 22:18:41 WebRTC: DataChannel created
+2023/09/12 22:18:41 WebRTC: Created offer
+2023/09/12 22:18:41 WebRTC: Set local description
+2023/09/12 22:18:42 WebRTC: Received answer
+2023/09/12 22:18:42 WebRTC: Set remote description
+2023/09/12 22:18:43 WebRTC: DataChannel.OnOpen
+2023/09/12 22:18:43 WebRTC: MsgDataChannel.OnMessage hello
+2023/09/12 22:18:43 WebRTC: MsgDataChannel.OnOpen
+2023/09/12 22:18:43 WebRTC: Directly connecting to hello
+2023/09/12 22:18:43 WebRTC: DataChannel created
+2023/09/12 22:18:43 WebRTC: Created offer
+2023/09/12 22:18:43 WebRTC: Set local description
+2023/09/12 22:18:43 WebRTC: Error sending POST request: Post "http://hello:51821/add": dial tcp: lookup hello on 127.0.0.53:53: server misbehaving
+2023/09/12 22:18:43 WebRTC: Error connecting to new IP: Post "http://hello:51821/add": dial tcp: lookup hello on 127.0.0.53:53: server misbehaving
+2023/09/12 22:18:46 Traffic Bytes (in|out): 25 | 33 -- (1 OnMessages, 1 Sends)
+2023/09/12 22:18:46 WebRTC: MsgDataChannel.OnClose
+2023/09/12 22:18:46 WebRTC: MsgDataChannel.OnError sending reset packet in non-established state: state=Closed
+2023/09/12 22:18:46 WebRTC: DataChannel.OnClose
+2023/09/12 22:18:46 WebRTC: closing DataChannel
+2023/09/12 22:18:46 WebRTC: closing PeerConnection
+2023/09/12 22:18:46 Error writing to SOCKS pipe
+2023/09/12 22:18:46 Error writing to SOCKS pipe
+2023/09/12 22:18:46 Error writing to SOCKS pipe
+2023/09/12 22:18:46 Error writing to SOCKS pipe
+2023/09/12 22:18:46 Error writing to SOCKS pipe
+2023/09/12 22:18:46 Error writing to SOCKS pipe
+2023/09/12 22:18:46 WebRTC: Closing
+2023/09/12 22:18:47 Error writing to SOCKS pipe
