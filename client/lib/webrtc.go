@@ -270,18 +270,11 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 	dc2.OnMessage(func(msg webrtc.DataChannelMessage) {
 		newIp := string(msg.Data)
 		log.Printf("WebRTC: MsgDataChannel.OnMessage %s", newIp)
-		peer, err := DirectConnect(config, newIp)
+		_, err := DirectConnect(config, newIp)
 		if err != nil {
 			log.Printf("WebRTC: Error connecting to new IP: %s", err)
 			return
 		}
-		c.recvPipe = peer.recvPipe
-		c.writePipe = peer.writePipe
-		c.transport = peer.transport
-		c.open = peer.open
-		c.closed = peer.closed
-		c.bytesLogger = peer.bytesLogger
-		c.eventsLogger = peer.eventsLogger
 
 	})
 	c.transport = dc
