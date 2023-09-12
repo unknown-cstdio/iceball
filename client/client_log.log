@@ -950,3 +950,84 @@ a=end-of-candidates
 2023/09/12 11:27:13 WebRTC: DataChannel created
 2023/09/12 11:27:13 WebRTC: Created offer
 2023/09/12 11:27:13 WebRTC: Set local description
+2023/09/12 11:28:48 snowflake-client 2.6.0
+2023/09/12 11:28:48 Started SOCKS listener at 127.0.0.1:40347.
+2023/09/12 11:28:49 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/12 11:28:49 
+
+
+ --- Starting Snowflake Client ---
+2023/09/12 11:28:49 Using ICE servers:
+2023/09/12 11:28:49 url: stun:stun.antisip.com:3478
+2023/09/12 11:28:49 url: stun:stun.voip.blackberry.com:3478
+2023/09/12 11:28:49 url: stun:stun.sonetel.net:3478
+2023/09/12 11:28:49 url: stun:stun.bluesip.net:3478
+2023/09/12 11:28:49 url: stun:stun.epygi.com:3478
+2023/09/12 11:28:49 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/12 11:28:49 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/12 11:28:49 ---- SnowflakeConn: starting a new session ---
+2023/09/12 11:28:49 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 11:28:49 snowflake-45c6e1ee85e1d6ae  connecting...
+2023/09/12 11:28:49 redialing on same connection
+2023/09/12 11:28:49 ---- SnowflakeConn: begin stream 3 ---
+2023/09/12 11:28:49 WebRTC: DataChannel created
+2023/09/12 11:28:49 WebRTC: Created offer
+2023/09/12 11:28:49 WebRTC: Set local description
+2023/09/12 11:28:49 Negotiating via HTTP rendezvous...
+2023/09/12 11:28:49 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 11:28:49 Front URL:   
+2023/09/12 11:28:49 WebRTC: closing DataChannel
+2023/09/12 11:28:49 WebRTC: closing PeerConnection
+2023/09/12 11:28:49 WebRTC: Closing
+2023/09/12 11:28:49 WebRTC: dial tcp 54.197.139.160:443: connect: connection refused  Retrying...
+2023/09/12 11:29:23 snowflake-client 2.6.0
+2023/09/12 11:29:23 Started SOCKS listener at 127.0.0.1:37979.
+2023/09/12 11:29:24 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/12 11:29:24 
+
+
+ --- Starting Snowflake Client ---
+2023/09/12 11:29:24 Using ICE servers:
+2023/09/12 11:29:24 url: stun:stun.sonetel.net:3478
+2023/09/12 11:29:24 url: stun:stun.sonetel.com:3478
+2023/09/12 11:29:24 url: stun:stun.voip.blackberry.com:3478
+2023/09/12 11:29:24 url: stun:stun.dus.net:3478
+2023/09/12 11:29:24 url: stun:stun.voys.nl:3478
+2023/09/12 11:29:24 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/12 11:29:24 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/12 11:29:24 ---- SnowflakeConn: starting a new session ---
+2023/09/12 11:29:24 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 11:29:24 snowflake-d845f190eddabfb5  connecting...
+2023/09/12 11:29:24 redialing on same connection
+2023/09/12 11:29:24 ---- SnowflakeConn: begin stream 3 ---
+2023/09/12 11:29:24 WebRTC: DataChannel created
+2023/09/12 11:29:24 WebRTC: Created offer
+2023/09/12 11:29:24 WebRTC: Set local description
+2023/09/12 11:29:24 NAT Type: restricted
+2023/09/12 11:29:24 Negotiating via HTTP rendezvous...
+2023/09/12 11:29:24 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 11:29:24 Front URL:   
+2023/09/12 11:29:25 HTTP rendezvous response: 200 OK
+2023/09/12 11:29:25 Received answer: {"error":"no snowflake proxies currently available"}
+2023/09/12 11:29:25 WebRTC: closing DataChannel
+2023/09/12 11:29:25 WebRTC: closing PeerConnection
+2023/09/12 11:29:25 WebRTC: Closing
+2023/09/12 11:29:25 WebRTC: no snowflake proxies currently available  Retrying...
+2023/09/12 11:29:34 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/12 11:29:34 snowflake-b7ef4abadb9c0a85  connecting...
+2023/09/12 11:29:34 WebRTC: DataChannel created
+2023/09/12 11:29:34 WebRTC: Created offer
+2023/09/12 11:29:34 WebRTC: Set local description
+2023/09/12 11:29:34 Negotiating via HTTP rendezvous...
+2023/09/12 11:29:34 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/12 11:29:34 Front URL:   
+2023/09/12 11:29:34 HTTP rendezvous response: 200 OK
+2023/09/12 11:29:34 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 285464571829973561 1694518174 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 12:71:5D:D1:B1:9A:40:62:1B:9C:65:DB:89:9A:98:B8:07:2D:44:13:78:A0:4D:4C:13:01:72:E2:66:34:75:72\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:nnoGvLARMBAKneDR\\r\\na=ice-pwd:JuwfEhZLVOUWfbiyNEmeGglguXPdihQc\\r\\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 47447 typ host\\r\\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 47447 typ host\\r\\na=candidate:444725648 1 udp 1694498815 3.19.67.226 39089 typ srflx raddr 0.0.0.0 rport 39089\\r\\na=candidate:444725648 2 udp 1694498815 3.19.67.226 39089 typ srflx raddr 0.0.0.0 rport 39089\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/09/12 11:29:34 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 285464571829973561 1694518174 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 12:71:5D:D1:B1:9A:40:62:1B:9C:65:DB:89:9A:98:B8:07:2D:44:13:78:A0:4D:4C:13:01:72:E2:66:34:75:72\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:nnoGvLARMBAKneDR\r\na=ice-pwd:JuwfEhZLVOUWfbiyNEmeGglguXPdihQc\r\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 47447 typ host\r\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 47447 typ host\r\na=candidate:444725648 1 udp 1694498815 3.19.67.226 39089 typ srflx raddr 0.0.0.0 rport 39089\r\na=candidate:444725648 2 udp 1694498815 3.19.67.226 39089 typ srflx raddr 0.0.0.0 rport 39089\r\na=end-of-candidates\r\n"}
+2023/09/12 11:29:34 Received Answer.
+2023/09/12 11:29:35 WebRTC: DataChannel.OnOpen
+2023/09/12 11:29:35 ---- Handler: snowflake assigned ----
+2023/09/12 11:29:39 Traffic Bytes (in|out): 1029910 | 411618 -- (785 OnMessages, 415 Sends)
+2023/09/12 11:29:44 Traffic Bytes (in|out): 4762447 | 145988 -- (3630 OnMessages, 545 Sends)
+2023/09/12 11:29:44 WebRTC: At capacity [1/1]  Retrying...
+2023/09/12 11:29:49 Traffic Bytes (in|out): 903445 | 31444 -- (707 OnMessages, 97 Sends)

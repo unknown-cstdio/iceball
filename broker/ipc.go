@@ -226,6 +226,15 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 
 	snowflake := i.matchSnowflake(offer.NatType)
 	if snowflake != nil {
+		var snowflakeHeap *SnowflakeHeap
+		if snowflake.natType == NATUnrestricted {
+			snowflakeHeap = i.ctx.snowflakes
+		} else {
+			snowflakeHeap = i.ctx.restrictedSnowflakes
+		}
+		i.ctx.snowflakeLock.Lock()
+		heap.Push(snowflakeHeap, snowflake)
+		i.ctx.snowflakeLock.Unlock()
 		url := snowflake.ip
 		ip, _, _ := net.SplitHostPort(url)
 		log.Printf("Client: Matched with %s", ip)
@@ -251,15 +260,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		}
 		log.Printf("answer: %s", answer)
 		sendClientResponse(&answer, response)
-		var snowflakeHeap *SnowflakeHeap
-		if snowflake.natType == NATUnrestricted {
-			snowflakeHeap = i.ctx.snowflakes
-		} else {
-			snowflakeHeap = i.ctx.restrictedSnowflakes
-		}
-		i.ctx.snowflakeLock.Lock()
-		heap.Push(snowflakeHeap, snowflake)
-		i.ctx.snowflakeLock.Unlock()
 		//snowflake.offerChannel <- offer
 	} else {
 		i.ctx.metrics.lock.Lock()
