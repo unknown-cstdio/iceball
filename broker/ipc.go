@@ -251,6 +251,15 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		}
 		log.Printf("answer: %s", answer)
 		sendClientResponse(&answer, response)
+		var snowflakeHeap *SnowflakeHeap
+		if snowflake.natType == NATUnrestricted {
+			snowflakeHeap = i.ctx.restrictedSnowflakes
+		} else {
+			snowflakeHeap = i.ctx.snowflakes
+		}
+		i.ctx.snowflakeLock.Lock()
+		heap.Push(snowflakeHeap, snowflake)
+		i.ctx.snowflakeLock.Unlock()
 		//snowflake.offerChannel <- offer
 	} else {
 		i.ctx.metrics.lock.Lock()
