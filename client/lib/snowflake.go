@@ -109,6 +109,8 @@ type ClientConfig struct {
 	BridgeFingerprint string
 }
 
+var Snowflakes *Peers
+
 // NewSnowflakeClient creates a new Snowflake transport client that can spawn multiple
 // Snowflake connections.
 //
@@ -167,6 +169,7 @@ func (t *Transport) Dial() (net.Conn, error) {
 
 	// Prepare to collect remote WebRTC peers.
 	snowflakes, err := NewPeers(t.dialer)
+	Snowflakes = snowflakes
 	if err != nil {
 		return nil, err
 	}
