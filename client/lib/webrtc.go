@@ -197,7 +197,7 @@ func (c *WebRTCPeer) connect(config *webrtc.Configuration, broker *BrokerChannel
 		return err
 	}
 
-	go c.checkForStaleness(SnowflakeTimeout)
+	//go c.checkForStaleness(SnowflakeTimeout)
 	return nil
 }
 

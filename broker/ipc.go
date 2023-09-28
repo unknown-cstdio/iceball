@@ -269,8 +269,12 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 				case <-newTicker.C:
 					log.Printf(client.proxy.ip)
 					log.Printf("client switching proxies")
-					/*oldProxy := client.proxy
+					oldProxy := client.proxy
 					client.proxy = i.matchSnowflake(offer.NatType)
+					if client.proxy == nil {
+						client.proxy = oldProxy
+						continue
+					}
 					transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip}
 					transferReqJSON, err := json.Marshal(transferReq)
 					if err != nil {
@@ -289,7 +293,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 						log.Printf("error sending transfer request")
 						log.Printf("response status code: %d", resp.StatusCode)
 						continue
-					}*/
+					}
 				default:
 					continue
 				}

@@ -913,6 +913,11 @@ func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request
 		log.Printf("Client not found: %v", transReq.Cid)
 		return
 	}
+	_, ok := client2Dc[transReq.Cid]
+	if !ok {
+		//log.Printf("Client not found: %v", transReq.Cid)
+		return
+	}
 	client2Dc[transReq.Cid].Send([]byte(ip))
 	dummyData := "dummy"
 	resp, err := http.Post("http://"+ip+":51821/data", "application/json", bytes.NewBuffer([]byte(dummyData)))
