@@ -52,3 +52,356 @@
 2023/09/12 23:16:57 WebRTC: DataChannel.OnOpen
 2023/09/12 23:16:57 WebRTC: MsgDataChannel.OnOpen
 2023/09/12 23:17:00 Traffic Bytes (in|out): 83 | 628 -- (3 OnMessages, 3 Sends)
+2023/09/28 20:35:49 snowflake-client 2.6.0
+2023/09/28 20:35:49 Started SOCKS listener at 127.0.0.1:35639.
+2023/09/28 20:35:50 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/28 20:35:50 
+
+
+ --- Starting Snowflake Client ---
+2023/09/28 20:35:50 Using ICE servers:
+2023/09/28 20:35:50 url: stun:stun.voys.nl:3478
+2023/09/28 20:35:50 url: stun:stun.sonetel.net:3478
+2023/09/28 20:35:50 url: stun:stun.bluesip.net:3478
+2023/09/28 20:35:50 url: stun:stun.voipgate.com:3478
+2023/09/28 20:35:50 url: stun:stun.antisip.com:3478
+2023/09/28 20:35:50 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/28 20:35:50 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/28 20:35:50 ---- SnowflakeConn: starting a new session ---
+2023/09/28 20:35:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/28 20:35:50 snowflake-6d7caab74300d144  connecting...
+2023/09/28 20:35:50 redialing on same connection
+2023/09/28 20:35:50 ---- SnowflakeConn: begin stream 3 ---
+2023/09/28 20:35:50 WebRTC: DataChannel created
+2023/09/28 20:35:50 WebRTC: Created offer
+2023/09/28 20:35:50 WebRTC: Set local description
+2023/09/28 20:35:51 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2023/09/28 20:35:51 Negotiating via HTTP rendezvous...
+2023/09/28 20:35:51 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/28 20:35:51 Front URL:   
+2023/09/28 20:35:51 HTTP rendezvous response: 200 OK
+2023/09/28 20:35:51 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 6745354163030085412 1695933351 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 9F:83:08:16:94:2D:EA:42:8B:C7:1A:56:A9:63:B9:D8:28:A6:48:06:F5:62:08:F3:30:89:CB:CB:89:8C:A1:CD\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:ABsgDzrZnLBEfhjp\\r\\na=ice-pwd:UWLTsCoeHEqJojoNNYUlCwNMlZOzvuNB\\r\\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 51776 typ host\\r\\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 51776 typ host\\r\\na=candidate:444725648 1 udp 1694498815 3.19.67.226 42666 typ srflx raddr 0.0.0.0 rport 42666\\r\\na=candidate:444725648 2 udp 1694498815 3.19.67.226 42666 typ srflx raddr 0.0.0.0 rport 42666\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/09/28 20:35:51 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 6745354163030085412 1695933351 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 9F:83:08:16:94:2D:EA:42:8B:C7:1A:56:A9:63:B9:D8:28:A6:48:06:F5:62:08:F3:30:89:CB:CB:89:8C:A1:CD\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:ABsgDzrZnLBEfhjp\r\na=ice-pwd:UWLTsCoeHEqJojoNNYUlCwNMlZOzvuNB\r\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 51776 typ host\r\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 51776 typ host\r\na=candidate:444725648 1 udp 1694498815 3.19.67.226 42666 typ srflx raddr 0.0.0.0 rport 42666\r\na=candidate:444725648 2 udp 1694498815 3.19.67.226 42666 typ srflx raddr 0.0.0.0 rport 42666\r\na=end-of-candidates\r\n"}
+2023/09/28 20:35:51 Received Answer.
+2023/09/28 20:35:52 WebRTC: DataChannel.OnOpen
+2023/09/28 20:35:52 ---- Handler: snowflake assigned ----
+2023/09/28 20:35:52 WebRTC: MsgDataChannel.OnOpen
+2023/09/28 20:35:53 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:35:54 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:35:55 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:35:55 Traffic Bytes (in|out): 214509 | 14546 -- (165 OnMessages, 56 Sends)
+2023/09/28 20:35:56 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:35:57 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:35:58 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:35:59 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:00 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:00 Traffic Bytes (in|out): 2428092 | 559898 -- (1846 OnMessages, 508 Sends)
+2023/09/28 20:36:00 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:36:01 Warning: NAT checking failed for server at stun.sonetel.net:3478: Error retrieveing server response: timed out waiting for response
+2023/09/28 20:36:01 NAT Type: restricted
+2023/09/28 20:36:01 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:02 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:03 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:04 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:05 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:05 Traffic Bytes (in|out): 0 | 15620 -- (0 OnMessages, 18 Sends)
+2023/09/28 20:36:06 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:07 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:08 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:09 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:10 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:10 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:36:10 Traffic Bytes (in|out): 0 | 14984 -- (0 OnMessages, 15 Sends)
+2023/09/28 20:36:11 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:12 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:13 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:14 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:50 snowflake-client 2.6.0
+2023/09/28 20:36:50 Started SOCKS listener at 127.0.0.1:34323.
+2023/09/28 20:36:51 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/09/28 20:36:51 
+
+
+ --- Starting Snowflake Client ---
+2023/09/28 20:36:51 Using ICE servers:
+2023/09/28 20:36:51 url: stun:stun.voip.blackberry.com:3478
+2023/09/28 20:36:51 url: stun:stun.epygi.com:3478
+2023/09/28 20:36:51 url: stun:stun.voys.nl:3478
+2023/09/28 20:36:51 url: stun:stun.dus.net:3478
+2023/09/28 20:36:51 url: stun:stun.sonetel.com:3478
+2023/09/28 20:36:51 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/09/28 20:36:51 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/09/28 20:36:51 ---- SnowflakeConn: starting a new session ---
+2023/09/28 20:36:51 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/09/28 20:36:51 snowflake-48daa01673ef441d  connecting...
+2023/09/28 20:36:51 ---- SnowflakeConn: begin stream 3 ---
+2023/09/28 20:36:51 redialing on same connection
+2023/09/28 20:36:51 WebRTC: DataChannel created
+2023/09/28 20:36:51 WebRTC: Created offer
+2023/09/28 20:36:51 WebRTC: Set local description
+2023/09/28 20:36:51 Warning: NAT checking failed for server at stun.voip.blackberry.com:3478: NAT discovery feature not supported: attribute not found
+2023/09/28 20:36:51 NAT Type: restricted
+2023/09/28 20:36:52 Negotiating via HTTP rendezvous...
+2023/09/28 20:36:52 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/09/28 20:36:52 Front URL:   
+2023/09/28 20:36:52 HTTP rendezvous response: 200 OK
+2023/09/28 20:36:52 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 491398286114863922 1695933412 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 14:33:0F:54:26:90:61:60:64:C6:0A:04:BB:F1:14:CF:A3:32:7A:D5:23:38:33:67:C5:CF:7A:95:4E:78:B0:DD\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:YtzOVoseCCESANVY\\r\\na=ice-pwd:AVqObFNtmLgbeEovqDWeaOZnYOyDSMIE\\r\\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 55251 typ host\\r\\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 55251 typ host\\r\\na=candidate:444725648 1 udp 1694498815 3.19.67.226 38416 typ srflx raddr 0.0.0.0 rport 38416\\r\\na=candidate:444725648 2 udp 1694498815 3.19.67.226 38416 typ srflx raddr 0.0.0.0 rport 38416\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/09/28 20:36:52 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 491398286114863922 1695933412 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 14:33:0F:54:26:90:61:60:64:C6:0A:04:BB:F1:14:CF:A3:32:7A:D5:23:38:33:67:C5:CF:7A:95:4E:78:B0:DD\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:YtzOVoseCCESANVY\r\na=ice-pwd:AVqObFNtmLgbeEovqDWeaOZnYOyDSMIE\r\na=candidate:3602035229 1 udp 2130706431 172.31.16.152 55251 typ host\r\na=candidate:3602035229 2 udp 2130706431 172.31.16.152 55251 typ host\r\na=candidate:444725648 1 udp 1694498815 3.19.67.226 38416 typ srflx raddr 0.0.0.0 rport 38416\r\na=candidate:444725648 2 udp 1694498815 3.19.67.226 38416 typ srflx raddr 0.0.0.0 rport 38416\r\na=end-of-candidates\r\n"}
+2023/09/28 20:36:52 Received Answer.
+2023/09/28 20:36:53 WebRTC: MsgDataChannel.OnOpen
+2023/09/28 20:36:53 WebRTC: DataChannel.OnOpen
+2023/09/28 20:36:53 ---- Handler: snowflake assigned ----
+2023/09/28 20:36:54 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:55 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:56 Traffic Bytes (in|out): 1046832 | 418349 -- (808 OnMessages, 390 Sends)
+2023/09/28 20:36:56 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:57 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:58 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:36:59 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:00 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:01 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:37:01 Traffic Bytes (in|out): 4862384 | 157394 -- (3681 OnMessages, 308 Sends)
+2023/09/28 20:37:01 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:02 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:03 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:04 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:05 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:06 Traffic Bytes (in|out): 8336 | 8381 -- (26 OnMessages, 23 Sends)
+2023/09/28 20:37:06 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:07 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:08 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:09 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:10 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:11 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:37:11 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:12 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:13 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:14 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:15 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:16 Traffic Bytes (in|out): 1223 | 141 -- (5 OnMessages, 5 Sends)
+2023/09/28 20:37:16 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:17 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:18 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:19 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:20 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:21 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:37:21 Traffic Bytes (in|out): 570 | 58 -- (1 OnMessages, 2 Sends)
+2023/09/28 20:37:21 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:22 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:22 WebRTC: MsgDataChannel.OnMessage 18.116.24.191
+2023/09/28 20:37:23 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:24 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:25 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:26 Traffic Bytes (in|out): 58 | 25 -- (2 OnMessages, 1 Sends)
+2023/09/28 20:37:26 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:27 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:28 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:29 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:30 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:31 Traffic Bytes (in|out): 50 | 1140 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:37:31 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:37:31 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:32 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:33 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:34 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:35 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:36 Traffic Bytes (in|out): 58 | 58 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:37:36 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:37 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:38 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:39 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:40 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:41 Traffic Bytes (in|out): 570 | 58 -- (1 OnMessages, 2 Sends)
+2023/09/28 20:37:41 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:37:41 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:42 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:43 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:44 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:45 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:46 Traffic Bytes (in|out): 58 | 25 -- (2 OnMessages, 1 Sends)
+2023/09/28 20:37:46 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:47 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:48 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:49 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:50 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:51 Traffic Bytes (in|out): 595 | 595 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:37:51 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:37:51 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:52 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:53 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:54 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:55 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:56 Traffic Bytes (in|out): 91 | 653 -- (3 OnMessages, 4 Sends)
+2023/09/28 20:37:56 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:57 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:58 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:37:59 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:00 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:01 Traffic Bytes (in|out): 595 | 25 -- (2 OnMessages, 1 Sends)
+2023/09/28 20:38:01 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:38:01 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:02 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:03 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:04 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:05 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:06 Traffic Bytes (in|out): 628 | 83 -- (3 OnMessages, 3 Sends)
+2023/09/28 20:38:06 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:07 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:08 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:09 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:10 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:11 Traffic Bytes (in|out): 595 | 595 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:38:11 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:38:11 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:12 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:13 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:14 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:15 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:16 Traffic Bytes (in|out): 58 | 58 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:38:16 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:17 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:18 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:19 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:20 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:21 Traffic Bytes (in|out): 25 | 570 -- (1 OnMessages, 1 Sends)
+2023/09/28 20:38:21 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:38:21 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:22 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:23 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:24 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:25 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:26 Traffic Bytes (in|out): 58 | 58 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:38:26 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:27 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:28 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:29 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:30 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:31 Traffic Bytes (in|out): 25 | 570 -- (1 OnMessages, 1 Sends)
+2023/09/28 20:38:31 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:38:31 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:32 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:33 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:34 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:35 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:36 Traffic Bytes (in|out): 8826 | 5875 -- (15 OnMessages, 16 Sends)
+2023/09/28 20:38:36 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:37 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:38 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:39 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:40 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:41 Traffic Bytes (in|out): 2163 | 25 -- (3 OnMessages, 1 Sends)
+2023/09/28 20:38:41 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:38:41 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:42 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:43 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:44 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:45 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:46 Traffic Bytes (in|out): 628 | 83 -- (3 OnMessages, 3 Sends)
+2023/09/28 20:38:46 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:47 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:48 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:49 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:50 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:51 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:38:51 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:52 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:53 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:54 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:55 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:56 Traffic Bytes (in|out): 1222 | 141 -- (4 OnMessages, 5 Sends)
+2023/09/28 20:38:56 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:57 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:58 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:38:59 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:00 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:01 Traffic Bytes (in|out): 570 | 25 -- (1 OnMessages, 1 Sends)
+2023/09/28 20:39:01 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:39:01 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:02 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:03 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:04 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:05 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:06 Traffic Bytes (in|out): 58 | 58 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:39:06 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:07 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:08 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:09 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:10 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:11 Traffic Bytes (in|out): 25 | 570 -- (1 OnMessages, 1 Sends)
+2023/09/28 20:39:11 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:39:11 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:12 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:13 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:14 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:15 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:16 Traffic Bytes (in|out): 83 | 628 -- (3 OnMessages, 3 Sends)
+2023/09/28 20:39:16 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:17 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:18 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:19 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:20 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:21 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:39:21 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:22 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:23 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:24 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:25 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:26 Traffic Bytes (in|out): 628 | 83 -- (3 OnMessages, 3 Sends)
+2023/09/28 20:39:26 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:27 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:28 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:29 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:30 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:31 Traffic Bytes (in|out): 595 | 595 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:39:31 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:39:31 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:32 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:33 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:34 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:35 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:36 Traffic Bytes (in|out): 58 | 58 -- (2 OnMessages, 2 Sends)
+2023/09/28 20:39:36 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:37 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:38 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:39 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:40 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:41 Traffic Bytes (in|out): 570 | 25 -- (1 OnMessages, 1 Sends)
+2023/09/28 20:39:41 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:39:41 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:42 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:43 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:44 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:45 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:46 Traffic Bytes (in|out): 7117 | 3006 -- (12 OnMessages, 9 Sends)
+2023/09/28 20:39:46 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:47 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:48 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:49 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:50 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:51 Traffic Bytes (in|out): 216938 | 8719 -- (202 OnMessages, 74 Sends)
+2023/09/28 20:39:51 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:39:51 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:52 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:53 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:54 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:55 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:56 Traffic Bytes (in|out): 998102 | 33475 -- (831 OnMessages, 169 Sends)
+2023/09/28 20:39:56 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:57 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:58 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:39:59 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:40:00 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:40:01 Traffic Bytes (in|out): 1210120 | 43813 -- (987 OnMessages, 154 Sends)
+2023/09/28 20:40:01 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:40:01 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:40:02 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:40:03 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:40:04 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:40:05 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:40:06 Traffic Bytes (in|out): 261027 | 11605 -- (227 OnMessages, 58 Sends)
+2023/09/28 20:40:06 WebRTC: MsgDataChannel.OnMessage ping
+2023/09/28 20:40:11 Traffic Bytes (in|out): 0 | 1140 -- (0 OnMessages, 2 Sends)
+2023/09/28 20:40:11 WebRTC: At capacity [1/1]  Retrying...
+2023/09/28 20:40:16 Traffic Bytes (in|out): 0 | 2445 -- (0 OnMessages, 9 Sends)
+2023/09/28 20:40:21 Traffic Bytes (in|out): 0 | 5832 -- (0 OnMessages, 14 Sends)
+2023/09/28 20:40:21 WebRTC: At capacity [1/1]  Retrying...
