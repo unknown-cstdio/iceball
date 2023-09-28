@@ -480,11 +480,6 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 			log.Printf("update map: %v", client2Dc)
 			dc.OnOpen(func() {
 				log.Printf("Data Channel %s-%d open\n", dc.Label(), dc.ID())
-				ticker := time.NewTicker(1 * time.Second)
-				for c := range ticker.C {
-					log.Printf("send ping: %v", c)
-					dc.Send([]byte("ping"))
-				}
 			})
 		}
 	})
