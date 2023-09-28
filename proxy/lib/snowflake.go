@@ -910,11 +910,6 @@ func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request
 	log.Printf("Received transfer request: %v", transReq)
 	ip, _, _ := net.SplitHostPort(transReq.NewIp)
 	if client2Dc[transReq.Cid] == nil {
-		log.Printf("Client not found: %v", transReq.Cid)
-		return
-	}
-	_, ok := client2Dc[transReq.Cid]
-	if !ok {
 		//log.Printf("Client not found: %v", transReq.Cid)
 		return
 	}

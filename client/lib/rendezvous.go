@@ -29,6 +29,8 @@ const (
 	readLimit                    = 100000 //Maximum number of bytes to be read from an HTTP response
 )
 
+var id = uuid.New()
+
 // RendezvousMethod represents a way of communicating with the broker: sending
 // an encoded client poll request (SDP offer) and receiving an encoded client
 // poll response (SDP answer) in return. RendezvousMethod is used by
@@ -125,7 +127,6 @@ func (bc *BrokerChannel) Negotiate(offer *webrtc.SessionDescription) (
 
 	// Encode the client poll request.
 	bc.lock.Lock()
-	id := uuid.New()
 	req := &messages.ClientPollRequest{
 		Offer:       offerSDP,
 		NAT:         bc.natType,

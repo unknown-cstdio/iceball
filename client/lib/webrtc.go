@@ -270,14 +270,15 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 	dc2.OnMessage(func(msg webrtc.DataChannelMessage) {
 		newIp := string(msg.Data)
 		log.Printf("WebRTC: MsgDataChannel.OnMessage %s", newIp)
-		/*
-			peer, err := DirectConnect(config, newIp)
-			if err != nil {
-				log.Printf("WebRTC: Error connecting to new IP: %s", err)
-				return
-			}
 
-			Snowflakes.Push(peer)*/
+		_, err := DirectConnect(config, newIp)
+		if err != nil {
+			log.Printf("WebRTC: Error connecting to new IP: %s", err)
+			return
+		}
+
+		//Snowflakes.Push(peer)
+		//c.Close()
 
 	})
 	c.transport = dc
