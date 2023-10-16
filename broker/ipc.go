@@ -296,9 +296,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			}
 		}()
 		sendClientResponse(&answer, response)
-		i.ctx.snowflakeLock.Lock()
-		heap.Push(snowflakeHeap, snowflake)
-		i.ctx.snowflakeLock.Unlock()
 		//snowflake.offerChannel <- offer
 	} else {
 		i.ctx.metrics.lock.Lock()
@@ -354,7 +351,9 @@ func (i *IPC) matchSnowflake(natType string) *Snowflake {
 	defer i.ctx.snowflakeLock.Unlock()
 
 	if snowflakeHeap.Len() > 0 {
-		return heap.Pop(snowflakeHeap).(*Snowflake)
+		result := heap.Pop(snowflakeHeap).(*Snowflake)
+		heap.Push(snowflakeHeap, result)
+		return result
 	} else {
 		return nil
 	}
