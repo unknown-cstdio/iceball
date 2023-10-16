@@ -208,7 +208,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		Sdp:     []byte(req.Offer),
 		Cid:     req.Id,
 	}
-	log.Printf("Client: Received offer: %s", offer)
 
 	fingerprint, err := hex.DecodeString(req.Fingerprint)
 	if err != nil {
@@ -260,8 +259,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		if err != nil {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
-		log.Printf("answer: %s", answer)
-		newTicker := time.NewTicker(time.Second * 30)
+
+		newTicker := time.NewTicker(time.Second * 1000)
 		client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 		go func() {
 			for {
