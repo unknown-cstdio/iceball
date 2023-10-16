@@ -227,12 +227,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 
 	snowflake := i.matchSnowflake(offer.NatType)
 	if snowflake != nil {
-		var snowflakeHeap *SnowflakeHeap
-		if snowflake.natType == NATUnrestricted {
-			snowflakeHeap = i.ctx.snowflakes
-		} else {
-			snowflakeHeap = i.ctx.restrictedSnowflakes
-		}
 		url := snowflake.ip
 		ip, _, _ := net.SplitHostPort(url)
 		log.Printf("Client: Matched with %s", ip)
