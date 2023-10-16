@@ -233,9 +233,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		} else {
 			snowflakeHeap = i.ctx.restrictedSnowflakes
 		}
-		i.ctx.snowflakeLock.Lock()
-		heap.Push(snowflakeHeap, snowflake)
-		i.ctx.snowflakeLock.Unlock()
 		url := snowflake.ip
 		ip, _, _ := net.SplitHostPort(url)
 		log.Printf("Client: Matched with %s", ip)
@@ -299,6 +296,9 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			}
 		}()
 		sendClientResponse(&answer, response)
+		i.ctx.snowflakeLock.Lock()
+		heap.Push(snowflakeHeap, snowflake)
+		i.ctx.snowflakeLock.Unlock()
 		//snowflake.offerChannel <- offer
 	} else {
 		i.ctx.metrics.lock.Lock()
