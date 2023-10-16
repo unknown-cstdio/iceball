@@ -202,6 +202,10 @@ func main() {
 		// We want to send the log output through our scrubber first
 		log.SetOutput(&safelog.LogScrubber{Output: logOutput})
 	}
+	//redirect stderr to log file
+	f, _ := os.OpenFile("err.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0664)
+	defer f.Close()
+	os.Stderr = f
 
 	log.Printf("snowflake-client %s\n", version.GetVersion())
 

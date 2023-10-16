@@ -30,6 +30,7 @@ type WebRTCPeer struct {
 	id        string
 	pc        *webrtc.PeerConnection
 	transport *webrtc.DataChannel
+	message   *webrtc.DataChannel
 
 	recvPipe  *io.PipeReader
 	writePipe *io.PipeWriter
@@ -124,9 +125,11 @@ func (c *WebRTCPeer) Closed() bool {
 
 // Close closes the connection the snowflake proxy.
 func (c *WebRTCPeer) Close() error {
-	close(c.closed)
-	c.cleanup()
-	log.Printf("WebRTC: Closing")
+	c.once.Do(func() {
+		close(c.closed)
+		c.cleanup()
+		log.Printf("WebRTC: Closing")
+	})
 	return nil
 }
 
@@ -185,6 +188,7 @@ func (c *WebRTCPeer) connect(config *webrtc.Configuration, broker *BrokerChannel
 		log.Println("WebRTC: Unable to SetRemoteDescription:", err)
 		return err
 	}
+	c.pc.SetLocalDescription(*localDescription)
 
 	// Wait for the datachannel to open or time out
 	select {
@@ -192,6 +196,7 @@ func (c *WebRTCPeer) connect(config *webrtc.Configuration, broker *BrokerChannel
 
 	case <-time.After(DataChannelTimeout):
 		c.transport.Close()
+		c.message.Close()
 		err = errors.New("timeout waiting for DataChannel.OnOpen")
 		c.eventsLogger.OnNewSnowflakeEvent(event.EventOnSnowflakeConnectionFailed{Error: err})
 		return err
@@ -263,6 +268,7 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 	})
 	dc2.OnClose(func() {
 		log.Println("WebRTC: MsgDataChannel.OnClose")
+		c.Close()
 	})
 	dc2.OnError(func(err error) {
 		log.Printf("WebRTC: MsgDataChannel.OnError %s", err)
@@ -271,18 +277,18 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 		newIp := string(msg.Data)
 		log.Printf("WebRTC: MsgDataChannel.OnMessage %s", newIp)
 
-		/*
-			_, err := DirectConnect(config, newIp)
-			if err != nil {
-				log.Printf("WebRTC: Error connecting to new IP: %s", err)
-				return
-			}*/
+		peer, err := DirectConnect(config, newIp)
+		if err != nil {
+			log.Printf("WebRTC: Error connecting to new IP: %s", err)
+			return
+		}
 
-		//Snowflakes.Push(peer)
-		//c.Close()
+		Snowflakes.Push(peer)
+		c.Close()
 
 	})
 	c.transport = dc
+	c.message = dc2
 	c.open = make(chan struct{})
 	log.Println("WebRTC: DataChannel created")
 
@@ -324,9 +330,13 @@ func (c *WebRTCPeer) cleanup() {
 		log.Printf("WebRTC: closing DataChannel")
 		c.transport.Close()
 	}
+	if nil != c.message {
+		c.message.Close()
+	}
 	if nil != c.pc {
 		log.Printf("WebRTC: closing PeerConnection")
 		err := c.pc.Close()
+		log.Printf("WebRTC: closed PeerConnection")
 		if nil != err {
 			log.Printf("Error closing peerconnection...")
 		}

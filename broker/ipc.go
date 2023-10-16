@@ -260,7 +260,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
 
-		newTicker := time.NewTicker(time.Second * 1000)
+		newTicker := time.NewTicker(time.Second * 20)
 		client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 		go func() {
 			for {
