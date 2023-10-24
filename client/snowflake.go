@@ -24,7 +24,7 @@ import (
 )
 
 const (
-	DefaultSnowflakeCapacity = 2
+	DefaultSnowflakeCapacity = 1
 )
 
 type ptEventLogger struct {

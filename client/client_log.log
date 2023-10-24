@@ -591,3 +591,336 @@
 2023/10/16 18:38:33 WebRTC: closed PeerConnection
 2023/10/16 18:38:33 WebRTC: Closing
 2023/10/16 18:38:33 WebRTC: MsgDataChannel.OnClose
+2023/10/24 20:18:45 snowflake-client 2.6.0
+2023/10/24 20:18:45 Started SOCKS listener at 127.0.0.1:35669.
+2023/10/24 20:18:46 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/10/24 20:18:46 
+
+
+ --- Starting Snowflake Client ---
+2023/10/24 20:18:46 Using ICE servers:
+2023/10/24 20:18:46 url: stun:stun.voipgate.com:3478
+2023/10/24 20:18:46 url: stun:stun.dus.net:3478
+2023/10/24 20:18:46 url: stun:stun.voip.blackberry.com:3478
+2023/10/24 20:18:46 url: stun:stun.voys.nl:3478
+2023/10/24 20:18:46 url: stun:stun.epygi.com:3478
+2023/10/24 20:18:46 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/10/24 20:18:46 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/10/24 20:18:46 ---- SnowflakeConn: starting a new session ---
+2023/10/24 20:18:46 WebRTC: Collecting a new Snowflake. Currently at [0/2]
+2023/10/24 20:18:46 snowflake-0053b3c7be671295  connecting...
+2023/10/24 20:18:46 redialing on same connection
+2023/10/24 20:18:46 ---- SnowflakeConn: begin stream 3 ---
+2023/10/24 20:18:46 WebRTC: DataChannel created
+2023/10/24 20:18:46 WebRTC: Created offer
+2023/10/24 20:18:46 WebRTC: Set local description
+2023/10/24 20:18:46 NAT Type: restricted
+2023/10/24 20:18:47 Negotiating via HTTP rendezvous...
+2023/10/24 20:18:47 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:18:47 Front URL:   
+2023/10/24 20:18:47 HTTP rendezvous response: 200 OK
+2023/10/24 20:18:47 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 4355340868284580064 1698178727 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 51:F5:DA:1B:B9:17:CB:69:EC:67:14:A9:A2:B3:EF:01:13:EC:98:80:5B:D1:39:A5:52:E5:A1:E6:80:C0:8A:03\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:xbOGrcIdFTJGCqOV\\r\\na=ice-pwd:uWziXWQYzsaXucvLCYQJpxRonnAAxuNV\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 45588 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 45588 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 50072 typ srflx raddr 0.0.0.0 rport 50072\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 50072 typ srflx raddr 0.0.0.0 rport 50072\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:18:47 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 4355340868284580064 1698178727 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 51:F5:DA:1B:B9:17:CB:69:EC:67:14:A9:A2:B3:EF:01:13:EC:98:80:5B:D1:39:A5:52:E5:A1:E6:80:C0:8A:03\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:xbOGrcIdFTJGCqOV\r\na=ice-pwd:uWziXWQYzsaXucvLCYQJpxRonnAAxuNV\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 45588 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 45588 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 50072 typ srflx raddr 0.0.0.0 rport 50072\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 50072 typ srflx raddr 0.0.0.0 rport 50072\r\na=end-of-candidates\r\n"}
+2023/10/24 20:18:47 Received Answer.
+2023/10/24 20:18:57 WebRTC: closing DataChannel
+2023/10/24 20:18:57 WebRTC: closing PeerConnection
+2023/10/24 20:18:57 WebRTC: closed PeerConnection
+2023/10/24 20:18:57 WebRTC: Closing
+2023/10/24 20:18:57 WebRTC: timeout waiting for DataChannel.OnOpen  Retrying...
+2023/10/24 20:18:57 WebRTC: Collecting a new Snowflake. Currently at [0/2]
+2023/10/24 20:18:57 snowflake-70ec7d32477a570e  connecting...
+2023/10/24 20:18:57 WebRTC: DataChannel created
+2023/10/24 20:18:57 WebRTC: Created offer
+2023/10/24 20:18:57 WebRTC: Set local description
+2023/10/24 20:18:57 Negotiating via HTTP rendezvous...
+2023/10/24 20:18:57 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:18:57 Front URL:   
+2023/10/24 20:18:57 HTTP rendezvous response: 200 OK
+2023/10/24 20:18:57 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 1385709886825449168 1698178737 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 61:1C:DA:6D:A9:11:CB:EA:B2:3B:77:AF:98:01:B1:0F:46:57:57:22:4B:17:D0:38:24:B6:2C:FB:97:59:DF:61\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:TzhNPgsbIdxcoqMy\\r\\na=ice-pwd:UzCsFmmrMCdKcYBjHhWmAeWMOQxqVIuI\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 44396 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 44396 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 58447 typ srflx raddr 0.0.0.0 rport 58447\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 58447 typ srflx raddr 0.0.0.0 rport 58447\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:18:57 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 1385709886825449168 1698178737 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 61:1C:DA:6D:A9:11:CB:EA:B2:3B:77:AF:98:01:B1:0F:46:57:57:22:4B:17:D0:38:24:B6:2C:FB:97:59:DF:61\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:TzhNPgsbIdxcoqMy\r\na=ice-pwd:UzCsFmmrMCdKcYBjHhWmAeWMOQxqVIuI\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 44396 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 44396 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 58447 typ srflx raddr 0.0.0.0 rport 58447\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 58447 typ srflx raddr 0.0.0.0 rport 58447\r\na=end-of-candidates\r\n"}
+2023/10/24 20:18:57 Received Answer.
+2023/10/24 20:18:58 WebRTC: MsgDataChannel.OnOpen
+2023/10/24 20:18:58 WebRTC: DataChannel.OnOpen
+2023/10/24 20:18:58 ---- Handler: snowflake assigned ----
+2023/10/24 20:19:01 Traffic Bytes (in|out): 12529 | 10054 -- (20 OnMessages, 39 Sends)
+2023/10/24 20:19:06 Traffic Bytes (in|out): 699209 | 12018 -- (512 OnMessages, 93 Sends)
+2023/10/24 20:19:07 WebRTC: Collecting a new Snowflake. Currently at [1/2]
+2023/10/24 20:19:07 snowflake-c6900b277a819b66  connecting...
+2023/10/24 20:19:07 WebRTC: DataChannel created
+2023/10/24 20:19:07 WebRTC: Created offer
+2023/10/24 20:19:07 WebRTC: Set local description
+2023/10/24 20:19:07 Negotiating via HTTP rendezvous...
+2023/10/24 20:19:07 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:19:07 Front URL:   
+2023/10/24 20:19:07 HTTP rendezvous response: 200 OK
+2023/10/24 20:19:07 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 8004023945548450131 1698178747 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 74:AA:FF:70:D4:72:7A:18:F5:EF:23:F5:C3:C5:50:80:4C:CF:EB:A5:D4:AE:2C:81:B0:95:8D:C1:E4:88:1F:9D\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:QfTLbrRMjrRBaaDm\\r\\na=ice-pwd:KAvbwnNedQTMVVWzFvflZFzsudrLimgL\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 55683 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 55683 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 56715 typ srflx raddr 0.0.0.0 rport 56715\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 56715 typ srflx raddr 0.0.0.0 rport 56715\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:19:07 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 8004023945548450131 1698178747 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 74:AA:FF:70:D4:72:7A:18:F5:EF:23:F5:C3:C5:50:80:4C:CF:EB:A5:D4:AE:2C:81:B0:95:8D:C1:E4:88:1F:9D\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:QfTLbrRMjrRBaaDm\r\na=ice-pwd:KAvbwnNedQTMVVWzFvflZFzsudrLimgL\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 55683 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 55683 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 56715 typ srflx raddr 0.0.0.0 rport 56715\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 56715 typ srflx raddr 0.0.0.0 rport 56715\r\na=end-of-candidates\r\n"}
+2023/10/24 20:19:07 Received Answer.
+2023/10/24 20:19:08 WebRTC: MsgDataChannel.OnOpen
+2023/10/24 20:19:08 WebRTC: DataChannel.OnOpen
+2023/10/24 20:19:17 WebRTC: At capacity [2/2]  Retrying...
+2023/10/24 20:19:21 Traffic Bytes (in|out): 0 | 7676 -- (0 OnMessages, 11 Sends)
+2023/10/24 20:20:36 snowflake-client 2.6.0
+2023/10/24 20:20:36 Started SOCKS listener at 127.0.0.1:40805.
+2023/10/24 20:20:37 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/10/24 20:20:37 
+
+
+ --- Starting Snowflake Client ---
+2023/10/24 20:20:37 Using ICE servers:
+2023/10/24 20:20:37 url: stun:stun.dus.net:3478
+2023/10/24 20:20:37 url: stun:stun.voys.nl:3478
+2023/10/24 20:20:37 url: stun:stun.voipgate.com:3478
+2023/10/24 20:20:37 url: stun:stun.bluesip.net:3478
+2023/10/24 20:20:37 url: stun:stun.sonetel.com:3478
+2023/10/24 20:20:37 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/10/24 20:20:37 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/10/24 20:20:37 ---- SnowflakeConn: starting a new session ---
+2023/10/24 20:20:37 WebRTC: Collecting a new Snowflake. Currently at [0/2]
+2023/10/24 20:20:37 snowflake-61fc9998fd268056  connecting...
+2023/10/24 20:20:37 redialing on same connection
+2023/10/24 20:20:37 ---- SnowflakeConn: begin stream 3 ---
+2023/10/24 20:20:37 WebRTC: DataChannel created
+2023/10/24 20:20:37 WebRTC: Created offer
+2023/10/24 20:20:37 WebRTC: Set local description
+2023/10/24 20:20:38 Warning: NAT checking failed for server at stun.dus.net:3478: NAT discovery feature not supported: attribute not found
+2023/10/24 20:20:38 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2023/10/24 20:20:48 Warning: NAT checking failed for server at stun.voipgate.com:3478: Error completing roundtrip map test: timed out waiting for response
+2023/10/24 20:20:48 Negotiating via HTTP rendezvous...
+2023/10/24 20:20:48 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:20:48 Front URL:   
+2023/10/24 20:20:48 HTTP rendezvous response: 200 OK
+2023/10/24 20:20:48 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 3881449027547868327 1698178848 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 54:7A:06:BC:2A:F5:D2:43:B3:FB:27:79:54:16:EF:29:7C:30:90:1D:D1:B6:C1:8D:CD:2C:5C:8B:34:6B:E4:D7\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:yrYYhvIkYyWOyanv\\r\\na=ice-pwd:zMhXiWWjfghKGFcwoqpmXXJTXEUbqPST\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 53435 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 53435 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 51266 typ srflx raddr 0.0.0.0 rport 51266\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 51266 typ srflx raddr 0.0.0.0 rport 51266\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:20:48 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 3881449027547868327 1698178848 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 54:7A:06:BC:2A:F5:D2:43:B3:FB:27:79:54:16:EF:29:7C:30:90:1D:D1:B6:C1:8D:CD:2C:5C:8B:34:6B:E4:D7\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:yrYYhvIkYyWOyanv\r\na=ice-pwd:zMhXiWWjfghKGFcwoqpmXXJTXEUbqPST\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 53435 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 53435 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 51266 typ srflx raddr 0.0.0.0 rport 51266\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 51266 typ srflx raddr 0.0.0.0 rport 51266\r\na=end-of-candidates\r\n"}
+2023/10/24 20:20:48 Received Answer.
+2023/10/24 20:20:48 NAT Type: restricted
+2023/10/24 20:20:49 WebRTC: DataChannel.OnOpen
+2023/10/24 20:20:49 WebRTC: Collecting a new Snowflake. Currently at [1/2]
+2023/10/24 20:20:49 ---- Handler: snowflake assigned ----
+2023/10/24 20:20:49 WebRTC: MsgDataChannel.OnOpen
+2023/10/24 20:20:49 snowflake-0ed91e225694db3a  connecting...
+2023/10/24 20:20:49 WebRTC: DataChannel created
+2023/10/24 20:20:49 WebRTC: Created offer
+2023/10/24 20:20:49 WebRTC: Set local description
+2023/10/24 20:20:49 Negotiating via HTTP rendezvous...
+2023/10/24 20:20:49 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:20:49 Front URL:   
+2023/10/24 20:20:49 HTTP rendezvous response: 200 OK
+2023/10/24 20:20:49 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 5370338946584315530 1698178849 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 2D:D8:99:C9:FE:86:CB:D1:0C:0C:44:EA:A0:74:C3:00:49:F5:52:9E:F8:5E:5F:62:C3:A3:61:03:12:DE:D6:C6\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:vWrznFylDiISzrea\\r\\na=ice-pwd:cBdJcWbBestqkOlfOmXpBBbgwbHyBABA\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 44571 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 44571 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 39905 typ srflx raddr 0.0.0.0 rport 39905\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 39905 typ srflx raddr 0.0.0.0 rport 39905\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:20:49 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 5370338946584315530 1698178849 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 2D:D8:99:C9:FE:86:CB:D1:0C:0C:44:EA:A0:74:C3:00:49:F5:52:9E:F8:5E:5F:62:C3:A3:61:03:12:DE:D6:C6\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:vWrznFylDiISzrea\r\na=ice-pwd:cBdJcWbBestqkOlfOmXpBBbgwbHyBABA\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 44571 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 44571 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 39905 typ srflx raddr 0.0.0.0 rport 39905\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 39905 typ srflx raddr 0.0.0.0 rport 39905\r\na=end-of-candidates\r\n"}
+2023/10/24 20:20:49 Received Answer.
+2023/10/24 20:20:50 WebRTC: MsgDataChannel.OnOpen
+2023/10/24 20:20:50 WebRTC: DataChannel.OnOpen
+2023/10/24 20:20:52 Traffic Bytes (in|out): 71938 | 12884 -- (62 OnMessages, 67 Sends)
+2023/10/24 20:20:57 Traffic Bytes (in|out): 2433118 | 217971 -- (1861 OnMessages, 278 Sends)
+2023/10/24 20:20:59 WebRTC: At capacity [2/2]  Retrying...
+2023/10/24 20:21:02 Traffic Bytes (in|out): 4244 | 3653 -- (13 OnMessages, 15 Sends)
+2023/10/24 20:21:07 Traffic Bytes (in|out): 50 | 1140 -- (2 OnMessages, 2 Sends)
+2023/10/24 20:21:09 WebRTC: At capacity [2/2]  Retrying...
+2023/10/24 20:21:10 WebRTC: No messages received for 20s -- closing stale connection.
+2023/10/24 20:21:10 WebRTC: closing DataChannel
+2023/10/24 20:21:10 WebRTC: closing PeerConnection
+2023/10/24 20:21:10 WebRTC: DataChannel.OnClose
+2023/10/24 20:21:10 WebRTC: MsgDataChannel.OnClose
+2023/10/24 20:21:10 WebRTC: closed PeerConnection
+2023/10/24 20:21:10 WebRTC: Closing
+2023/10/24 20:21:12 Traffic Bytes (in|out): 83 | 628 -- (3 OnMessages, 3 Sends)
+2023/10/24 20:21:17 Traffic Bytes (in|out): 25 | 603 -- (1 OnMessages, 2 Sends)
+2023/10/24 20:21:19 WebRTC: Collecting a new Snowflake. Currently at [1/2]
+2023/10/24 20:21:19 snowflake-6debf3c6b083120a  connecting...
+2023/10/24 20:21:19 WebRTC: DataChannel created
+2023/10/24 20:21:19 WebRTC: Created offer
+2023/10/24 20:21:19 WebRTC: Set local description
+2023/10/24 20:21:19 Negotiating via HTTP rendezvous...
+2023/10/24 20:21:19 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:21:19 Front URL:   
+2023/10/24 20:21:19 HTTP rendezvous response: 200 OK
+2023/10/24 20:21:19 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 5279631349997262974 1698178879 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 C0:DB:2A:76:EB:FE:AE:41:F8:C3:E6:8F:4E:F1:70:66:F4:87:C8:EB:61:D2:B3:88:40:F9:9D:C9:7B:5F:26:E4\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:tUNOpSOYkpuiMHHu\\r\\na=ice-pwd:rhmfJIJyDfZPUTnqzmAihxkcJnIMvcWA\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 34091 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 34091 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 52751 typ srflx raddr 0.0.0.0 rport 52751\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 52751 typ srflx raddr 0.0.0.0 rport 52751\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:21:19 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 5279631349997262974 1698178879 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 C0:DB:2A:76:EB:FE:AE:41:F8:C3:E6:8F:4E:F1:70:66:F4:87:C8:EB:61:D2:B3:88:40:F9:9D:C9:7B:5F:26:E4\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:tUNOpSOYkpuiMHHu\r\na=ice-pwd:rhmfJIJyDfZPUTnqzmAihxkcJnIMvcWA\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 34091 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 34091 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 52751 typ srflx raddr 0.0.0.0 rport 52751\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 52751 typ srflx raddr 0.0.0.0 rport 52751\r\na=end-of-candidates\r\n"}
+2023/10/24 20:21:19 Received Answer.
+2023/10/24 20:21:20 WebRTC: MsgDataChannel.OnOpen
+2023/10/24 20:21:20 WebRTC: DataChannel.OnOpen
+2023/10/24 20:21:22 Traffic Bytes (in|out): 83 | 595 -- (3 OnMessages, 2 Sends)
+2023/10/24 20:21:27 Traffic Bytes (in|out): 0 | 1173 -- (0 OnMessages, 3 Sends)
+2023/10/24 20:22:11 snowflake-client 2.6.0
+2023/10/24 20:22:11 Started SOCKS listener at 127.0.0.1:40411.
+2023/10/24 20:22:12 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/10/24 20:22:12 
+
+
+ --- Starting Snowflake Client ---
+2023/10/24 20:22:12 Using ICE servers:
+2023/10/24 20:22:12 url: stun:stun.voys.nl:3478
+2023/10/24 20:22:12 url: stun:stun.dus.net:3478
+2023/10/24 20:22:12 url: stun:stun.antisip.com:3478
+2023/10/24 20:22:12 url: stun:stun.voipgate.com:3478
+2023/10/24 20:22:12 url: stun:stun.sonetel.net:3478
+2023/10/24 20:22:12 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/10/24 20:22:12 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/10/24 20:22:12 ---- SnowflakeConn: starting a new session ---
+2023/10/24 20:22:12 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/10/24 20:22:12 snowflake-6212669a44f24706  connecting...
+2023/10/24 20:22:12 redialing on same connection
+2023/10/24 20:22:12 ---- SnowflakeConn: begin stream 3 ---
+2023/10/24 20:22:12 WebRTC: DataChannel created
+2023/10/24 20:22:12 WebRTC: Created offer
+2023/10/24 20:22:12 WebRTC: Set local description
+2023/10/24 20:22:22 Warning: NAT checking failed for server at stun.voys.nl:3478: Error completing roundtrip map test: timed out waiting for response
+2023/10/24 20:22:23 Warning: NAT checking failed for server at stun.dus.net:3478: NAT discovery feature not supported: attribute not found
+2023/10/24 20:22:23 Negotiating via HTTP rendezvous...
+2023/10/24 20:22:23 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:22:23 Front URL:   
+2023/10/24 20:22:23 HTTP rendezvous response: 200 OK
+2023/10/24 20:22:23 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 7375910741271432955 1698178943 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 4E:07:AD:69:3E:F4:DB:47:01:BC:01:10:94:8F:17:F1:B3:B6:1B:ED:7A:8E:D9:A8:56:28:81:EA:ED:77:72:A5\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:EesDrMCGWLvasiUd\\r\\na=ice-pwd:vVxbUzDbixuExhrTMrbiPpNyxhrCfowZ\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 47327 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 47327 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 43543 typ srflx raddr 0.0.0.0 rport 43543\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 43543 typ srflx raddr 0.0.0.0 rport 43543\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:22:23 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 7375910741271432955 1698178943 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 4E:07:AD:69:3E:F4:DB:47:01:BC:01:10:94:8F:17:F1:B3:B6:1B:ED:7A:8E:D9:A8:56:28:81:EA:ED:77:72:A5\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:EesDrMCGWLvasiUd\r\na=ice-pwd:vVxbUzDbixuExhrTMrbiPpNyxhrCfowZ\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 47327 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 47327 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 43543 typ srflx raddr 0.0.0.0 rport 43543\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 43543 typ srflx raddr 0.0.0.0 rport 43543\r\na=end-of-candidates\r\n"}
+2023/10/24 20:22:23 Received Answer.
+2023/10/24 20:22:33 Warning: NAT checking failed for server at stun.antisip.com:3478: Error retrieveing server response: timed out waiting for response
+2023/10/24 20:22:33 NAT Type: restricted
+2023/10/24 20:22:33 WebRTC: closing DataChannel
+2023/10/24 20:22:33 WebRTC: closing PeerConnection
+2023/10/24 20:22:33 WebRTC: closed PeerConnection
+2023/10/24 20:22:33 WebRTC: Closing
+2023/10/24 20:22:33 WebRTC: timeout waiting for DataChannel.OnOpen  Retrying...
+2023/10/24 20:22:33 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/10/24 20:22:33 snowflake-0693274b3389b464  connecting...
+2023/10/24 20:22:33 WebRTC: DataChannel created
+2023/10/24 20:22:33 WebRTC: Created offer
+2023/10/24 20:22:33 WebRTC: Set local description
+2023/10/24 20:22:34 Negotiating via HTTP rendezvous...
+2023/10/24 20:22:34 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:22:34 Front URL:   
+2023/10/24 20:22:35 HTTP rendezvous response: 200 OK
+2023/10/24 20:22:35 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 511746166593641205 1698178955 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 CC:FC:14:39:EE:7C:8C:F2:14:4D:75:3E:E3:71:FD:A0:39:D7:EB:AB:36:44:EC:8A:D8:DF:20:3A:09:76:88:5A\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:hYUErmJHLeccyYDi\\r\\na=ice-pwd:nzinCjTAWkOYkfJbUogezxLruYyiQXNo\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 41928 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 41928 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 41640 typ srflx raddr 0.0.0.0 rport 41640\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 41640 typ srflx raddr 0.0.0.0 rport 41640\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:22:35 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 511746166593641205 1698178955 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 CC:FC:14:39:EE:7C:8C:F2:14:4D:75:3E:E3:71:FD:A0:39:D7:EB:AB:36:44:EC:8A:D8:DF:20:3A:09:76:88:5A\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:hYUErmJHLeccyYDi\r\na=ice-pwd:nzinCjTAWkOYkfJbUogezxLruYyiQXNo\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 41928 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 41928 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 41640 typ srflx raddr 0.0.0.0 rport 41640\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 41640 typ srflx raddr 0.0.0.0 rport 41640\r\na=end-of-candidates\r\n"}
+2023/10/24 20:22:35 Received Answer.
+2023/10/24 20:22:45 WebRTC: closing DataChannel
+2023/10/24 20:22:45 WebRTC: closing PeerConnection
+2023/10/24 20:22:45 WebRTC: closed PeerConnection
+2023/10/24 20:22:45 WebRTC: Closing
+2023/10/24 20:22:45 WebRTC: timeout waiting for DataChannel.OnOpen  Retrying...
+2023/10/24 20:22:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/10/24 20:22:45 snowflake-748a9ed0269c0eb4  connecting...
+2023/10/24 20:22:45 WebRTC: DataChannel created
+2023/10/24 20:22:45 WebRTC: Created offer
+2023/10/24 20:22:45 WebRTC: Set local description
+2023/10/24 20:22:45 Negotiating via HTTP rendezvous...
+2023/10/24 20:22:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:22:45 Front URL:   
+2023/10/24 20:22:45 HTTP rendezvous response: 200 OK
+2023/10/24 20:22:45 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 8372606881160723546 1698178965 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 8F:5F:3D:9A:52:CD:0A:A6:FE:4C:81:32:11:F4:7D:60:BF:AA:4E:51:82:6F:6B:9E:04:45:A1:89:FD:4B:22:42\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:XLDHbEhkxJLauIMM\\r\\na=ice-pwd:aLVFGyQNFwKoHOvVWRsNuinuSuqYrRCk\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 60928 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 60928 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 59358 typ srflx raddr 0.0.0.0 rport 59358\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 59358 typ srflx raddr 0.0.0.0 rport 59358\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:22:45 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 8372606881160723546 1698178965 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 8F:5F:3D:9A:52:CD:0A:A6:FE:4C:81:32:11:F4:7D:60:BF:AA:4E:51:82:6F:6B:9E:04:45:A1:89:FD:4B:22:42\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:XLDHbEhkxJLauIMM\r\na=ice-pwd:aLVFGyQNFwKoHOvVWRsNuinuSuqYrRCk\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 60928 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 60928 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 59358 typ srflx raddr 0.0.0.0 rport 59358\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 59358 typ srflx raddr 0.0.0.0 rport 59358\r\na=end-of-candidates\r\n"}
+2023/10/24 20:22:45 Received Answer.
+2023/10/24 20:22:46 WebRTC: DataChannel.OnOpen
+2023/10/24 20:22:46 ---- Handler: snowflake assigned ----
+2023/10/24 20:22:46 WebRTC: MsgDataChannel.OnOpen
+2023/10/24 20:22:47 Traffic Bytes (in|out): 4203 | 8538 -- (6 OnMessages, 63 Sends)
+2023/10/24 20:22:52 Traffic Bytes (in|out): 2953 | 1159 -- (5 OnMessages, 4 Sends)
+2023/10/24 20:22:55 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:22:57 Traffic Bytes (in|out): 57142 | 258099 -- (51 OnMessages, 224 Sends)
+2023/10/24 20:23:02 Traffic Bytes (in|out): 103360 | 3985 -- (75 OnMessages, 50 Sends)
+2023/10/24 20:23:05 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:23:07 Traffic Bytes (in|out): 25206 | 7726 -- (19 OnMessages, 13 Sends)
+2023/10/24 20:23:40 snowflake-client 2.6.0
+2023/10/24 20:23:40 Started SOCKS listener at 127.0.0.1:40839.
+2023/10/24 20:23:41 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/10/24 20:23:41 
+
+
+ --- Starting Snowflake Client ---
+2023/10/24 20:23:41 Using ICE servers:
+2023/10/24 20:23:41 url: stun:stun.epygi.com:3478
+2023/10/24 20:23:41 url: stun:stun.voip.blackberry.com:3478
+2023/10/24 20:23:41 url: stun:stun.bluesip.net:3478
+2023/10/24 20:23:41 url: stun:stun.voipgate.com:3478
+2023/10/24 20:23:41 url: stun:stun.voys.nl:3478
+2023/10/24 20:23:41 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/10/24 20:23:41 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/10/24 20:23:41 ---- SnowflakeConn: starting a new session ---
+2023/10/24 20:23:41 redialing on same connection
+2023/10/24 20:23:41 ---- SnowflakeConn: begin stream 3 ---
+2023/10/24 20:23:41 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/10/24 20:23:41 snowflake-50a88d19c4d5deb2  connecting...
+2023/10/24 20:23:41 WebRTC: DataChannel created
+2023/10/24 20:23:41 WebRTC: Created offer
+2023/10/24 20:23:41 WebRTC: Set local description
+2023/10/24 20:23:41 NAT Type: restricted
+2023/10/24 20:23:41 Negotiating via HTTP rendezvous...
+2023/10/24 20:23:41 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:23:41 Front URL:   
+2023/10/24 20:23:41 HTTP rendezvous response: 200 OK
+2023/10/24 20:23:41 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 7256378246256056509 1698179021 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 F2:89:F4:90:AB:11:CC:40:36:5B:6A:61:B0:22:70:0B:82:A4:9E:C1:F2:08:DF:38:2B:BF:2C:0B:D3:8A:E4:C4\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:AeTHyMsvneOLGGBv\\r\\na=ice-pwd:VbTEQwNzehCRxeXbEMudLcHHsFfjXgTy\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 47516 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 47516 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 37075 typ srflx raddr 0.0.0.0 rport 37075\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 37075 typ srflx raddr 0.0.0.0 rport 37075\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:23:41 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 7256378246256056509 1698179021 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 F2:89:F4:90:AB:11:CC:40:36:5B:6A:61:B0:22:70:0B:82:A4:9E:C1:F2:08:DF:38:2B:BF:2C:0B:D3:8A:E4:C4\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:AeTHyMsvneOLGGBv\r\na=ice-pwd:VbTEQwNzehCRxeXbEMudLcHHsFfjXgTy\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 47516 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 47516 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 37075 typ srflx raddr 0.0.0.0 rport 37075\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 37075 typ srflx raddr 0.0.0.0 rport 37075\r\na=end-of-candidates\r\n"}
+2023/10/24 20:23:41 Received Answer.
+2023/10/24 20:23:43 WebRTC: MsgDataChannel.OnOpen
+2023/10/24 20:23:43 WebRTC: DataChannel.OnOpen
+2023/10/24 20:23:43 ---- Handler: snowflake assigned ----
+2023/10/24 20:23:46 Traffic Bytes (in|out): 7650 | 3806 -- (13 OnMessages, 23 Sends)
+2023/10/24 20:23:51 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:23:51 Traffic Bytes (in|out): 5385 | 1134 -- (7 OnMessages, 3 Sends)
+2023/10/24 20:23:56 Traffic Bytes (in|out): 64738 | 209427 -- (59 OnMessages, 181 Sends)
+2023/10/24 20:24:01 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:24:01 Traffic Bytes (in|out): 254353 | 8379 -- (187 OnMessages, 69 Sends)
+2023/10/24 20:24:06 Traffic Bytes (in|out): 344983 | 11508 -- (269 OnMessages, 80 Sends)
+2023/10/24 20:24:11 Traffic Bytes (in|out): 0 | 3364 -- (0 OnMessages, 5 Sends)
+2023/10/24 20:24:11 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:24:16 Traffic Bytes (in|out): 0 | 10825 -- (0 OnMessages, 20 Sends)
+2023/10/24 20:24:21 Traffic Bytes (in|out): 0 | 603 -- (0 OnMessages, 2 Sends)
+2023/10/24 20:24:21 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:24:22 WebRTC: No messages received for 20s -- closing stale connection.
+2023/10/24 20:24:22 WebRTC: closing DataChannel
+2023/10/24 20:24:22 WebRTC: closing PeerConnection
+2023/10/24 20:24:22 WebRTC: DataChannel.OnClose
+2023/10/24 20:24:22 WebRTC: MsgDataChannel.OnClose
+2023/10/24 20:24:22 WebRTC: closed PeerConnection
+2023/10/24 20:24:22 WebRTC: Closing
+2023/10/24 20:24:22 redialing on same connection
+2023/10/24 20:24:26 Traffic Bytes (in|out): 0 | 33 -- (0 OnMessages, 1 Sends)
+2023/10/24 20:39:43 snowflake-client 2.6.0
+2023/10/24 20:39:43 Started SOCKS listener at 127.0.0.1:32897.
+2023/10/24 20:39:44 SOCKS accepted: {192.0.2.3:1   map[]}
+2023/10/24 20:39:44 
+
+
+ --- Starting Snowflake Client ---
+2023/10/24 20:39:44 Using ICE servers:
+2023/10/24 20:39:44 url: stun:stun.dus.net:3478
+2023/10/24 20:39:44 url: stun:stun.voip.blackberry.com:3478
+2023/10/24 20:39:44 url: stun:stun.bluesip.net:3478
+2023/10/24 20:39:44 url: stun:stun.sonetel.com:3478
+2023/10/24 20:39:44 url: stun:stun.voys.nl:3478
+2023/10/24 20:39:44 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2023/10/24 20:39:44 ---- SnowflakeConn: begin collecting snowflakes ---
+2023/10/24 20:39:44 ---- SnowflakeConn: starting a new session ---
+2023/10/24 20:39:44 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2023/10/24 20:39:44 snowflake-94fe96291b8ebcf6  connecting...
+2023/10/24 20:39:44 redialing on same connection
+2023/10/24 20:39:44 ---- SnowflakeConn: begin stream 3 ---
+2023/10/24 20:39:44 WebRTC: DataChannel created
+2023/10/24 20:39:44 WebRTC: Created offer
+2023/10/24 20:39:44 WebRTC: Set local description
+2023/10/24 20:39:45 Warning: NAT checking failed for server at stun.dus.net:3478: NAT discovery feature not supported: attribute not found
+2023/10/24 20:39:45 Negotiating via HTTP rendezvous...
+2023/10/24 20:39:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2023/10/24 20:39:45 Front URL:   
+2023/10/24 20:39:45 Warning: NAT checking failed for server at stun.voip.blackberry.com:3478: NAT discovery feature not supported: attribute not found
+2023/10/24 20:39:46 HTTP rendezvous response: 200 OK
+2023/10/24 20:39:46 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 7336341746900555611 1698179986 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 5F:9C:05:5F:CD:CF:FF:26:F8:1B:FA:3D:8C:E3:E3:8C:97:55:C6:93:FD:77:95:A6:2D:06:26:BC:53:29:0D:81\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:pYwPVFzgvxxQpCgF\\r\\na=ice-pwd:gjOQqRTsIuKzYTZlRdpmEnKmhSTzVbNL\\r\\na=candidate:144239584 1 udp 2130706431 172.31.44.209 58940 typ host\\r\\na=candidate:144239584 2 udp 2130706431 172.31.44.209 58940 typ host\\r\\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 60737 typ srflx raddr 0.0.0.0 rport 60737\\r\\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 60737 typ srflx raddr 0.0.0.0 rport 60737\\r\\na=end-of-candidates\\r\\n\"}"}
+2023/10/24 20:39:46 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 7336341746900555611 1698179986 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 5F:9C:05:5F:CD:CF:FF:26:F8:1B:FA:3D:8C:E3:E3:8C:97:55:C6:93:FD:77:95:A6:2D:06:26:BC:53:29:0D:81\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:pYwPVFzgvxxQpCgF\r\na=ice-pwd:gjOQqRTsIuKzYTZlRdpmEnKmhSTzVbNL\r\na=candidate:144239584 1 udp 2130706431 172.31.44.209 58940 typ host\r\na=candidate:144239584 2 udp 2130706431 172.31.44.209 58940 typ host\r\na=candidate:2688651759 1 udp 1694498815 3.21.127.96 60737 typ srflx raddr 0.0.0.0 rport 60737\r\na=candidate:2688651759 2 udp 1694498815 3.21.127.96 60737 typ srflx raddr 0.0.0.0 rport 60737\r\na=end-of-candidates\r\n"}
+2023/10/24 20:39:46 Received Answer.
+2023/10/24 20:39:46 WebRTC: DataChannel.OnOpen
+2023/10/24 20:39:46 ---- Handler: snowflake assigned ----
+2023/10/24 20:39:46 WebRTC: MsgDataChannel.OnOpen
+2023/10/24 20:39:49 Traffic Bytes (in|out): 14107 | 7915 -- (20 OnMessages, 27 Sends)
+2023/10/24 20:39:54 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:39:54 Traffic Bytes (in|out): 10975 | 10033 -- (23 OnMessages, 31 Sends)
+2023/10/24 20:39:55 Warning: NAT checking failed for server at stun.bluesip.net:3478: Error completing roundtrip map test: timed out waiting for response
+2023/10/24 20:39:59 Traffic Bytes (in|out): 1817 | 1272 -- (6 OnMessages, 6 Sends)
+2023/10/24 20:40:04 Traffic Bytes (in|out): 570 | 25 -- (1 OnMessages, 1 Sends)
+2023/10/24 20:40:04 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:40:05 Warning: NAT checking failed for server at stun.sonetel.com:3478: Error retrieveing server response: timed out waiting for response
+2023/10/24 20:40:05 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2023/10/24 20:40:05 NAT Type: unknown
+2023/10/24 20:40:09 Traffic Bytes (in|out): 628 | 83 -- (3 OnMessages, 3 Sends)
+2023/10/24 20:40:14 Traffic Bytes (in|out): 4707 | 6419 -- (11 OnMessages, 16 Sends)
+2023/10/24 20:40:14 WebRTC: At capacity [1/1]  Retrying...
+2023/10/24 20:40:19 Traffic Bytes (in|out): 8362 | 3057 -- (16 OnMessages, 12 Sends)
