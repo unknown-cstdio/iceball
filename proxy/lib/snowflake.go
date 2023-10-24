@@ -34,6 +34,7 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
+	"math"
 	"net"
 	"net/http"
 	"net/url"
@@ -82,6 +83,8 @@ const (
 	readLimit = 100000
 
 	sessionIDLength = 16
+
+	probeTime = 5
 )
 
 const bufferedAmountLowThreshold uint64 = 256 * 1024 // 256 KB
@@ -150,6 +153,7 @@ type ClientOffer struct {
 }
 
 var client2Dc = make(map[string]*webrtc.DataChannel)
+var client2TransferIP = make(map[string]string)
 
 // Checks whether an IP address is a remote address for the client
 func isRemoteAddress(ip net.IP) bool {
@@ -478,9 +482,29 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 		} else {
 			client2Dc[clientId] = dc
 			log.Printf("update map: %v", client2Dc)
+			dcClosed := make(chan bool)
 			dc.OnOpen(func() {
 				log.Printf("Data Channel %s-%d open\n", dc.Label(), dc.ID())
+				ticker := time.NewTicker(probeTime)
+				go func() {
+					select {
+					case <-ticker.C:
+						log.Printf("send probe to client: %v", clientId)
+						msg := messages.ProbeMessage{TimeVal: int(probeTime) + int(math.Ceil(0.5*float64(probeTime))), BackupProxyIP: client2TransferIP[clientId]}
+						probeMsg, err := json.Marshal(msg)
+						if err != nil {
+							log.Printf("error: %v", err)
+						}
+						dc.Send(probeMsg)
+					case <-dcClosed:
+						ticker.Stop()
+					}
+				}()
 			})
+			dc.OnClose(func() {
+				dcClosed <- true
+			})
+
 		}
 	})
 	// As of v3.0.0, pion-webrtc uses trickle ICE by default.
@@ -913,15 +937,24 @@ func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request
 		//log.Printf("Client not found: %v", transReq.Cid)
 		return
 	}
-	client2Dc[transReq.Cid].Send([]byte(ip))
-	dummyData := "dummy"
-	resp, err := http.Post("http://"+ip+":51821/data", "application/json", bytes.NewBuffer([]byte(dummyData)))
-	if err != nil {
-		log.Printf("Error sending data to new proxy: %v", err)
+	client2TransferIP[transReq.Cid] = ip
+	if transReq.TransferNow {
+		msg := messages.ProbeMessage{TimeVal: 0, BackupProxyIP: ip}
+		probeMsg, err := json.Marshal(msg)
+		if err != nil {
+			log.Printf("error: %v", err)
+		}
+		client2Dc[transReq.Cid].Send(probeMsg)
+		dummyData := "dummy"
+		resp, err := http.Post("http://"+ip+":51821/data", "application/json", bytes.NewBuffer([]byte(dummyData)))
+		if err != nil {
+			log.Printf("Error sending data to new proxy: %v", err)
+		}
+		if resp.StatusCode != http.StatusOK {
+			log.Printf("Error sending data to new proxy: %v", resp.StatusCode)
+		}
 	}
-	if resp.StatusCode != http.StatusOK {
-		log.Printf("Error sending data to new proxy: %v", resp.StatusCode)
-	}
+
 }
 
 func (sf *SnowflakeProxy) dataHandler(w http.ResponseWriter, r *http.Request) {

@@ -52,7 +52,7 @@ const (
 	// a remote snowflake has been disconnected. If no new messages are sent or received
 	// in this time period, the client will terminate the connection with the remote
 	// peer and collect a new snowflake.
-	SnowflakeTimeout = 7 * time.Second
+	SnowflakeTimeout = 20 * time.Second
 	// DataChannelTimeout is how long the client will wait for the OnOpen callback
 	// on a newly created DataChannel.
 	DataChannelTimeout = 10 * time.Second

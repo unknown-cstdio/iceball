@@ -265,7 +265,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 						client.proxy = oldProxy
 						continue
 					}
-					transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip}
+					transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip, TransferNow: true}
 					transferReqJSON, err := json.Marshal(transferReq)
 					if err != nil {
 						log.Printf("error marshalling transfer request")
@@ -284,6 +284,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 						log.Printf("response status code: %d", resp.StatusCode)
 						continue
 					}
+					//temporary, for testing
+					newTicker.Stop()
 				default:
 					continue
 				}

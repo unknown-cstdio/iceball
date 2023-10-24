@@ -45,6 +45,9 @@ type WebRTCPeer struct {
 
 	bytesLogger  bytesLogger
 	eventsLogger event.SnowflakeEventReceiver
+
+	backUpProxy string
+	probeTimer  *time.Timer
 }
 
 type ClientOffer struct {
@@ -93,6 +96,13 @@ func NewWebRTCPeerWithEvents(config *webrtc.Configuration,
 		connection.Close()
 		return nil, err
 	}
+	//Initial timer is large, will be reset by probe message
+	connection.probeTimer = time.NewTimer(120 * time.Second)
+	go func() {
+		<-connection.probeTimer.C
+		log.Printf("WebRTC: Probe timer expired")
+		connection.Close()
+	}()
 	return connection, nil
 }
 
@@ -274,17 +284,30 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 		log.Printf("WebRTC: MsgDataChannel.OnError %s", err)
 	})
 	dc2.OnMessage(func(msg webrtc.DataChannelMessage) {
-		newIp := string(msg.Data)
-		log.Printf("WebRTC: MsgDataChannel.OnMessage %s", newIp)
-
-		/*peer, err := DirectConnect(config, newIp)
+		probeMsg := messages.ProbeMessage{}
+		err := json.Unmarshal(msg.Data, &probeMsg)
 		if err != nil {
-			log.Printf("WebRTC: Error connecting to new IP: %s", err)
+			log.Printf("WebRTC: Error unmarshalling probe message: %s", err)
 			return
 		}
-
-		Snowflakes.Push(peer)*/
-		c.Close()
+		if probeMsg.BackupProxyIP != "" {
+			if c.backUpProxy != probeMsg.BackupProxyIP {
+				c.backUpProxy = probeMsg.BackupProxyIP
+				log.Printf("WebRTC: Received new backup proxy: %s", c.backUpProxy)
+				peer, err := DirectConnect(config, c.backUpProxy)
+				if err != nil {
+					log.Printf("WebRTC: Error connecting to new IP: %s", err)
+					return
+				}
+				Snowflakes.Consume()
+				Snowflakes.Push(peer)
+			}
+		}
+		if probeMsg.TimeVal != 0 {
+			c.probeTimer.Reset(time.Duration(probeMsg.TimeVal) * time.Second)
+		} else {
+			c.probeTimer.Reset(1 * time.Millisecond)
+		}
 
 	})
 	c.transport = dc
@@ -414,5 +437,12 @@ func DirectConnect(config *webrtc.Configuration, ip string) (*WebRTCPeer, error)
 		return nil, err
 	}
 	log.Printf("WebRTC: Set remote description")
+	//Initial timer is large, will be reset by probe message
+	connection.probeTimer = time.NewTimer(120 * time.Second)
+	go func() {
+		<-connection.probeTimer.C
+		log.Printf("WebRTC: Probe timer expired")
+		connection.Close()
+	}()
 	return connection, nil
 }

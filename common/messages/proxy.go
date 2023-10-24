@@ -101,8 +101,14 @@ type ProxyPollRequest struct {
 }
 
 type TransferRequest struct {
-	Cid   string `json:"cid"`
-	NewIp string `json:"new_ip"`
+	Cid         string `json:"cid"`
+	NewIp       string `json:"new_ip"`
+	TransferNow bool   `json:"transfer_now"`
+}
+
+type ProbeMessage struct {
+	TimeVal       int    `json:"time_val"`
+	BackupProxyIP string `json:"backup_proxy_ip"`
 }
 
 func EncodeProxyPollRequest(sid string, proxyType string, natType string, clients int) ([]byte, error) {

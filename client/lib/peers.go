@@ -95,8 +95,15 @@ func (p *Peers) Pop() *WebRTCPeer {
 
 // Directly add a snowflake to the collection.
 func (p *Peers) Push(snowflake *WebRTCPeer) {
-	p.snowflakeChan <- snowflake
 	p.activePeers.PushBack(snowflake)
+	p.snowflakeChan <- snowflake
+}
+
+// Consume a value from snowflakeChan without using it. Non-blocking.
+func (p *Peers) Consume() {
+	if len(p.snowflakeChan) > 0 {
+		<-p.snowflakeChan
+	}
 }
 
 // Melted returns a channel that will close when peers stop being collected.
