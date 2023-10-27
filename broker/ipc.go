@@ -351,6 +351,18 @@ func (i *IPC) matchSnowflake(natType string) *Snowflake {
 		heap.Push(snowflakeHeap, result)
 		return result
 	} else {
+		if natType == NATUnrestricted {
+			snowflakeHeap = i.ctx.snowflakes
+			i.ctx.snowflakeLock.Lock()
+			defer i.ctx.snowflakeLock.Unlock()
+			if snowflakeHeap.Len() > 0 {
+				result := heap.Pop(snowflakeHeap).(*Snowflake)
+				heap.Push(snowflakeHeap, result)
+				return result
+			} else {
+				return nil
+			}
+		}
 		return nil
 	}
 }
