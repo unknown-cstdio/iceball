@@ -486,18 +486,20 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 				log.Printf("Data Channel %s-%d open\n", dc.Label(), dc.ID())
 				ticker := time.NewTicker(probeTime * time.Second)
 				go func() {
-					select {
-					case <-ticker.C:
-						log.Printf("send probe to client: %v", clientId)
-						msg := messages.ProbeMessage{TimeVal: int(probeTime * 2), BackupProxyIP: client2TransferIP[clientId]}
-						probeMsg, err := json.Marshal(msg)
-						if err != nil {
-							log.Printf("error: %v", err)
+					for {
+						select {
+						case <-ticker.C:
+							log.Printf("send probe to client: %v", clientId)
+							msg := messages.ProbeMessage{TimeVal: int(probeTime * 2), BackupProxyIP: client2TransferIP[clientId]}
+							probeMsg, err := json.Marshal(msg)
+							if err != nil {
+								log.Printf("error: %v", err)
+							}
+							dc.Send(probeMsg)
+						case <-dcClosed:
+							log.Printf("stop sending probe to client: %v", clientId)
+							ticker.Stop()
 						}
-						dc.Send(probeMsg)
-					case <-dcClosed:
-						log.Printf("stop sending probe to client: %v", clientId)
-						ticker.Stop()
 					}
 				}()
 			})
