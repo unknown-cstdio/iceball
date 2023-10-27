@@ -34,7 +34,6 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
-	"math"
 	"net"
 	"net/http"
 	"net/url"
@@ -490,7 +489,7 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 					select {
 					case <-ticker.C:
 						log.Printf("send probe to client: %v", clientId)
-						msg := messages.ProbeMessage{TimeVal: int(probeTime) + int(math.Ceil(0.5*float64(probeTime))), BackupProxyIP: client2TransferIP[clientId]}
+						msg := messages.ProbeMessage{TimeVal: int(probeTime * 2), BackupProxyIP: client2TransferIP[clientId]}
 						probeMsg, err := json.Marshal(msg)
 						if err != nil {
 							log.Printf("error: %v", err)

@@ -100,7 +100,7 @@ func NewWebRTCPeerWithEvents(config *webrtc.Configuration,
 	connection.probeTimer = time.NewTimer(120 * time.Second)
 	go func() {
 		<-connection.probeTimer.C
-		log.Printf("WebRTC: Probe timer expired")
+		log.Printf("WebRTC: %s Probe timer expired", connection.id)
 		connection.Close()
 	}()
 	return connection, nil
@@ -285,6 +285,7 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 	})
 	dc2.OnMessage(func(msg webrtc.DataChannelMessage) {
 		probeMsg := messages.ProbeMessage{}
+		log.Printf("WebRTC: Received probe message: %s", msg.Data)
 		err := json.Unmarshal(msg.Data, &probeMsg)
 		if err != nil {
 			log.Printf("WebRTC: Error unmarshalling probe message: %s", err)
@@ -304,8 +305,13 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 			}
 		}
 		if probeMsg.TimeVal != 0 {
-			c.probeTimer.Reset(time.Duration(probeMsg.TimeVal) * time.Second)
+			log.Printf("WebRTC: Resetting probe timer to %d seconds on %s", probeMsg.TimeVal, c.id)
+			c.probeTimer.Stop()
+			result := c.probeTimer.Reset(time.Duration(probeMsg.TimeVal) * time.Second)
+			log.Printf("WebRTC: Reset probe timer result: %t on %s", result, c.id)
 		} else {
+			log.Printf("WebRTC: Resetting probe timer to 1 millisecond")
+			c.probeTimer.Stop()
 			c.probeTimer.Reset(1 * time.Millisecond)
 		}
 
@@ -348,6 +354,9 @@ func (c *WebRTCPeer) cleanup() {
 	// Close this side of the SOCKS pipe.
 	if c.writePipe != nil { // c.writePipe can be nil in tests.
 		c.writePipe.Close()
+	}
+	if c.probeTimer != nil {
+		c.probeTimer.Stop()
 	}
 	if nil != c.transport {
 		log.Printf("WebRTC: closing DataChannel")
