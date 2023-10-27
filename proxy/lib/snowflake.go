@@ -484,7 +484,7 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 			dcClosed := make(chan bool)
 			dc.OnOpen(func() {
 				log.Printf("Data Channel %s-%d open\n", dc.Label(), dc.ID())
-				ticker := time.NewTicker(probeTime)
+				ticker := time.NewTicker(probeTime * time.Second)
 				go func() {
 					select {
 					case <-ticker.C:
@@ -496,6 +496,7 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 						}
 						dc.Send(probeMsg)
 					case <-dcClosed:
+						log.Printf("stop sending probe to client: %v", clientId)
 						ticker.Stop()
 					}
 				}()
