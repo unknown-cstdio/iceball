@@ -99,10 +99,10 @@ func (p *Peers) Push(snowflake *WebRTCPeer) {
 	p.snowflakeChan <- snowflake
 }
 
-// Consume a value from snowflakeChan without using it. Non-blocking.
+// Consume a connection from Peers and close it. Non-blocking.
 func (p *Peers) Consume() {
 	if len(p.snowflakeChan) > 0 {
-		<-p.snowflakeChan
+		p.Pop().Close()
 	}
 }
 
