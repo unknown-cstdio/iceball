@@ -300,7 +300,7 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 					log.Printf("WebRTC: Error connecting to new IP: %s", err)
 					return
 				}
-				Snowflakes.Consume()
+				//Snowflakes.Consume()
 				Snowflakes.Push(peer)
 			}
 		}
