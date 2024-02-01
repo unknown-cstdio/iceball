@@ -379,6 +379,7 @@ func newSession(snowflakes SnowflakeCollector) (net.PacketConn, *smux.Session, e
 // Maintain |SnowflakeCapacity| number of available WebRTC connections, to
 // transfer to the Tor SOCKS handler when needed.
 func connectLoop(snowflakes SnowflakeCollector) {
+	log.Println("Client ID: ", ClientID)
 	for {
 		timer := time.After(ReconnectTimeout)
 		_, err := snowflakes.Collect()

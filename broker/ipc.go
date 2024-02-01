@@ -270,7 +270,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 				case <-newTicker.C:
 					file, _ := os.Create("broker.log")
 					defer file.Close()
-					write_content := fmt.Sprintf("%s client switching proxies\n", req.Id)
+					write_content := fmt.Sprintf("%s client switching proxies at %s\n", req.Id, time.Now().String())
 					file.WriteString(write_content)
 					log.Printf(client.proxy.ip)
 					log.Printf("client switching proxies")
