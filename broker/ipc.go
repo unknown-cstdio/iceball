@@ -31,6 +31,8 @@ type IPC struct {
 	ctx *BrokerContext
 }
 
+var file, _ = os.Create("broker.log")
+
 func (i *IPC) Debug(_ interface{}, response *string) error {
 	var unknowns int
 	var natRestricted, natUnrestricted, natUnknown int
@@ -268,8 +270,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			for {
 				select {
 				case <-newTicker.C:
-					file, _ := os.Create("broker.log")
-					defer file.Close()
 					write_content := fmt.Sprintf("%s client switching proxies at %s\n", req.Id, time.Now().String())
 					file.WriteString(write_content)
 					log.Printf(client.proxy.ip)
