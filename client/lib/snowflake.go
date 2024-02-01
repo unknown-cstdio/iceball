@@ -323,7 +323,7 @@ func newSession(snowflakes SnowflakeCollector) (net.PacketConn, *smux.Session, e
 		if conn == nil {
 			return nil, errors.New("handler: Received invalid Snowflake")
 		}
-		log.Println("---- Handler: snowflake assigned ----")
+		log.Println("---- Handler: snowflake assigned ---- at", time.Now().String())
 		// Send the magic Turbo Tunnel token.
 		_, err := conn.Write(turbotunnel.Token[:])
 		if err != nil {
