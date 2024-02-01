@@ -250,11 +250,13 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		if err != nil {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
-		backupIP := i.matchSnowflake(offer.NatType).ip
-		transferReq1 := messages.TransferRequest{Cid: req.Id, NewIp: backupIP, TransferNow: false}
-		transferReqJSON1, _ := json.Marshal(transferReq1)
-		transferPath1 := fmt.Sprintf("http://%s:%s/transfer", ip, newPort)
-		_, _ = http.Post(transferPath1, "application/json", bytes.NewBuffer(transferReqJSON1))
+		/*
+			backupIP := i.matchSnowflake(offer.NatType).ip
+			transferReq1 := messages.TransferRequest{Cid: req.Id, NewIp: backupIP, TransferNow: false}
+			transferReqJSON1, _ := json.Marshal(transferReq1)
+			transferPath1 := fmt.Sprintf("http://%s:%s/transfer", ip, newPort)
+			_, _ = http.Post(transferPath1, "application/json", bytes.NewBuffer(transferReqJSON1))
+		*/
 		go func() {
 			intervals := [7]int{30, 100, 80, 50, 30, 20, 10}
 			newTicker := time.NewTicker(time.Second * time.Duration(intervals[0]))
