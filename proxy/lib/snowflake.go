@@ -83,7 +83,7 @@ const (
 
 	sessionIDLength = 16
 
-	probeTime = 5
+	probeTime = 30
 )
 
 const bufferedAmountLowThreshold uint64 = 256 * 1024 // 256 KB

@@ -35,6 +35,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/pion/ice/v2"
 	"github.com/pion/webrtc/v3"
 	"github.com/xtaci/kcp-go/v5"
@@ -61,6 +62,7 @@ const (
 	WindowSize = 65535
 	// StreamSize controls the maximum amount of in flight data between a client and server.
 	StreamSize = 1048576 //1MB
+
 )
 
 type dummyAddr struct{}
@@ -110,6 +112,8 @@ type ClientConfig struct {
 }
 
 var Snowflakes *Peers
+
+var ClientID = uuid.New().String()
 
 // NewSnowflakeClient creates a new Snowflake transport client that can spawn multiple
 // Snowflake connections.

@@ -13,7 +13,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/pion/webrtc/v3"
 	utls "github.com/refraction-networking/utls"
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/certs"
@@ -28,8 +27,6 @@ const (
 	brokerErrorUnexpected string = "Unexpected error, no answer."
 	readLimit                    = 100000 //Maximum number of bytes to be read from an HTTP response
 )
-
-var id = uuid.New()
 
 // RendezvousMethod represents a way of communicating with the broker: sending
 // an encoded client poll request (SDP offer) and receiving an encoded client
@@ -131,7 +128,7 @@ func (bc *BrokerChannel) Negotiate(offer *webrtc.SessionDescription) (
 		Offer:       offerSDP,
 		NAT:         bc.natType,
 		Fingerprint: bc.BridgeFingerprint,
-		Id:          id.String(),
+		Id:          ClientID,
 	}
 	encReq, err := req.EncodeClientPollRequest()
 	bc.lock.Unlock()

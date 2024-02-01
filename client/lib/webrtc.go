@@ -15,7 +15,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/google/uuid"
 	"github.com/pion/ice/v2"
 	"github.com/pion/webrtc/v3"
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/event"
@@ -314,7 +313,7 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 		} else {
 			log.Printf("WebRTC: Resetting probe timer to 1 millisecond")
 			c.probeTimer.Stop()
-			c.probeTimer.Reset(1 * time.Millisecond)
+			c.probeTimer.Reset(1 * time.Second)
 		}
 
 	})
@@ -409,12 +408,12 @@ func DirectConnect(config *webrtc.Configuration, ip string) (*WebRTCPeer, error)
 	if err != nil {
 		return nil, err
 	}
-	id := uuid.New()
+
 	req := &ClientOffer{
 		NatType:     "unknown",
 		Sdp:         []byte(offerSDP),
 		Fingerprint: []byte(""),
-		Cid:         id.String(),
+		Cid:         ClientID,
 	}
 	encReq, _ := json.Marshal(req)
 	resp, err := http.Post("http://"+ip+":51821/add", "application/json", bytes.NewReader(encReq))
