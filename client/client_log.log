@@ -1,65 +1,2271 @@
-2024/02/01 20:08:56 snowflake-client 2.6.0
-2024/02/01 20:08:56 Started SOCKS listener at 127.0.0.1:46449.
-2024/02/01 20:08:57 SOCKS accepted: {192.0.2.3:1   map[]}
-2024/02/01 20:08:57 
+2024/02/01 20:23:30 snowflake-client 2.6.0
+2024/02/01 20:23:30 Started SOCKS listener at 127.0.0.1:37605.
+2024/02/01 20:23:31 SOCKS accepted: {192.0.2.3:1   map[]}
+2024/02/01 20:23:31 
 
 
  --- Starting Snowflake Client ---
-2024/02/01 20:08:57 Using ICE servers:
-2024/02/01 20:08:57 url: stun:stun.dus.net:3478
-2024/02/01 20:08:57 url: stun:stun.voipgate.com:3478
-2024/02/01 20:08:57 url: stun:stun.voys.nl:3478
-2024/02/01 20:08:57 url: stun:stun.bluesip.net:3478
-2024/02/01 20:08:57 url: stun:stun.antisip.com:3478
-2024/02/01 20:08:57 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
-2024/02/01 20:08:57 ---- SnowflakeConn: begin collecting snowflakes ---
-2024/02/01 20:08:57 ---- SnowflakeConn: starting a new session ---
-2024/02/01 20:08:57 WebRTC: Collecting a new Snowflake. Currently at [0/1]
-2024/02/01 20:08:57 snowflake-a6e1f72bd328f9c6  connecting...
-2024/02/01 20:08:57 redialing on same connection
-2024/02/01 20:08:57 ---- SnowflakeConn: begin stream 3 ---
-2024/02/01 20:08:57 WebRTC: DataChannel created
-2024/02/01 20:08:57 WebRTC: Created offer
-2024/02/01 20:08:57 WebRTC: Set local description
-2024/02/01 20:08:57 Warning: NAT checking failed for server at stun.dus.net:3478: NAT discovery feature not supported: attribute not found
-2024/02/01 20:08:57 Negotiating via HTTP rendezvous...
-2024/02/01 20:08:57 Target URL:  jinyu-sf-broker.cs-pk.com
-2024/02/01 20:08:57 Front URL:   
-2024/02/01 20:08:57 HTTP rendezvous response: 200 OK
-2024/02/01 20:08:57 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 4108944985319903761 1706818138 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 B8:55:D7:38:9B:84:69:A7:9F:D2:B6:32:54:F8:FE:02:04:48:7F:2C:F9:34:C6:A2:BE:E4:69:5A:FF:4E:69:09\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:ndhzNgcoAsHBPExm\\r\\na=ice-pwd:TeXCijBMkHejWqnEpHvWbXHtmSIAvGqQ\\r\\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 51411 typ host\\r\\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 51411 typ host\\r\\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 41230 typ srflx raddr 0.0.0.0 rport 41230\\r\\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 41230 typ srflx raddr 0.0.0.0 rport 41230\\r\\na=end-of-candidates\\r\\n\"}"}
-2024/02/01 20:08:57 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 4108944985319903761 1706818138 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 B8:55:D7:38:9B:84:69:A7:9F:D2:B6:32:54:F8:FE:02:04:48:7F:2C:F9:34:C6:A2:BE:E4:69:5A:FF:4E:69:09\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:ndhzNgcoAsHBPExm\r\na=ice-pwd:TeXCijBMkHejWqnEpHvWbXHtmSIAvGqQ\r\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 51411 typ host\r\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 51411 typ host\r\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 41230 typ srflx raddr 0.0.0.0 rport 41230\r\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 41230 typ srflx raddr 0.0.0.0 rport 41230\r\na=end-of-candidates\r\n"}
-2024/02/01 20:08:57 Received Answer.
-2024/02/01 20:08:58 NAT Type: unrestricted
-2024/02/01 20:08:58 WebRTC: MsgDataChannel.OnOpen
-2024/02/01 20:08:58 WebRTC: DataChannel.OnOpen
-2024/02/01 20:08:58 ---- Handler: snowflake assigned ----
-2024/02/01 20:09:02 WebRTC: At capacity [1/1]  Retrying...
-2024/02/01 20:09:02 Traffic Bytes (in|out): 18090 | 11060 -- (27 OnMessages, 35 Sends)
-2024/02/01 20:09:07 Traffic Bytes (in|out): 7679 | 8336 -- (18 OnMessages, 26 Sends)
-2024/02/01 20:09:07 WebRTC: At capacity [1/1]  Retrying...
-2024/02/01 20:09:12 Traffic Bytes (in|out): 678 | 652 -- (5 OnMessages, 3 Sends)
-2024/02/01 20:09:12 WebRTC: At capacity [1/1]  Retrying...
-2024/02/01 20:09:17 Traffic Bytes (in|out): 0 | 33 -- (0 OnMessages, 1 Sends)
-2024/02/01 20:09:17 WebRTC: At capacity [1/1]  Retrying...
-2024/02/01 20:09:22 Traffic Bytes (in|out): 652 | 620 -- (3 OnMessages, 3 Sends)
-2024/02/01 20:09:22 WebRTC: At capacity [1/1]  Retrying...
-2024/02/01 20:09:27 Traffic Bytes (in|out): 25 | 570 -- (1 OnMessages, 1 Sends)
-2024/02/01 20:09:27 WebRTC: At capacity [1/1]  Retrying...
-2024/02/01 20:09:27 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
-2024/02/01 20:09:27 WebRTC: Received new backup proxy: 54.224.167.39
-2024/02/01 20:09:27 WebRTC: Directly connecting to 54.224.167.39
-2024/02/01 20:09:27 WebRTC: DataChannel created
-2024/02/01 20:09:27 WebRTC: Created offer
-2024/02/01 20:09:27 WebRTC: Set local description
-2024/02/01 20:09:28 WebRTC: Received answer
-2024/02/01 20:09:28 WebRTC: Set remote description
-2024/02/01 20:09:28 WebRTC: Resetting probe timer to 1 millisecond
-2024/02/01 20:09:28 WebRTC: Received probe message: {"time_val":60,"backup_proxy_ip":"54.224.167.39"}
-2024/02/01 20:09:28 WebRTC: Resetting probe timer to 60 seconds on snowflake-a6e1f72bd328f9c6
-2024/02/01 20:09:28 WebRTC: Reset probe timer result: false on snowflake-a6e1f72bd328f9c6
-2024/02/01 20:09:29 WebRTC: MsgDataChannel.OnOpen
-2024/02/01 20:09:29 WebRTC: DataChannel.OnOpen
-2024/02/01 20:09:32 Traffic Bytes (in|out): 83 | 628 -- (3 OnMessages, 3 Sends)
-2024/02/01 20:09:32 WebRTC: At capacity [2/1]  Retrying...
-2024/02/01 20:09:37 Traffic Bytes (in|out): 570 | 58 -- (1 OnMessages, 2 Sends)
-2024/02/01 20:09:37 WebRTC: At capacity [2/1]  Retrying...
+2024/02/01 20:23:31 Using ICE servers:
+2024/02/01 20:23:31 url: stun:stun.antisip.com:3478
+2024/02/01 20:23:31 url: stun:stun.sonetel.com:3478
+2024/02/01 20:23:31 url: stun:stun.dus.net:3478
+2024/02/01 20:23:31 url: stun:stun.voys.nl:3478
+2024/02/01 20:23:31 url: stun:stun.epygi.com:3478
+2024/02/01 20:23:31 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2024/02/01 20:23:31 ---- SnowflakeConn: begin collecting snowflakes ---
+2024/02/01 20:23:31 ---- SnowflakeConn: starting a new session ---
+2024/02/01 20:23:31 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:23:31 snowflake-d835db876135dda1  connecting...
+2024/02/01 20:23:31 redialing on same connection
+2024/02/01 20:23:31 ---- SnowflakeConn: begin stream 3 ---
+2024/02/01 20:23:31 WebRTC: DataChannel created
+2024/02/01 20:23:31 WebRTC: Created offer
+2024/02/01 20:23:31 WebRTC: Set local description
+2024/02/01 20:23:31 Negotiating via HTTP rendezvous...
+2024/02/01 20:23:31 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:23:31 Front URL:   
+2024/02/01 20:23:31 HTTP rendezvous response: 200 OK
+2024/02/01 20:23:31 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 693302072431894009 1706819011 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 4C:96:1F:CE:2A:0D:8C:7C:1E:6C:A9:C3:28:F8:89:D9:73:32:EB:F5:82:60:9E:E6:A9:AE:C3:F0:30:91:72:40\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:nHSlbfXeMWzBtqGW\\r\\na=ice-pwd:CgrBMnmOglRChocormmTFkiHHrNBoQoH\\r\\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 36187 typ host\\r\\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 36187 typ host\\r\\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 42309 typ srflx raddr 0.0.0.0 rport 42309\\r\\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 42309 typ srflx raddr 0.0.0.0 rport 42309\\r\\na=end-of-candidates\\r\\n\"}"}
+2024/02/01 20:23:31 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 693302072431894009 1706819011 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 4C:96:1F:CE:2A:0D:8C:7C:1E:6C:A9:C3:28:F8:89:D9:73:32:EB:F5:82:60:9E:E6:A9:AE:C3:F0:30:91:72:40\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:nHSlbfXeMWzBtqGW\r\na=ice-pwd:CgrBMnmOglRChocormmTFkiHHrNBoQoH\r\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 36187 typ host\r\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 36187 typ host\r\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 42309 typ srflx raddr 0.0.0.0 rport 42309\r\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 42309 typ srflx raddr 0.0.0.0 rport 42309\r\na=end-of-candidates\r\n"}
+2024/02/01 20:23:31 Received Answer.
+2024/02/01 20:23:32 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:23:32 WebRTC: DataChannel.OnOpen
+2024/02/01 20:23:32 ---- Handler: snowflake assigned ----
+2024/02/01 20:23:36 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:23:36 Traffic Bytes (in|out): 16872 | 9835 -- (26 OnMessages, 28 Sends)
+2024/02/01 20:23:41 Traffic Bytes (in|out): 7104 | 8229 -- (19 OnMessages, 22 Sends)
+2024/02/01 20:23:41 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:23:41 Warning: NAT checking failed for server at stun.antisip.com:3478: Error retrieveing server response: timed out waiting for response
+2024/02/01 20:23:46 Traffic Bytes (in|out): 238045 | 13393 -- (212 OnMessages, 49 Sends)
+2024/02/01 20:23:46 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:23:51 Traffic Bytes (in|out): 528165 | 19862 -- (450 OnMessages, 133 Sends)
+2024/02/01 20:23:51 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:23:51 Warning: NAT checking failed for server at stun.sonetel.com:3478: Error retrieveing server response: timed out waiting for response
+2024/02/01 20:23:51 Warning: NAT checking failed for server at stun.dus.net:3478: NAT discovery feature not supported: attribute not found
+2024/02/01 20:23:51 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2024/02/01 20:23:51 NAT Type: unrestricted
+2024/02/01 20:23:56 Traffic Bytes (in|out): 415001 | 15295 -- (355 OnMessages, 104 Sends)
+2024/02/01 20:23:56 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:01 Traffic Bytes (in|out): 596194 | 21428 -- (483 OnMessages, 128 Sends)
+2024/02/01 20:24:01 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:01 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:24:01 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:24:01 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:24:01 WebRTC: DataChannel created
+2024/02/01 20:24:01 WebRTC: Created offer
+2024/02/01 20:24:01 WebRTC: Set local description
+2024/02/01 20:24:02 WebRTC: Received answer
+2024/02/01 20:24:02 WebRTC: Set remote description
+2024/02/01 20:24:02 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:24:02 WebRTC: DataChannel.OnOpen
+2024/02/01 20:24:02 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:24:03 WebRTC: snowflake-d835db876135dda1 Probe timer expired
+2024/02/01 20:24:03 WebRTC: closing DataChannel
+2024/02/01 20:24:03 WebRTC: closing PeerConnection
+2024/02/01 20:24:03 WebRTC: DataChannel.OnClose
+2024/02/01 20:24:03 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:24:03 WebRTC: closed PeerConnection
+2024/02/01 20:24:03 WebRTC: Closing
+2024/02/01 20:24:03 redialing on same connection
+2024/02/01 20:24:03 ---- Handler: snowflake assigned ----
+2024/02/01 20:24:06 Traffic Bytes (in|out): 547206 | 21038 -- (456 OnMessages, 130 Sends)
+2024/02/01 20:24:06 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:11 Traffic Bytes (in|out): 498993 | 18220 -- (410 OnMessages, 112 Sends)
+2024/02/01 20:24:11 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:16 Traffic Bytes (in|out): 487697 | 18839 -- (409 OnMessages, 113 Sends)
+2024/02/01 20:24:16 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:21 Traffic Bytes (in|out): 332546 | 15491 -- (283 OnMessages, 91 Sends)
+2024/02/01 20:24:21 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:26 Traffic Bytes (in|out): 705604 | 26370 -- (577 OnMessages, 131 Sends)
+2024/02/01 20:24:26 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:31 Traffic Bytes (in|out): 608108 | 23241 -- (497 OnMessages, 136 Sends)
+2024/02/01 20:24:31 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:36 Traffic Bytes (in|out): 564211 | 20774 -- (465 OnMessages, 148 Sends)
+2024/02/01 20:24:36 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:41 Traffic Bytes (in|out): 623764 | 25660 -- (508 OnMessages, 149 Sends)
+2024/02/01 20:24:41 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:46 Traffic Bytes (in|out): 564733 | 20887 -- (456 OnMessages, 131 Sends)
+2024/02/01 20:24:46 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:51 Traffic Bytes (in|out): 610820 | 23135 -- (509 OnMessages, 129 Sends)
+2024/02/01 20:24:51 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:24:56 Traffic Bytes (in|out): 484998 | 19786 -- (410 OnMessages, 130 Sends)
+2024/02/01 20:24:56 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:01 Traffic Bytes (in|out): 660717 | 24844 -- (529 OnMessages, 136 Sends)
+2024/02/01 20:25:01 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:06 Traffic Bytes (in|out): 508581 | 19395 -- (432 OnMessages, 134 Sends)
+2024/02/01 20:25:06 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:11 Traffic Bytes (in|out): 542874 | 18705 -- (442 OnMessages, 132 Sends)
+2024/02/01 20:25:11 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:16 Traffic Bytes (in|out): 536661 | 20560 -- (434 OnMessages, 135 Sends)
+2024/02/01 20:25:16 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:21 Traffic Bytes (in|out): 565009 | 22516 -- (464 OnMessages, 127 Sends)
+2024/02/01 20:25:21 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:26 Traffic Bytes (in|out): 602030 | 21786 -- (487 OnMessages, 142 Sends)
+2024/02/01 20:25:26 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:31 Traffic Bytes (in|out): 559920 | 21594 -- (459 OnMessages, 134 Sends)
+2024/02/01 20:25:31 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:36 Traffic Bytes (in|out): 674587 | 25359 -- (542 OnMessages, 138 Sends)
+2024/02/01 20:25:36 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:41 Traffic Bytes (in|out): 616280 | 24211 -- (499 OnMessages, 129 Sends)
+2024/02/01 20:25:41 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:41 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:25:41 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:25:41 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:25:41 WebRTC: DataChannel created
+2024/02/01 20:25:41 WebRTC: Created offer
+2024/02/01 20:25:41 WebRTC: Set local description
+2024/02/01 20:25:42 WebRTC: Received answer
+2024/02/01 20:25:42 WebRTC: Set remote description
+2024/02/01 20:25:42 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:25:42 WebRTC: DataChannel.OnOpen
+2024/02/01 20:25:42 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:25:43 WebRTC: Probe timer expired
+2024/02/01 20:25:43 WebRTC: closing DataChannel
+2024/02/01 20:25:43 WebRTC: closing PeerConnection
+2024/02/01 20:25:43 WebRTC: DataChannel.OnClose
+2024/02/01 20:25:43 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:25:43 WebRTC: closed PeerConnection
+2024/02/01 20:25:43 WebRTC: Closing
+2024/02/01 20:25:43 redialing on same connection
+2024/02/01 20:25:43 ---- Handler: snowflake assigned ----
+2024/02/01 20:25:46 Traffic Bytes (in|out): 500822 | 19433 -- (421 OnMessages, 130 Sends)
+2024/02/01 20:25:46 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:51 Traffic Bytes (in|out): 454518 | 17492 -- (376 OnMessages, 105 Sends)
+2024/02/01 20:25:51 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:25:56 Traffic Bytes (in|out): 468749 | 17883 -- (393 OnMessages, 119 Sends)
+2024/02/01 20:25:56 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:01 Traffic Bytes (in|out): 530387 | 20506 -- (439 OnMessages, 112 Sends)
+2024/02/01 20:26:01 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:06 Traffic Bytes (in|out): 632759 | 22544 -- (516 OnMessages, 130 Sends)
+2024/02/01 20:26:06 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:11 Traffic Bytes (in|out): 624260 | 26477 -- (497 OnMessages, 139 Sends)
+2024/02/01 20:26:11 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:16 Traffic Bytes (in|out): 604709 | 22219 -- (491 OnMessages, 141 Sends)
+2024/02/01 20:26:16 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:21 Traffic Bytes (in|out): 667338 | 23547 -- (538 OnMessages, 123 Sends)
+2024/02/01 20:26:21 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:26 Traffic Bytes (in|out): 504237 | 19519 -- (431 OnMessages, 118 Sends)
+2024/02/01 20:26:26 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:31 Traffic Bytes (in|out): 522996 | 20007 -- (428 OnMessages, 117 Sends)
+2024/02/01 20:26:31 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:36 Traffic Bytes (in|out): 523884 | 20211 -- (429 OnMessages, 128 Sends)
+2024/02/01 20:26:36 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:41 Traffic Bytes (in|out): 516355 | 18631 -- (421 OnMessages, 105 Sends)
+2024/02/01 20:26:41 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:46 Traffic Bytes (in|out): 584250 | 22631 -- (485 OnMessages, 135 Sends)
+2024/02/01 20:26:46 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:51 Traffic Bytes (in|out): 641961 | 22878 -- (511 OnMessages, 102 Sends)
+2024/02/01 20:26:51 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:26:56 Traffic Bytes (in|out): 534196 | 17785 -- (438 OnMessages, 111 Sends)
+2024/02/01 20:26:56 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:01 Traffic Bytes (in|out): 528509 | 19944 -- (429 OnMessages, 111 Sends)
+2024/02/01 20:27:01 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:01 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:27:01 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:27:01 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:27:01 WebRTC: DataChannel created
+2024/02/01 20:27:01 WebRTC: Created offer
+2024/02/01 20:27:01 WebRTC: Set local description
+2024/02/01 20:27:02 WebRTC: Received answer
+2024/02/01 20:27:02 WebRTC: Set remote description
+2024/02/01 20:27:02 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:27:03 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:27:03 WebRTC: DataChannel.OnOpen
+2024/02/01 20:27:03 WebRTC: Probe timer expired
+2024/02/01 20:27:03 WebRTC: closing DataChannel
+2024/02/01 20:27:03 WebRTC: closing PeerConnection
+2024/02/01 20:27:03 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:27:03 WebRTC: DataChannel.OnClose
+2024/02/01 20:27:03 WebRTC: closed PeerConnection
+2024/02/01 20:27:03 WebRTC: Closing
+2024/02/01 20:27:03 redialing on same connection
+2024/02/01 20:27:03 ---- Handler: snowflake assigned ----
+2024/02/01 20:27:06 Traffic Bytes (in|out): 639410 | 22740 -- (541 OnMessages, 133 Sends)
+2024/02/01 20:27:06 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:11 Traffic Bytes (in|out): 531321 | 21991 -- (441 OnMessages, 130 Sends)
+2024/02/01 20:27:11 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:16 Traffic Bytes (in|out): 588079 | 20971 -- (489 OnMessages, 130 Sends)
+2024/02/01 20:27:16 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:21 Traffic Bytes (in|out): 579049 | 20545 -- (472 OnMessages, 117 Sends)
+2024/02/01 20:27:21 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:26 Traffic Bytes (in|out): 727569 | 24198 -- (581 OnMessages, 131 Sends)
+2024/02/01 20:27:26 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:31 Traffic Bytes (in|out): 503056 | 19433 -- (422 OnMessages, 114 Sends)
+2024/02/01 20:27:31 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:36 Traffic Bytes (in|out): 715048 | 25477 -- (582 OnMessages, 160 Sends)
+2024/02/01 20:27:36 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:41 Traffic Bytes (in|out): 623386 | 24930 -- (499 OnMessages, 159 Sends)
+2024/02/01 20:27:41 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:46 Traffic Bytes (in|out): 530074 | 20137 -- (438 OnMessages, 139 Sends)
+2024/02/01 20:27:46 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:51 Traffic Bytes (in|out): 504769 | 21397 -- (419 OnMessages, 129 Sends)
+2024/02/01 20:27:51 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:27:51 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:27:51 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:27:51 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:27:51 WebRTC: DataChannel created
+2024/02/01 20:27:51 WebRTC: Created offer
+2024/02/01 20:27:51 WebRTC: Set local description
+2024/02/01 20:27:52 WebRTC: Received answer
+2024/02/01 20:27:52 WebRTC: Set remote description
+2024/02/01 20:27:52 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:27:52 WebRTC: DataChannel.OnOpen
+2024/02/01 20:27:52 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:27:53 WebRTC: Probe timer expired
+2024/02/01 20:27:53 WebRTC: closing DataChannel
+2024/02/01 20:27:53 WebRTC: closing PeerConnection
+2024/02/01 20:27:53 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:27:53 WebRTC: DataChannel.OnClose
+2024/02/01 20:27:53 WebRTC: closed PeerConnection
+2024/02/01 20:27:53 WebRTC: Closing
+2024/02/01 20:27:53 redialing on same connection
+2024/02/01 20:27:53 ---- Handler: snowflake assigned ----
+2024/02/01 20:27:56 Traffic Bytes (in|out): 630669 | 23907 -- (517 OnMessages, 126 Sends)
+2024/02/01 20:27:56 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:01 Traffic Bytes (in|out): 580823 | 19121 -- (468 OnMessages, 123 Sends)
+2024/02/01 20:28:01 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:06 Traffic Bytes (in|out): 618059 | 22947 -- (508 OnMessages, 147 Sends)
+2024/02/01 20:28:06 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:11 Traffic Bytes (in|out): 553154 | 21304 -- (463 OnMessages, 125 Sends)
+2024/02/01 20:28:11 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:16 Traffic Bytes (in|out): 565090 | 22031 -- (465 OnMessages, 130 Sends)
+2024/02/01 20:28:16 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:21 Traffic Bytes (in|out): 642866 | 23674 -- (520 OnMessages, 153 Sends)
+2024/02/01 20:28:21 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:21 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:28:21 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:28:21 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:28:21 WebRTC: DataChannel created
+2024/02/01 20:28:21 WebRTC: Created offer
+2024/02/01 20:28:21 WebRTC: Set local description
+2024/02/01 20:28:22 WebRTC: Received answer
+2024/02/01 20:28:22 WebRTC: Set remote description
+2024/02/01 20:28:22 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:28:22 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:28:22 WebRTC: DataChannel.OnOpen
+2024/02/01 20:28:23 WebRTC: Probe timer expired
+2024/02/01 20:28:23 WebRTC: closing DataChannel
+2024/02/01 20:28:23 WebRTC: closing PeerConnection
+2024/02/01 20:28:23 WebRTC: DataChannel.OnClose
+2024/02/01 20:28:23 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:28:23 WebRTC: closed PeerConnection
+2024/02/01 20:28:23 WebRTC: Closing
+2024/02/01 20:28:23 redialing on same connection
+2024/02/01 20:28:23 ---- Handler: snowflake assigned ----
+2024/02/01 20:28:26 Traffic Bytes (in|out): 689220 | 26905 -- (560 OnMessages, 128 Sends)
+2024/02/01 20:28:26 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:31 Traffic Bytes (in|out): 610953 | 22222 -- (489 OnMessages, 137 Sends)
+2024/02/01 20:28:31 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:36 Traffic Bytes (in|out): 728249 | 25506 -- (591 OnMessages, 136 Sends)
+2024/02/01 20:28:36 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:41 Traffic Bytes (in|out): 567727 | 21494 -- (460 OnMessages, 154 Sends)
+2024/02/01 20:28:41 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:41 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:28:41 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:28:41 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:28:41 WebRTC: DataChannel created
+2024/02/01 20:28:41 WebRTC: Created offer
+2024/02/01 20:28:41 WebRTC: Set local description
+2024/02/01 20:28:42 WebRTC: Received answer
+2024/02/01 20:28:42 WebRTC: Set remote description
+2024/02/01 20:28:42 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:28:42 WebRTC: DataChannel.OnOpen
+2024/02/01 20:28:42 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:28:43 WebRTC: Probe timer expired
+2024/02/01 20:28:43 WebRTC: closing DataChannel
+2024/02/01 20:28:43 WebRTC: closing PeerConnection
+2024/02/01 20:28:43 WebRTC: DataChannel.OnClose
+2024/02/01 20:28:43 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:28:43 WebRTC: closed PeerConnection
+2024/02/01 20:28:43 WebRTC: Closing
+2024/02/01 20:28:43 redialing on same connection
+2024/02/01 20:28:43 ---- Handler: snowflake assigned ----
+2024/02/01 20:28:46 Traffic Bytes (in|out): 654952 | 24233 -- (540 OnMessages, 155 Sends)
+2024/02/01 20:28:46 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:51 Traffic Bytes (in|out): 617077 | 25222 -- (501 OnMessages, 153 Sends)
+2024/02/01 20:28:51 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:28:51 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:28:51 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:28:51 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:28:51 WebRTC: DataChannel created
+2024/02/01 20:28:51 WebRTC: Created offer
+2024/02/01 20:28:51 WebRTC: Set local description
+2024/02/01 20:28:52 WebRTC: Received answer
+2024/02/01 20:28:52 WebRTC: Set remote description
+2024/02/01 20:28:52 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:28:53 WebRTC: DataChannel.OnOpen
+2024/02/01 20:28:53 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:28:53 WebRTC: Probe timer expired
+2024/02/01 20:28:53 WebRTC: closing DataChannel
+2024/02/01 20:28:53 WebRTC: closing PeerConnection
+2024/02/01 20:28:53 WebRTC: DataChannel.OnClose
+2024/02/01 20:28:53 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:28:53 WebRTC: closed PeerConnection
+2024/02/01 20:28:53 WebRTC: Closing
+2024/02/01 20:28:53 redialing on same connection
+2024/02/01 20:28:53 ---- Handler: snowflake assigned ----
+2024/02/01 20:28:56 Traffic Bytes (in|out): 1363976 | 59329 -- (1071 OnMessages, 156 Sends)
+2024/02/01 20:28:56 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:29:01 Traffic Bytes (in|out): 2405238 | 76980 -- (1919 OnMessages, 269 Sends)
+2024/02/01 20:29:01 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:39:28 snowflake-client 2.6.0
+2024/02/01 20:39:28 Started SOCKS listener at 127.0.0.1:37905.
+2024/02/01 20:39:29 SOCKS accepted: {192.0.2.3:1   map[]}
+2024/02/01 20:39:29 
+
+
+ --- Starting Snowflake Client ---
+2024/02/01 20:39:29 Using ICE servers:
+2024/02/01 20:39:29 url: stun:stun.bluesip.net:3478
+2024/02/01 20:39:29 url: stun:stun.voipgate.com:3478
+2024/02/01 20:39:29 url: stun:stun.sonetel.com:3478
+2024/02/01 20:39:29 url: stun:stun.voip.blackberry.com:3478
+2024/02/01 20:39:29 url: stun:stun.antisip.com:3478
+2024/02/01 20:39:29 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2024/02/01 20:39:29 ---- SnowflakeConn: begin collecting snowflakes ---
+2024/02/01 20:39:29 ---- SnowflakeConn: starting a new session ---
+2024/02/01 20:39:29 redialing on same connection
+2024/02/01 20:39:29 ---- SnowflakeConn: begin stream 3 ---
+2024/02/01 20:39:29 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:39:29 snowflake-ba4c3243647bb42b  connecting...
+2024/02/01 20:39:29 WebRTC: DataChannel created
+2024/02/01 20:39:29 WebRTC: Created offer
+2024/02/01 20:39:29 WebRTC: Set local description
+2024/02/01 20:39:30 Negotiating via HTTP rendezvous...
+2024/02/01 20:39:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:39:30 Front URL:   
+2024/02/01 20:39:30 NAT Type: unrestricted
+2024/02/01 20:39:30 HTTP rendezvous response: 200 OK
+2024/02/01 20:39:30 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 6761588717711907237 1706819970 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 24:FF:19:6F:B4:5D:2F:96:F8:FC:D1:53:D1:CA:AA:D9:A8:A0:10:C0:A5:00:84:98:7C:7C:97:FE:40:9B:6F:06\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:XjgDhRhLjUVfWyjb\\r\\na=ice-pwd:VtCzEouBuPeVwFerPjVpmiRvTMIHnKuo\\r\\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 38903 typ host\\r\\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 38903 typ host\\r\\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 48157 typ srflx raddr 0.0.0.0 rport 48157\\r\\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 48157 typ srflx raddr 0.0.0.0 rport 48157\\r\\na=end-of-candidates\\r\\n\"}"}
+2024/02/01 20:39:30 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 6761588717711907237 1706819970 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 24:FF:19:6F:B4:5D:2F:96:F8:FC:D1:53:D1:CA:AA:D9:A8:A0:10:C0:A5:00:84:98:7C:7C:97:FE:40:9B:6F:06\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:XjgDhRhLjUVfWyjb\r\na=ice-pwd:VtCzEouBuPeVwFerPjVpmiRvTMIHnKuo\r\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 38903 typ host\r\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 38903 typ host\r\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 48157 typ srflx raddr 0.0.0.0 rport 48157\r\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 48157 typ srflx raddr 0.0.0.0 rport 48157\r\na=end-of-candidates\r\n"}
+2024/02/01 20:39:30 Received Answer.
+2024/02/01 20:39:31 WebRTC: DataChannel.OnOpen
+2024/02/01 20:39:31 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:39:31 ---- Handler: snowflake assigned ----
+2024/02/01 20:39:34 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:39:34 Traffic Bytes (in|out): 16944 | 9914 -- (26 OnMessages, 32 Sends)
+2024/02/01 20:39:39 Traffic Bytes (in|out): 925292 | 41116 -- (756 OnMessages, 115 Sends)
+2024/02/01 20:39:39 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:39:44 Traffic Bytes (in|out): 2556802 | 93351 -- (2056 OnMessages, 260 Sends)
+2024/02/01 20:39:44 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:39:49 Traffic Bytes (in|out): 2017078 | 72161 -- (1624 OnMessages, 209 Sends)
+2024/02/01 20:39:49 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:39:54 Traffic Bytes (in|out): 2404869 | 87011 -- (1940 OnMessages, 250 Sends)
+2024/02/01 20:39:54 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:39:59 Traffic Bytes (in|out): 1933239 | 65966 -- (1526 OnMessages, 192 Sends)
+2024/02/01 20:39:59 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:00 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:40:00 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:40:00 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:40:00 WebRTC: DataChannel created
+2024/02/01 20:40:00 WebRTC: Created offer
+2024/02/01 20:40:00 WebRTC: Set local description
+2024/02/01 20:40:00 WebRTC: Received answer
+2024/02/01 20:40:00 WebRTC: Set remote description
+2024/02/01 20:40:00 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:40:01 WebRTC: DataChannel.OnOpen
+2024/02/01 20:40:01 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:40:01 WebRTC: snowflake-ba4c3243647bb42b Probe timer expired
+2024/02/01 20:40:01 WebRTC: closing DataChannel
+2024/02/01 20:40:01 WebRTC: closing PeerConnection
+2024/02/01 20:40:01 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:40:01 WebRTC: DataChannel.OnClose
+2024/02/01 20:40:01 WebRTC: closed PeerConnection
+2024/02/01 20:40:01 WebRTC: Closing
+2024/02/01 20:40:01 redialing on same connection
+2024/02/01 20:40:01 ---- Handler: snowflake assigned ----
+2024/02/01 20:40:04 Traffic Bytes (in|out): 1344126 | 45733 -- (1075 OnMessages, 137 Sends)
+2024/02/01 20:40:04 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:09 Traffic Bytes (in|out): 1504498 | 53365 -- (1227 OnMessages, 183 Sends)
+2024/02/01 20:40:09 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:14 Traffic Bytes (in|out): 992642 | 38303 -- (832 OnMessages, 155 Sends)
+2024/02/01 20:40:14 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:19 Traffic Bytes (in|out): 1071231 | 36854 -- (870 OnMessages, 127 Sends)
+2024/02/01 20:40:19 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:24 Traffic Bytes (in|out): 1222835 | 45417 -- (1003 OnMessages, 175 Sends)
+2024/02/01 20:40:24 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:29 Traffic Bytes (in|out): 1451923 | 51812 -- (1183 OnMessages, 183 Sends)
+2024/02/01 20:40:29 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:34 Traffic Bytes (in|out): 2289198 | 87325 -- (1823 OnMessages, 234 Sends)
+2024/02/01 20:40:34 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:39 Traffic Bytes (in|out): 2385415 | 78892 -- (1888 OnMessages, 234 Sends)
+2024/02/01 20:40:39 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:44 Traffic Bytes (in|out): 2096674 | 76611 -- (1694 OnMessages, 235 Sends)
+2024/02/01 20:40:44 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:49 Traffic Bytes (in|out): 1770662 | 62280 -- (1434 OnMessages, 204 Sends)
+2024/02/01 20:40:49 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:54 Traffic Bytes (in|out): 2056733 | 72325 -- (1661 OnMessages, 223 Sends)
+2024/02/01 20:40:54 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:40:59 Traffic Bytes (in|out): 2292447 | 81592 -- (1846 OnMessages, 229 Sends)
+2024/02/01 20:40:59 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:04 Traffic Bytes (in|out): 2261726 | 77228 -- (1816 OnMessages, 231 Sends)
+2024/02/01 20:41:04 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:09 Traffic Bytes (in|out): 2311475 | 83005 -- (1822 OnMessages, 206 Sends)
+2024/02/01 20:41:09 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:14 Traffic Bytes (in|out): 2396107 | 80816 -- (1903 OnMessages, 270 Sends)
+2024/02/01 20:41:14 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:19 Traffic Bytes (in|out): 2313141 | 79049 -- (1838 OnMessages, 223 Sends)
+2024/02/01 20:41:19 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:24 Traffic Bytes (in|out): 2014730 | 68825 -- (1619 OnMessages, 231 Sends)
+2024/02/01 20:41:24 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:29 Traffic Bytes (in|out): 2017775 | 70260 -- (1637 OnMessages, 217 Sends)
+2024/02/01 20:41:29 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:34 Traffic Bytes (in|out): 2403400 | 82907 -- (1931 OnMessages, 255 Sends)
+2024/02/01 20:41:34 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:39 Traffic Bytes (in|out): 2561246 | 88751 -- (2043 OnMessages, 269 Sends)
+2024/02/01 20:41:39 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:40 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:41:40 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:41:40 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:41:40 WebRTC: DataChannel created
+2024/02/01 20:41:40 WebRTC: Created offer
+2024/02/01 20:41:40 WebRTC: Set local description
+2024/02/01 20:41:40 WebRTC: Received answer
+2024/02/01 20:41:40 WebRTC: Set remote description
+2024/02/01 20:41:40 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:41:41 WebRTC: DataChannel.OnOpen
+2024/02/01 20:41:41 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:41:41 WebRTC: Probe timer expired
+2024/02/01 20:41:41 WebRTC: closing DataChannel
+2024/02/01 20:41:41 WebRTC: closing PeerConnection
+2024/02/01 20:41:41 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:41:41 WebRTC: DataChannel.OnClose
+2024/02/01 20:41:41 WebRTC: closed PeerConnection
+2024/02/01 20:41:41 WebRTC: Closing
+2024/02/01 20:41:41 redialing on same connection
+2024/02/01 20:41:41 ---- Handler: snowflake assigned ----
+2024/02/01 20:41:44 Traffic Bytes (in|out): 1429416 | 59090 -- (1119 OnMessages, 151 Sends)
+2024/02/01 20:41:44 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:49 Traffic Bytes (in|out): 1020724 | 32471 -- (827 OnMessages, 104 Sends)
+2024/02/01 20:41:49 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:54 Traffic Bytes (in|out): 1697136 | 53467 -- (1376 OnMessages, 189 Sends)
+2024/02/01 20:41:54 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:41:59 Traffic Bytes (in|out): 2444137 | 77575 -- (1940 OnMessages, 220 Sends)
+2024/02/01 20:41:59 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:04 Traffic Bytes (in|out): 2417528 | 69440 -- (1908 OnMessages, 218 Sends)
+2024/02/01 20:42:04 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:09 Traffic Bytes (in|out): 2513294 | 84602 -- (1989 OnMessages, 249 Sends)
+2024/02/01 20:42:09 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:14 Traffic Bytes (in|out): 2369220 | 85737 -- (1889 OnMessages, 256 Sends)
+2024/02/01 20:42:14 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:19 Traffic Bytes (in|out): 1497343 | 53778 -- (1214 OnMessages, 161 Sends)
+2024/02/01 20:42:19 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:24 Traffic Bytes (in|out): 2139780 | 71154 -- (1691 OnMessages, 232 Sends)
+2024/02/01 20:42:24 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:29 Traffic Bytes (in|out): 2068587 | 71446 -- (1665 OnMessages, 225 Sends)
+2024/02/01 20:42:29 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:34 Traffic Bytes (in|out): 1947320 | 64374 -- (1594 OnMessages, 230 Sends)
+2024/02/01 20:42:34 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:39 Traffic Bytes (in|out): 2001676 | 74093 -- (1622 OnMessages, 220 Sends)
+2024/02/01 20:42:39 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:44 Traffic Bytes (in|out): 2294485 | 77541 -- (1841 OnMessages, 264 Sends)
+2024/02/01 20:42:44 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:49 Traffic Bytes (in|out): 2692084 | 85193 -- (2117 OnMessages, 247 Sends)
+2024/02/01 20:42:49 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:54 Traffic Bytes (in|out): 2149946 | 70909 -- (1718 OnMessages, 214 Sends)
+2024/02/01 20:42:54 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:42:59 Traffic Bytes (in|out): 2142688 | 77364 -- (1694 OnMessages, 210 Sends)
+2024/02/01 20:42:59 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:00 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:43:00 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:43:00 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:43:00 WebRTC: DataChannel created
+2024/02/01 20:43:00 WebRTC: Created offer
+2024/02/01 20:43:00 WebRTC: Set local description
+2024/02/01 20:43:00 WebRTC: Received answer
+2024/02/01 20:43:00 WebRTC: Set remote description
+2024/02/01 20:43:00 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:43:01 WebRTC: DataChannel.OnOpen
+2024/02/01 20:43:01 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:43:01 WebRTC: Probe timer expired
+2024/02/01 20:43:01 WebRTC: closing DataChannel
+2024/02/01 20:43:01 WebRTC: closing PeerConnection
+2024/02/01 20:43:01 WebRTC: DataChannel.OnClose
+2024/02/01 20:43:01 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:43:01 WebRTC: closed PeerConnection
+2024/02/01 20:43:01 WebRTC: Closing
+2024/02/01 20:43:01 redialing on same connection
+2024/02/01 20:43:01 ---- Handler: snowflake assigned ----
+2024/02/01 20:43:04 Traffic Bytes (in|out): 1922565 | 71583 -- (1511 OnMessages, 180 Sends)
+2024/02/01 20:43:04 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:09 Traffic Bytes (in|out): 2239290 | 76313 -- (1789 OnMessages, 228 Sends)
+2024/02/01 20:43:09 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:14 Traffic Bytes (in|out): 2074812 | 73310 -- (1684 OnMessages, 242 Sends)
+2024/02/01 20:43:14 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:19 Traffic Bytes (in|out): 2333429 | 85983 -- (1878 OnMessages, 249 Sends)
+2024/02/01 20:43:19 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:24 Traffic Bytes (in|out): 1590276 | 58300 -- (1287 OnMessages, 186 Sends)
+2024/02/01 20:43:24 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:29 Traffic Bytes (in|out): 2370844 | 82360 -- (1887 OnMessages, 236 Sends)
+2024/02/01 20:43:29 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:34 Traffic Bytes (in|out): 2420580 | 80722 -- (1898 OnMessages, 219 Sends)
+2024/02/01 20:43:34 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:39 Traffic Bytes (in|out): 1698389 | 59748 -- (1384 OnMessages, 222 Sends)
+2024/02/01 20:43:39 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:44 Traffic Bytes (in|out): 2640462 | 93731 -- (2098 OnMessages, 278 Sends)
+2024/02/01 20:43:44 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:49 Traffic Bytes (in|out): 2406065 | 76525 -- (1897 OnMessages, 241 Sends)
+2024/02/01 20:43:49 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:50 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:43:50 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:43:50 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:43:50 WebRTC: DataChannel created
+2024/02/01 20:43:50 WebRTC: Created offer
+2024/02/01 20:43:50 WebRTC: Set local description
+2024/02/01 20:43:50 WebRTC: Received answer
+2024/02/01 20:43:50 WebRTC: Set remote description
+2024/02/01 20:43:50 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:43:51 WebRTC: DataChannel.OnOpen
+2024/02/01 20:43:51 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:43:51 WebRTC: Probe timer expired
+2024/02/01 20:43:51 WebRTC: closing DataChannel
+2024/02/01 20:43:51 WebRTC: closing PeerConnection
+2024/02/01 20:43:51 WebRTC: DataChannel.OnClose
+2024/02/01 20:43:51 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:43:51 WebRTC: closed PeerConnection
+2024/02/01 20:43:51 WebRTC: Closing
+2024/02/01 20:43:51 redialing on same connection
+2024/02/01 20:43:51 ---- Handler: snowflake assigned ----
+2024/02/01 20:43:54 Traffic Bytes (in|out): 2067070 | 68830 -- (1658 OnMessages, 203 Sends)
+2024/02/01 20:43:54 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:43:59 Traffic Bytes (in|out): 2230417 | 81279 -- (1795 OnMessages, 225 Sends)
+2024/02/01 20:43:59 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:04 Traffic Bytes (in|out): 2440267 | 80621 -- (1941 OnMessages, 244 Sends)
+2024/02/01 20:44:04 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:09 Traffic Bytes (in|out): 2341589 | 86347 -- (1875 OnMessages, 255 Sends)
+2024/02/01 20:44:09 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:14 Traffic Bytes (in|out): 2106944 | 72234 -- (1710 OnMessages, 246 Sends)
+2024/02/01 20:44:14 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:19 Traffic Bytes (in|out): 1878131 | 67345 -- (1535 OnMessages, 237 Sends)
+2024/02/01 20:44:19 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:20 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:44:20 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:44:20 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:44:20 WebRTC: DataChannel created
+2024/02/01 20:44:20 WebRTC: Created offer
+2024/02/01 20:44:20 WebRTC: Set local description
+2024/02/01 20:44:20 WebRTC: Received answer
+2024/02/01 20:44:20 WebRTC: Set remote description
+2024/02/01 20:44:20 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:44:21 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:44:21 WebRTC: DataChannel.OnOpen
+2024/02/01 20:44:21 WebRTC: Probe timer expired
+2024/02/01 20:44:21 WebRTC: closing DataChannel
+2024/02/01 20:44:21 WebRTC: closing PeerConnection
+2024/02/01 20:44:21 WebRTC: DataChannel.OnClose
+2024/02/01 20:44:21 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:44:21 WebRTC: closed PeerConnection
+2024/02/01 20:44:21 WebRTC: Closing
+2024/02/01 20:44:21 redialing on same connection
+2024/02/01 20:44:21 ---- Handler: snowflake assigned ----
+2024/02/01 20:44:24 Traffic Bytes (in|out): 1748717 | 58124 -- (1400 OnMessages, 190 Sends)
+2024/02/01 20:44:24 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:29 Traffic Bytes (in|out): 2009503 | 72000 -- (1617 OnMessages, 221 Sends)
+2024/02/01 20:44:29 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:34 Traffic Bytes (in|out): 2334486 | 84823 -- (1881 OnMessages, 256 Sends)
+2024/02/01 20:44:34 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:39 Traffic Bytes (in|out): 2025882 | 70878 -- (1624 OnMessages, 211 Sends)
+2024/02/01 20:44:39 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:40 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:44:40 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:44:40 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:44:40 WebRTC: DataChannel created
+2024/02/01 20:44:40 WebRTC: Created offer
+2024/02/01 20:44:40 WebRTC: Set local description
+2024/02/01 20:44:40 WebRTC: Received answer
+2024/02/01 20:44:40 WebRTC: Set remote description
+2024/02/01 20:44:40 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:44:41 WebRTC: DataChannel.OnOpen
+2024/02/01 20:44:41 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:44:41 WebRTC: Probe timer expired
+2024/02/01 20:44:41 WebRTC: closing DataChannel
+2024/02/01 20:44:41 WebRTC: closing PeerConnection
+2024/02/01 20:44:41 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:44:41 WebRTC: DataChannel.OnClose
+2024/02/01 20:44:41 WebRTC: closed PeerConnection
+2024/02/01 20:44:41 WebRTC: Closing
+2024/02/01 20:44:41 redialing on same connection
+2024/02/01 20:44:41 ---- Handler: snowflake assigned ----
+2024/02/01 20:44:44 Traffic Bytes (in|out): 1867057 | 62632 -- (1473 OnMessages, 175 Sends)
+2024/02/01 20:44:44 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:49 Traffic Bytes (in|out): 2551723 | 84931 -- (2025 OnMessages, 244 Sends)
+2024/02/01 20:44:49 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:50 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:44:50 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:44:50 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:44:50 WebRTC: DataChannel created
+2024/02/01 20:44:50 WebRTC: Created offer
+2024/02/01 20:44:50 WebRTC: Set local description
+2024/02/01 20:44:50 WebRTC: Received answer
+2024/02/01 20:44:50 WebRTC: Set remote description
+2024/02/01 20:44:50 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:44:51 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:44:51 WebRTC: DataChannel.OnOpen
+2024/02/01 20:44:51 WebRTC: Probe timer expired
+2024/02/01 20:44:51 WebRTC: closing DataChannel
+2024/02/01 20:44:51 WebRTC: closing PeerConnection
+2024/02/01 20:44:51 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:44:51 WebRTC: DataChannel.OnClose
+2024/02/01 20:44:51 WebRTC: closed PeerConnection
+2024/02/01 20:44:51 WebRTC: Closing
+2024/02/01 20:44:51 redialing on same connection
+2024/02/01 20:44:51 ---- Handler: snowflake assigned ----
+2024/02/01 20:44:54 Traffic Bytes (in|out): 1521741 | 64455 -- (1203 OnMessages, 165 Sends)
+2024/02/01 20:44:54 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:44:59 Traffic Bytes (in|out): 674724 | 18867 -- (537 OnMessages, 63 Sends)
+2024/02/01 20:44:59 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:51:39 snowflake-client 2.6.0
+2024/02/01 20:51:39 Started SOCKS listener at 127.0.0.1:44707.
+2024/02/01 20:51:40 SOCKS accepted: {192.0.2.3:1   map[]}
+2024/02/01 20:51:40 
+
+
+ --- Starting Snowflake Client ---
+2024/02/01 20:51:40 Using ICE servers:
+2024/02/01 20:51:40 url: stun:stun.sonetel.com:3478
+2024/02/01 20:51:40 url: stun:stun.voys.nl:3478
+2024/02/01 20:51:40 url: stun:stun.voipgate.com:3478
+2024/02/01 20:51:40 url: stun:stun.antisip.com:3478
+2024/02/01 20:51:40 url: stun:stun.voip.blackberry.com:3478
+2024/02/01 20:51:40 Rendezvous using Broker at: https://jinyu-sf-broker.cs-pk.com
+2024/02/01 20:51:40 ---- SnowflakeConn: begin collecting snowflakes ---
+2024/02/01 20:51:40 ---- SnowflakeConn: starting a new session ---
+2024/02/01 20:51:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:51:40 snowflake-70c5e4bd414d105f  connecting...
+2024/02/01 20:51:40 redialing on same connection
+2024/02/01 20:51:40 ---- SnowflakeConn: begin stream 3 ---
+2024/02/01 20:51:40 WebRTC: DataChannel created
+2024/02/01 20:51:40 WebRTC: Created offer
+2024/02/01 20:51:40 WebRTC: Set local description
+2024/02/01 20:51:40 Negotiating via HTTP rendezvous...
+2024/02/01 20:51:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:51:40 Front URL:   
+2024/02/01 20:51:40 HTTP rendezvous response: 200 OK
+2024/02/01 20:51:40 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 7860679206144237938 1706820700 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 6C:DE:30:77:17:0D:2F:70:6B:F2:E6:75:C6:03:3D:D5:7D:3B:1D:D3:AD:24:47:71:B6:52:31:94:57:5A:23:3D\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:FMbjHrCRSkLGHGoI\\r\\na=ice-pwd:znPjtSMBdSiHWAhPmSCbPjJfLUzjDZlF\\r\\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 35493 typ host\\r\\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 35493 typ host\\r\\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 38979 typ srflx raddr 0.0.0.0 rport 38979\\r\\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 38979 typ srflx raddr 0.0.0.0 rport 38979\\r\\na=end-of-candidates\\r\\n\"}"}
+2024/02/01 20:51:40 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 7860679206144237938 1706820700 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 6C:DE:30:77:17:0D:2F:70:6B:F2:E6:75:C6:03:3D:D5:7D:3B:1D:D3:AD:24:47:71:B6:52:31:94:57:5A:23:3D\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:FMbjHrCRSkLGHGoI\r\na=ice-pwd:znPjtSMBdSiHWAhPmSCbPjJfLUzjDZlF\r\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 35493 typ host\r\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 35493 typ host\r\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 38979 typ srflx raddr 0.0.0.0 rport 38979\r\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 38979 typ srflx raddr 0.0.0.0 rport 38979\r\na=end-of-candidates\r\n"}
+2024/02/01 20:51:40 Received Answer.
+2024/02/01 20:51:41 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:51:41 WebRTC: DataChannel.OnOpen
+2024/02/01 20:51:41 ---- Handler: snowflake assigned ----
+2024/02/01 20:51:45 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:51:45 Traffic Bytes (in|out): 17419 | 10950 -- (28 OnMessages, 29 Sends)
+2024/02/01 20:51:50 Traffic Bytes (in|out): 1962571 | 79001 -- (1541 OnMessages, 214 Sends)
+2024/02/01 20:51:50 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:51:50 Warning: NAT checking failed for server at stun.sonetel.com:3478: Error retrieveing server response: timed out waiting for response
+2024/02/01 20:51:50 Warning: NAT checking failed for server at stun.voys.nl:3478: NAT discovery feature not supported: attribute not found
+2024/02/01 20:51:50 NAT Type: unrestricted
+2024/02/01 20:51:55 Traffic Bytes (in|out): 2778208 | 85561 -- (2202 OnMessages, 280 Sends)
+2024/02/01 20:51:55 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:00 Traffic Bytes (in|out): 2609561 | 84791 -- (2091 OnMessages, 261 Sends)
+2024/02/01 20:52:00 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:05 Traffic Bytes (in|out): 959083 | 40478 -- (773 OnMessages, 121 Sends)
+2024/02/01 20:52:05 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:10 Traffic Bytes (in|out): 3044971 | 81703 -- (2424 OnMessages, 295 Sends)
+2024/02/01 20:52:10 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:10 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:52:10 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:52:10 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:52:10 WebRTC: DataChannel created
+2024/02/01 20:52:10 WebRTC: Created offer
+2024/02/01 20:52:10 WebRTC: Set local description
+2024/02/01 20:52:10 WebRTC: Received answer
+2024/02/01 20:52:10 WebRTC: Set remote description
+2024/02/01 20:52:10 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:52:11 WebRTC: DataChannel.OnOpen
+2024/02/01 20:52:11 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:52:11 WebRTC: snowflake-70c5e4bd414d105f Probe timer expired
+2024/02/01 20:52:11 WebRTC: closing DataChannel
+2024/02/01 20:52:11 WebRTC: closing PeerConnection
+2024/02/01 20:52:11 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:52:11 WebRTC: DataChannel.OnClose
+2024/02/01 20:52:11 WebRTC: closed PeerConnection
+2024/02/01 20:52:11 WebRTC: Closing
+2024/02/01 20:52:11 redialing on same connection
+2024/02/01 20:52:11 ---- Handler: snowflake assigned ----
+2024/02/01 20:52:15 Traffic Bytes (in|out): 2740573 | 92078 -- (2154 OnMessages, 265 Sends)
+2024/02/01 20:52:15 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:20 Traffic Bytes (in|out): 2438941 | 87236 -- (1959 OnMessages, 257 Sends)
+2024/02/01 20:52:20 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:25 Traffic Bytes (in|out): 3163397 | 114825 -- (2473 OnMessages, 307 Sends)
+2024/02/01 20:52:25 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:30 Traffic Bytes (in|out): 2623563 | 74356 -- (2104 OnMessages, 250 Sends)
+2024/02/01 20:52:30 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:35 Traffic Bytes (in|out): 1077641 | 39300 -- (872 OnMessages, 117 Sends)
+2024/02/01 20:52:35 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:40 Traffic Bytes (in|out): 3149896 | 102236 -- (2494 OnMessages, 330 Sends)
+2024/02/01 20:52:40 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:45 Traffic Bytes (in|out): 3218565 | 106727 -- (2526 OnMessages, 324 Sends)
+2024/02/01 20:52:45 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:50 Traffic Bytes (in|out): 2688465 | 83432 -- (2142 OnMessages, 287 Sends)
+2024/02/01 20:52:50 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:52:55 Traffic Bytes (in|out): 3260281 | 102793 -- (2547 OnMessages, 318 Sends)
+2024/02/01 20:52:55 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:00 Traffic Bytes (in|out): 2721467 | 93271 -- (2131 OnMessages, 263 Sends)
+2024/02/01 20:53:00 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:05 Traffic Bytes (in|out): 640461 | 22457 -- (530 OnMessages, 100 Sends)
+2024/02/01 20:53:05 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:10 Traffic Bytes (in|out): 2554359 | 83244 -- (2024 OnMessages, 271 Sends)
+2024/02/01 20:53:10 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:15 Traffic Bytes (in|out): 2485783 | 77031 -- (1983 OnMessages, 233 Sends)
+2024/02/01 20:53:15 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:20 Traffic Bytes (in|out): 2144349 | 70309 -- (1722 OnMessages, 238 Sends)
+2024/02/01 20:53:20 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:25 Traffic Bytes (in|out): 2987451 | 100814 -- (2370 OnMessages, 285 Sends)
+2024/02/01 20:53:25 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:30 Traffic Bytes (in|out): 3139559 | 102894 -- (2503 OnMessages, 324 Sends)
+2024/02/01 20:53:30 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:35 Traffic Bytes (in|out): 1349952 | 45468 -- (1076 OnMessages, 151 Sends)
+2024/02/01 20:53:35 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:40 Traffic Bytes (in|out): 2065761 | 68379 -- (1647 OnMessages, 204 Sends)
+2024/02/01 20:53:40 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:45 Traffic Bytes (in|out): 2948237 | 98002 -- (2366 OnMessages, 288 Sends)
+2024/02/01 20:53:45 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:50 Traffic Bytes (in|out): 3868593 | 126252 -- (3028 OnMessages, 351 Sends)
+2024/02/01 20:53:50 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:53:51 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:53:51 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:53:51 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:53:51 WebRTC: DataChannel created
+2024/02/01 20:53:51 WebRTC: Created offer
+2024/02/01 20:53:51 WebRTC: Set local description
+2024/02/01 20:53:51 WebRTC: Received answer
+2024/02/01 20:53:51 WebRTC: Set remote description
+2024/02/01 20:53:51 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:53:52 WebRTC: DataChannel.OnOpen
+2024/02/01 20:53:52 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:53:52 WebRTC: Probe timer expired
+2024/02/01 20:53:52 WebRTC: closing DataChannel
+2024/02/01 20:53:52 WebRTC: closing PeerConnection
+2024/02/01 20:53:52 WebRTC: DataChannel.OnClose
+2024/02/01 20:53:52 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:53:52 WebRTC: closed PeerConnection
+2024/02/01 20:53:52 WebRTC: Closing
+2024/02/01 20:53:52 redialing on same connection
+2024/02/01 20:53:52 ---- Handler: snowflake assigned ----
+2024/02/01 20:53:55 Traffic Bytes (in|out): 2537356 | 87012 -- (1998 OnMessages, 286 Sends)
+2024/02/01 20:53:55 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:00 Traffic Bytes (in|out): 3444214 | 116170 -- (2720 OnMessages, 317 Sends)
+2024/02/01 20:54:00 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:05 Traffic Bytes (in|out): 1438867 | 46091 -- (1163 OnMessages, 157 Sends)
+2024/02/01 20:54:05 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:10 Traffic Bytes (in|out): 1259388 | 54334 -- (989 OnMessages, 145 Sends)
+2024/02/01 20:54:10 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:15 Traffic Bytes (in|out): 2966525 | 97325 -- (2341 OnMessages, 277 Sends)
+2024/02/01 20:54:15 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:20 Traffic Bytes (in|out): 2779169 | 85133 -- (2179 OnMessages, 286 Sends)
+2024/02/01 20:54:20 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:25 Traffic Bytes (in|out): 2132793 | 72897 -- (1703 OnMessages, 220 Sends)
+2024/02/01 20:54:25 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:30 Traffic Bytes (in|out): 2929330 | 79943 -- (2285 OnMessages, 256 Sends)
+2024/02/01 20:54:30 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:35 Traffic Bytes (in|out): 2408651 | 81768 -- (1894 OnMessages, 248 Sends)
+2024/02/01 20:54:35 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:40 Traffic Bytes (in|out): 1274696 | 45604 -- (1019 OnMessages, 164 Sends)
+2024/02/01 20:54:40 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:45 Traffic Bytes (in|out): 2192057 | 61790 -- (1704 OnMessages, 244 Sends)
+2024/02/01 20:54:45 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:50 Traffic Bytes (in|out): 2963195 | 104778 -- (2352 OnMessages, 306 Sends)
+2024/02/01 20:54:50 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:54:55 Traffic Bytes (in|out): 2894556 | 100663 -- (2291 OnMessages, 302 Sends)
+2024/02/01 20:54:55 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:00 Traffic Bytes (in|out): 3126461 | 103432 -- (2481 OnMessages, 322 Sends)
+2024/02/01 20:55:00 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:05 Traffic Bytes (in|out): 2547134 | 85646 -- (1999 OnMessages, 223 Sends)
+2024/02/01 20:55:05 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:10 Traffic Bytes (in|out): 716852 | 24222 -- (584 OnMessages, 102 Sends)
+2024/02/01 20:55:10 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:10 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:55:10 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:55:10 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:55:10 WebRTC: DataChannel created
+2024/02/01 20:55:10 WebRTC: Created offer
+2024/02/01 20:55:10 WebRTC: Set local description
+2024/02/01 20:55:10 WebRTC: Received answer
+2024/02/01 20:55:10 WebRTC: Set remote description
+2024/02/01 20:55:10 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:55:11 WebRTC: DataChannel.OnOpen
+2024/02/01 20:55:11 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:55:11 WebRTC: Probe timer expired
+2024/02/01 20:55:11 WebRTC: closing DataChannel
+2024/02/01 20:55:11 WebRTC: closing PeerConnection
+2024/02/01 20:55:11 WebRTC: DataChannel.OnClose
+2024/02/01 20:55:11 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:55:11 WebRTC: closed PeerConnection
+2024/02/01 20:55:11 WebRTC: Closing
+2024/02/01 20:55:11 redialing on same connection
+2024/02/01 20:55:11 ---- Handler: snowflake assigned ----
+2024/02/01 20:55:15 Traffic Bytes (in|out): 1460129 | 53392 -- (1189 OnMessages, 183 Sends)
+2024/02/01 20:55:15 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:20 Traffic Bytes (in|out): 1338589 | 43587 -- (1089 OnMessages, 174 Sends)
+2024/02/01 20:55:20 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:25 Traffic Bytes (in|out): 2800437 | 101535 -- (2224 OnMessages, 274 Sends)
+2024/02/01 20:55:25 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:30 Traffic Bytes (in|out): 2896586 | 87928 -- (2310 OnMessages, 297 Sends)
+2024/02/01 20:55:30 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:35 Traffic Bytes (in|out): 2871107 | 88402 -- (2261 OnMessages, 274 Sends)
+2024/02/01 20:55:35 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:40 Traffic Bytes (in|out): 1455376 | 54106 -- (1174 OnMessages, 169 Sends)
+2024/02/01 20:55:40 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:45 Traffic Bytes (in|out): 2407224 | 79409 -- (1935 OnMessages, 272 Sends)
+2024/02/01 20:55:45 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:50 Traffic Bytes (in|out): 1998478 | 70664 -- (1601 OnMessages, 219 Sends)
+2024/02/01 20:55:50 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:55:55 Traffic Bytes (in|out): 2113623 | 83721 -- (1652 OnMessages, 216 Sends)
+2024/02/01 20:55:55 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:00 Traffic Bytes (in|out): 2287372 | 75246 -- (1826 OnMessages, 241 Sends)
+2024/02/01 20:56:00 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:00 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:56:00 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:56:00 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:56:00 WebRTC: DataChannel created
+2024/02/01 20:56:00 WebRTC: Created offer
+2024/02/01 20:56:00 WebRTC: Set local description
+2024/02/01 20:56:01 WebRTC: Received answer
+2024/02/01 20:56:01 WebRTC: Set remote description
+2024/02/01 20:56:01 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:56:01 WebRTC: DataChannel.OnOpen
+2024/02/01 20:56:01 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:56:02 WebRTC: Probe timer expired
+2024/02/01 20:56:02 WebRTC: closing DataChannel
+2024/02/01 20:56:02 WebRTC: closing PeerConnection
+2024/02/01 20:56:02 WebRTC: DataChannel.OnClose
+2024/02/01 20:56:02 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:56:02 WebRTC: closed PeerConnection
+2024/02/01 20:56:02 WebRTC: Closing
+2024/02/01 20:56:02 redialing on same connection
+2024/02/01 20:56:02 ---- Handler: snowflake assigned ----
+2024/02/01 20:56:05 Traffic Bytes (in|out): 1113792 | 38490 -- (908 OnMessages, 150 Sends)
+2024/02/01 20:56:05 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:10 Traffic Bytes (in|out): 1422022 | 53657 -- (1148 OnMessages, 148 Sends)
+2024/02/01 20:56:10 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:15 Traffic Bytes (in|out): 3456046 | 124336 -- (2724 OnMessages, 332 Sends)
+2024/02/01 20:56:15 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:20 Traffic Bytes (in|out): 2948075 | 105387 -- (2329 OnMessages, 271 Sends)
+2024/02/01 20:56:20 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:25 Traffic Bytes (in|out): 2306286 | 73227 -- (1815 OnMessages, 203 Sends)
+2024/02/01 20:56:25 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:30 Traffic Bytes (in|out): 3418156 | 120469 -- (2689 OnMessages, 317 Sends)
+2024/02/01 20:56:30 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:30 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:56:30 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:56:30 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:56:30 WebRTC: DataChannel created
+2024/02/01 20:56:30 WebRTC: Created offer
+2024/02/01 20:56:30 WebRTC: Set local description
+2024/02/01 20:56:30 WebRTC: Received answer
+2024/02/01 20:56:30 WebRTC: Set remote description
+2024/02/01 20:56:30 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:56:31 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:56:31 WebRTC: DataChannel.OnOpen
+2024/02/01 20:56:31 WebRTC: Probe timer expired
+2024/02/01 20:56:31 WebRTC: closing DataChannel
+2024/02/01 20:56:31 WebRTC: closing PeerConnection
+2024/02/01 20:56:31 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:56:31 WebRTC: DataChannel.OnClose
+2024/02/01 20:56:31 WebRTC: closed PeerConnection
+2024/02/01 20:56:31 WebRTC: Closing
+2024/02/01 20:56:31 redialing on same connection
+2024/02/01 20:56:31 ---- Handler: snowflake assigned ----
+2024/02/01 20:56:35 Traffic Bytes (in|out): 1668514 | 47453 -- (1307 OnMessages, 158 Sends)
+2024/02/01 20:56:35 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:40 Traffic Bytes (in|out): 1222098 | 44902 -- (998 OnMessages, 154 Sends)
+2024/02/01 20:56:40 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:45 Traffic Bytes (in|out): 2595822 | 91398 -- (2051 OnMessages, 261 Sends)
+2024/02/01 20:56:45 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:50 Traffic Bytes (in|out): 3224260 | 96823 -- (2558 OnMessages, 334 Sends)
+2024/02/01 20:56:50 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:56:50 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"3.236.85.135"}
+2024/02/01 20:56:50 WebRTC: Received new backup proxy: 3.236.85.135
+2024/02/01 20:56:50 WebRTC: Directly connecting to 3.236.85.135
+2024/02/01 20:56:50 WebRTC: DataChannel created
+2024/02/01 20:56:50 WebRTC: Created offer
+2024/02/01 20:56:50 WebRTC: Set local description
+2024/02/01 20:56:50 WebRTC: Received answer
+2024/02/01 20:56:50 WebRTC: Set remote description
+2024/02/01 20:56:50 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:56:51 WebRTC: DataChannel.OnOpen
+2024/02/01 20:56:51 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:56:51 WebRTC: Probe timer expired
+2024/02/01 20:56:51 WebRTC: closing DataChannel
+2024/02/01 20:56:51 WebRTC: closing PeerConnection
+2024/02/01 20:56:51 WebRTC: DataChannel.OnClose
+2024/02/01 20:56:51 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:56:51 WebRTC: closed PeerConnection
+2024/02/01 20:56:51 WebRTC: Closing
+2024/02/01 20:56:51 redialing on same connection
+2024/02/01 20:56:51 ---- Handler: snowflake assigned ----
+2024/02/01 20:56:55 Traffic Bytes (in|out): 3177779 | 106761 -- (2498 OnMessages, 330 Sends)
+2024/02/01 20:56:55 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:00 Traffic Bytes (in|out): 3040587 | 107768 -- (2405 OnMessages, 296 Sends)
+2024/02/01 20:57:00 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:00 WebRTC: Received probe message: {"time_val":0,"backup_proxy_ip":"54.224.167.39"}
+2024/02/01 20:57:00 WebRTC: Received new backup proxy: 54.224.167.39
+2024/02/01 20:57:00 WebRTC: Directly connecting to 54.224.167.39
+2024/02/01 20:57:00 WebRTC: DataChannel created
+2024/02/01 20:57:00 WebRTC: Created offer
+2024/02/01 20:57:00 WebRTC: Set local description
+2024/02/01 20:57:00 WebRTC: Received answer
+2024/02/01 20:57:00 WebRTC: Set remote description
+2024/02/01 20:57:00 WebRTC: Resetting probe timer to 1 millisecond
+2024/02/01 20:57:01 WebRTC: DataChannel.OnOpen
+2024/02/01 20:57:01 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 20:57:01 WebRTC: Probe timer expired
+2024/02/01 20:57:01 WebRTC: closing DataChannel
+2024/02/01 20:57:01 WebRTC: closing PeerConnection
+2024/02/01 20:57:01 WebRTC: DataChannel.OnClose
+2024/02/01 20:57:01 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:57:01 WebRTC: closed PeerConnection
+2024/02/01 20:57:01 WebRTC: Closing
+2024/02/01 20:57:01 redialing on same connection
+2024/02/01 20:57:01 ---- Handler: snowflake assigned ----
+2024/02/01 20:57:05 Traffic Bytes (in|out): 2865676 | 103755 -- (2260 OnMessages, 286 Sends)
+2024/02/01 20:57:05 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:10 Traffic Bytes (in|out): 3051182 | 104226 -- (2418 OnMessages, 315 Sends)
+2024/02/01 20:57:10 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:15 Traffic Bytes (in|out): 2777500 | 94503 -- (2202 OnMessages, 277 Sends)
+2024/02/01 20:57:15 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:20 Traffic Bytes (in|out): 2543397 | 91329 -- (2013 OnMessages, 258 Sends)
+2024/02/01 20:57:20 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:25 Traffic Bytes (in|out): 2717142 | 94017 -- (2154 OnMessages, 239 Sends)
+2024/02/01 20:57:25 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:30 Traffic Bytes (in|out): 2374647 | 68489 -- (1874 OnMessages, 251 Sends)
+2024/02/01 20:57:30 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:35 Traffic Bytes (in|out): 653 | 83 -- (4 OnMessages, 3 Sends)
+2024/02/01 20:57:35 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:40 Traffic Bytes (in|out): 0 | 570 -- (0 OnMessages, 1 Sends)
+2024/02/01 20:57:40 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:45 Traffic Bytes (in|out): 0 | 3519 -- (0 OnMessages, 9 Sends)
+2024/02/01 20:57:45 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:50 Traffic Bytes (in|out): 0 | 1743 -- (0 OnMessages, 4 Sends)
+2024/02/01 20:57:50 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:57:55 Traffic Bytes (in|out): 0 | 5150 -- (0 OnMessages, 11 Sends)
+2024/02/01 20:57:55 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:00 Traffic Bytes (in|out): 0 | 7855 -- (0 OnMessages, 13 Sends)
+2024/02/01 20:58:00 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:05 Traffic Bytes (in|out): 0 | 5117 -- (0 OnMessages, 10 Sends)
+2024/02/01 20:58:05 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:10 Traffic Bytes (in|out): 0 | 5150 -- (0 OnMessages, 11 Sends)
+2024/02/01 20:58:10 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:15 Traffic Bytes (in|out): 0 | 5687 -- (0 OnMessages, 11 Sends)
+2024/02/01 20:58:15 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:20 Traffic Bytes (in|out): 0 | 4725 -- (0 OnMessages, 13 Sends)
+2024/02/01 20:58:20 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:25 Traffic Bytes (in|out): 0 | 6827 -- (0 OnMessages, 13 Sends)
+2024/02/01 20:58:25 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:30 Traffic Bytes (in|out): 0 | 5239 -- (0 OnMessages, 13 Sends)
+2024/02/01 20:58:30 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:35 Traffic Bytes (in|out): 0 | 5206 -- (0 OnMessages, 12 Sends)
+2024/02/01 20:58:35 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:40 Traffic Bytes (in|out): 0 | 4132 -- (0 OnMessages, 12 Sends)
+2024/02/01 20:58:40 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:45 Traffic Bytes (in|out): 0 | 6916 -- (0 OnMessages, 15 Sends)
+2024/02/01 20:58:45 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:50 Traffic Bytes (in|out): 0 | 4758 -- (0 OnMessages, 14 Sends)
+2024/02/01 20:58:50 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:58:55 Traffic Bytes (in|out): 0 | 8033 -- (0 OnMessages, 17 Sends)
+2024/02/01 20:58:55 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:59:00 Traffic Bytes (in|out): 0 | 4791 -- (0 OnMessages, 15 Sends)
+2024/02/01 20:59:00 WebRTC: At capacity [1/1]  Retrying...
+2024/02/01 20:59:00 WebRTC: Probe timer expired
+2024/02/01 20:59:00 WebRTC: closing DataChannel
+2024/02/01 20:59:00 WebRTC: closing PeerConnection
+2024/02/01 20:59:00 WebRTC: MsgDataChannel.OnClose
+2024/02/01 20:59:00 WebRTC: closed PeerConnection
+2024/02/01 20:59:00 WebRTC: Closing
+2024/02/01 20:59:00 WebRTC: DataChannel.OnClose
+2024/02/01 20:59:00 redialing on same connection
+2024/02/01 20:59:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:05 snowflake-b00dd2d69100f7b3  connecting...
+2024/02/01 20:59:05 WebRTC: DataChannel created
+2024/02/01 20:59:05 WebRTC: Created offer
+2024/02/01 20:59:05 WebRTC: Set local description
+2024/02/01 20:59:05 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:05 Front URL:   
+2024/02/01 20:59:05 WebRTC: closing DataChannel
+2024/02/01 20:59:05 WebRTC: closing PeerConnection
+2024/02/01 20:59:05 WebRTC: closed PeerConnection
+2024/02/01 20:59:05 WebRTC: Closing
+2024/02/01 20:59:05 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:10 snowflake-dba620bb6e7f86f2  connecting...
+2024/02/01 20:59:10 WebRTC: DataChannel created
+2024/02/01 20:59:10 WebRTC: Created offer
+2024/02/01 20:59:10 WebRTC: Set local description
+2024/02/01 20:59:10 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:10 Front URL:   
+2024/02/01 20:59:10 WebRTC: closing DataChannel
+2024/02/01 20:59:10 WebRTC: closing PeerConnection
+2024/02/01 20:59:10 WebRTC: closed PeerConnection
+2024/02/01 20:59:10 WebRTC: Closing
+2024/02/01 20:59:10 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:15 snowflake-809258285861de59  connecting...
+2024/02/01 20:59:15 WebRTC: DataChannel created
+2024/02/01 20:59:15 WebRTC: Created offer
+2024/02/01 20:59:15 WebRTC: Set local description
+2024/02/01 20:59:15 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:15 Front URL:   
+2024/02/01 20:59:15 WebRTC: closing DataChannel
+2024/02/01 20:59:15 WebRTC: closing PeerConnection
+2024/02/01 20:59:15 WebRTC: closed PeerConnection
+2024/02/01 20:59:15 WebRTC: Closing
+2024/02/01 20:59:15 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:20 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:20 snowflake-6fc4c8ad07147877  connecting...
+2024/02/01 20:59:20 WebRTC: DataChannel created
+2024/02/01 20:59:20 WebRTC: Created offer
+2024/02/01 20:59:20 WebRTC: Set local description
+2024/02/01 20:59:20 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:20 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:20 Front URL:   
+2024/02/01 20:59:20 WebRTC: closing DataChannel
+2024/02/01 20:59:20 WebRTC: closing PeerConnection
+2024/02/01 20:59:20 WebRTC: closed PeerConnection
+2024/02/01 20:59:20 WebRTC: Closing
+2024/02/01 20:59:20 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:25 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:25 snowflake-8cf0bb56e90f4368  connecting...
+2024/02/01 20:59:25 WebRTC: DataChannel created
+2024/02/01 20:59:25 WebRTC: Created offer
+2024/02/01 20:59:25 WebRTC: Set local description
+2024/02/01 20:59:25 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:25 Front URL:   
+2024/02/01 20:59:25 WebRTC: closing DataChannel
+2024/02/01 20:59:25 WebRTC: closing PeerConnection
+2024/02/01 20:59:25 WebRTC: closed PeerConnection
+2024/02/01 20:59:25 WebRTC: Closing
+2024/02/01 20:59:25 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:30 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:30 snowflake-9967bec4558ffcd9  connecting...
+2024/02/01 20:59:30 WebRTC: DataChannel created
+2024/02/01 20:59:30 WebRTC: Created offer
+2024/02/01 20:59:30 WebRTC: Set local description
+2024/02/01 20:59:30 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:30 Front URL:   
+2024/02/01 20:59:30 WebRTC: closing DataChannel
+2024/02/01 20:59:30 WebRTC: closing PeerConnection
+2024/02/01 20:59:30 WebRTC: closed PeerConnection
+2024/02/01 20:59:30 WebRTC: Closing
+2024/02/01 20:59:30 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:35 snowflake-6c7b9fdef1f63d92  connecting...
+2024/02/01 20:59:35 WebRTC: DataChannel created
+2024/02/01 20:59:35 WebRTC: Created offer
+2024/02/01 20:59:35 WebRTC: Set local description
+2024/02/01 20:59:35 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:35 Front URL:   
+2024/02/01 20:59:35 WebRTC: closing DataChannel
+2024/02/01 20:59:35 WebRTC: closing PeerConnection
+2024/02/01 20:59:35 WebRTC: closed PeerConnection
+2024/02/01 20:59:35 WebRTC: Closing
+2024/02/01 20:59:35 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:40 snowflake-d6585f6e448eff17  connecting...
+2024/02/01 20:59:40 WebRTC: DataChannel created
+2024/02/01 20:59:40 WebRTC: Created offer
+2024/02/01 20:59:40 WebRTC: Set local description
+2024/02/01 20:59:40 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:40 Front URL:   
+2024/02/01 20:59:40 WebRTC: closing DataChannel
+2024/02/01 20:59:40 WebRTC: closing PeerConnection
+2024/02/01 20:59:40 WebRTC: closed PeerConnection
+2024/02/01 20:59:40 WebRTC: Closing
+2024/02/01 20:59:40 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:45 snowflake-fffd5fa4ab11e2c9  connecting...
+2024/02/01 20:59:45 WebRTC: DataChannel created
+2024/02/01 20:59:45 WebRTC: Created offer
+2024/02/01 20:59:45 WebRTC: Set local description
+2024/02/01 20:59:45 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:45 Front URL:   
+2024/02/01 20:59:45 WebRTC: closing DataChannel
+2024/02/01 20:59:45 WebRTC: closing PeerConnection
+2024/02/01 20:59:45 WebRTC: closed PeerConnection
+2024/02/01 20:59:45 WebRTC: Closing
+2024/02/01 20:59:45 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:50 snowflake-fd5084fc1e29a50c  connecting...
+2024/02/01 20:59:50 WebRTC: DataChannel created
+2024/02/01 20:59:50 WebRTC: Created offer
+2024/02/01 20:59:50 WebRTC: Set local description
+2024/02/01 20:59:50 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:50 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:50 Front URL:   
+2024/02/01 20:59:50 WebRTC: closing DataChannel
+2024/02/01 20:59:50 WebRTC: closing PeerConnection
+2024/02/01 20:59:50 WebRTC: closed PeerConnection
+2024/02/01 20:59:50 WebRTC: Closing
+2024/02/01 20:59:50 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 20:59:55 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 20:59:55 snowflake-577eb8ad1ab9e572  connecting...
+2024/02/01 20:59:55 WebRTC: DataChannel created
+2024/02/01 20:59:55 WebRTC: Created offer
+2024/02/01 20:59:55 WebRTC: Set local description
+2024/02/01 20:59:55 Negotiating via HTTP rendezvous...
+2024/02/01 20:59:55 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 20:59:55 Front URL:   
+2024/02/01 20:59:55 WebRTC: closing DataChannel
+2024/02/01 20:59:55 WebRTC: closing PeerConnection
+2024/02/01 20:59:55 WebRTC: closed PeerConnection
+2024/02/01 20:59:55 WebRTC: Closing
+2024/02/01 20:59:55 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:00 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:00 snowflake-45a0aedecd609ac9  connecting...
+2024/02/01 21:00:00 WebRTC: DataChannel created
+2024/02/01 21:00:00 WebRTC: Created offer
+2024/02/01 21:00:00 WebRTC: Set local description
+2024/02/01 21:00:00 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:00 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:00 Front URL:   
+2024/02/01 21:00:00 WebRTC: closing DataChannel
+2024/02/01 21:00:00 WebRTC: closing PeerConnection
+2024/02/01 21:00:00 WebRTC: closed PeerConnection
+2024/02/01 21:00:00 WebRTC: Closing
+2024/02/01 21:00:00 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:05 snowflake-fee29058d1b8476d  connecting...
+2024/02/01 21:00:05 WebRTC: DataChannel created
+2024/02/01 21:00:05 WebRTC: Created offer
+2024/02/01 21:00:05 WebRTC: Set local description
+2024/02/01 21:00:05 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:05 Front URL:   
+2024/02/01 21:00:05 WebRTC: closing DataChannel
+2024/02/01 21:00:05 WebRTC: closing PeerConnection
+2024/02/01 21:00:05 WebRTC: closed PeerConnection
+2024/02/01 21:00:05 WebRTC: Closing
+2024/02/01 21:00:05 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:10 snowflake-cd63bb3e194d9a3b  connecting...
+2024/02/01 21:00:10 WebRTC: DataChannel created
+2024/02/01 21:00:10 WebRTC: Created offer
+2024/02/01 21:00:10 WebRTC: Set local description
+2024/02/01 21:00:10 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:10 Front URL:   
+2024/02/01 21:00:10 WebRTC: closing DataChannel
+2024/02/01 21:00:10 WebRTC: closing PeerConnection
+2024/02/01 21:00:10 WebRTC: closed PeerConnection
+2024/02/01 21:00:10 WebRTC: Closing
+2024/02/01 21:00:10 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:15 snowflake-7132f8f70c0be741  connecting...
+2024/02/01 21:00:15 WebRTC: DataChannel created
+2024/02/01 21:00:15 WebRTC: Created offer
+2024/02/01 21:00:15 WebRTC: Set local description
+2024/02/01 21:00:15 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:15 Front URL:   
+2024/02/01 21:00:15 WebRTC: closing DataChannel
+2024/02/01 21:00:15 WebRTC: closing PeerConnection
+2024/02/01 21:00:15 WebRTC: closed PeerConnection
+2024/02/01 21:00:15 WebRTC: Closing
+2024/02/01 21:00:15 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:20 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:20 snowflake-5ef7020793857934  connecting...
+2024/02/01 21:00:20 WebRTC: DataChannel created
+2024/02/01 21:00:20 WebRTC: Created offer
+2024/02/01 21:00:20 WebRTC: Set local description
+2024/02/01 21:00:20 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:20 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:20 Front URL:   
+2024/02/01 21:00:20 WebRTC: closing DataChannel
+2024/02/01 21:00:20 WebRTC: closing PeerConnection
+2024/02/01 21:00:20 WebRTC: closed PeerConnection
+2024/02/01 21:00:20 WebRTC: Closing
+2024/02/01 21:00:20 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:25 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:25 snowflake-d62eb2fd9ca8108b  connecting...
+2024/02/01 21:00:25 WebRTC: DataChannel created
+2024/02/01 21:00:25 WebRTC: Created offer
+2024/02/01 21:00:25 WebRTC: Set local description
+2024/02/01 21:00:25 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:25 Front URL:   
+2024/02/01 21:00:25 WebRTC: closing DataChannel
+2024/02/01 21:00:25 WebRTC: closing PeerConnection
+2024/02/01 21:00:25 WebRTC: closed PeerConnection
+2024/02/01 21:00:25 WebRTC: Closing
+2024/02/01 21:00:25 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:30 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:30 snowflake-c81a34907f2a1ac9  connecting...
+2024/02/01 21:00:30 WebRTC: DataChannel created
+2024/02/01 21:00:30 WebRTC: Created offer
+2024/02/01 21:00:30 WebRTC: Set local description
+2024/02/01 21:00:30 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:30 Front URL:   
+2024/02/01 21:00:30 WebRTC: closing DataChannel
+2024/02/01 21:00:30 WebRTC: closing PeerConnection
+2024/02/01 21:00:30 WebRTC: closed PeerConnection
+2024/02/01 21:00:30 WebRTC: Closing
+2024/02/01 21:00:30 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:35 snowflake-d688dce4da6309b0  connecting...
+2024/02/01 21:00:35 WebRTC: DataChannel created
+2024/02/01 21:00:35 WebRTC: Created offer
+2024/02/01 21:00:35 WebRTC: Set local description
+2024/02/01 21:00:35 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:35 Front URL:   
+2024/02/01 21:00:35 WebRTC: closing DataChannel
+2024/02/01 21:00:35 WebRTC: closing PeerConnection
+2024/02/01 21:00:35 WebRTC: closed PeerConnection
+2024/02/01 21:00:35 WebRTC: Closing
+2024/02/01 21:00:35 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:40 snowflake-fee02bff66085b96  connecting...
+2024/02/01 21:00:40 WebRTC: DataChannel created
+2024/02/01 21:00:40 WebRTC: Created offer
+2024/02/01 21:00:40 WebRTC: Set local description
+2024/02/01 21:00:40 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:40 Front URL:   
+2024/02/01 21:00:40 WebRTC: closing DataChannel
+2024/02/01 21:00:40 WebRTC: closing PeerConnection
+2024/02/01 21:00:40 WebRTC: closed PeerConnection
+2024/02/01 21:00:40 WebRTC: Closing
+2024/02/01 21:00:40 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:45 snowflake-1d9c6574171b30f5  connecting...
+2024/02/01 21:00:45 WebRTC: DataChannel created
+2024/02/01 21:00:45 WebRTC: Created offer
+2024/02/01 21:00:45 WebRTC: Set local description
+2024/02/01 21:00:45 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:45 Front URL:   
+2024/02/01 21:00:45 WebRTC: closing DataChannel
+2024/02/01 21:00:45 WebRTC: closing PeerConnection
+2024/02/01 21:00:45 WebRTC: closed PeerConnection
+2024/02/01 21:00:45 WebRTC: Closing
+2024/02/01 21:00:45 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:50 snowflake-f149ab59200ffd17  connecting...
+2024/02/01 21:00:50 WebRTC: DataChannel created
+2024/02/01 21:00:50 WebRTC: Created offer
+2024/02/01 21:00:50 WebRTC: Set local description
+2024/02/01 21:00:50 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:50 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:50 Front URL:   
+2024/02/01 21:00:50 WebRTC: closing DataChannel
+2024/02/01 21:00:50 WebRTC: closing PeerConnection
+2024/02/01 21:00:50 WebRTC: closed PeerConnection
+2024/02/01 21:00:50 WebRTC: Closing
+2024/02/01 21:00:50 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:00:55 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:00:55 snowflake-e3c8a1a5efd15ddf  connecting...
+2024/02/01 21:00:55 WebRTC: DataChannel created
+2024/02/01 21:00:55 WebRTC: Created offer
+2024/02/01 21:00:55 WebRTC: Set local description
+2024/02/01 21:00:55 Negotiating via HTTP rendezvous...
+2024/02/01 21:00:55 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:00:55 Front URL:   
+2024/02/01 21:00:55 WebRTC: closing DataChannel
+2024/02/01 21:00:55 WebRTC: closing PeerConnection
+2024/02/01 21:00:55 WebRTC: closed PeerConnection
+2024/02/01 21:00:55 WebRTC: Closing
+2024/02/01 21:00:55 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:00 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:00 snowflake-2a109ac5b7218901  connecting...
+2024/02/01 21:01:00 WebRTC: DataChannel created
+2024/02/01 21:01:00 WebRTC: Created offer
+2024/02/01 21:01:00 WebRTC: Set local description
+2024/02/01 21:01:00 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:00 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:00 Front URL:   
+2024/02/01 21:01:00 WebRTC: closing DataChannel
+2024/02/01 21:01:00 WebRTC: closing PeerConnection
+2024/02/01 21:01:00 WebRTC: closed PeerConnection
+2024/02/01 21:01:00 WebRTC: Closing
+2024/02/01 21:01:00 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:05 snowflake-3ec56eceaa929b15  connecting...
+2024/02/01 21:01:05 WebRTC: DataChannel created
+2024/02/01 21:01:05 WebRTC: Created offer
+2024/02/01 21:01:05 WebRTC: Set local description
+2024/02/01 21:01:05 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:05 Front URL:   
+2024/02/01 21:01:05 WebRTC: closing DataChannel
+2024/02/01 21:01:05 WebRTC: closing PeerConnection
+2024/02/01 21:01:05 WebRTC: closed PeerConnection
+2024/02/01 21:01:05 WebRTC: Closing
+2024/02/01 21:01:05 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:10 snowflake-a2569c8a1cd2f64b  connecting...
+2024/02/01 21:01:10 WebRTC: DataChannel created
+2024/02/01 21:01:10 WebRTC: Created offer
+2024/02/01 21:01:10 WebRTC: Set local description
+2024/02/01 21:01:10 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:10 Front URL:   
+2024/02/01 21:01:10 WebRTC: closing DataChannel
+2024/02/01 21:01:10 WebRTC: closing PeerConnection
+2024/02/01 21:01:10 WebRTC: closed PeerConnection
+2024/02/01 21:01:10 WebRTC: Closing
+2024/02/01 21:01:10 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:15 snowflake-b1a7692909332a67  connecting...
+2024/02/01 21:01:15 WebRTC: DataChannel created
+2024/02/01 21:01:15 WebRTC: Created offer
+2024/02/01 21:01:15 WebRTC: Set local description
+2024/02/01 21:01:15 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:15 Front URL:   
+2024/02/01 21:01:15 WebRTC: closing DataChannel
+2024/02/01 21:01:15 WebRTC: closing PeerConnection
+2024/02/01 21:01:15 WebRTC: closed PeerConnection
+2024/02/01 21:01:15 WebRTC: Closing
+2024/02/01 21:01:15 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:20 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:20 snowflake-fcfe225862675e9d  connecting...
+2024/02/01 21:01:20 WebRTC: DataChannel created
+2024/02/01 21:01:20 WebRTC: Created offer
+2024/02/01 21:01:20 WebRTC: Set local description
+2024/02/01 21:01:20 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:20 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:20 Front URL:   
+2024/02/01 21:01:20 WebRTC: closing DataChannel
+2024/02/01 21:01:20 WebRTC: closing PeerConnection
+2024/02/01 21:01:20 WebRTC: closed PeerConnection
+2024/02/01 21:01:20 WebRTC: Closing
+2024/02/01 21:01:20 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:25 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:25 snowflake-56077645b3059f21  connecting...
+2024/02/01 21:01:25 WebRTC: DataChannel created
+2024/02/01 21:01:25 WebRTC: Created offer
+2024/02/01 21:01:25 WebRTC: Set local description
+2024/02/01 21:01:25 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:25 Front URL:   
+2024/02/01 21:01:25 WebRTC: closing DataChannel
+2024/02/01 21:01:25 WebRTC: closing PeerConnection
+2024/02/01 21:01:25 WebRTC: closed PeerConnection
+2024/02/01 21:01:25 WebRTC: Closing
+2024/02/01 21:01:25 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:30 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:30 snowflake-159d2ca8d9af9650  connecting...
+2024/02/01 21:01:30 WebRTC: DataChannel created
+2024/02/01 21:01:30 WebRTC: Created offer
+2024/02/01 21:01:30 WebRTC: Set local description
+2024/02/01 21:01:30 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:30 Front URL:   
+2024/02/01 21:01:30 WebRTC: closing DataChannel
+2024/02/01 21:01:30 WebRTC: closing PeerConnection
+2024/02/01 21:01:30 WebRTC: closed PeerConnection
+2024/02/01 21:01:30 WebRTC: Closing
+2024/02/01 21:01:30 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:35 snowflake-e853b5fdc9cd82c0  connecting...
+2024/02/01 21:01:35 WebRTC: DataChannel created
+2024/02/01 21:01:35 WebRTC: Created offer
+2024/02/01 21:01:35 WebRTC: Set local description
+2024/02/01 21:01:35 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:35 Front URL:   
+2024/02/01 21:01:35 WebRTC: closing DataChannel
+2024/02/01 21:01:35 WebRTC: closing PeerConnection
+2024/02/01 21:01:35 WebRTC: closed PeerConnection
+2024/02/01 21:01:35 WebRTC: Closing
+2024/02/01 21:01:35 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:40 snowflake-33275064ca4c70fe  connecting...
+2024/02/01 21:01:40 WebRTC: DataChannel created
+2024/02/01 21:01:40 WebRTC: Created offer
+2024/02/01 21:01:40 WebRTC: Set local description
+2024/02/01 21:01:40 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:40 Front URL:   
+2024/02/01 21:01:40 WebRTC: closing DataChannel
+2024/02/01 21:01:40 WebRTC: closing PeerConnection
+2024/02/01 21:01:40 WebRTC: closed PeerConnection
+2024/02/01 21:01:40 WebRTC: Closing
+2024/02/01 21:01:40 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:45 snowflake-1b539f7e78374764  connecting...
+2024/02/01 21:01:45 WebRTC: DataChannel created
+2024/02/01 21:01:45 WebRTC: Created offer
+2024/02/01 21:01:45 WebRTC: Set local description
+2024/02/01 21:01:45 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:45 Front URL:   
+2024/02/01 21:01:45 WebRTC: closing DataChannel
+2024/02/01 21:01:45 WebRTC: closing PeerConnection
+2024/02/01 21:01:45 WebRTC: closed PeerConnection
+2024/02/01 21:01:45 WebRTC: Closing
+2024/02/01 21:01:45 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:50 snowflake-c49013623c390e38  connecting...
+2024/02/01 21:01:50 WebRTC: DataChannel created
+2024/02/01 21:01:50 WebRTC: Created offer
+2024/02/01 21:01:50 WebRTC: Set local description
+2024/02/01 21:01:50 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:50 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:50 Front URL:   
+2024/02/01 21:01:50 WebRTC: closing DataChannel
+2024/02/01 21:01:50 WebRTC: closing PeerConnection
+2024/02/01 21:01:50 WebRTC: closed PeerConnection
+2024/02/01 21:01:50 WebRTC: Closing
+2024/02/01 21:01:50 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:01:55 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:01:55 snowflake-f29f34526d5c9c80  connecting...
+2024/02/01 21:01:55 WebRTC: DataChannel created
+2024/02/01 21:01:55 WebRTC: Created offer
+2024/02/01 21:01:55 WebRTC: Set local description
+2024/02/01 21:01:55 Negotiating via HTTP rendezvous...
+2024/02/01 21:01:55 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:01:55 Front URL:   
+2024/02/01 21:01:55 WebRTC: closing DataChannel
+2024/02/01 21:01:55 WebRTC: closing PeerConnection
+2024/02/01 21:01:55 WebRTC: closed PeerConnection
+2024/02/01 21:01:55 WebRTC: Closing
+2024/02/01 21:01:55 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:00 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:00 snowflake-b735e1897bb5ae82  connecting...
+2024/02/01 21:02:00 WebRTC: DataChannel created
+2024/02/01 21:02:00 WebRTC: Created offer
+2024/02/01 21:02:00 WebRTC: Set local description
+2024/02/01 21:02:00 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:00 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:00 Front URL:   
+2024/02/01 21:02:00 WebRTC: closing DataChannel
+2024/02/01 21:02:00 WebRTC: closing PeerConnection
+2024/02/01 21:02:00 WebRTC: closed PeerConnection
+2024/02/01 21:02:00 WebRTC: Closing
+2024/02/01 21:02:00 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:05 snowflake-f7ef52347e2c3f97  connecting...
+2024/02/01 21:02:05 WebRTC: DataChannel created
+2024/02/01 21:02:05 WebRTC: Created offer
+2024/02/01 21:02:05 WebRTC: Set local description
+2024/02/01 21:02:05 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:05 Front URL:   
+2024/02/01 21:02:05 WebRTC: closing DataChannel
+2024/02/01 21:02:05 WebRTC: closing PeerConnection
+2024/02/01 21:02:05 WebRTC: closed PeerConnection
+2024/02/01 21:02:05 WebRTC: Closing
+2024/02/01 21:02:05 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:10 snowflake-8f441a69a66f07b3  connecting...
+2024/02/01 21:02:10 WebRTC: DataChannel created
+2024/02/01 21:02:10 WebRTC: Created offer
+2024/02/01 21:02:10 WebRTC: Set local description
+2024/02/01 21:02:10 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:10 Front URL:   
+2024/02/01 21:02:10 WebRTC: closing DataChannel
+2024/02/01 21:02:10 WebRTC: closing PeerConnection
+2024/02/01 21:02:10 WebRTC: closed PeerConnection
+2024/02/01 21:02:10 WebRTC: Closing
+2024/02/01 21:02:10 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:15 snowflake-d4efe53eec8ffa3f  connecting...
+2024/02/01 21:02:15 WebRTC: DataChannel created
+2024/02/01 21:02:15 WebRTC: Created offer
+2024/02/01 21:02:15 WebRTC: Set local description
+2024/02/01 21:02:15 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:15 Front URL:   
+2024/02/01 21:02:15 WebRTC: closing DataChannel
+2024/02/01 21:02:15 WebRTC: closing PeerConnection
+2024/02/01 21:02:15 WebRTC: closed PeerConnection
+2024/02/01 21:02:15 WebRTC: Closing
+2024/02/01 21:02:15 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:20 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:20 snowflake-ca0bb4f571a81148  connecting...
+2024/02/01 21:02:20 WebRTC: DataChannel created
+2024/02/01 21:02:20 WebRTC: Created offer
+2024/02/01 21:02:20 WebRTC: Set local description
+2024/02/01 21:02:20 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:20 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:20 Front URL:   
+2024/02/01 21:02:20 WebRTC: closing DataChannel
+2024/02/01 21:02:20 WebRTC: closing PeerConnection
+2024/02/01 21:02:20 WebRTC: closed PeerConnection
+2024/02/01 21:02:20 WebRTC: Closing
+2024/02/01 21:02:20 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:25 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:25 snowflake-e29a048d2c4c4b41  connecting...
+2024/02/01 21:02:25 WebRTC: DataChannel created
+2024/02/01 21:02:25 WebRTC: Created offer
+2024/02/01 21:02:25 WebRTC: Set local description
+2024/02/01 21:02:25 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:25 Front URL:   
+2024/02/01 21:02:25 WebRTC: closing DataChannel
+2024/02/01 21:02:25 WebRTC: closing PeerConnection
+2024/02/01 21:02:25 WebRTC: closed PeerConnection
+2024/02/01 21:02:25 WebRTC: Closing
+2024/02/01 21:02:25 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:30 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:30 snowflake-9c1533adc0d8aa65  connecting...
+2024/02/01 21:02:30 WebRTC: DataChannel created
+2024/02/01 21:02:30 WebRTC: Created offer
+2024/02/01 21:02:30 WebRTC: Set local description
+2024/02/01 21:02:30 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:30 Front URL:   
+2024/02/01 21:02:30 WebRTC: closing DataChannel
+2024/02/01 21:02:30 WebRTC: closing PeerConnection
+2024/02/01 21:02:30 WebRTC: closed PeerConnection
+2024/02/01 21:02:30 WebRTC: Closing
+2024/02/01 21:02:30 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:35 snowflake-f1c04e1ed569f280  connecting...
+2024/02/01 21:02:35 WebRTC: DataChannel created
+2024/02/01 21:02:35 WebRTC: Created offer
+2024/02/01 21:02:35 WebRTC: Set local description
+2024/02/01 21:02:35 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:35 Front URL:   
+2024/02/01 21:02:35 WebRTC: closing DataChannel
+2024/02/01 21:02:35 WebRTC: closing PeerConnection
+2024/02/01 21:02:35 WebRTC: closed PeerConnection
+2024/02/01 21:02:35 WebRTC: Closing
+2024/02/01 21:02:35 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:40 snowflake-8533c7d006fee184  connecting...
+2024/02/01 21:02:40 WebRTC: DataChannel created
+2024/02/01 21:02:40 WebRTC: Created offer
+2024/02/01 21:02:40 WebRTC: Set local description
+2024/02/01 21:02:40 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:40 Front URL:   
+2024/02/01 21:02:40 WebRTC: closing DataChannel
+2024/02/01 21:02:40 WebRTC: closing PeerConnection
+2024/02/01 21:02:40 WebRTC: closed PeerConnection
+2024/02/01 21:02:40 WebRTC: Closing
+2024/02/01 21:02:40 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:45 snowflake-c32adb2d2f880d44  connecting...
+2024/02/01 21:02:45 WebRTC: DataChannel created
+2024/02/01 21:02:45 WebRTC: Created offer
+2024/02/01 21:02:45 WebRTC: Set local description
+2024/02/01 21:02:45 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:45 Front URL:   
+2024/02/01 21:02:45 WebRTC: closing DataChannel
+2024/02/01 21:02:45 WebRTC: closing PeerConnection
+2024/02/01 21:02:45 WebRTC: closed PeerConnection
+2024/02/01 21:02:45 WebRTC: Closing
+2024/02/01 21:02:45 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:50 snowflake-3c6da13cc57b799f  connecting...
+2024/02/01 21:02:50 WebRTC: DataChannel created
+2024/02/01 21:02:50 WebRTC: Created offer
+2024/02/01 21:02:50 WebRTC: Set local description
+2024/02/01 21:02:50 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:50 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:50 Front URL:   
+2024/02/01 21:02:50 WebRTC: closing DataChannel
+2024/02/01 21:02:50 WebRTC: closing PeerConnection
+2024/02/01 21:02:50 WebRTC: closed PeerConnection
+2024/02/01 21:02:50 WebRTC: Closing
+2024/02/01 21:02:50 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:02:55 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:02:55 snowflake-841af7155be73b1e  connecting...
+2024/02/01 21:02:55 WebRTC: DataChannel created
+2024/02/01 21:02:55 WebRTC: Created offer
+2024/02/01 21:02:55 WebRTC: Set local description
+2024/02/01 21:02:55 Negotiating via HTTP rendezvous...
+2024/02/01 21:02:55 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:02:55 Front URL:   
+2024/02/01 21:02:55 WebRTC: closing DataChannel
+2024/02/01 21:02:55 WebRTC: closing PeerConnection
+2024/02/01 21:02:55 WebRTC: closed PeerConnection
+2024/02/01 21:02:55 WebRTC: Closing
+2024/02/01 21:02:55 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:00 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:00 snowflake-e11bd3863b8e9c4b  connecting...
+2024/02/01 21:03:00 WebRTC: DataChannel created
+2024/02/01 21:03:00 WebRTC: Created offer
+2024/02/01 21:03:00 WebRTC: Set local description
+2024/02/01 21:03:00 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:00 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:00 Front URL:   
+2024/02/01 21:03:00 WebRTC: closing DataChannel
+2024/02/01 21:03:00 WebRTC: closing PeerConnection
+2024/02/01 21:03:00 WebRTC: closed PeerConnection
+2024/02/01 21:03:00 WebRTC: Closing
+2024/02/01 21:03:00 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:05 snowflake-8719724fb2524521  connecting...
+2024/02/01 21:03:05 WebRTC: DataChannel created
+2024/02/01 21:03:05 WebRTC: Created offer
+2024/02/01 21:03:05 WebRTC: Set local description
+2024/02/01 21:03:05 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:05 Front URL:   
+2024/02/01 21:03:05 WebRTC: closing DataChannel
+2024/02/01 21:03:05 WebRTC: closing PeerConnection
+2024/02/01 21:03:05 WebRTC: closed PeerConnection
+2024/02/01 21:03:05 WebRTC: Closing
+2024/02/01 21:03:05 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:10 snowflake-c29dfe11837fe85e  connecting...
+2024/02/01 21:03:10 WebRTC: DataChannel created
+2024/02/01 21:03:10 WebRTC: Created offer
+2024/02/01 21:03:10 WebRTC: Set local description
+2024/02/01 21:03:10 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:10 Front URL:   
+2024/02/01 21:03:10 WebRTC: closing DataChannel
+2024/02/01 21:03:10 WebRTC: closing PeerConnection
+2024/02/01 21:03:10 WebRTC: closed PeerConnection
+2024/02/01 21:03:10 WebRTC: Closing
+2024/02/01 21:03:10 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:15 snowflake-1055fb3b4695d3a1  connecting...
+2024/02/01 21:03:15 WebRTC: DataChannel created
+2024/02/01 21:03:15 WebRTC: Created offer
+2024/02/01 21:03:15 WebRTC: Set local description
+2024/02/01 21:03:15 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:15 Front URL:   
+2024/02/01 21:03:15 WebRTC: closing DataChannel
+2024/02/01 21:03:15 WebRTC: closing PeerConnection
+2024/02/01 21:03:15 WebRTC: closed PeerConnection
+2024/02/01 21:03:15 WebRTC: Closing
+2024/02/01 21:03:15 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:20 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:20 snowflake-5c4141f3c14bb7c2  connecting...
+2024/02/01 21:03:20 WebRTC: DataChannel created
+2024/02/01 21:03:20 WebRTC: Created offer
+2024/02/01 21:03:20 WebRTC: Set local description
+2024/02/01 21:03:20 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:20 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:20 Front URL:   
+2024/02/01 21:03:20 WebRTC: closing DataChannel
+2024/02/01 21:03:20 WebRTC: closing PeerConnection
+2024/02/01 21:03:20 WebRTC: closed PeerConnection
+2024/02/01 21:03:20 WebRTC: Closing
+2024/02/01 21:03:20 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:25 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:25 snowflake-51d95caaa63bceb3  connecting...
+2024/02/01 21:03:25 WebRTC: DataChannel created
+2024/02/01 21:03:25 WebRTC: Created offer
+2024/02/01 21:03:25 WebRTC: Set local description
+2024/02/01 21:03:25 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:25 Front URL:   
+2024/02/01 21:03:25 WebRTC: closing DataChannel
+2024/02/01 21:03:25 WebRTC: closing PeerConnection
+2024/02/01 21:03:25 WebRTC: closed PeerConnection
+2024/02/01 21:03:25 WebRTC: Closing
+2024/02/01 21:03:25 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:30 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:30 snowflake-f5fd395e6124af7c  connecting...
+2024/02/01 21:03:30 WebRTC: DataChannel created
+2024/02/01 21:03:30 WebRTC: Created offer
+2024/02/01 21:03:30 WebRTC: Set local description
+2024/02/01 21:03:30 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:30 Front URL:   
+2024/02/01 21:03:30 WebRTC: closing DataChannel
+2024/02/01 21:03:30 WebRTC: closing PeerConnection
+2024/02/01 21:03:30 WebRTC: closed PeerConnection
+2024/02/01 21:03:30 WebRTC: Closing
+2024/02/01 21:03:30 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:35 snowflake-c302ced3154cf3fc  connecting...
+2024/02/01 21:03:35 WebRTC: DataChannel created
+2024/02/01 21:03:35 WebRTC: Created offer
+2024/02/01 21:03:35 WebRTC: Set local description
+2024/02/01 21:03:35 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:35 Front URL:   
+2024/02/01 21:03:35 WebRTC: closing DataChannel
+2024/02/01 21:03:35 WebRTC: closing PeerConnection
+2024/02/01 21:03:35 WebRTC: closed PeerConnection
+2024/02/01 21:03:35 WebRTC: Closing
+2024/02/01 21:03:35 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:40 snowflake-54d3c694f62de293  connecting...
+2024/02/01 21:03:40 WebRTC: DataChannel created
+2024/02/01 21:03:40 WebRTC: Created offer
+2024/02/01 21:03:40 WebRTC: Set local description
+2024/02/01 21:03:40 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:40 Front URL:   
+2024/02/01 21:03:40 WebRTC: closing DataChannel
+2024/02/01 21:03:40 WebRTC: closing PeerConnection
+2024/02/01 21:03:40 WebRTC: closed PeerConnection
+2024/02/01 21:03:40 WebRTC: Closing
+2024/02/01 21:03:40 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:45 snowflake-cce05088eaca084d  connecting...
+2024/02/01 21:03:45 WebRTC: DataChannel created
+2024/02/01 21:03:45 WebRTC: Created offer
+2024/02/01 21:03:45 WebRTC: Set local description
+2024/02/01 21:03:45 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:45 Front URL:   
+2024/02/01 21:03:45 WebRTC: closing DataChannel
+2024/02/01 21:03:45 WebRTC: closing PeerConnection
+2024/02/01 21:03:45 WebRTC: closed PeerConnection
+2024/02/01 21:03:45 WebRTC: Closing
+2024/02/01 21:03:45 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:50 snowflake-22eb969a5122d8c7  connecting...
+2024/02/01 21:03:50 WebRTC: DataChannel created
+2024/02/01 21:03:50 WebRTC: Created offer
+2024/02/01 21:03:50 WebRTC: Set local description
+2024/02/01 21:03:50 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:50 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:50 Front URL:   
+2024/02/01 21:03:50 WebRTC: closing DataChannel
+2024/02/01 21:03:50 WebRTC: closing PeerConnection
+2024/02/01 21:03:50 WebRTC: closed PeerConnection
+2024/02/01 21:03:50 WebRTC: Closing
+2024/02/01 21:03:50 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:03:55 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:03:55 snowflake-b361df6da3b546c0  connecting...
+2024/02/01 21:03:55 WebRTC: DataChannel created
+2024/02/01 21:03:55 WebRTC: Created offer
+2024/02/01 21:03:55 WebRTC: Set local description
+2024/02/01 21:03:55 Negotiating via HTTP rendezvous...
+2024/02/01 21:03:55 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:03:55 Front URL:   
+2024/02/01 21:03:55 WebRTC: closing DataChannel
+2024/02/01 21:03:55 WebRTC: closing PeerConnection
+2024/02/01 21:03:55 WebRTC: closed PeerConnection
+2024/02/01 21:03:55 WebRTC: Closing
+2024/02/01 21:03:55 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:00 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:00 snowflake-e7aeaa5b431a1ae5  connecting...
+2024/02/01 21:04:00 WebRTC: DataChannel created
+2024/02/01 21:04:00 WebRTC: Created offer
+2024/02/01 21:04:00 WebRTC: Set local description
+2024/02/01 21:04:00 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:00 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:00 Front URL:   
+2024/02/01 21:04:00 WebRTC: closing DataChannel
+2024/02/01 21:04:00 WebRTC: closing PeerConnection
+2024/02/01 21:04:00 WebRTC: closed PeerConnection
+2024/02/01 21:04:00 WebRTC: Closing
+2024/02/01 21:04:00 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:05 snowflake-3a762790bc2728d9  connecting...
+2024/02/01 21:04:05 WebRTC: DataChannel created
+2024/02/01 21:04:05 WebRTC: Created offer
+2024/02/01 21:04:05 WebRTC: Set local description
+2024/02/01 21:04:05 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:05 Front URL:   
+2024/02/01 21:04:05 WebRTC: closing DataChannel
+2024/02/01 21:04:05 WebRTC: closing PeerConnection
+2024/02/01 21:04:05 WebRTC: closed PeerConnection
+2024/02/01 21:04:05 WebRTC: Closing
+2024/02/01 21:04:05 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:10 snowflake-cf17fec0a540e24f  connecting...
+2024/02/01 21:04:10 WebRTC: DataChannel created
+2024/02/01 21:04:10 WebRTC: Created offer
+2024/02/01 21:04:10 WebRTC: Set local description
+2024/02/01 21:04:10 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:10 Front URL:   
+2024/02/01 21:04:10 WebRTC: closing DataChannel
+2024/02/01 21:04:10 WebRTC: closing PeerConnection
+2024/02/01 21:04:10 WebRTC: closed PeerConnection
+2024/02/01 21:04:10 WebRTC: Closing
+2024/02/01 21:04:10 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:15 snowflake-a682bfcc083e0d11  connecting...
+2024/02/01 21:04:15 WebRTC: DataChannel created
+2024/02/01 21:04:15 WebRTC: Created offer
+2024/02/01 21:04:15 WebRTC: Set local description
+2024/02/01 21:04:15 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:15 Front URL:   
+2024/02/01 21:04:15 WebRTC: closing DataChannel
+2024/02/01 21:04:15 WebRTC: closing PeerConnection
+2024/02/01 21:04:15 WebRTC: closed PeerConnection
+2024/02/01 21:04:15 WebRTC: Closing
+2024/02/01 21:04:15 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:20 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:20 snowflake-a40b249903d2bf63  connecting...
+2024/02/01 21:04:20 WebRTC: DataChannel created
+2024/02/01 21:04:20 WebRTC: Created offer
+2024/02/01 21:04:20 WebRTC: Set local description
+2024/02/01 21:04:20 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:20 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:20 Front URL:   
+2024/02/01 21:04:20 WebRTC: closing DataChannel
+2024/02/01 21:04:20 WebRTC: closing PeerConnection
+2024/02/01 21:04:20 WebRTC: closed PeerConnection
+2024/02/01 21:04:20 WebRTC: Closing
+2024/02/01 21:04:20 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:25 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:25 snowflake-2a2eee400ed660db  connecting...
+2024/02/01 21:04:25 WebRTC: DataChannel created
+2024/02/01 21:04:25 WebRTC: Created offer
+2024/02/01 21:04:25 WebRTC: Set local description
+2024/02/01 21:04:25 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:25 Front URL:   
+2024/02/01 21:04:25 WebRTC: closing DataChannel
+2024/02/01 21:04:25 WebRTC: closing PeerConnection
+2024/02/01 21:04:25 WebRTC: closed PeerConnection
+2024/02/01 21:04:25 WebRTC: Closing
+2024/02/01 21:04:25 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:30 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:30 snowflake-5626087efabbcc5b  connecting...
+2024/02/01 21:04:30 WebRTC: DataChannel created
+2024/02/01 21:04:30 WebRTC: Created offer
+2024/02/01 21:04:30 WebRTC: Set local description
+2024/02/01 21:04:30 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:30 Front URL:   
+2024/02/01 21:04:30 WebRTC: closing DataChannel
+2024/02/01 21:04:30 WebRTC: closing PeerConnection
+2024/02/01 21:04:30 WebRTC: closed PeerConnection
+2024/02/01 21:04:30 WebRTC: Closing
+2024/02/01 21:04:30 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:35 snowflake-20d7637d03965a76  connecting...
+2024/02/01 21:04:35 WebRTC: DataChannel created
+2024/02/01 21:04:35 WebRTC: Created offer
+2024/02/01 21:04:35 WebRTC: Set local description
+2024/02/01 21:04:35 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:35 Front URL:   
+2024/02/01 21:04:35 WebRTC: closing DataChannel
+2024/02/01 21:04:35 WebRTC: closing PeerConnection
+2024/02/01 21:04:35 WebRTC: closed PeerConnection
+2024/02/01 21:04:35 WebRTC: Closing
+2024/02/01 21:04:35 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:40 snowflake-02b20ed62ec92136  connecting...
+2024/02/01 21:04:40 WebRTC: DataChannel created
+2024/02/01 21:04:40 WebRTC: Created offer
+2024/02/01 21:04:40 WebRTC: Set local description
+2024/02/01 21:04:40 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:40 Front URL:   
+2024/02/01 21:04:40 WebRTC: closing DataChannel
+2024/02/01 21:04:40 WebRTC: closing PeerConnection
+2024/02/01 21:04:40 WebRTC: closed PeerConnection
+2024/02/01 21:04:40 WebRTC: Closing
+2024/02/01 21:04:40 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:45 snowflake-ac7b79b3d57efd5a  connecting...
+2024/02/01 21:04:45 WebRTC: DataChannel created
+2024/02/01 21:04:45 WebRTC: Created offer
+2024/02/01 21:04:45 WebRTC: Set local description
+2024/02/01 21:04:45 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:45 Front URL:   
+2024/02/01 21:04:45 WebRTC: closing DataChannel
+2024/02/01 21:04:45 WebRTC: closing PeerConnection
+2024/02/01 21:04:45 WebRTC: closed PeerConnection
+2024/02/01 21:04:45 WebRTC: Closing
+2024/02/01 21:04:45 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:50 snowflake-1764377c6f3fd3a2  connecting...
+2024/02/01 21:04:50 WebRTC: DataChannel created
+2024/02/01 21:04:50 WebRTC: Created offer
+2024/02/01 21:04:50 WebRTC: Set local description
+2024/02/01 21:04:50 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:50 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:50 Front URL:   
+2024/02/01 21:04:50 WebRTC: closing DataChannel
+2024/02/01 21:04:50 WebRTC: closing PeerConnection
+2024/02/01 21:04:50 WebRTC: closed PeerConnection
+2024/02/01 21:04:50 WebRTC: Closing
+2024/02/01 21:04:50 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:04:55 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:04:55 snowflake-defdd46107ff8c83  connecting...
+2024/02/01 21:04:55 WebRTC: DataChannel created
+2024/02/01 21:04:55 WebRTC: Created offer
+2024/02/01 21:04:55 WebRTC: Set local description
+2024/02/01 21:04:55 Negotiating via HTTP rendezvous...
+2024/02/01 21:04:55 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:04:55 Front URL:   
+2024/02/01 21:04:55 WebRTC: closing DataChannel
+2024/02/01 21:04:55 WebRTC: closing PeerConnection
+2024/02/01 21:04:55 WebRTC: closed PeerConnection
+2024/02/01 21:04:55 WebRTC: Closing
+2024/02/01 21:04:55 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:00 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:00 snowflake-ee6956b92f3dadd3  connecting...
+2024/02/01 21:05:00 WebRTC: DataChannel created
+2024/02/01 21:05:00 WebRTC: Created offer
+2024/02/01 21:05:00 WebRTC: Set local description
+2024/02/01 21:05:00 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:00 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:00 Front URL:   
+2024/02/01 21:05:00 WebRTC: closing DataChannel
+2024/02/01 21:05:00 WebRTC: closing PeerConnection
+2024/02/01 21:05:00 WebRTC: closed PeerConnection
+2024/02/01 21:05:00 WebRTC: Closing
+2024/02/01 21:05:00 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:05 snowflake-be74a424505d1859  connecting...
+2024/02/01 21:05:05 WebRTC: DataChannel created
+2024/02/01 21:05:05 WebRTC: Created offer
+2024/02/01 21:05:05 WebRTC: Set local description
+2024/02/01 21:05:05 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:05 Front URL:   
+2024/02/01 21:05:05 WebRTC: closing DataChannel
+2024/02/01 21:05:05 WebRTC: closing PeerConnection
+2024/02/01 21:05:05 WebRTC: closed PeerConnection
+2024/02/01 21:05:05 WebRTC: Closing
+2024/02/01 21:05:05 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:10 snowflake-98491e47515cdf57  connecting...
+2024/02/01 21:05:10 WebRTC: DataChannel created
+2024/02/01 21:05:10 WebRTC: Created offer
+2024/02/01 21:05:10 WebRTC: Set local description
+2024/02/01 21:05:10 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:10 Front URL:   
+2024/02/01 21:05:10 WebRTC: closing DataChannel
+2024/02/01 21:05:10 WebRTC: closing PeerConnection
+2024/02/01 21:05:10 WebRTC: closed PeerConnection
+2024/02/01 21:05:10 WebRTC: Closing
+2024/02/01 21:05:10 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:15 snowflake-f4e29a8798ad517a  connecting...
+2024/02/01 21:05:15 WebRTC: DataChannel created
+2024/02/01 21:05:15 WebRTC: Created offer
+2024/02/01 21:05:15 WebRTC: Set local description
+2024/02/01 21:05:15 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:15 Front URL:   
+2024/02/01 21:05:15 WebRTC: closing DataChannel
+2024/02/01 21:05:15 WebRTC: closing PeerConnection
+2024/02/01 21:05:15 WebRTC: closed PeerConnection
+2024/02/01 21:05:15 WebRTC: Closing
+2024/02/01 21:05:15 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:20 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:20 snowflake-c25f17b1c78617ff  connecting...
+2024/02/01 21:05:20 WebRTC: DataChannel created
+2024/02/01 21:05:20 WebRTC: Created offer
+2024/02/01 21:05:20 WebRTC: Set local description
+2024/02/01 21:05:20 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:20 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:20 Front URL:   
+2024/02/01 21:05:20 WebRTC: closing DataChannel
+2024/02/01 21:05:20 WebRTC: closing PeerConnection
+2024/02/01 21:05:20 WebRTC: closed PeerConnection
+2024/02/01 21:05:20 WebRTC: Closing
+2024/02/01 21:05:20 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:25 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:25 snowflake-08a3e70e765663e7  connecting...
+2024/02/01 21:05:25 WebRTC: DataChannel created
+2024/02/01 21:05:25 WebRTC: Created offer
+2024/02/01 21:05:25 WebRTC: Set local description
+2024/02/01 21:05:25 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:25 Front URL:   
+2024/02/01 21:05:25 WebRTC: closing DataChannel
+2024/02/01 21:05:25 WebRTC: closing PeerConnection
+2024/02/01 21:05:25 WebRTC: closed PeerConnection
+2024/02/01 21:05:25 WebRTC: Closing
+2024/02/01 21:05:25 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:30 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:30 snowflake-b0b99e577b50fde4  connecting...
+2024/02/01 21:05:30 WebRTC: DataChannel created
+2024/02/01 21:05:30 WebRTC: Created offer
+2024/02/01 21:05:30 WebRTC: Set local description
+2024/02/01 21:05:30 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:30 Front URL:   
+2024/02/01 21:05:30 WebRTC: closing DataChannel
+2024/02/01 21:05:30 WebRTC: closing PeerConnection
+2024/02/01 21:05:30 WebRTC: closed PeerConnection
+2024/02/01 21:05:30 WebRTC: Closing
+2024/02/01 21:05:30 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:35 snowflake-df64909fe0abd150  connecting...
+2024/02/01 21:05:35 WebRTC: DataChannel created
+2024/02/01 21:05:35 WebRTC: Created offer
+2024/02/01 21:05:35 WebRTC: Set local description
+2024/02/01 21:05:35 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:35 Front URL:   
+2024/02/01 21:05:35 WebRTC: closing DataChannel
+2024/02/01 21:05:35 WebRTC: closing PeerConnection
+2024/02/01 21:05:35 WebRTC: closed PeerConnection
+2024/02/01 21:05:35 WebRTC: Closing
+2024/02/01 21:05:35 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:40 snowflake-9b7dad0f21e32462  connecting...
+2024/02/01 21:05:40 WebRTC: DataChannel created
+2024/02/01 21:05:40 WebRTC: Created offer
+2024/02/01 21:05:40 WebRTC: Set local description
+2024/02/01 21:05:40 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:40 Front URL:   
+2024/02/01 21:05:40 WebRTC: closing DataChannel
+2024/02/01 21:05:40 WebRTC: closing PeerConnection
+2024/02/01 21:05:40 WebRTC: closed PeerConnection
+2024/02/01 21:05:40 WebRTC: Closing
+2024/02/01 21:05:40 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:45 snowflake-6ec40b08654d3823  connecting...
+2024/02/01 21:05:45 WebRTC: DataChannel created
+2024/02/01 21:05:45 WebRTC: Created offer
+2024/02/01 21:05:45 WebRTC: Set local description
+2024/02/01 21:05:45 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:45 Front URL:   
+2024/02/01 21:05:45 WebRTC: closing DataChannel
+2024/02/01 21:05:45 WebRTC: closing PeerConnection
+2024/02/01 21:05:45 WebRTC: closed PeerConnection
+2024/02/01 21:05:45 WebRTC: Closing
+2024/02/01 21:05:45 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:50 snowflake-422e5c397e2ff5c5  connecting...
+2024/02/01 21:05:50 WebRTC: DataChannel created
+2024/02/01 21:05:50 WebRTC: Created offer
+2024/02/01 21:05:50 WebRTC: Set local description
+2024/02/01 21:05:50 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:50 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:50 Front URL:   
+2024/02/01 21:05:50 WebRTC: closing DataChannel
+2024/02/01 21:05:50 WebRTC: closing PeerConnection
+2024/02/01 21:05:50 WebRTC: closed PeerConnection
+2024/02/01 21:05:50 WebRTC: Closing
+2024/02/01 21:05:50 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:05:55 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:05:55 snowflake-4acbe854cfd0cba1  connecting...
+2024/02/01 21:05:55 WebRTC: DataChannel created
+2024/02/01 21:05:55 WebRTC: Created offer
+2024/02/01 21:05:55 WebRTC: Set local description
+2024/02/01 21:05:55 Negotiating via HTTP rendezvous...
+2024/02/01 21:05:55 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:05:55 Front URL:   
+2024/02/01 21:05:55 WebRTC: closing DataChannel
+2024/02/01 21:05:55 WebRTC: closing PeerConnection
+2024/02/01 21:05:55 WebRTC: closed PeerConnection
+2024/02/01 21:05:55 WebRTC: Closing
+2024/02/01 21:05:55 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:00 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:00 snowflake-1854c53cdbd0d4ea  connecting...
+2024/02/01 21:06:00 WebRTC: DataChannel created
+2024/02/01 21:06:00 WebRTC: Created offer
+2024/02/01 21:06:00 WebRTC: Set local description
+2024/02/01 21:06:00 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:00 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:00 Front URL:   
+2024/02/01 21:06:00 WebRTC: closing DataChannel
+2024/02/01 21:06:00 WebRTC: closing PeerConnection
+2024/02/01 21:06:00 WebRTC: closed PeerConnection
+2024/02/01 21:06:00 WebRTC: Closing
+2024/02/01 21:06:00 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:05 snowflake-6cf93288c953a41c  connecting...
+2024/02/01 21:06:05 WebRTC: DataChannel created
+2024/02/01 21:06:05 WebRTC: Created offer
+2024/02/01 21:06:05 WebRTC: Set local description
+2024/02/01 21:06:05 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:05 Front URL:   
+2024/02/01 21:06:05 WebRTC: closing DataChannel
+2024/02/01 21:06:05 WebRTC: closing PeerConnection
+2024/02/01 21:06:05 WebRTC: closed PeerConnection
+2024/02/01 21:06:05 WebRTC: Closing
+2024/02/01 21:06:05 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:10 snowflake-efc3ac4e79026173  connecting...
+2024/02/01 21:06:10 WebRTC: DataChannel created
+2024/02/01 21:06:10 WebRTC: Created offer
+2024/02/01 21:06:10 WebRTC: Set local description
+2024/02/01 21:06:10 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:10 Front URL:   
+2024/02/01 21:06:10 WebRTC: closing DataChannel
+2024/02/01 21:06:10 WebRTC: closing PeerConnection
+2024/02/01 21:06:10 WebRTC: closed PeerConnection
+2024/02/01 21:06:10 WebRTC: Closing
+2024/02/01 21:06:10 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:15 snowflake-c01c74b1ebf127f9  connecting...
+2024/02/01 21:06:15 WebRTC: DataChannel created
+2024/02/01 21:06:15 WebRTC: Created offer
+2024/02/01 21:06:15 WebRTC: Set local description
+2024/02/01 21:06:15 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:15 Front URL:   
+2024/02/01 21:06:15 WebRTC: closing DataChannel
+2024/02/01 21:06:15 WebRTC: closing PeerConnection
+2024/02/01 21:06:15 WebRTC: closed PeerConnection
+2024/02/01 21:06:15 WebRTC: Closing
+2024/02/01 21:06:15 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:20 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:20 snowflake-78f9acb885859e84  connecting...
+2024/02/01 21:06:20 WebRTC: DataChannel created
+2024/02/01 21:06:20 WebRTC: Created offer
+2024/02/01 21:06:20 WebRTC: Set local description
+2024/02/01 21:06:20 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:20 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:20 Front URL:   
+2024/02/01 21:06:20 WebRTC: closing DataChannel
+2024/02/01 21:06:20 WebRTC: closing PeerConnection
+2024/02/01 21:06:20 WebRTC: closed PeerConnection
+2024/02/01 21:06:20 WebRTC: Closing
+2024/02/01 21:06:20 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:25 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:25 snowflake-6723bb03788ac9a0  connecting...
+2024/02/01 21:06:25 WebRTC: DataChannel created
+2024/02/01 21:06:25 WebRTC: Created offer
+2024/02/01 21:06:25 WebRTC: Set local description
+2024/02/01 21:06:25 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:25 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:25 Front URL:   
+2024/02/01 21:06:25 WebRTC: closing DataChannel
+2024/02/01 21:06:25 WebRTC: closing PeerConnection
+2024/02/01 21:06:25 WebRTC: closed PeerConnection
+2024/02/01 21:06:25 WebRTC: Closing
+2024/02/01 21:06:25 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:30 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:30 snowflake-f17115b11919e0d4  connecting...
+2024/02/01 21:06:30 WebRTC: DataChannel created
+2024/02/01 21:06:30 WebRTC: Created offer
+2024/02/01 21:06:30 WebRTC: Set local description
+2024/02/01 21:06:30 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:30 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:30 Front URL:   
+2024/02/01 21:06:30 WebRTC: closing DataChannel
+2024/02/01 21:06:30 WebRTC: closing PeerConnection
+2024/02/01 21:06:30 WebRTC: closed PeerConnection
+2024/02/01 21:06:30 WebRTC: Closing
+2024/02/01 21:06:30 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:35 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:35 snowflake-c1255ace6ac92712  connecting...
+2024/02/01 21:06:35 WebRTC: DataChannel created
+2024/02/01 21:06:35 WebRTC: Created offer
+2024/02/01 21:06:35 WebRTC: Set local description
+2024/02/01 21:06:35 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:35 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:35 Front URL:   
+2024/02/01 21:06:35 WebRTC: closing DataChannel
+2024/02/01 21:06:35 WebRTC: closing PeerConnection
+2024/02/01 21:06:35 WebRTC: closed PeerConnection
+2024/02/01 21:06:35 WebRTC: Closing
+2024/02/01 21:06:35 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:40 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:40 snowflake-b08a8616e6caf455  connecting...
+2024/02/01 21:06:40 WebRTC: DataChannel created
+2024/02/01 21:06:40 WebRTC: Created offer
+2024/02/01 21:06:40 WebRTC: Set local description
+2024/02/01 21:06:40 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:40 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:40 Front URL:   
+2024/02/01 21:06:40 WebRTC: closing DataChannel
+2024/02/01 21:06:40 WebRTC: closing PeerConnection
+2024/02/01 21:06:40 WebRTC: closed PeerConnection
+2024/02/01 21:06:40 WebRTC: Closing
+2024/02/01 21:06:40 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:45 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:45 snowflake-711e4ae0fb26aa15  connecting...
+2024/02/01 21:06:45 WebRTC: DataChannel created
+2024/02/01 21:06:45 WebRTC: Created offer
+2024/02/01 21:06:45 WebRTC: Set local description
+2024/02/01 21:06:45 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:45 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:45 Front URL:   
+2024/02/01 21:06:45 WebRTC: closing DataChannel
+2024/02/01 21:06:45 WebRTC: closing PeerConnection
+2024/02/01 21:06:45 WebRTC: closed PeerConnection
+2024/02/01 21:06:45 WebRTC: Closing
+2024/02/01 21:06:45 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:50 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:50 snowflake-f28e4e8185f9e7e4  connecting...
+2024/02/01 21:06:50 WebRTC: DataChannel created
+2024/02/01 21:06:50 WebRTC: Created offer
+2024/02/01 21:06:50 WebRTC: Set local description
+2024/02/01 21:06:50 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:50 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:50 Front URL:   
+2024/02/01 21:06:50 WebRTC: closing DataChannel
+2024/02/01 21:06:50 WebRTC: closing PeerConnection
+2024/02/01 21:06:50 WebRTC: closed PeerConnection
+2024/02/01 21:06:50 WebRTC: Closing
+2024/02/01 21:06:50 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:06:55 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:06:55 snowflake-f87e555ecfde72b2  connecting...
+2024/02/01 21:06:55 WebRTC: DataChannel created
+2024/02/01 21:06:55 WebRTC: Created offer
+2024/02/01 21:06:55 WebRTC: Set local description
+2024/02/01 21:06:55 Negotiating via HTTP rendezvous...
+2024/02/01 21:06:55 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:06:55 Front URL:   
+2024/02/01 21:06:55 WebRTC: closing DataChannel
+2024/02/01 21:06:55 WebRTC: closing PeerConnection
+2024/02/01 21:06:55 WebRTC: closed PeerConnection
+2024/02/01 21:06:55 WebRTC: Closing
+2024/02/01 21:06:55 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:07:00 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:07:00 snowflake-99057d3e610edc3a  connecting...
+2024/02/01 21:07:00 WebRTC: DataChannel created
+2024/02/01 21:07:00 WebRTC: Created offer
+2024/02/01 21:07:00 WebRTC: Set local description
+2024/02/01 21:07:00 Negotiating via HTTP rendezvous...
+2024/02/01 21:07:00 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:07:00 Front URL:   
+2024/02/01 21:07:00 WebRTC: closing DataChannel
+2024/02/01 21:07:00 WebRTC: closing PeerConnection
+2024/02/01 21:07:00 WebRTC: closed PeerConnection
+2024/02/01 21:07:00 WebRTC: Closing
+2024/02/01 21:07:00 WebRTC: dial tcp 3.89.9.196:443: connect: connection refused  Retrying...
+2024/02/01 21:07:05 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:07:05 snowflake-f8a2ef0a31c01806  connecting...
+2024/02/01 21:07:05 WebRTC: DataChannel created
+2024/02/01 21:07:05 WebRTC: Created offer
+2024/02/01 21:07:05 WebRTC: Set local description
+2024/02/01 21:07:05 Negotiating via HTTP rendezvous...
+2024/02/01 21:07:05 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:07:05 Front URL:   
+2024/02/01 21:07:05 HTTP rendezvous response: 200 OK
+2024/02/01 21:07:05 Received answer: {"error":"no snowflake proxies currently available"}
+2024/02/01 21:07:05 WebRTC: closing DataChannel
+2024/02/01 21:07:05 WebRTC: closing PeerConnection
+2024/02/01 21:07:05 WebRTC: closed PeerConnection
+2024/02/01 21:07:05 WebRTC: Closing
+2024/02/01 21:07:05 WebRTC: no snowflake proxies currently available  Retrying...
+2024/02/01 21:07:10 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:07:10 snowflake-35ac1d530b79f49a  connecting...
+2024/02/01 21:07:10 WebRTC: DataChannel created
+2024/02/01 21:07:10 WebRTC: Created offer
+2024/02/01 21:07:10 WebRTC: Set local description
+2024/02/01 21:07:10 Negotiating via HTTP rendezvous...
+2024/02/01 21:07:10 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:07:10 Front URL:   
+2024/02/01 21:07:10 HTTP rendezvous response: 200 OK
+2024/02/01 21:07:10 Received answer: {"error":"no snowflake proxies currently available"}
+2024/02/01 21:07:10 WebRTC: closing DataChannel
+2024/02/01 21:07:10 WebRTC: closing PeerConnection
+2024/02/01 21:07:10 WebRTC: closed PeerConnection
+2024/02/01 21:07:10 WebRTC: Closing
+2024/02/01 21:07:10 WebRTC: no snowflake proxies currently available  Retrying...
+2024/02/01 21:07:15 WebRTC: Collecting a new Snowflake. Currently at [0/1]
+2024/02/01 21:07:15 snowflake-70aece457cab7df4  connecting...
+2024/02/01 21:07:15 WebRTC: DataChannel created
+2024/02/01 21:07:15 WebRTC: Created offer
+2024/02/01 21:07:15 WebRTC: Set local description
+2024/02/01 21:07:15 Negotiating via HTTP rendezvous...
+2024/02/01 21:07:15 Target URL:  jinyu-sf-broker.cs-pk.com
+2024/02/01 21:07:15 Front URL:   
+2024/02/01 21:07:15 HTTP rendezvous response: 200 OK
+2024/02/01 21:07:15 Received answer: {"answer":"{\"type\":\"answer\",\"sdp\":\"v=0\\r\\no=- 8056736176595969424 1706821635 IN IP4 0.0.0.0\\r\\ns=-\\r\\nt=0 0\\r\\na=fingerprint:sha-256 02:D5:CA:2A:7A:21:6C:A8:D9:29:11:15:BB:30:E9:FD:2A:9B:A0:A9:54:1B:62:C7:F5:9D:54:F9:4C:51:83:2E\\r\\na=extmap-allow-mixed\\r\\na=group:BUNDLE 0\\r\\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\\r\\nc=IN IP4 0.0.0.0\\r\\na=setup:active\\r\\na=mid:0\\r\\na=sendrecv\\r\\na=sctp-port:5000\\r\\na=ice-ufrag:UgoxdytAqqjjccZx\\r\\na=ice-pwd:mzLLZeyhwKfPHGPOBdLXPSEgYXykFPTX\\r\\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 35187 typ host\\r\\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 35187 typ host\\r\\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 45623 typ srflx raddr 0.0.0.0 rport 45623\\r\\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 45623 typ srflx raddr 0.0.0.0 rport 45623\\r\\na=end-of-candidates\\r\\n\"}"}
+2024/02/01 21:07:15 decoded answer: {"type":"answer","sdp":"v=0\r\no=- 8056736176595969424 1706821635 IN IP4 0.0.0.0\r\ns=-\r\nt=0 0\r\na=fingerprint:sha-256 02:D5:CA:2A:7A:21:6C:A8:D9:29:11:15:BB:30:E9:FD:2A:9B:A0:A9:54:1B:62:C7:F5:9D:54:F9:4C:51:83:2E\r\na=extmap-allow-mixed\r\na=group:BUNDLE 0\r\nm=application 9 UDP/DTLS/SCTP webrtc-datachannel\r\nc=IN IP4 0.0.0.0\r\na=setup:active\r\na=mid:0\r\na=sendrecv\r\na=sctp-port:5000\r\na=ice-ufrag:UgoxdytAqqjjccZx\r\na=ice-pwd:mzLLZeyhwKfPHGPOBdLXPSEgYXykFPTX\r\na=candidate:1041229426 1 udp 2130706431 172.31.64.37 35187 typ host\r\na=candidate:1041229426 2 udp 2130706431 172.31.64.37 35187 typ host\r\na=candidate:4051645825 1 udp 1694498815 3.236.85.135 45623 typ srflx raddr 0.0.0.0 rport 45623\r\na=candidate:4051645825 2 udp 1694498815 3.236.85.135 45623 typ srflx raddr 0.0.0.0 rport 45623\r\na=end-of-candidates\r\n"}
+2024/02/01 21:07:15 Received Answer.
+2024/02/01 21:07:16 WebRTC: MsgDataChannel.OnOpen
+2024/02/01 21:07:16 WebRTC: DataChannel.OnOpen
+2024/02/01 21:07:16 ---- Handler: snowflake assigned ----
+2024/02/01 21:07:20 Traffic Bytes (in|out): 13078 | 197888 -- (12 OnMessages, 525 Sends)
+2024/02/01 21:07:20 WebRTC: At capacity [1/1]  Retrying...

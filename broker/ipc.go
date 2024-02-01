@@ -258,7 +258,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			_, _ = http.Post(transferPath1, "application/json", bytes.NewBuffer(transferReqJSON1))
 		*/
 		go func() {
-			intervals := [7]int{30, 100, 80, 50, 30, 20, 10}
+			intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
 			newTicker := time.NewTicker(time.Second * time.Duration(intervals[0]))
 			client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 			count := 0
