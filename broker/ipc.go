@@ -251,9 +251,12 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
 
-		newTicker := time.NewTicker(time.Second * 500)
-		client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 		go func() {
+			intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
+			newTicker := time.NewTicker(time.Second * time.Duration(intervals[0]))
+			client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
+			count := 0
+			quit := make(chan bool)
 			for {
 				select {
 				case <-newTicker.C:
@@ -285,7 +288,17 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 						continue
 					}
 					//temporary, for testing
+					count++
 					newTicker.Stop()
+					if count < 7 {
+						newTicker = time.NewTicker(time.Second * time.Duration(intervals[count]))
+					} else {
+						log.Printf("client has been transferred 7 times")
+						quit <- true
+					}
+				case <-quit:
+					log.Printf("ticker stopped")
+					return
 				default:
 					continue
 				}

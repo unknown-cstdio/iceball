@@ -65,3 +65,4 @@ require (
 )
 
 replace gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2 v2.0.0 => /home/ubuntu/iceball
+//replace gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2 v2.0.0 => /home/cstdio/Desktop/Rice/Research/iceball/iceball

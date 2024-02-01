@@ -291,19 +291,21 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 			log.Printf("WebRTC: Error unmarshalling probe message: %s", err)
 			return
 		}
-		if probeMsg.BackupProxyIP != "" {
-			if c.backUpProxy != probeMsg.BackupProxyIP {
-				c.backUpProxy = probeMsg.BackupProxyIP
-				log.Printf("WebRTC: Received new backup proxy: %s", c.backUpProxy)
-				peer, err := DirectConnect(config, c.backUpProxy)
-				if err != nil {
-					log.Printf("WebRTC: Error connecting to new IP: %s", err)
-					return
+		/*
+			if probeMsg.BackupProxyIP != "" {
+				if c.backUpProxy != probeMsg.BackupProxyIP {
+					c.backUpProxy = probeMsg.BackupProxyIP
+					log.Printf("WebRTC: Received new backup proxy: %s", c.backUpProxy)
+					peer, err := DirectConnect(config, c.backUpProxy)
+					if err != nil {
+						log.Printf("WebRTC: Error connecting to new IP: %s", err)
+						return
+					}
+					//Snowflakes.Consume()
+					Snowflakes.Push(peer)
 				}
-				//Snowflakes.Consume()
-				Snowflakes.Push(peer)
 			}
-		}
+		*/
 		if probeMsg.TimeVal != 0 {
 			log.Printf("WebRTC: Resetting probe timer to %d seconds on %s", probeMsg.TimeVal, c.id)
 			c.probeTimer.Stop()
