@@ -935,12 +935,12 @@ func (sf *SnowflakeProxy) transferHandler(w http.ResponseWriter, r *http.Request
 	}
 	log.Printf("Received transfer request: %v", transReq)
 	ip, _, _ := net.SplitHostPort(transReq.NewIp)
+	client2TransferIP[transReq.Cid] = ip
+	log.Printf("update ip: %v", client2TransferIP[transReq.Cid])
 	if client2Dc[transReq.Cid] == nil {
 		//log.Printf("Client not found: %v", transReq.Cid)
 		return
 	}
-	client2TransferIP[transReq.Cid] = ip
-	log.Printf("update ip: %v", client2TransferIP[transReq.Cid])
 	if transReq.TransferNow {
 		msg := messages.ProbeMessage{TimeVal: 0, BackupProxyIP: ip}
 		probeMsg, err := json.Marshal(msg)
