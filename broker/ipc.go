@@ -9,6 +9,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"os"
 	"time"
 
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/bridgefingerprint"
@@ -258,7 +259,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			_, _ = http.Post(transferPath1, "application/json", bytes.NewBuffer(transferReqJSON1))
 		*/
 		go func() {
-			intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
+			//intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
+			intervals := [7]int{30, 30, 30, 30, 30, 30, 30}
 			newTicker := time.NewTicker(time.Second * time.Duration(intervals[0]))
 			client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 			count := 0
@@ -266,6 +268,10 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			for {
 				select {
 				case <-newTicker.C:
+					file, _ := os.Create("broker.log")
+					defer file.Close()
+					write_content := fmt.Sprintf("%s client switching proxies\n", req.Id)
+					file.WriteString(write_content)
 					log.Printf(client.proxy.ip)
 					log.Printf("client switching proxies")
 					oldProxy := client.proxy
@@ -296,7 +302,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 					//temporary, for testing
 					count++
 					newTicker.Stop()
-					if count < 7 {
+					if count < 1 {
 						newTicker = time.NewTicker(time.Second * time.Duration(intervals[count]))
 					} else {
 						log.Printf("client has been transferred 7 times")
