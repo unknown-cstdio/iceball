@@ -232,6 +232,10 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 	if snowflake != nil {
 		url := snowflake.ip
 		ip, _, _ := net.SplitHostPort(url)
+
+		//testing
+		ip = "3.236.85.135"
+
 		log.Printf("Client: Matched with %s", ip)
 		offerJSON, err := json.Marshal(offer)
 		if err != nil {
@@ -261,8 +265,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			_, _ = http.Post(transferPath1, "application/json", bytes.NewBuffer(transferReqJSON1))
 		*/
 		go func() {
-			intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
-			//intervals := [7]int{30, 30, 30, 30, 30, 30, 30}
+			//intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
+			intervals := [7]int{30, 30, 30, 30, 30, 30, 30}
 			newTicker := time.NewTicker(time.Second * time.Duration(intervals[0]))
 			client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 			count := 0
@@ -280,13 +284,16 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 						client.proxy = oldProxy
 						continue
 					}
-					transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip, TransferNow: true}
+					//transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip, TransferNow: true}
+					transferReq := messages.TransferRequest{Cid: client.id, NewIp: "44.197.102.4:51821", TransferNow: true}
 					transferReqJSON, err := json.Marshal(transferReq)
 					if err != nil {
 						log.Printf("error marshalling transfer request")
 						continue
 					}
 					oldIp, _, _ := net.SplitHostPort(oldProxy.ip)
+					//testing
+					oldIp = "3.236.85.135"
 					transferPath := fmt.Sprintf("http://%s:%s/transfer", oldIp, newPort)
 					log.Printf("sending transfer request to %s", transferPath)
 					resp, err := http.Post(transferPath, "application/json", bytes.NewBuffer(transferReqJSON))
@@ -302,7 +309,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 					//temporary, for testing
 					count++
 					newTicker.Stop()
-					if count < 7 {
+					if count < 1 {
 						newTicker = time.NewTicker(time.Second * time.Duration(intervals[count]))
 					} else {
 						log.Printf("client has been transferred 7 times")
