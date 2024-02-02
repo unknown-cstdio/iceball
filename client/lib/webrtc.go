@@ -56,6 +56,10 @@ type ClientOffer struct {
 	Cid         string `json:"cid"`
 }
 
+// test
+var connected = make(chan bool)
+var transfer = false
+
 func NewWebRTCPeer(config *webrtc.Configuration,
 	broker *BrokerChannel) (*WebRTCPeer, error) {
 	return NewWebRTCPeerWithEvents(config, broker, nil)
@@ -99,6 +103,7 @@ func NewWebRTCPeerWithEvents(config *webrtc.Configuration,
 	connection.probeTimer = time.NewTimer(120 * time.Second)
 	go func() {
 		<-connection.probeTimer.C
+		<-connected
 		log.Printf("WebRTC: %s Probe timer expired", connection.id)
 		connection.Close()
 	}()
@@ -273,6 +278,10 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 		c.mu.Unlock()
 	})
 	dc2.OnOpen(func() {
+		if transfer {
+			connected <- true
+			transfer = false
+		}
 		log.Println("WebRTC: MsgDataChannel.OnOpen")
 	})
 	dc2.OnClose(func() {
@@ -293,6 +302,7 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 
 		if probeMsg.BackupProxyIP != "" {
 			if c.backUpProxy != probeMsg.BackupProxyIP {
+				transfer = true
 				c.backUpProxy = probeMsg.BackupProxyIP
 				log.Printf("WebRTC: Received new backup proxy: %s", c.backUpProxy)
 				peer, err := DirectConnect(config, c.backUpProxy)
@@ -313,7 +323,7 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 		} else {
 			log.Printf("WebRTC: Resetting probe timer to 1 millisecond")
 			c.probeTimer.Stop()
-			c.probeTimer.Reset(1 * time.Second)
+			c.probeTimer.Reset(1 * time.Millisecond)
 		}
 
 	})
@@ -451,6 +461,7 @@ func DirectConnect(config *webrtc.Configuration, ip string) (*WebRTCPeer, error)
 	connection.probeTimer = time.NewTimer(120 * time.Second)
 	go func() {
 		<-connection.probeTimer.C
+		<-connected
 		log.Printf("WebRTC: Probe timer expired")
 		connection.Close()
 	}()
