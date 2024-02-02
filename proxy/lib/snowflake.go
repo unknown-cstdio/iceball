@@ -480,7 +480,7 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 			go handler(conn, conn.RemoteAddr())
 		} else {
 			client2Dc[clientId] = dc
-			log.Printf("update map: %v", client2Dc)
+			//log.Printf("update map: %v", client2Dc)
 			dcClosed := make(chan bool)
 			dc.OnOpen(func() {
 				log.Printf("Data Channel %s-%d open\n", dc.Label(), dc.ID())
