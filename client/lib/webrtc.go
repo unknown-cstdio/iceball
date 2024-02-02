@@ -103,8 +103,9 @@ func NewWebRTCPeerWithEvents(config *webrtc.Configuration,
 	connection.probeTimer = time.NewTimer(120 * time.Second)
 	go func() {
 		<-connection.probeTimer.C
-		<-connected
 		log.Printf("WebRTC: %s Probe timer expired", connection.id)
+		<-connected
+		log.Printf("WebRTC: %s close old connection", connection.id)
 		connection.Close()
 	}()
 	return connection, nil
