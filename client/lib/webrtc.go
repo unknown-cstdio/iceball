@@ -279,6 +279,7 @@ func (c *WebRTCPeer) preparePeerConnection(config *webrtc.Configuration) error {
 	})
 	dc2.OnOpen(func() {
 		if transfer {
+			log.Println("Transfer DataChannel.OnOpen")
 			connected <- true
 			transfer = false
 		}
