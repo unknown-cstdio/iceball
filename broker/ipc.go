@@ -261,8 +261,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			_, _ = http.Post(transferPath1, "application/json", bytes.NewBuffer(transferReqJSON1))
 		*/
 		go func() {
-			//intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
-			intervals := [7]int{30, 30, 30, 30, 30, 30, 30}
+			intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
+			//intervals := [7]int{30, 30, 30, 30, 30, 30, 30}
 			newTicker := time.NewTicker(time.Second * time.Duration(intervals[0]))
 			client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 			count := 0
@@ -302,7 +302,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 					//temporary, for testing
 					count++
 					newTicker.Stop()
-					if count < 1 {
+					if count < 7 {
 						newTicker = time.NewTicker(time.Second * time.Duration(intervals[count]))
 					} else {
 						log.Printf("client has been transferred 7 times")
