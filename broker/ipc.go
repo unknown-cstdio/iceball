@@ -234,7 +234,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		ip, _, _ := net.SplitHostPort(url)
 
 		//testing
-		ip = "3.236.85.135"
+		ip = "3.237.17.214"
 
 		log.Printf("Client: Matched with %s", ip)
 		offerJSON, err := json.Marshal(offer)
@@ -285,7 +285,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 						continue
 					}
 					//transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip, TransferNow: true}
-					transferReq := messages.TransferRequest{Cid: client.id, NewIp: "44.197.102.4:51821", TransferNow: true}
+					transferReq := messages.TransferRequest{Cid: client.id, NewIp: "54.92.165.4:51821", TransferNow: true}
 					transferReqJSON, err := json.Marshal(transferReq)
 					if err != nil {
 						log.Printf("error marshalling transfer request")
@@ -293,7 +293,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 					}
 					oldIp, _, _ := net.SplitHostPort(oldProxy.ip)
 					//testing
-					oldIp = "3.236.85.135"
+					oldIp = "3.237.17.214"
 					transferPath := fmt.Sprintf("http://%s:%s/transfer", oldIp, newPort)
 					log.Printf("sending transfer request to %s", transferPath)
 					resp, err := http.Post(transferPath, "application/json", bytes.NewBuffer(transferReqJSON))
