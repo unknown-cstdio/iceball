@@ -267,7 +267,11 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		go func() {
 			//intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
 			intervals := [7]int{120, 30, 30, 30, 30, 30, 30}
-			newTicker := time.NewTicker(time.Until(TriggerTime))
+			triggerInterval := time.Until(TriggerTime)
+			if triggerInterval < 0 {
+				triggerInterval = time.Second * 10
+			}
+			newTicker := time.NewTicker(triggerInterval)
 			client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 			count := 0
 			quit := make(chan bool)
