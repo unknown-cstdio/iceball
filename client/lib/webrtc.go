@@ -100,7 +100,7 @@ func NewWebRTCPeerWithEvents(config *webrtc.Configuration,
 		return nil, err
 	}
 	//Initial timer is large, will be reset by probe message
-	connection.probeTimer = time.NewTimer(120 * time.Second)
+	connection.probeTimer = time.NewTimer(3000 * time.Second)
 	go func() {
 		<-connection.probeTimer.C
 		log.Printf("WebRTC: %s Probe timer expired", connection.id)
@@ -460,7 +460,7 @@ func DirectConnect(config *webrtc.Configuration, ip string) (*WebRTCPeer, error)
 	}
 	log.Printf("WebRTC: Set remote description")
 	//Initial timer is large, will be reset by probe message
-	connection.probeTimer = time.NewTimer(120 * time.Second)
+	connection.probeTimer = time.NewTimer(3000 * time.Second)
 	go func() {
 		<-connection.probeTimer.C
 		<-connected
