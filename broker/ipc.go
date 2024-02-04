@@ -234,7 +234,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		ip, _, _ := net.SplitHostPort(url)
 
 		//testing
-		//ip = "13.59.55.180"
+		ip = "13.59.55.180"
 
 		log.Printf("Client: Matched with %s", ip)
 		offerJSON, err := json.Marshal(offer)
@@ -267,7 +267,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		go func() {
 			//intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
 			intervals := [7]int{120, 30, 30, 30, 30, 30, 30}
-			newTicker := time.NewTicker(time.Second * time.Duration(intervals[0]))
+			newTicker := time.NewTicker(time.Until(TriggerTime))
 			client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 			count := 0
 			quit := make(chan bool)
@@ -284,8 +284,8 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 						client.proxy = oldProxy
 						continue
 					}
-					transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip, TransferNow: true}
-					//transferReq := messages.TransferRequest{Cid: client.id, NewIp: "18.118.29.29:51821", TransferNow: true}
+					//transferReq := messages.TransferRequest{Cid: client.id, NewIp: client.proxy.ip, TransferNow: true}
+					transferReq := messages.TransferRequest{Cid: client.id, NewIp: "18.118.29.29:51821", TransferNow: true}
 					transferReqJSON, err := json.Marshal(transferReq)
 					if err != nil {
 						log.Printf("error marshalling transfer request")
@@ -293,7 +293,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 					}
 					oldIp, _, _ := net.SplitHostPort(oldProxy.ip)
 					//testing
-					//oldIp = "13.59.55.180"
+					oldIp = "13.59.55.180"
 					transferPath := fmt.Sprintf("http://%s:%s/transfer", oldIp, newPort)
 					log.Printf("sending transfer request to %s", transferPath)
 					resp, err := http.Post(transferPath, "application/json", bytes.NewBuffer(transferReqJSON))

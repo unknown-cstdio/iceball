@@ -105,6 +105,8 @@ type ClientOffer struct {
 	Cid         string `json:"cid"`
 }
 
+var TriggerTime = time.Now().Add(time.Minute * 5)
+
 // Registers a Snowflake and waits for some Client to send an offer,
 // as part of the polling logic of the proxy handler.
 func (ctx *BrokerContext) RequestOffer(id string, proxyType string, natType string, clients int) *ClientOffer {
@@ -250,6 +252,8 @@ func main() {
 	}
 
 	metricsLogger := log.New(metricsFile, "", 0)
+
+	log.Printf("Starting snowflake-broker: migration triggered at %v", TriggerTime)
 
 	ctx := NewBrokerContext(metricsLogger)
 
