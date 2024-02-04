@@ -50,7 +50,7 @@ func newWebRTCConn(pc *webrtc.PeerConnection, dc *webrtc.DataChannel, pr *io.Pip
 	conn.bytesLogger = newBytesSyncLogger()
 	conn.activity = make(chan struct{}, 100)
 	conn.sendMoreCh = make(chan struct{}, 1)
-	conn.inactivityTimeout = 120 * time.Second
+	conn.inactivityTimeout = 3600 * time.Second
 	ctx, cancel := context.WithCancel(context.Background())
 	conn.cancelTimeoutLoop = cancel
 	go conn.timeoutLoop(ctx)
