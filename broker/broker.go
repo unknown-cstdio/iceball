@@ -105,7 +105,7 @@ type ClientOffer struct {
 	Cid         string `json:"cid"`
 }
 
-var TriggerTime = time.Now().Add(time.Minute * 5)
+var TriggerTime = time.Now().Add(time.Minute * 10)
 
 // Registers a Snowflake and waits for some Client to send an offer,
 // as part of the polling logic of the proxy handler.
