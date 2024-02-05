@@ -385,6 +385,7 @@ func (i *IPC) matchSnowflake(natType string) *Snowflake {
 	if snowflakeHeap.Len() > 0 {
 		result := heap.Pop(snowflakeHeap).(*Snowflake)
 		heap.Push(snowflakeHeap, result)
+		result.clients++
 		return result
 	} else {
 		if natType == NATUnrestricted {
@@ -392,6 +393,7 @@ func (i *IPC) matchSnowflake(natType string) *Snowflake {
 			if snowflakeHeap.Len() > 0 {
 				result := heap.Pop(snowflakeHeap).(*Snowflake)
 				heap.Push(snowflakeHeap, result)
+				result.clients++
 				return result
 			} else {
 				return nil
