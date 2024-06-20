@@ -24,7 +24,7 @@ go build
 
 #### Using Iceball client with Tor
 
-To use the Iceball client with Tor, you will need to add the appropriate `Bridge` and `ClientTransportPlugin` lines to your [torrc](https://2019.www.torproject.org/docs/tor-manual.html.en) file. An example file is in client/. Replace the value of `ClientTransportPlugin` with the path to the Iceball client executive and `-url` with the domain name of the broker. 
+To use the Iceball client with Tor, you will need to add the appropriate `Bridge` and `ClientTransportPlugin` lines to your [torrc](https://2019.www.torproject.org/docs/tor-manual.html.en) file. An example file is in client/. Replace the value of `ClientTransportPlugin` with the path to the Iceball client executable and `-url` with the domain name of the broker. 
 To run the client with Tor, use
 ```
 tor -f torrc
@@ -37,9 +37,10 @@ Build the proxy first and then run:
 ```
 
 #### Running the broker
-The broker requires a domain pointing to the ip address where the broker is hosted.
+The broker requires a domain pointing to the ip address where the broker is hosted. The broker also needs permission to bind on port 443
 After building the broker, run:
 ```
+sudo setcap CAP_NET_BIND_SERVICE=+eip [path to broker executable]
 ./broker --metrics-log [path to log] --acme-hostnames [domain of the broker] --acme-email [email] --acme-cert-cache [cache path]
 ```
 Example:
