@@ -1,6 +1,6 @@
 # Iceball
 
-A modification of snowflake that works as standalone proxy hosted in spot vm.
+A fork of snowflake that works as standalone proxy hosted in spot vm.
 
 ### Structure of this Repository
 
@@ -50,5 +50,5 @@ Example:
 
 ### Running Tests in AWS
 
-For configuring AWS spot instances and running tests on them, refer to 
+For configuring AWS spot instances and running tests on them, refer to AWS Guide.pdf
 
