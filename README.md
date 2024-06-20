@@ -16,6 +16,7 @@ A fork of snowflake that works as standalone proxy hosted in spot vm.
 #### Building from source
 
 Install golang from [golang offical website](https://go.dev/doc/install)
+In go.mod, replace the last argument of last line with the path of this project
 For building the broker, client, and proxy, go to the respective directory (e.g. iceball/broker) and run
 ```
 go get
