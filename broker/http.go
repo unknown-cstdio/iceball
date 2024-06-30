@@ -2,11 +2,14 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
+	"main/common/messages"
+	"net"
 	"net/http"
 	"os"
 
@@ -21,6 +24,11 @@ const (
 type SnowflakeHandler struct {
 	*IPC
 	handle func(*IPC, http.ResponseWriter, *http.Request)
+}
+
+type managerRequest struct {
+	oldIPs []string
+	newIPs []string
 }
 
 func (sh SnowflakeHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -258,4 +266,37 @@ func validateSDP(SDP []byte) error {
 	}
 
 	return nil
+}
+
+/*
+Proxy notifying broker about client update
+*/
+func proxyNotice(i *IPC, w http.ResponseWriter, r *http.Request) {
+	remoteIP, _, _ := net.SplitHostPort(r.RemoteAddr)
+	request := messages.ClientChange{}
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		panic(err)
+	}
+	i.ProxyNotice(request.Cid, request.Action, remoteIP)
+	w.WriteHeader(http.StatusOK)
+}
+
+/*
+instance manager notifying proxy instances rescale
+*/
+func managerNotice(i *IPC, w http.ResponseWriter, r *http.Request) {
+	request := managerRequest{}
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		panic(err)
+	}
+	result := i.Rescale(request.oldIPs, request.newIPs)
+	//TODO: add more if needed
+	if result == true {
+		w.WriteHeader(http.StatusOK)
+	} else {
+		w.WriteHeader(http.StatusInternalServerError)
+	}
+
 }

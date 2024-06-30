@@ -10,7 +10,7 @@ import (
 	"net"
 	"net/http"
 	"os"
-	"time"
+	"slices"
 
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/bridgefingerprint"
 
@@ -30,6 +30,10 @@ const (
 type IPC struct {
 	ctx *BrokerContext
 }
+
+var Proxy2Client = make(map[string][]*Client)
+var Cid2Client = make(map[string]*Client)
+var ProxyIP2Snowflake = make(map[string]*Snowflake)
 
 var file, _ = os.Create("broker.log")
 
@@ -132,6 +136,7 @@ func (i *IPC) ProxyPolls(arg messages.Arg, response *[]byte) error {
 		clients:       clients,
 		index:         -1,
 	}
+	ProxyIP2Snowflake[addr] = Snowflake
 	i.ctx.idToSnowflake[sid] = Snowflake
 	if natType == NATUnrestricted {
 		log.Printf("Proxy: Added unrestricted snowflake %s", sid)
@@ -257,6 +262,11 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		if err != nil {
 			return sendClientResponse(&messages.ClientPollResponse{Error: err.Error()}, response)
 		}
+
+		//newTicker := time.NewTicker(time.Second * 120000)
+		client := &Client{proxy: snowflake, ticker: nil, id: req.Id, natType: offer.NatType}
+		Proxy2Client[snowflake.ip] = append(Proxy2Client[snowflake.ip], client)
+		Cid2Client[req.id] = client
 		/*
 			backupIP := i.matchSnowflake(offer.NatType).ip
 			transferReq1 := messages.TransferRequest{Cid: req.Id, NewIp: backupIP, TransferNow: false}
@@ -264,15 +274,16 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 			transferPath1 := fmt.Sprintf("http://%s:%s/transfer", ip, newPort)
 			_, _ = http.Post(transferPath1, "application/json", bytes.NewBuffer(transferReqJSON1))
 		*/
-		go func() {
-			//intervals := [7]int{10, 100, 80, 50, 30, 20, 10}
+		/*go func() {
+			//no default switching for now
+
 			intervals := [7]int{120, 30, 30, 30, 30, 30, 30}
-			/*
+
 				triggerInterval := time.Until(TriggerTime)
 				if triggerInterval < 0 {
 					triggerInterval = time.Second * 10
 				}
-			*/
+
 			newTicker := time.NewTicker(time.Second * time.Duration(120))
 			client := &Client{proxy: snowflake, ticker: newTicker, id: req.Id}
 			count := 0
@@ -329,6 +340,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 				}
 			}
 		}()
+		*/
 		sendClientResponse(&answer, response)
 		//snowflake.offerChannel <- offer
 	} else {
@@ -371,6 +383,43 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 	return err
 }
 
+func (i *IPC) ProxyNotice(cid string, action string, proxyIP string) {
+	client := Cid2Client[cid]
+	if action == "add" {
+		Proxy2Client[proxyIP] = append(Proxy2Client[proxyIP], client)
+	} else if action == "delete" {
+		idx := slices.Index(Proxy2Client[proxyIP], client)
+		Proxy2Client[proxyIP] = slices.Delete(Proxy2Client[proxyIP], idx, idx+1)
+	}
+}
+
+func (i *IPC) Rescale(oldIPs []string, newIPs []string) bool {
+	i.ctx.snowflakeLock.Lock()
+	defer i.ctx.snowflakeLock.Unlock()
+
+	for ip := range Proxy2Client {
+		proxy := ProxyIP2Snowflake[ip]
+		i.ctx.snowflakes.Remove(proxy)
+		delete(ProxyIP2Snowflake, ip)
+		for idx := 0; idx < len(Proxy2Client[ip]); idx++ {
+			client := Proxy2Client[ip][idx]
+			newProxy := i.matchSnowflake(client.natType)
+			if newProxy == nil {
+				return false
+			}
+
+			transferReq := messages.TransferRequest{Cid: client.id, NewIp: newProxy.ip, TransferNow: true}
+			transferReqJSON, _ := json.Marshal(transferReq)
+			transferPath := fmt.Sprintf("http://%s:%s/transfer", ip, "51821")
+			//error handling in the future
+			_, _ = http.Post(transferPath, "application/json", bytes.NewBuffer(transferReqJSON))
+		}
+		delete(Proxy2Client, ip)
+	}
+	return true
+}
+
+// Need to cleanup: using spot proxy all snowflake should be unrestricted
 func (i *IPC) matchSnowflake(natType string) *Snowflake {
 	// Only hand out known restricted snowflakes to unrestricted clients
 	log.Printf("Matching snowflake with nat type %s", natType)

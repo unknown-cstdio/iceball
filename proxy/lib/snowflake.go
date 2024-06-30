@@ -34,6 +34,7 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
+	"main/common/messages"
 	"net"
 	"net/http"
 	"net/url"
@@ -265,6 +266,19 @@ func (s *SignalingServer) pollOffer(sid string, proxyType string, acceptedRelayP
 	return nil, ""
 }
 
+func (sf *SnowflakeProxy) changeClient(clientID string, isAdd bool) {
+	var msg messages.ClientChange
+	if isAdd {
+		msg = messages.ClientChange{Cid: clientID, Action: "add"}
+	} else {
+		msg = messages.ClientChange{Cid: clientID, Action: "delete"}
+	}
+	msgJSON, _ := json.Marshal(msg)
+	brokerPath := broker.url.ResolveReference(&url.URL{Path: "proxy"})
+	broker.Post(brokerPath.String(), bytes.NewBuffer(msgJSON))
+
+}
+
 // sendAnswer encodes an SDP answer, sends it to the broker
 // and wait for its response
 func (s *SignalingServer) sendAnswer(sid string, pc *webrtc.PeerConnection) error {
@@ -484,6 +498,7 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 			dcClosed := make(chan bool)
 			dc.OnOpen(func() {
 				log.Printf("Data Channel %s-%d open\n", dc.Label(), dc.ID())
+				sf.changeClient(clientId, true)
 				ticker := time.NewTicker(probeTime * time.Second)
 				go func() {
 					for {
@@ -504,6 +519,9 @@ func (sf *SnowflakeProxy) makePeerConnectionFromOffer(sdp *webrtc.SessionDescrip
 				}()
 			})
 			dc.OnClose(func() {
+				sf.changeClient(clientId, false)
+				delete(client2Dc, clientId)
+				delete(client2TransferIP, clientId)
 				dcClosed <- true
 			})
 

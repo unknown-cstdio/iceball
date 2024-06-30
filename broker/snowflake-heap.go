@@ -4,6 +4,8 @@ Keeping track of pending available snowflake proxies.
 
 package main
 
+import "slices"
+
 /*
 The Snowflake struct contains a single interaction
 over the offer and answer channels.
@@ -50,4 +52,11 @@ func (sh *SnowflakeHeap) Pop() interface{} {
 	snowflake.index = -1
 	*sh = flakes[0 : n-1]
 	return snowflake
+}
+
+func (sh *SnowflakeHeap) Remove(s interface{}) {
+	snowflake := s.(*Snowflake)
+	flakes := *sh
+	idx := slices.Index(flakes, snowflake)
+	*sh = slices.Delete(flakes, idx, idx+1)
 }

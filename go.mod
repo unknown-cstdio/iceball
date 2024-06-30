@@ -1,6 +1,6 @@
 module main
 
-go 1.17
+go 1.18
 
 require (
 	github.com/clarkduvall/hyperloglog v0.0.0-20171127014514-a0107a5d8004
@@ -65,4 +65,5 @@ require (
 )
 
 replace gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2 v2.0.0 => /home/ubuntu/iceball
+
 //replace gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2 v2.0.0 => /home/cstdio/Desktop/Rice/Research/iceball/iceball

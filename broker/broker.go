@@ -49,9 +49,10 @@ type BrokerContext struct {
 }
 
 type Client struct {
-	proxy  *Snowflake
-	ticker *time.Ticker
-	id     string
+	proxy   *Snowflake
+	ticker  *time.Ticker
+	id      string
+	natType string
 }
 
 func (ctx *BrokerContext) GetBridgeInfo(fingerprint bridgefingerprint.Fingerprint) (BridgeInfo, error) {

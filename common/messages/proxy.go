@@ -111,6 +111,11 @@ type ProbeMessage struct {
 	BackupProxyIP string `json:"backup_proxy_ip"`
 }
 
+type ClientChange struct {
+	Cid    string `json:"cid"`
+	Action string `json:"action"`
+}
+
 func EncodeProxyPollRequest(sid string, proxyType string, natType string, clients int) ([]byte, error) {
 	return EncodeProxyPollRequestWithRelayPrefix(sid, proxyType, natType, clients, "")
 }
