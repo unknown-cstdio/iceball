@@ -297,6 +297,8 @@ func main() {
 	http.Handle("/proxy", SnowflakeHandler{i, proxyPolls})
 	http.Handle("/client", SnowflakeHandler{i, clientOffers})
 	http.Handle("/answer", SnowflakeHandler{i, proxyAnswers})
+	http.Handle("/change-client", SnowflakeHandler{i, proxyNotice})
+	http.Handle("/rescale", SnowflakeHandler{i, managerNotice})
 	http.Handle("/debug", SnowflakeHandler{i, debugHandler})
 	http.Handle("/metrics", MetricsHandler{metricsFilename, metricsHandler})
 	http.Handle("/prometheus", promhttp.HandlerFor(ctx.metrics.promMetrics.registry, promhttp.HandlerOpts{}))

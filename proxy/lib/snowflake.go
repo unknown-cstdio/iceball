@@ -46,7 +46,8 @@ import (
 	"github.com/pion/ice/v2"
 	"github.com/pion/webrtc/v3"
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/event"
-	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/messages"
+
+	//"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/messages"
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/namematcher"
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/task"
 	"gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/v2/common/util"
@@ -274,7 +275,7 @@ func (sf *SnowflakeProxy) changeClient(clientID string, isAdd bool) {
 		msg = messages.ClientChange{Cid: clientID, Action: "delete"}
 	}
 	msgJSON, _ := json.Marshal(msg)
-	brokerPath := broker.url.ResolveReference(&url.URL{Path: "proxy"})
+	brokerPath := broker.url.ResolveReference(&url.URL{Path: "change-client"})
 	broker.Post(brokerPath.String(), bytes.NewBuffer(msgJSON))
 
 }

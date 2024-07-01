@@ -266,7 +266,7 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		//newTicker := time.NewTicker(time.Second * 120000)
 		client := &Client{proxy: snowflake, ticker: nil, id: req.Id, natType: offer.NatType}
 		Proxy2Client[snowflake.ip] = append(Proxy2Client[snowflake.ip], client)
-		Cid2Client[req.id] = client
+		Cid2Client[req.Id] = client
 		/*
 			backupIP := i.matchSnowflake(offer.NatType).ip
 			transferReq1 := messages.TransferRequest{Cid: req.Id, NewIp: backupIP, TransferNow: false}
