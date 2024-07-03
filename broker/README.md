@@ -14,20 +14,16 @@ This is the Broker component of Snowflake.
 The Broker handles the rendezvous by matching Snowflake
 Clients with Proxies, and passing their WebRTC Session Descriptions
 (the "signaling" step). This allows Clients and Proxies to establish
-a Peer connection.
+a Peer connection. It also handles rescale notice from instance manager.
 
-It is analogous to Flashproxy's
-[Facilitator](https://trac.torproject.org/projects/tor/wiki/FlashProxyFAQ),
-but bidirectional and domain-fronted.
 
 The Broker expects:
 
 - Clients to send their SDP offer in a POST request, which will then block
   until the Broker responds with the answer of the matched Proxy.
-- Proxies to announce themselves with a POST request, to which the Broker
-  responds with some Client's SDP offer. The Proxy should then send a second
-  POST request soon after containing its SDP answer, which the Broker passes
-  back to the same Client.
+- Proxies to announce themselves with a POST request when initialized.
+- Instance manager sending spot instances rescale requests and the broker 
+  inform the proxy to do active migration of its clients.
 
 ### Running your own
 

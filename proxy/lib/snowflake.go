@@ -784,23 +784,6 @@ func (sf *SnowflakeProxy) Start() error {
 	http.ListenAndServe(":51821", nil)
 
 	return nil
-
-	/*
-		ticker := time.NewTicker(pollInterval)
-		defer ticker.Stop()
-
-		for ; true; <-ticker.C {
-			select {
-			case <-sf.shutdown:
-				return nil
-			default:
-				tokens.get()
-				sessionID := genSessionID()
-				sf.runSession(sessionID)
-			}
-		}
-		return nil
-	*/
 }
 
 // Stop closes all existing connections and shuts down the Snowflake.

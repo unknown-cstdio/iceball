@@ -97,23 +97,6 @@ func (i *IPC) ProxyPolls(arg messages.Arg, response *[]byte) error {
 		i.ctx.metrics.lock.Unlock()
 	}
 
-	/*
-		if !i.ctx.CheckProxyRelayPattern(relayPattern, !relayPatternSupported) {
-			i.ctx.metrics.lock.Lock()
-			i.ctx.metrics.proxyPollRejectedWithRelayURLExtension++
-			i.ctx.metrics.promMetrics.ProxyPollRejectedForRelayURLExtensionTotal.With(prometheus.Labels{"nat": natType, "type": proxyType}).Inc()
-			i.ctx.metrics.lock.Unlock()
-
-			log.Printf("bad request: rejected relay pattern from proxy = %v", messages.ErrBadRequest)
-			b, err := messages.EncodePollResponseWithRelayURL("", false, "", "", "incorrect relay pattern")
-			*response = b
-			if err != nil {
-				return messages.ErrInternal
-			}
-			return nil
-		}
-	*/
-
 	// Log geoip stats
 	remoteIP, _, err := net.SplitHostPort(arg.RemoteAddr)
 	if err != nil {
@@ -149,46 +132,6 @@ func (i *IPC) ProxyPolls(arg messages.Arg, response *[]byte) error {
 
 	return nil
 
-	/*
-		var b []byte
-
-		// Wait for a client to avail an offer to the snowflake, or timeout if nil.
-
-		offer := i.ctx.RequestOffer(sid, proxyType, natType, clients)
-
-		if offer == nil {
-			i.ctx.metrics.lock.Lock()
-			i.ctx.metrics.proxyIdleCount++
-			i.ctx.metrics.promMetrics.ProxyPollTotal.With(prometheus.Labels{"nat": natType, "status": "idle"}).Inc()
-			i.ctx.metrics.lock.Unlock()
-
-			b, err = messages.EncodePollResponse("", false, "")
-			if err != nil {
-				return messages.ErrInternal
-			}
-
-			*response = b
-			return nil
-		}
-
-		i.ctx.metrics.promMetrics.ProxyPollTotal.With(prometheus.Labels{"nat": natType, "status": "matched"}).Inc()
-		var relayURL string
-		bridgeFingerprint, err := bridgefingerprint.FingerprintFromBytes(offer.fingerprint)
-		if err != nil {
-			return messages.ErrBadRequest
-		}
-		if info, err := i.ctx.bridgeList.GetBridgeInfo(bridgeFingerprint); err != nil {
-			return err
-		} else {
-			relayURL = info.WebSocketAddress
-		}
-		b, err = messages.EncodePollResponseWithRelayURL(string(offer.sdp), true, offer.natType, relayURL, "")
-		if err != nil {
-			return messages.ErrInternal
-		}
-		*response = b
-
-		return nil*/
 }
 
 func sendClientResponse(resp *messages.ClientPollResponse, response *[]byte) error {
@@ -237,9 +180,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 	if snowflake != nil {
 		url := snowflake.ip
 		ip, _, _ := net.SplitHostPort(url)
-
-		//testing
-		//ip = "13.59.55.180"
 
 		log.Printf("Client: Matched with %s", ip)
 		offerJSON, err := json.Marshal(offer)
@@ -342,7 +282,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		}()
 		*/
 		sendClientResponse(&answer, response)
-		//snowflake.offerChannel <- offer
 	} else {
 		i.ctx.metrics.lock.Lock()
 		i.ctx.metrics.clientDeniedCount++
@@ -356,24 +295,6 @@ func (i *IPC) ClientOffers(arg messages.Arg, response *[]byte) error {
 		resp := &messages.ClientPollResponse{Error: messages.StrNoProxies}
 		return sendClientResponse(resp, response)
 	}
-
-	// Wait for the answer to be returned on the channel or timeout.
-	/*
-		select {
-		case answer := <-snowflake.answerChannel:
-			i.ctx.metrics.lock.Lock()
-			i.ctx.metrics.clientProxyMatchCount++
-			i.ctx.metrics.promMetrics.ClientPollTotal.With(prometheus.Labels{"nat": offer.natType, "status": "matched"}).Inc()
-			i.ctx.metrics.lock.Unlock()
-			resp := &messages.ClientPollResponse{Answer: answer}
-			err = sendClientResponse(resp, response)
-			// Initial tracking of elapsed time.
-			i.ctx.metrics.clientRoundtripEstimate = time.Since(startTime) / time.Millisecond
-		case <-time.After(time.Second * ClientTimeout):
-			log.Println("Client: Timed out.")
-			resp := &messages.ClientPollResponse{Error: messages.StrTimedOut}
-			err = sendClientResponse(resp, response)
-		}*/
 
 	i.ctx.snowflakeLock.Lock()
 	i.ctx.metrics.promMetrics.AvailableProxies.With(prometheus.Labels{"nat": snowflake.natType, "type": snowflake.proxyType}).Dec()
@@ -389,7 +310,9 @@ func (i *IPC) ProxyNotice(cid string, action string, proxyIP string) {
 		Proxy2Client[proxyIP] = append(Proxy2Client[proxyIP], client)
 	} else if action == "delete" {
 		idx := slices.Index(Proxy2Client[proxyIP], client)
-		Proxy2Client[proxyIP] = slices.Delete(Proxy2Client[proxyIP], idx, idx+1)
+		if idx != -1 {
+			Proxy2Client[proxyIP] = slices.Delete(Proxy2Client[proxyIP], idx, idx+1)
+		}
 	}
 }
 
